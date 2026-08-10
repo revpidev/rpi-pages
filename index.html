@@ -235,9 +235,88 @@
     .btn-secondary:hover { border-color: var(--muted); }
     .btn svg { width: 16px; height: 16px; fill: currentColor; }
 
+    /* ---------- hero install panel ---------- */
+    .install {
+      margin: 2.4rem auto 0;
+      max-width: 620px;
+      text-align: left;
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+    .install-tabs {
+      display: flex;
+      gap: 0.2rem;
+      padding: 0.5rem 0.6rem 0;
+      background: var(--bg-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .install-tab {
+      font-family: var(--mono);
+      font-size: 0.79rem;
+      color: var(--muted);
+      background: none;
+      border: 1px solid transparent;
+      border-bottom: none;
+      border-radius: 7px 7px 0 0;
+      padding: 0.34rem 0.85rem;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+    .install-tab:hover { color: var(--text); }
+    .install-tab.active {
+      color: var(--green);
+      background: var(--bg-code);
+      border-color: var(--border);
+      margin-bottom: -1px;
+    }
+    .install-body { padding: 0.95rem 1.1rem 1.05rem; }
+    .install-pane { display: none; }
+    .install-body[data-platform="linux"] .install-pane[data-pane="linux"],
+    .install-body[data-platform="macos"] .install-pane[data-pane="macos"],
+    .install-body[data-platform="windows"] .install-pane[data-pane="windows"] { display: block; }
+    .install-cmd { display: flex; align-items: center; gap: 0.7rem; }
+    .install-cmd > code {
+      flex: 1;
+      font-size: 0.87rem;
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .copy-btn {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.26rem 0.7rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .copy-btn:hover { border-color: var(--muted); color: var(--text); }
+    .copy-btn.copied { color: var(--green); border-color: rgba(74, 222, 128, 0.5); }
+    .install-note { margin-top: 0.6rem; font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .install-note code { font-size: 0.78rem; }
+    .install-foot {
+      margin: 0.75rem auto 0;
+      max-width: 620px;
+      font-size: 0.81rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .install-foot a { color: var(--muted); text-decoration: underline; }
+    .install-foot a:hover { color: var(--text); }
+
     /* ---------- terminal mockup ---------- */
     .terminal {
-      margin: 3.4rem auto 0;
+      margin: 2.8rem auto 0;
       max-width: 760px;
       text-align: left;
       background: var(--bg-code);
@@ -444,6 +523,52 @@
         <span class="l-zh">Rpi 是一个用 Rust 编写的终端 AI 编程助手：读代码、改文件、跑命令、管理会话，全都在你的终端里完成。项目源自 <a href="https://github.com/earendil-works/pi">Pi</a>。</span>
         <span class="l-en">Rpi is a terminal AI coding assistant written in Rust: it reads code, edits files, runs commands and manages sessions — all without leaving your terminal. The project originates from <a href="https://github.com/earendil-works/pi">Pi</a>.</span>
       </p>
+
+      <!-- 安装（首屏显著位置，三平台） -->
+      <div class="install">
+        <div class="install-tabs" id="install-tabs" role="tablist" aria-label="Platform">
+          <button class="install-tab active" data-platform="linux" role="tab" type="button">Linux</button>
+          <button class="install-tab" data-platform="macos" role="tab" type="button">macOS</button>
+          <button class="install-tab" data-platform="windows" role="tab" type="button">Windows</button>
+        </div>
+        <div class="install-body" id="install-body" data-platform="linux">
+          <div class="install-pane" data-pane="linux">
+            <div class="install-cmd">
+              <code>curl -fsSL https://revpi.dev/install.sh | sh</code>
+              <button class="copy-btn" type="button" data-copy="curl -fsSL https://revpi.dev/install.sh | sh"><span class="l-zh">复制</span><span class="l-en">Copy</span></button>
+            </div>
+            <p class="install-note">
+              <span class="l-zh">x86_64 / aarch64，glibc 与 musl 自动识别（<code>--musl</code> 可强制）；默认安装到 <code>~/.local/bin</code>，<code>--prefix</code> 可覆盖。</span>
+              <span class="l-en">x86_64 / aarch64, glibc vs musl auto-detected (force with <code>--musl</code>); installs to <code>~/.local/bin</code> by default, override with <code>--prefix</code>.</span>
+            </p>
+          </div>
+          <div class="install-pane" data-pane="macos">
+            <div class="install-cmd">
+              <code>curl -fsSL https://revpi.dev/install.sh | sh</code>
+              <button class="copy-btn" type="button" data-copy="curl -fsSL https://revpi.dev/install.sh | sh"><span class="l-zh">复制</span><span class="l-en">Copy</span></button>
+            </div>
+            <p class="install-note">
+              <span class="l-zh">Apple silicon（aarch64）；默认安装到 <code>~/.local/bin</code>，<code>--prefix</code> 可覆盖。</span>
+              <span class="l-en">Apple silicon (aarch64); installs to <code>~/.local/bin</code> by default, override with <code>--prefix</code>.</span>
+            </p>
+          </div>
+          <div class="install-pane" data-pane="windows">
+            <div class="install-cmd">
+              <code>irm https://revpi.dev/install.ps1 | iex</code>
+              <button class="copy-btn" type="button" data-copy="irm https://revpi.dev/install.ps1 | iex"><span class="l-zh">复制</span><span class="l-en">Copy</span></button>
+            </div>
+            <p class="install-note">
+              <span class="l-zh">x86_64，PowerShell；默认安装到 <code>%LOCALAPPDATA%\Programs\rpi</code>，<code>-Prefix</code> 可覆盖。</span>
+              <span class="l-en">x86_64, PowerShell; installs to <code>%LOCALAPPDATA%\Programs\rpi</code> by default, override with <code>-Prefix</code>.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <p class="install-foot">
+        <span class="l-zh">全部平台下载后均做 SHA-256 完整性校验；GitHub 不可直连时自动回退官网镜像。也可从 <a href="https://github.com/revpidev/rpi/releases">GitHub Releases</a> 手动下载，或<a href="/docs#/quickstart">从源码构建</a>。</span>
+        <span class="l-en">Every download is SHA-256 integrity-checked on all platforms, with automatic fallback to the official-site mirror when GitHub is unreachable. You can also grab binaries manually from <a href="https://github.com/revpidev/rpi/releases">GitHub Releases</a> or <a href="/docs#/quickstart">build from source</a>.</span>
+      </p>
+
       <div class="badges">
         <span class="badge"><span class="dot green"></span><span class="l-zh">MIT 开源</span><span class="l-en">MIT License</span></span>
         <span class="badge"><span class="dot blue"></span><span class="l-zh">Rust 单二进制</span><span class="l-en">Single Rust binary</span></span>
@@ -702,6 +827,53 @@
     order.forEach(function (id) {
       var el = document.getElementById(id);
       if (el) { io.observe(el); }
+    });
+  })();
+
+  // 首屏安装面板：平台标签页切换 + 一键复制
+  (function () {
+    var body = document.getElementById("install-body");
+    var tabs = document.getElementById("install-tabs");
+    if (body && tabs) {
+      tabs.addEventListener("click", function (e) {
+        var btn = e.target.closest ? e.target.closest(".install-tab") : null;
+        if (!btn) { return; }
+        var platform = btn.getAttribute("data-platform");
+        body.setAttribute("data-platform", platform);
+        Array.prototype.forEach.call(tabs.querySelectorAll(".install-tab"), function (t) {
+          t.classList.toggle("active", t === btn);
+        });
+      });
+    }
+    Array.prototype.forEach.call(document.querySelectorAll(".copy-btn"), function (btn) {
+      btn.addEventListener("click", function () {
+        var text = btn.getAttribute("data-copy") || "";
+        function feedback() {
+          if (btn.classList.contains("copied")) { return; }
+          btn.classList.add("copied");
+          var spans = btn.querySelectorAll("span");
+          var saved = [];
+          Array.prototype.forEach.call(spans, function (s, i) {
+            saved[i] = s.textContent;
+            s.textContent = (i === 0) ? "已复制 ✓" : "Copied ✓";
+          });
+          setTimeout(function () {
+            btn.classList.remove("copied");
+            Array.prototype.forEach.call(spans, function (s, i) { s.textContent = saved[i]; });
+          }, 1500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(feedback, feedback);
+        } else {
+          var ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand("copy"); } catch (e) {}
+          document.body.removeChild(ta);
+          feedback();
+        }
+      });
     });
   })();
 

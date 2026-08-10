@@ -338,14 +338,25 @@
 
       <h2><span class="l-zh">1. 安装</span><span class="l-en">1. Install</span></h2>
       <p>
-        <span class="l-zh">一行命令安装预编译二进制（脚本会按平台下载对应资产并校验 SHA-256）：</span>
-        <span class="l-en">Install the prebuilt binary with one command (the script downloads the asset for your platform and verifies its SHA-256):</span>
+        <span class="l-zh">一行命令安装预编译二进制（脚本自动检测平台，下载对应资产并做 SHA-256 完整性校验；GitHub 不可直连时自动回退官网镜像）：</span>
+        <span class="l-en">Install the prebuilt binary with one command (the script detects your platform, downloads the matching asset and verifies its SHA-256 integrity; it falls back to the official-site mirror when GitHub is unreachable):</span>
       </p>
-      <pre><code><span class="c"># macOS / Linux</span>
+      <pre><code><span class="c"># Linux（x86_64 / aarch64，glibc 与 musl 自动识别）</span>
 <span class="p">$</span> curl -fsSL https://revpi.dev/install.sh | sh
 
-<span class="c"># Windows（PowerShell）</span>
+<span class="c"># macOS（Apple silicon）</span>
+<span class="p">$</span> curl -fsSL https://revpi.dev/install.sh | sh
+
+<span class="c"># Windows（x86_64，PowerShell）</span>
 <span class="p">PS&gt;</span> irm https://revpi.dev/install.ps1 | iex</code></pre>
+      <p>
+        <span class="l-zh">默认安装位置：Linux / macOS 为 <code>~/.local/bin</code>（<code>--prefix</code> 可覆盖，需写入系统目录时脚本会提示用 sudo 重跑）；Windows 为 <code>%LOCALAPPDATA%\Programs\rpi</code>（<code>-Prefix</code> 可覆盖）。安装目录不在 <code>PATH</code> 时，脚本会打印对应的 PATH 配置提示。</span>
+        <span class="l-en">Default locations: <code>~/.local/bin</code> on Linux / macOS (override with <code>--prefix</code>; the script suggests re-running with sudo for system directories) and <code>%LOCALAPPDATA%\Programs\rpi</code> on Windows (<code>-Prefix</code>). When the install directory is not on your <code>PATH</code>, the script prints the exact line to add.</span>
+      </p>
+      <p class="muted">
+        <span class="l-zh">手动安装：从 <a href="https://github.com/revpidev/rpi/releases">GitHub Releases</a> 下载对应平台的 <code>rpi-&lt;version&gt;-&lt;target&gt;.tar.gz</code>（Windows 为 <code>.zip</code>）与 <code>.sha256</code> 校验文件，核对校验和后解压到 <code>PATH</code> 中的任意目录。</span>
+        <span class="l-en">Manual install: download <code>rpi-&lt;version&gt;-&lt;target&gt;.tar.gz</code> (<code>.zip</code> on Windows) and its <code>.sha256</code> sidecar for your platform from <a href="https://github.com/revpidev/rpi/releases">GitHub Releases</a>, verify the checksum, and unpack the binary anywhere on your <code>PATH</code>.</span>
+      </p>
       <p>
         <span class="l-zh">也可以从源码构建：需要安装 <a href="https://rustup.rs">Rust 工具链</a>。构建产物是单个可执行文件 <code>target/release/rpi</code>，可以拷贝到 <code>PATH</code> 中的任意位置。</span>
         <span class="l-en">You can also build from source: you need the <a href="https://rustup.rs">Rust toolchain</a>. The build produces a single executable, <code>target/release/rpi</code>, which you can copy anywhere on your <code>PATH</code>.</span>
@@ -355,7 +366,26 @@
 <span class="p">$</span> cargo build --release
 <span class="p">$</span> ./target/release/rpi</code></pre>
 
-      <h2><span class="l-zh">2. 配置模型</span><span class="l-en">2. Configure a model</span></h2>
+      <h2><span class="l-zh">2. 更新</span><span class="l-en">2. Update</span></h2>
+      <p>
+        <span class="l-zh">一条命令自更新到最新版本——下载新二进制、校验 SHA-256、原子替换并刷新安装清单；失败（如权限不足）时会给出 sudo 重跑或手动替换的具体指引：</span>
+        <span class="l-en">Self-update to the latest release with one command — it downloads the new binary, verifies the SHA-256, atomically replaces the executable and refreshes the install manifest; on failure (e.g. permissions) it prints exact sudo / manual-replace guidance:</span>
+      </p>
+      <pre><code><span class="p">$</span> rpi update --self</code></pre>
+      <p class="muted">
+        <span class="l-zh">重新运行安装脚本同样可以更新。Windows 上运行中的可执行文件无法被替换，请退出 rpi 后重新运行 <code>install.ps1</code> 或按提示手动替换。有新版本时交互模式启动横幅会提示 <code>rpi update --self</code>。</span>
+        <span class="l-en">Re-running the install script updates an existing installation too. On Windows a running executable cannot replace itself — exit rpi and re-run <code>install.ps1</code> (or follow the printed manual steps). The interactive-mode startup banner points at <code>rpi update --self</code> when a new version is available.</span>
+      </p>
+
+      <h2><span class="l-zh">3. 卸载</span><span class="l-en">3. Uninstall</span></h2>
+      <pre><code><span class="p">$</span> rpi self-uninstall           <span class="c"># 删除二进制与安装清单，保留 ~/.rpi 数据</span>
+<span class="p">$</span> rpi self-uninstall --purge   <span class="c"># 连同 ~/.rpi（会话、认证、设置）一起删除</span></code></pre>
+      <p>
+        <span class="l-zh">默认保留 <code>~/.rpi</code> 数据目录（交互式运行会先询问，非交互默认保留），卸载结束会打印遗留物清单。Windows 无法删除运行中的可执行文件，<code>self-uninstall</code> 会跳过并打印需要手动删除的准确路径（<code>rpi.exe</code>、<code>rpi.install.json</code>）。</span>
+        <span class="l-en">The <code>~/.rpi</code> data directory is kept by default (interactive runs ask first; non-interactive runs always keep), and the command prints a leftover list when done. Windows cannot delete a running executable, so <code>self-uninstall</code> skips it and prints the exact paths (<code>rpi.exe</code>, <code>rpi.install.json</code>) to remove by hand.</span>
+      </p>
+
+      <h2><span class="l-zh">4. 配置模型</span><span class="l-en">4. Configure a model</span></h2>
       <p>
         <span class="l-zh">Rpi 内置了 38 家模型服务商的模型清单。大多数情况下只需要在 <code>~/.rpi/agent/models.json</code> 里写入你的 API Key（以 DeepSeek 为例）：</span>
         <span class="l-en">Rpi ships model catalogs for 38 providers. In most cases you only need to add your API key in <code>~/.rpi/agent/models.json</code> (DeepSeek example):</span>
@@ -368,7 +398,7 @@
         <span class="l-en"><code>apiKey</code> accepts either a literal key or the name of an environment variable to read it from.</span>
       </p>
 
-      <h2><span class="l-zh">3. 三种运行模式</span><span class="l-en">3. Three run modes</span></h2>
+      <h2><span class="l-zh">5. 三种运行模式</span><span class="l-en">5. Three run modes</span></h2>
       <table>
         <thead>
           <tr>
@@ -396,7 +426,7 @@
         </tbody>
       </table>
 
-      <h2><span class="l-zh">4. （可选）关闭网络请求</span><span class="l-en">4. (Optional) Disable network requests</span></h2>
+      <h2><span class="l-zh">6. （可选）关闭网络请求</span><span class="l-en">6. (Optional) Disable network requests</span></h2>
       <p>
         <span class="l-zh">Rpi 默认会在线获取模型目录更新和新版本提示。如果不需要，可以用环境变量逐项关闭：</span>
         <span class="l-en">By default Rpi fetches model catalog updates and new-version notices online. Each can be turned off individually:</span>
