@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 """Generate the revpi.dev static site from rpi's built-in provider data.
 
-Run from the repository root:
+Run from this repository root (rpi-pages):
 
-    python3 deploy/revpi/scripts/generate-site.py
+    python3 scripts/generate-site.py
 
-Output (Cloudflare Pages project rooted at deploy/revpi/):
+The rpi source repository is read for the built-in provider data and the
+workspace version. It defaults to the sibling directory `../rpi` (the
+local layout rpi/rpi-docs/rpi-pages) and can be overridden with --rpi-repo.
+
+Output (Cloudflare Pages project rooted at this repository):
 
 - api/models/providers/{providerId}.json — one catalog per built-in provider.
   The rpi client fetches `GET {catalogBaseUrl}/api/models/providers/{id}`
@@ -15,7 +19,7 @@ Output (Cloudflare Pages project rooted at deploy/revpi/):
   `{apiKind: {modelId: Model}}`, so the model objects are flattened.
 - api/latest-version.json — `{"version","packageName","note"}` consumed by
   the version check (version_check.rs: `version` is required, non-2xx or a
-  missing version means "no update"). Defaults to the workspace version;
+  missing version means "no update"). Defaults to the rpi workspace version;
   override with --version when publishing a release.
 
 Static assets get ETag / Last-Modified from Cloudflare Pages automatically,
@@ -27,27 +31,26 @@ import re
 import sys
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[3]
-DATA = REPO / "crates/rpi-ai/src/providers/data"
-SITE = REPO / "deploy/revpi"
-OUT_PROVIDERS = SITE / "api/models/providers"
-OUT_VERSION = SITE / "api/latest-version.json"
+SITE = Path(__file__).resolve().parent.parent  # rpi-pages repository root
+DEFAULT_RPI_REPO = SITE.parent / "rpi"  # sibling rpi source repository
 
 PACKAGE_NAME = "rpi"
 
 
-def workspace_version() -> str:
-    text = (REPO / "Cargo.toml").read_text(encoding="utf-8")
+def workspace_version(rpi_repo: Path) -> str:
+    text = (rpi_repo / "Cargo.toml").read_text(encoding="utf-8")
     match = re.search(r'^version\s*=\s*"([^"]+)"', text, re.MULTILINE)
     if not match:
-        raise SystemExit("workspace version not found in Cargo.toml")
+        raise SystemExit("workspace version not found in rpi Cargo.toml")
     return match.group(1)
 
 
-def generate_catalogs() -> list[str]:
-    OUT_PROVIDERS.mkdir(parents=True, exist_ok=True)
+def generate_catalogs(rpi_repo: Path) -> list[str]:
+    data_dir = rpi_repo / "crates/rpi-ai/src/providers/data"
+    out_dir = SITE / "api/models/providers"
+    out_dir.mkdir(parents=True, exist_ok=True)
     generated = []
-    for data_file in sorted(DATA.glob("*.json")):
+    for data_file in sorted(data_dir.glob("*.json")):
         if data_file.name.startswith("."):
             continue  # .manifest.json — the catalog manifest, not a provider
         provider_id = data_file.stem  # kebab-case, matches the client's encodeURIComponent'd id
@@ -55,7 +58,7 @@ def generate_catalogs() -> list[str]:
         models = []
         for api_models in payload.values():  # api kind -> {modelId: Model}
             models.extend(api_models.values())
-        (OUT_PROVIDERS / f"{provider_id}.json").write_text(
+        (out_dir / f"{provider_id}.json").write_text(
             json.dumps({"models": models}, ensure_ascii=False, indent=2),
             encoding="utf-8",
         )
@@ -64,21 +67,25 @@ def generate_catalogs() -> list[str]:
 
 
 def generate_latest_version(version: str, note: str | None) -> None:
-    OUT_VERSION.parent.mkdir(parents=True, exist_ok=True)
+    out = SITE / "api/latest-version.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
     payload = {"version": version, "packageName": PACKAGE_NAME}
     if note:
         payload["note"] = note
-    OUT_VERSION.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
+        "--rpi-repo",
+        default=str(DEFAULT_RPI_REPO),
+        help=f"path to the rpi source repository (default: {DEFAULT_RPI_REPO})",
+    )
+    parser.add_argument(
         "--version",
         default=None,
-        help="published version for api/latest-version.json (default: workspace Cargo.toml version)",
+        help="published version for api/latest-version.json (default: rpi workspace Cargo.toml version)",
     )
     parser.add_argument(
         "--note",
@@ -87,12 +94,16 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    generated = generate_catalogs()
-    version = args.version or workspace_version()
+    rpi_repo = Path(args.rpi_repo).resolve()
+    if not (rpi_repo / "Cargo.toml").is_file():
+        raise SystemExit(f"rpi source repository not found at {rpi_repo}")
+
+    generated = generate_catalogs(rpi_repo)
+    version = args.version or workspace_version(rpi_repo)
     generate_latest_version(version, args.note)
-    print(f"catalogs: {len(generated)} providers under {OUT_PROVIDERS.relative_to(REPO)}")
-    print(f"version:  {OUT_VERSION.relative_to(REPO)} -> v{version}")
-    print("deploy:   cd deploy/revpi && npx wrangler pages deploy . --project-name=revpi --branch main")
+    print(f"catalogs: {len(generated)} providers under {SITE / 'api/models/providers'}")
+    print(f"version:  api/latest-version.json -> v{version}")
+    print("deploy:   npx wrangler pages deploy . --project-name=revpi --branch main")
     return 0
 
 

@@ -1,0 +1,6 @@
+# Cloudflare wrangler 本地缓存（登录态、项目缓存）
+.wrangler/
+
+# 编辑器与系统
+*.swp
+.DS_Store

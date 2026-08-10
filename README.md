@@ -1,7 +1,8 @@
 # revpi.dev — rpi 产品端点部署（Cloudflare Pages）
 
-rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本目录是 Cloudflare Pages 项目（项目名 `revpi`）：静态目录内容 +
-Pages Functions，零后端。
+rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库是 rpi 的官网 / 产品端点部署仓库（Cloudflare Pages 项目，项目名 `revpi`）：静态目录内容 + Pages Functions，零后端。
+
+> 仓库拆分（rpi/rpi-docs/rpi-pages 三个独立 git 项目）：本站为 **rpi-pages**；rpi 源码在 **rpi** 仓库，文档在 **rpi-docs** 仓库（ADR-0009 全文见 rpi-docs 的 `adr/0009-product-endpoints.md`）。
 `index.html` 为站点首页（开源项目主页，含特性/快速开始/端点说明），
 `/` 请求直接命中。
 
@@ -18,15 +19,16 @@ Pages Functions，零后端。
 ## 生成 + 部署
 
 ```bash
-# 1. 生成 catalog 与 latest-version（在 rpi 仓库根运行；版本默认取 workspace Cargo.toml）
-python3 deploy/revpi/scripts/generate-site.py
-#    发版时：python3 deploy/revpi/scripts/generate-site.py --version 0.2.0 --note "..."
+# 1. 生成 catalog 与 latest-version（rpi 源码仓库默认取同级 `../rpi`，
+#    可用 --rpi-repo 覆盖；版本默认取 rpi workspace Cargo.toml）
+python3 scripts/generate-site.py
+#    发版时：python3 scripts/generate-site.py --version 0.2.0 --note "..."
 
 # 2. 部署（首次需 npx wrangler login）
 npx wrangler pages project create revpi --production-branch main
 #    注意：wrangler 4.x 的 Pages Functions 目录取「当前工作目录/functions」，
-#    必须在 deploy/revpi 目录内执行部署（仓库根目录部署会丢失 functions）
-cd deploy/revpi && npx wrangler pages deploy . --project-name=revpi --branch main
+#    必须在 rpi-pages 仓库根执行部署（仓库根目录部署会丢失 functions）
+npx wrangler pages deploy . --project-name=revpi --branch main
 
 # 3. 自定义域（DNS 在 Cloudflare 托管时自动配置）
 #    Pages 控制台 → Custom domains → 添加 revpi.dev
@@ -58,5 +60,5 @@ RPI_SHARE_VIEWER_URL=https://revpi.dev/session
 - **radius 不在 catalog 内**：radius 是动态 gateway provider（默认
   `https://radius.pi.dev`，上游托管服务，非静态内容），`/api/models/providers/radius`
   返回 404 即"overlay 不可用"语义，radius 用户不受影响。
-- **数据源**：catalog 由 `crates/rpi-ai/src/providers/data/*.json` 生成，
-  与 rpi 发版同步更新。
+- **数据源**：catalog 由 rpi 源码仓库的 `crates/rpi-ai/src/providers/data/*.json`
+  生成（`scripts/generate-site.py` 读取，默认同级 `../rpi`），与 rpi 发版同步更新。
