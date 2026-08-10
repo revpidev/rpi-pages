@@ -398,8 +398,8 @@
 
       <h2><span class="l-zh">1. 安装</span><span class="l-en">1. Install</span></h2>
       <p>
-        <span class="l-zh">一行命令安装预编译二进制（脚本自动检测平台，下载对应资产并做 SHA-256 完整性校验；GitHub 不可直连时自动回退官网镜像）：</span>
-        <span class="l-en">Install the prebuilt binary with one command (the script detects your platform, downloads the matching asset and verifies its SHA-256 integrity; it falls back to the official-site mirror when GitHub is unreachable):</span>
+        <span class="l-zh">一行命令安装预编译二进制，脚本会自动匹配你当前的平台：</span>
+        <span class="l-en">Install the prebuilt binary with one command — the script matches your current platform automatically:</span>
       </p>
       <pre><code><span class="c"># Linux（x86_64 / aarch64，glibc 与 musl 自动识别）</span>
 <span class="p">$</span> curl -fsSL https://revpi.dev/install.sh | sh
@@ -428,8 +428,8 @@
 
       <h2><span class="l-zh">2. 更新</span><span class="l-en">2. Update</span></h2>
       <p>
-        <span class="l-zh">一条命令自更新到最新版本——下载新二进制、校验 SHA-256、原子替换并刷新安装清单；失败（如权限不足）时会给出 sudo 重跑或手动替换的具体指引：</span>
-        <span class="l-en">Self-update to the latest release with one command — it downloads the new binary, verifies the SHA-256, atomically replaces the executable and refreshes the install manifest; on failure (e.g. permissions) it prints exact sudo / manual-replace guidance:</span>
+        <span class="l-zh">一条命令自更新到最新版本；失败（如权限不足）时会给出 sudo 重跑或手动替换的具体指引：</span>
+        <span class="l-en">Self-update to the latest release with one command; on failure (e.g. permissions) it prints exact sudo / manual-replace guidance:</span>
       </p>
       <pre><code><span class="p">$</span> rpi update --self</code></pre>
       <p class="muted">
