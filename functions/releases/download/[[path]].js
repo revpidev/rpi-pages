@@ -18,8 +18,16 @@ const KEY_PATTERN =
 const UPSTREAM_BASE =
   "https://github.com/revpidev/rpi/releases/download";
 
+// 错误响应必须 no-store：上游瞬时缺失（如发版资产逐个上传中）若被边缘
+// 缓存，默认 max-age=14400 会让镜像在资产就绪后仍返回 404 长达 4 小时。
+function errorResponse(status) {
+  const headers = new Headers();
+  headers.set("Cache-Control", "no-store");
+  return new Response(null, { status, headers });
+}
+
 function notFound() {
-  return new Response(null, { status: 404 });
+  return errorResponse(404);
 }
 
 function keyFrom(params) {
@@ -56,9 +64,7 @@ async function proxy(key, method) {
   });
   if (!upstream.ok) {
     // 上游 404（版本/资产不存在）原样透传语义；其余上游错误归一为 502。
-    return upstream.status === 404
-      ? notFound()
-      : new Response(null, { status: 502 });
+    return upstream.status === 404 ? notFound() : errorResponse(502);
   }
   return new Response(upstream.body, {
     headers: headersFor(key, upstream),
