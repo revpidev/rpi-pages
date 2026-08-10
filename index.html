@@ -423,7 +423,7 @@
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">
         <span class="l-zh">EN</span><span class="l-en">中文</span>
       </button>
-      <a class="nav-gh" href="https://github.com/zhuacloud/rpi">
+      <a class="nav-gh" href="https://github.com/revpidev/rpi">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         GitHub
       </a>
@@ -453,7 +453,7 @@
       </div>
       <div class="cta">
         <a class="btn btn-primary" href="#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Get started</span></a>
-        <a class="btn btn-secondary" href="https://github.com/zhuacloud/rpi">
+        <a class="btn btn-secondary" href="https://github.com/revpidev/rpi">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
           <span class="l-zh">GitHub 仓库</span><span class="l-en">GitHub</span>
         </a>
@@ -543,16 +543,26 @@
       <p class="kicker">Quickstart</p>
       <h2><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></h2>
       <p class="lead">
-        <span class="l-zh">三分钟跑起来：从源码构建，配上你的模型 Key，然后开始对话。</span>
-        <span class="l-en">Up and running in three minutes: build from source, add your model key, and start chatting.</span>
+        <span class="l-zh">三分钟跑起来：一行命令安装，配上你的模型 Key，然后开始对话。</span>
+        <span class="l-en">Up and running in three minutes: install with one command, add your model key, and start chatting.</span>
       </p>
       <div class="steps-grid">
         <div class="step">
-          <h3><span class="num">1</span><span class="l-zh">从源码构建</span><span class="l-en">Build from source</span></h3>
-          <pre><code><span class="p">$</span> git clone https://github.com/zhuacloud/rpi.git
-<span class="p">$</span> cd rpi
-<span class="p">$</span> cargo build --release
-<span class="p">$</span> ./target/release/rpi</code></pre>
+          <h3><span class="num">1</span><span class="l-zh">安装</span><span class="l-en">Install</span></h3>
+          <pre class="l-zh"><code><span class="c"># macOS / Linux</span>
+<span class="p">$</span> curl -fsSL https://revpi.dev/install.sh | sh
+
+<span class="c"># Windows（PowerShell）</span>
+<span class="p">PS&gt;</span> irm https://revpi.dev/install.ps1 | iex</code></pre>
+          <pre class="l-en"><code><span class="c"># macOS / Linux</span>
+<span class="p">$</span> curl -fsSL https://revpi.dev/install.sh | sh
+
+<span class="c"># Windows (PowerShell)</span>
+<span class="p">PS&gt;</span> irm https://revpi.dev/install.ps1 | iex</code></pre>
+          <p class="muted">
+            <span class="l-zh">也可以从源码构建：<code>git clone https://github.com/revpidev/rpi.git &amp;&amp; cd rpi &amp;&amp; cargo build --release</code></span>
+            <span class="l-en">Or build from source: <code>git clone https://github.com/revpidev/rpi.git &amp;&amp; cd rpi &amp;&amp; cargo build --release</code></span>
+          </p>
         </div>
         <div class="step">
           <h3><span class="num">2</span><span class="l-zh">配置模型</span><span class="l-en">Configure a model</span></h3>
@@ -615,7 +625,7 @@
           <span class="doc-title"><span class="l-zh">插件开发指南</span><span class="l-en">Plugin guide</span> <span class="arrow">↗</span></span>
           <p class="doc-desc"><span class="l-zh">用 WebAssembly 或原生动态库编写扩展</span><span class="l-en">Write extensions in WebAssembly or as native libraries</span></p>
         </a>
-        <a class="doc-link" href="https://github.com/zhuacloud/rpi">
+        <a class="doc-link" href="https://github.com/revpidev/rpi">
           <span class="doc-title"><span class="l-zh">GitHub 仓库</span><span class="l-en">GitHub repository</span> <span class="arrow">↗</span></span>
           <p class="doc-desc"><span class="l-zh">源码、Issue 与完整设计文档</span><span class="l-en">Source code, issues and full design documents</span></p>
         </a>
@@ -637,7 +647,7 @@
       <span class="l-en">a terminal AI coding assistant written in Rust</span>
     </div>
     <div>
-      <a href="https://github.com/zhuacloud/rpi">GitHub</a> ·
+      <a href="https://github.com/revpidev/rpi">GitHub</a> ·
       <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a> ·
       <span>MIT License</span> ·
       <span class="l-zh">致谢上游 </span><span class="l-en">Thanks to upstream </span><a href="https://github.com/earendil-works/pi">earendil-works/pi</a>

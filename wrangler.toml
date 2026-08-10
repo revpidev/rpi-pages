@@ -19,3 +19,12 @@ account_id = "677ab7398364b1f673e2cf06d0a59b19"
 # [[kv_namespaces]]
 # binding = "ANALYTICS"
 # id = "<paste namespace id here>"
+
+# GitHub Release 资产镜像（functions/releases/download/[[path]].js）：
+# 单资产约 30MB，超 Pages 25MiB 静态资产上限，故放 R2。
+# 对象 key = `v<version>/<filename>`，由 scripts/mirror-release.sh 上传。
+# 一次性初始化：
+#   npx wrangler r2 bucket create rpi-releases
+[[r2_buckets]]
+binding = "RELEASES"
+bucket_name = "rpi-releases"

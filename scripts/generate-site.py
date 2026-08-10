@@ -21,6 +21,9 @@ Output (Cloudflare Pages project rooted at this repository):
   the version check (version_check.rs: `version` is required, non-2xx or a
   missing version means "no update"). Defaults to the rpi workspace version;
   override with --version when publishing a release.
+- install.sh / install.ps1 — the installer scripts served at the site root
+  (`https://revpi.dev/install.sh`, `.../install.ps1`). The single source of
+  truth lives in the rpi repository; this step copies them verbatim.
 
 Static assets get ETag / Last-Modified from Cloudflare Pages automatically,
 so the client's If-None-Match revalidation (4h window) works as-is.
@@ -75,6 +78,22 @@ def generate_latest_version(version: str, note: str | None) -> None:
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+INSTALL_SCRIPTS = ["install.sh", "install.ps1"]
+
+
+def sync_install_scripts(rpi_repo: Path) -> list[str]:
+    """安装脚本以静态文件放站点根（/install.sh、/install.ps1）；
+    单一事实源在 rpi 源码仓库，这里原样拷贝。"""
+    copied = []
+    for name in INSTALL_SCRIPTS:
+        src = rpi_repo / name
+        if not src.is_file():
+            raise SystemExit(f"install script not found in rpi repo: {src}")
+        (SITE / name).write_bytes(src.read_bytes())
+        copied.append(name)
+    return copied
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -101,8 +120,10 @@ def main() -> int:
     generated = generate_catalogs(rpi_repo)
     version = args.version or workspace_version(rpi_repo)
     generate_latest_version(version, args.note)
+    copied = sync_install_scripts(rpi_repo)
     print(f"catalogs: {len(generated)} providers under {SITE / 'api/models/providers'}")
     print(f"version:  api/latest-version.json -> v{version}")
+    print(f"install:  {', '.join(copied)} synced to site root")
     print("deploy:   npx wrangler pages deploy . --project-name=revpi --branch main")
     return 0
 

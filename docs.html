@@ -277,7 +277,7 @@
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">
         <span class="l-zh">EN</span><span class="l-en">中文</span>
       </button>
-      <a class="nav-gh" href="https://github.com/zhuacloud/rpi">
+      <a class="nav-gh" href="https://github.com/revpidev/rpi">
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         GitHub
       </a>
@@ -323,8 +323,8 @@
 
       <h2><span class="l-zh">许可证与致谢</span><span class="l-en">License &amp; credits</span></h2>
       <p>
-        <span class="l-zh">Rpi 以 <strong>MIT</strong> 许可证开源，与上游项目 Pi 一致。感谢 <a href="https://github.com/earendil-works/pi">earendil-works/pi</a> 提供了设计原型。源码与 Issue 见 <a href="https://github.com/zhuacloud/rpi">GitHub 仓库</a>。</span>
-        <span class="l-en">Rpi is open source under the <strong>MIT</strong> license, same as the upstream project Pi. Thanks to <a href="https://github.com/earendil-works/pi">earendil-works/pi</a> for the design it originates from. Source code and issues live in the <a href="https://github.com/zhuacloud/rpi">GitHub repository</a>.</span>
+        <span class="l-zh">Rpi 以 <strong>MIT</strong> 许可证开源，与上游项目 Pi 一致。感谢 <a href="https://github.com/earendil-works/pi">earendil-works/pi</a> 提供了设计原型。源码与 Issue 见 <a href="https://github.com/revpidev/rpi">GitHub 仓库</a>。</span>
+        <span class="l-en">Rpi is open source under the <strong>MIT</strong> license, same as the upstream project Pi. Thanks to <a href="https://github.com/earendil-works/pi">earendil-works/pi</a> for the design it originates from. Source code and issues live in the <a href="https://github.com/revpidev/rpi">GitHub repository</a>.</span>
       </p>
     </article>
 
@@ -332,16 +332,25 @@
     <article id="doc-quickstart">
       <h1><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></h1>
       <p class="sub">
-        <span class="l-zh">从构建到第一次对话，大约三分钟。</span>
-        <span class="l-en">From source to your first conversation in about three minutes.</span>
+        <span class="l-zh">从安装到第一次对话，大约三分钟。</span>
+        <span class="l-en">From install to your first conversation in about three minutes.</span>
       </p>
 
-      <h2><span class="l-zh">1. 构建</span><span class="l-en">1. Build</span></h2>
+      <h2><span class="l-zh">1. 安装</span><span class="l-en">1. Install</span></h2>
       <p>
-        <span class="l-zh">需要安装 <a href="https://rustup.rs">Rust 工具链</a>。构建产物是单个可执行文件 <code>target/release/rpi</code>，可以拷贝到 <code>PATH</code> 中的任意位置。</span>
-        <span class="l-en">You need the <a href="https://rustup.rs">Rust toolchain</a>. The build produces a single executable, <code>target/release/rpi</code>, which you can copy anywhere on your <code>PATH</code>.</span>
+        <span class="l-zh">一行命令安装预编译二进制（脚本会按平台下载对应资产并校验 SHA-256）：</span>
+        <span class="l-en">Install the prebuilt binary with one command (the script downloads the asset for your platform and verifies its SHA-256):</span>
       </p>
-      <pre><code><span class="p">$</span> git clone https://github.com/zhuacloud/rpi.git
+      <pre><code><span class="c"># macOS / Linux</span>
+<span class="p">$</span> curl -fsSL https://revpi.dev/install.sh | sh
+
+<span class="c"># Windows（PowerShell）</span>
+<span class="p">PS&gt;</span> irm https://revpi.dev/install.ps1 | iex</code></pre>
+      <p>
+        <span class="l-zh">也可以从源码构建：需要安装 <a href="https://rustup.rs">Rust 工具链</a>。构建产物是单个可执行文件 <code>target/release/rpi</code>，可以拷贝到 <code>PATH</code> 中的任意位置。</span>
+        <span class="l-en">You can also build from source: you need the <a href="https://rustup.rs">Rust toolchain</a>. The build produces a single executable, <code>target/release/rpi</code>, which you can copy anywhere on your <code>PATH</code>.</span>
+      </p>
+      <pre><code><span class="p">$</span> git clone https://github.com/revpidev/rpi.git
 <span class="p">$</span> cd rpi
 <span class="p">$</span> cargo build --release
 <span class="p">$</span> ./target/release/rpi</code></pre>
@@ -498,8 +507,8 @@
 <span class="p">$</span> cp ../../target/wasm32-unknown-unknown/release/rpi_wasm_extension_example.wasm dist/permission_gate.wasm
 <span class="p">$</span> cp -r ../wasm-extension ~/.rpi/agent/extensions/permission-gate</code></pre>
       <p class="muted">
-        <span class="l-zh">插件与宿主之间的完整通信规范（消息格式、能力列表、错误类型）见仓库中的 <a href="https://github.com/zhuacloud/rpi/blob/main/docs/extension-abi.md">Extension ABI 文档</a>。</span>
-        <span class="l-en">The full contract between plugins and the host — message formats, capability list, error kinds — is documented in the <a href="https://github.com/zhuacloud/rpi/blob/main/docs/extension-abi.md">Extension ABI document</a> in the repository.</span>
+        <span class="l-zh">插件与宿主之间的完整通信规范（消息格式、能力列表、错误类型）见仓库中的 <a href="https://github.com/revpidev/rpi/blob/main/docs/extension-abi.md">Extension ABI 文档</a>。</span>
+        <span class="l-en">The full contract between plugins and the host — message formats, capability list, error kinds — is documented in the <a href="https://github.com/revpidev/rpi/blob/main/docs/extension-abi.md">Extension ABI document</a> in the repository.</span>
       </p>
     </article>
 
@@ -514,7 +523,7 @@
       <span class="l-en">a terminal AI coding assistant written in Rust</span>
     </div>
     <div>
-      <a href="https://github.com/zhuacloud/rpi">GitHub</a> ·
+      <a href="https://github.com/revpidev/rpi">GitHub</a> ·
       <a href="/"><span class="l-zh">首页</span><span class="l-en">Home</span></a> ·
       <span>MIT License</span> ·
       <span class="l-zh">致谢上游 </span><span class="l-en">Thanks to upstream </span><a href="https://github.com/earendil-works/pi">earendil-works/pi</a>
