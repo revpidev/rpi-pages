@@ -2,7 +2,7 @@
 
 rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库是 rpi 的官网 / 产品端点部署仓库（Cloudflare Pages 项目，项目名 `revpi`）：静态目录内容 + Pages Functions，零后端。
 
-> 仓库拆分（rpi/rpi-docs/rpi-pages 三个独立 git 项目）：本站为 **rpi-pages**；rpi 源码在 **rpi** 仓库，文档在 **rpi-docs** 仓库（ADR-0009 全文见 rpi-docs 的 `adr/0009-product-endpoints.md`）。
+> 仓库拆分（rpi 源码仓库与本部署仓库独立；需求 / 设计 / ADR 等工程文档维护在私有文档仓库，未随仓库公开）：本站为 **rpi-pages**；rpi 源码在 **rpi** 仓库，端点契约与部署说明见本 README。
 `index.html` 为站点首页（开源项目主页，含特性/快速开始/端点说明），
 `/` 请求直接命中。
 

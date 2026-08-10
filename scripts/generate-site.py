@@ -7,7 +7,7 @@ Run from this repository root (rpi-pages):
 
 The rpi source repository is read for the built-in provider data and the
 workspace version. It defaults to the sibling directory `../rpi` (the
-local layout rpi/rpi-docs/rpi-pages) and can be overridden with --rpi-repo.
+local layout rpi/rpi-pages siblings) and can be overridden with --rpi-repo.
 
 Output (Cloudflare Pages project rooted at this repository):
 
