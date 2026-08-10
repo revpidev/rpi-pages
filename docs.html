@@ -143,6 +143,8 @@
     }
     .nav-gh:hover { border-color: var(--muted); }
     .nav-gh svg { width: 15px; height: 15px; fill: currentColor; }
+    .menu-toggle { display: none; }
+    .mobile-menu { display: none; }
 
     /* ---------- docs layout ---------- */
     .docs-layout {
@@ -250,15 +252,55 @@
       .docs-nav {
         position: static;
         flex-direction: row;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
         gap: 0.4rem;
+        padding-bottom: 0.3rem;
       }
-      .docs-nav .nav-caption { width: 100%; padding-left: 0; }
-      .docs-nav a { border-left: none; border: 1px solid var(--border); }
+      .docs-nav .nav-caption { display: none; }
+      .docs-nav a { border-left: none; border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; }
       .docs-nav a.active { border-color: rgba(74, 222, 128, 0.45); }
       .nav-links { gap: 0.8rem; font-size: 0.86rem; }
-      .nav-links a:not(.nav-gh):not([href="/"]) { display: none; }
+      .nav-links a:not(.nav-gh) { display: none; }
       .nav-gh-label { display: none; }
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 32px;
+        flex-direction: column;
+        gap: 4px;
+        color: var(--muted);
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        cursor: pointer;
+      }
+      .menu-toggle span { display: block; width: 14px; height: 1.6px; background: currentColor; border-radius: 1px; }
+      .menu-toggle:hover { border-color: var(--muted); color: var(--text); }
+      .mobile-menu {
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-soft);
+        padding: 0.4rem 1.1rem 0.7rem;
+        flex-direction: column;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        display: block;
+        color: var(--muted);
+        font-size: 0.95rem;
+        padding: 0.6rem 0.2rem;
+        border-bottom: 1px solid var(--border-soft);
+      }
+      .mobile-menu a:last-child { border-bottom: none; }
+      .mobile-menu a:hover { color: var(--text); text-decoration: none; }
       article h1 { font-size: 1.55rem; }
       article h2 { font-size: 1.12rem; }
       article code { word-break: break-all; }
@@ -291,7 +333,15 @@
         <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <span class="nav-gh-label">GitHub</span>
       </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
     </nav>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/"><span class="l-zh">首页</span><span class="l-en">Home</span></a>
+    <a href="/#features"><span class="l-zh">特性</span><span class="l-en">Features</span></a>
+    <a href="/#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
+    <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a>
+    <a href="/docs#/changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
   </div>
 </header>
 
@@ -583,6 +633,17 @@
     window.__setLang = setLang;
     document.getElementById("lang-toggle").addEventListener("click", function () {
       setLang(document.documentElement.dataset.lang === "zh" ? "en" : "zh");
+    });
+  })();
+
+  // 移动端汉堡菜单
+  (function () {
+    var btn = document.getElementById("menu-toggle");
+    var menu = document.getElementById("mobile-menu");
+    if (!btn || !menu) { return; }
+    btn.addEventListener("click", function () { menu.classList.toggle("open"); });
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) { menu.classList.remove("open"); }
     });
   })();
 
