@@ -14,7 +14,7 @@ rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库
 | `GET /api/latest-version` | `api/latest-version.json`（生成） | 版本检查 `{"version","packageName","note"}`；发版时更新；无后缀路径由 `_redirects` rewrite |
 | `GET /api/report-install` | `functions/api/report-install.js` | telemetry 收口，204；绑定 KV `ANALYTICS` 可记录安装统计 |
 | `GET /install.sh`、`GET /install.ps1` | `install.sh`、`install.ps1`（静态文件，站点根） | 安装脚本；单一事实源在 rpi 仓库，由 `scripts/generate-site.py` 同步拷贝 |
-| `GET /releases/download/v{ver}/{file}` | `functions/releases/download/[[path]].js` + R2 桶 `rpi-releases` | GitHub Release 资产镜像（URL 与 GitHub 同形只换 base，国内不可直连 GitHub 时使用）；key 形状严格校验，未命中 404；单资产约 30MB 超 Pages 25MiB 静态上限，故走 R2 |
+| `GET /releases/download/v{ver}/{file}` | `functions/releases/download/[[path]].js` | GitHub Release 资产官网代理（URL 与 GitHub 同形只换 base，国内不可直连 GitHub 时由边缘节点回源转发）；key 形状严格校验，未命中/上游 404 均 404；零存储，发版零额外步骤 |
 | `/session/#{gistId}` | `session/index.html` | share viewer；gist id 在 URL fragment 里（`get_share_viewer_url` 拼 `#`），页面 JS 读取并渲染 gist raw |
 | `/changelog` | `changelog.html` | 更新横幅里的 changelog 链接 |
 
@@ -58,20 +58,10 @@ cd /home/leven/develop/ai/revpi/rpi-pages
 git add api/ install.sh install.ps1
 git commit -m "chore(api): 同步 catalog / latest-version"
 git push
-
-# 3. 发版时（GitHub Release 的 12 个资产齐全之后）：镜像资产到 R2
-#    前置：已 npx wrangler login；桶已创建（见下「R2 初始化」）
-sh scripts/mirror-release.sh 0.2.0
 ```
 
-### R2 初始化（一次性）
-
-Release 资产镜像（`/releases/download/*`）依赖 R2 桶 `rpi-releases`
-（wrangler.toml 的 `RELEASES` binding）。首次使用前创建一次即可：
-
-```bash
-npx wrangler r2 bucket create rpi-releases
-```
+> Release 资产镜像（`/releases/download/*`）是 Function 代理回源 GitHub，
+> 零存储、发版零额外步骤——GitHub Release 资产发布即可用，无需上传。
 
 ### 首次创建项目（旧流程，仅存档）
 
