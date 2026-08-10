@@ -1,6 +1,10 @@
 # Cloudflare Pages project for the revpi.dev product endpoints (ADR-0009).
 #
-# Deploy from this repository root:
+# 部署方式：Cloudflare Pages Git 集成（GitHub revpidev/rpi-pages，push 到
+# main 自动部署，PR 自动 preview）——见 README「生成 + 部署」。
+# 本地预览/调试：
+#   npx wrangler pages dev .
+# 兜底手动部署（会覆盖 Git 集成部署，仅调试用，勿用于日常发版）：
 #   npx wrangler pages deploy . --project-name=revpi --branch main
 #
 # Optional: install-count telemetry recording (functions/api/report-install.js
@@ -10,6 +14,7 @@
 
 name = "revpi"
 compatibility_date = "2025-01-01"
+account_id = "677ab7398364b1f673e2cf06d0a59b19"
 
 # [[kv_namespaces]]
 # binding = "ANALYTICS"

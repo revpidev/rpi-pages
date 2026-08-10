@@ -18,27 +18,61 @@ rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库
 
 ## 生成 + 部署
 
+### 部署：Cloudflare Pages Git 集成（push 即发布）
+
+仓库已连接到 Pages 项目 `revpi`：push 到 `main` 自动部署生产，PR 自动创建
+preview 环境。构建配置（连接时在控制台填写，见下方步骤）：
+
+| 配置项 | 值 | 说明 |
+|---|---|---|
+| Production branch | `main` | 生产分支 |
+| Build command | 留空 | 生成产物 `api/*.json` 已提交入库；构建环境没有 `../rpi` 源码，跑生成脚本会失败 |
+| Output directory | `.` | 仓库根即站点根 |
+
+> **注意**：连接后不要再手动 `npx wrangler pages deploy` —— 手动部署与
+> Git 集成互相覆盖（最后部署者赢），会造成线上与仓库不一致。
+> 本地预览用 `npx wrangler pages dev .`。
+
+控制台连接步骤（一次性）：
+
+1. dash.cloudflare.com → Workers & Pages → 选中 `revpi` 项目
+2. Settings → Builds & deployments → **Connect to Git** → 授权 GitHub
+3. 选择 `revpidev/rpi-pages`，按上表填写构建配置 → Save and Deploy
+4. 等待首次构建完成，访问 https://revpi.pages.dev 与 https://revpi.dev 验证
+
+### 数据更新（发版流程）
+
+catalog 与 latest-version 由 rpi 源码仓库生成。更新数据：
+
 ```bash
 # 1. 生成 catalog 与 latest-version（rpi 源码仓库默认取同级 `../rpi`，
 #    可用 --rpi-repo 覆盖；版本默认取 rpi workspace Cargo.toml）
 python3 scripts/generate-site.py
 #    发版时：python3 scripts/generate-site.py --version 0.2.0 --note "..."
 
-# 2. 部署（首次需 npx wrangler login）
-npx wrangler pages project create revpi --production-branch main
-#    注意：wrangler 4.x 的 Pages Functions 目录取「当前工作目录/functions」，
-#    必须在 rpi-pages 仓库根执行部署（仓库根目录部署会丢失 functions）
-npx wrangler pages deploy . --project-name=revpi --branch main
-
-# 3. 自定义域（DNS 在 Cloudflare 托管时自动配置）
-#    Pages 控制台 → Custom domains → 添加 revpi.dev
-
-# 4.（可选）telemetry 统计
-npx wrangler kv namespace create ANALYTICS   # 把 id 填入 wrangler.toml 后重新部署
+# 2. 提交并推送 —— Git 集成自动部署
+cd /home/leven/develop/ai/revpi/rpi-pages
+git add api/
+git commit -m "chore(api): 同步 catalog / latest-version"
+git push
 ```
 
-连接 GitHub 仓库后可在 Pages 控制台开自动部署（push 即发布）；
-也可以在 Actions 里挂 cron 定期重跑生成脚本，保持 catalog 与仓库同步。
+### 首次创建项目（旧流程，仅存档）
+
+```bash
+npx wrangler pages project create revpi --production-branch main
+# 注意：wrangler 4.x 的 Pages Functions 目录取「当前工作目录/functions」，
+# 必须在 rpi-pages 仓库根执行部署（仓库根目录部署会丢失 functions）
+npx wrangler pages deploy . --project-name=revpi --branch main
+# 自定义域（DNS 在 Cloudflare 托管时自动配置）：
+#   Pages 控制台 → Custom domains → 添加 revpi.dev（已完成）
+```
+
+### （可选）telemetry 统计
+
+```bash
+npx wrangler kv namespace create ANALYTICS   # 把 id 填入 wrangler.toml 后重新部署
+```
 
 ## 客户端侧
 
