@@ -375,7 +375,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 262144,
-      "maxTokens": 262144,
+      "maxTokens": 256000,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,

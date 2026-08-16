@@ -6,5 +6,45 @@
   "license": "MIT",
   "kind": "native",
   "official": true,
-  "versions": []
+  "versions": [
+    {
+      "version": "0.1.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.1",
+      "capabilities": [
+        "tools",
+        "commands",
+        "session",
+        "events",
+        "ui"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-subagents-0.1.1-aarch64-apple-darwin.rpix",
+          "sha256": "6e3afeafad3199e1b715c15d92dbb7fcbd778fa9c10674ce448452ac6874fb04",
+          "release": "v0.1.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "34e35d0423547f0fe97aceaa4b59d91faa7a957e0d60fbfaac47287d7fbdc61f",
+          "release": "v0.1.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-subagents-0.1.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "4beb8621c88dfc470a541a07da356724c553c903f5270cdc63c1b9abcb3b0ee1",
+          "release": "v0.1.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "eed3c7abcde7bc9302df04b3126caf9fae4da362a5c911f79677cbb5ada9a6b2",
+          "release": "v0.1.1"
+        }
+      ]
+    }
+  ]
 }

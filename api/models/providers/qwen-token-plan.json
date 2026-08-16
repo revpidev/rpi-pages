@@ -9,7 +9,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -33,7 +34,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -55,10 +57,18 @@
       "provider": "qwen-token-plan",
       "baseUrl": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "compat": {
-        "thinkingFormat": "deepseek",
+        "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
         "supportsStore": false,
-        "requiresReasoningContentOnAssistantMessages": true
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "minimal": null,
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       },
       "reasoning": true,
       "input": [
@@ -71,14 +81,40 @@
         "cacheWrite": 0
       },
       "contextWindow": 1000000,
-      "maxTokens": 384000,
+      "maxTokens": 384000
+    },
+    {
+      "id": "deepseek-v4-flash-0731",
+      "name": "DeepSeek V4 Flash 0731",
+      "api": "openai-completions",
+      "provider": "qwen-token-plan",
+      "baseUrl": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
+      "compat": {
+        "thinkingFormat": "qwen",
+        "supportsDeveloperRole": false,
+        "supportsStore": false,
+        "supportsReasoningEffort": true
+      },
       "thinkingLevelMap": {
         "minimal": null,
         "low": null,
         "medium": null,
         "high": "high",
+        "xhigh": null,
         "max": "max"
-      }
+      },
+      "reasoning": true,
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 384000
     },
     {
       "id": "deepseek-v4-pro",
@@ -87,10 +123,18 @@
       "provider": "qwen-token-plan",
       "baseUrl": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "compat": {
-        "thinkingFormat": "deepseek",
+        "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
         "supportsStore": false,
-        "requiresReasoningContentOnAssistantMessages": true
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "minimal": null,
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       },
       "reasoning": true,
       "input": [
@@ -103,14 +147,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1000000,
-      "maxTokens": 384000,
-      "thinkingLevelMap": {
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "max": "max"
-      }
+      "maxTokens": 384000
     },
     {
       "id": "glm-5",
@@ -121,7 +158,16 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "minimal": null,
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       },
       "reasoning": true,
       "input": [
@@ -145,7 +191,16 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "minimal": null,
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       },
       "reasoning": true,
       "input": [
@@ -169,7 +224,16 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "minimal": null,
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       },
       "reasoning": true,
       "input": [
@@ -193,7 +257,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -218,7 +283,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -243,7 +309,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -268,7 +335,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -293,7 +361,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -318,7 +387,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -342,7 +412,8 @@
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": false
       },
       "reasoning": true,
       "input": [
@@ -359,15 +430,24 @@
       "maxTokens": 65536
     },
     {
-      "id": "qwen3.8-max-preview",
-      "name": "Qwen3.8 Max Preview",
+      "id": "qwen3.8-max",
+      "name": "Qwen3.8 Max",
       "api": "openai-completions",
       "provider": "qwen-token-plan",
       "baseUrl": "https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1",
       "compat": {
         "thinkingFormat": "qwen",
         "supportsDeveloperRole": false,
-        "supportsStore": false
+        "supportsStore": false,
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": null,
+        "xhigh": "xhigh",
+        "max": null
       },
       "reasoning": true,
       "input": [

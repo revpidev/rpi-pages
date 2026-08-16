@@ -6,5 +6,42 @@
   "license": "MIT",
   "kind": "native",
   "official": true,
-  "versions": []
+  "versions": [
+    {
+      "version": "0.1.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.1",
+      "capabilities": [
+        "tools",
+        "session"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-smart-fetch-0.1.1-aarch64-apple-darwin.rpix",
+          "sha256": "b31e36b4eca5759d714132cdbc8d55f8d58e06a2dcfd7426467da40dad242d6a",
+          "release": "v0.1.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "a8b6d20ac34523705319fe42549b30912526d780ce71b4ef18ea55252f1d5c1a",
+          "release": "v0.1.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-smart-fetch-0.1.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "5ce5f929353e998488dcc0fb1f3962b42bfdcea9bf5e66e61512077243ee03c2",
+          "release": "v0.1.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "39b084b73606c3c97b34d102af164e31402eddc6b306425b90d2fbe51cb37efc",
+          "release": "v0.1.1"
+        }
+      ]
+    }
+  ]
 }

@@ -21,6 +21,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "maxTokensField": "max_tokens",
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -53,6 +54,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "maxTokensField": "max_tokens",
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
