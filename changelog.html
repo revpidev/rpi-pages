@@ -28,7 +28,7 @@
     <li><code>.rpix</code> 打包格式:gzip tar,含 <code>rpi-extension.json</code> + 载体 + <code>SHA256SUMS</code>;逐文件校验、原子替换到 <code>~/.rpi/agent/extensions/&lt;name&gt;/</code>(或 <code>-l</code> 项目级)。</li>
     <li>信任提示:install/update 展示 author 与 capabilities 全表;L0 原生插件(无沙箱、全 OS 权限)显著警告,需确认或 <code>--yes</code>。</li>
     <li><code>remove</code> / <code>list</code> / <code>update</code> 全链路支持;<code>RPI_REGISTRY_URL</code> 可注入镜像/测试地址,<code>off</code> 整体禁用。</li>
-    <li>第一方插件随主版本发布:CI 将三个官方插件各自打成 <code>.rpix</code>(6 目标),与本体同一 Release 发布、版本锁步,官网索引自动收录并标「官方插件」。</li>
+    <li>第一方插件随主版本发布:CI 将三个官方插件各自打成 <code>.rpix</code>(Windows x64 / macOS arm64 / Linux x64 与 arm64 glibc;musl 主机无法加载原生扩展,不出插件包),与本体同一 Release 发布、版本锁步,官网索引自动收录并标「官方插件」。</li>
     <li>revpi.dev 新增 <code>/api/extensions/</code> 索引 API、<code>/extensions/download/</code> 下载代理(白名单 + 边缘回源)与插件目录页。</li>
   </ul>
 
