@@ -210,8 +210,10 @@
       padding: 0;
       color: var(--text);
       font-size: 0.82rem;
-      white-space: nowrap;
-      overflow-x: auto;
+      /* 允许换行而不是横向滚动：flex 子项需 min-width:0 才能正确收缩 */
+      min-width: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
     .copy-btn {
       font-family: var(--mono);
@@ -459,7 +461,10 @@
       }
       card.appendChild(version);
 
-      card.appendChild(el("p", "desc", ext.description || ""));
+      var desc = el("p", "desc");
+      // 索引可选 descriptionZh（registry 条目维护）；缺省两种语言都用英文描述
+      desc.appendChild(i18n(ext.descriptionZh || ext.description || "", ext.description || ""));
+      card.appendChild(desc);
 
       var caps = Array.isArray(ext.capabilities) ? ext.capabilities : [];
       if (caps.length) {

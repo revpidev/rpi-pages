@@ -5,5 +5,6 @@
   "author": "revpidev",
   "license": "MIT",
   "official": true,
-  "lockstepHost": true
+  "lockstepHost": true,
+  "descriptionZh": "子代理委派:单个 `subagent` 工具派生专注的子 rpi 会话,支持 per-agent 提示词、工具白名单与深度限制;组合 tasks/steps 运行、后台异步运行、模型回退链。"
 }

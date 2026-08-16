@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-16T14:13:03Z",
+  "generatedAt": "2026-08-16T14:33:48Z",
   "extensions": [
     {
       "name": "rpi-mcp-adapter",
@@ -14,6 +14,7 @@
         "ui"
       ],
       "downloads": null,
+      "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具,懒连接服务器生命周期(pi-mcp-adapter @ v2.24.0 移植)。",
       "official": true
     },
     {
@@ -26,6 +27,7 @@
         "session"
       ],
       "downloads": null,
+      "descriptionZh": "指纹化网页抓取:`web_fetch`/`batch_web_fetch` 工具,浏览器级 TLS/HTTP2 指纹模拟(wreq)、readability 正文提取(dom_smoothie)与 1:1 DOM 回退链、五种输出格式、结构化错误模型、流式进度(toolUpdate)与组件树渲染。",
       "official": true
     },
     {
@@ -41,6 +43,7 @@
         "ui"
       ],
       "downloads": null,
+      "descriptionZh": "子代理委派:单个 `subagent` 工具派生专注的子 rpi 会话,支持 per-agent 提示词、工具白名单与深度限制;组合 tasks/steps 运行、后台异步运行、模型回退链。",
       "official": true
     }
   ]

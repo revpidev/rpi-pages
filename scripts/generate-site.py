@@ -315,6 +315,9 @@ def generate_extensions(rpi_repo: Path) -> list[str]:
             "capabilities": capabilities,
             "downloads": None,
         }
+        # 可选中文描述：目录页按语言切换展示（extensions.html i18n）。
+        if entry.get("descriptionZh"):
+            index_entry["descriptionZh"] = entry["descriptionZh"]
         if entry.get("official"):
             index_entry["official"] = True
         index.append(index_entry)

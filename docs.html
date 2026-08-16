@@ -510,6 +510,17 @@
         <span class="l-en">What changed in each release. The in-app update notice links here too.</span>
       </p>
 
+      <h2><span class="version-tag">0.1.1</span><span class="l-zh">插件生态与上游对齐</span><span class="l-en">Plugin ecosystem & upstream alignment</span></h2>
+      <ul>
+        <li><span class="l-zh">插件一键安装:<code>rpi install &lt;name&gt;</code> 从官网插件索引解析、校验(sha256 / ABI / 宿主版本)并安装预编译插件,无需本地构建链;也支持 <code>github:owner/repo</code> 直指安装。</span><span class="l-en">One-line plugin install: <code>rpi install &lt;name&gt;</code> resolves, verifies (sha256 / ABI / host version) and installs prebuilt plugins from the official registry — no local toolchain. Direct <code>github:owner/repo</code> installs also supported.</span></li>
+        <li><span class="l-zh">三个官方插件随主版本发布:子代理委派 <code>rpi-subagents</code>、MCP 适配器 <code>rpi-mcp-adapter</code>、指纹化网页抓取 <code>rpi-smart-fetch</code>(Windows x64 / macOS arm64 / Linux x64·arm64)。</span><span class="l-en">Three official plugins released in lockstep: <code>rpi-subagents</code> (delegation), <code>rpi-mcp-adapter</code> (MCP), <code>rpi-smart-fetch</code> (fingerprinted web fetch) — Windows x64 / macOS arm64 / Linux x64·arm64.</span></li>
+        <li><span class="l-zh">新增插件目录页 <a href="/extensions">revpi.dev/extensions</a>:展示每个插件的能力声明(capabilities)与原生插件信任提示。</span><span class="l-en">New plugin catalog at <a href="/extensions">revpi.dev/extensions</a>, showing declared capabilities and native-plugin trust notices.</span></li>
+        <li><span class="l-zh">对齐上游 Pi v0.84.1:消息类型与流终止语义、provider 修复与新增、auth 命令族、models refresh 事务化、会话行为修正。</span><span class="l-en">Aligned with upstream Pi v0.84.1: message types & stream termination, provider fixes and additions, auth commands, transactional models refresh, session behavior fixes.</span></li>
+        <li><span class="l-zh">TUI:渲染器重构、全屏模式(alt screen / 鼠标)、LaTeX 与 Mermaid 渲染、布局引擎、<code>--tui-mode</code> 热切换。</span><span class="l-en">TUI: renderer refactor, fullscreen mode (alt screen / mouse), LaTeX & Mermaid rendering, layout engine, <code>--tui-mode</code> hot switching.</span></li>
+        <li><span class="l-zh">行为变更:移除 npm/pnpm/yarn/bun 自更新分支(<code>rpi update</code> 恒为二进制真自更新);CI 构建改为仅 tag 触发。</span><span class="l-en">Behavior changes: npm/pnpm/yarn/bun self-update branches removed (<code>rpi update</code> is always a true binary self-update); CI builds now trigger on tags only.</span></li>
+        <li><span class="l-zh">修复:多原生插件共载失败、SSE 大行响应被吞、全屏热切换输入失效、/settings 卡死等。</span><span class="l-en">Fixes: multiple native plugins co-loading, SSE large-line responses dropped, input loss after fullscreen switch, /settings freezes, and more.</span></li>
+      </ul>
+
       <h2><span class="version-tag">0.1.0</span><span class="l-zh">首个版本</span><span class="l-en">Initial release</span></h2>
       <ul>
         <li><span class="l-zh">终端 AI 编程助手的完整功能：多轮对话、内置工具、会话管理。</span><span class="l-en">The complete terminal AI coding assistant: multi-turn chat, built-in tools, session management.</span></li>

@@ -5,5 +5,6 @@
   "author": "revpidev",
   "license": "MIT",
   "official": true,
-  "lockstepHost": true
+  "lockstepHost": true,
+  "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具,懒连接服务器生命周期(pi-mcp-adapter @ v2.24.0 移植)。"
 }
