@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "name": "rpi-mcp-adapter",
+  "repository": "revpidev/rpi",
+  "author": "revpidev",
+  "license": "MIT",
+  "kind": "native",
+  "official": true,
+  "versions": []
+}

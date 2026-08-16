@@ -1,0 +1,9 @@
+{
+  "name": "rpi-subagents",
+  "repository": "revpidev/rpi",
+  "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), model fallback chains.",
+  "author": "revpidev",
+  "license": "MIT",
+  "official": true,
+  "lockstepHost": true
+}

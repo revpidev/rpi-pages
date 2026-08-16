@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <title>Rpi 插件目录 — Extensions</title>
+  <meta name="description" content="Rpi 扩展插件目录：一行 rpi install 安装预编译插件，无需本地构建链。">
+  <script>
+    // 尽早确定语言，避免渲染闪烁
+    (function () {
+      var l;
+      try { l = localStorage.getItem("rpi-lang"); } catch (e) {}
+      if (!l) { l = ((navigator.language || "").toLowerCase().indexOf("zh") === 0) ? "zh" : "en"; }
+      document.documentElement.dataset.lang = l;
+      document.documentElement.lang = (l === "zh") ? "zh-CN" : "en";
+    })();
+  </script>
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --bg-soft: #11151d;
+      --bg-code: #080b10;
+      --border: #212833;
+      --border-soft: #1a212c;
+      --text: #e8eef6;
+      --muted: #8a94a3;
+      --green: #4ade80;
+      --green-deep: #22c55e;
+      --blue: #60a5fa;
+      --yellow: #fbbf24;
+      --purple: #c084fc;
+      --red: #f87171;
+      --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: rgba(74, 222, 128, 0.25); }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.12em 0.4em;
+    }
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+    section { padding: 4rem 0; }
+    .kicker {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 0.7rem;
+    }
+    section h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    section .lead { color: var(--muted); max-width: 800px; margin-bottom: 2.6rem; }
+
+    /* ---------- i18n ---------- */
+    html[data-lang="zh"] .l-en { display: none !important; }
+    html[data-lang="en"] .l-zh { display: none !important; }
+
+    /* ---------- nav ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 14, 20, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--green);
+      color: #0b0e14;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1;
+      padding-bottom: 2px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; font-size: 0.92rem; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); text-decoration: none; }
+    .lang-toggle {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .lang-toggle:hover { border-color: var(--muted); color: var(--text); }
+    .nav-gh {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text) !important;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.3rem 0.8rem;
+      transition: border-color 0.15s ease;
+    }
+    .nav-gh:hover { border-color: var(--muted); }
+    .nav-gh svg { width: 15px; height: 15px; fill: currentColor; }
+    .menu-toggle { display: none; }
+    .mobile-menu { display: none; }
+
+    /* ---------- extension cards ---------- */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+      gap: 1.1rem;
+    }
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem 1.55rem;
+      transition: border-color 0.18s ease;
+    }
+    .card:hover { border-color: #2e3a4b; }
+    .card-head { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.55rem; }
+    .card-head h3 { font-size: 1.05rem; font-family: var(--mono); font-weight: 700; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      border-radius: 999px;
+      padding: 0.12rem 0.6rem;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .tag.official { color: var(--green); border-color: rgba(74, 222, 128, 0.45); }
+    .tag.kind-native { color: var(--yellow); border-color: rgba(251, 191, 36, 0.4); }
+    .tag.kind-wasm { color: var(--blue); border-color: rgba(96, 165, 250, 0.4); }
+    .card .version { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); margin-bottom: 0.6rem; }
+    .card .desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.9rem; }
+    .caps { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.9rem; }
+    .trust {
+      font-size: 0.8rem;
+      color: var(--yellow);
+      background: rgba(251, 191, 36, 0.07);
+      border: 1px solid rgba(251, 191, 36, 0.25);
+      border-radius: 8px;
+      padding: 0.55rem 0.8rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.6;
+    }
+    .trust .official-note { color: var(--muted); }
+    .install-cmd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+      background: var(--bg-code);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 0.6rem 0.9rem;
+      margin-top: auto;
+    }
+    .install-cmd > code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      font-size: 0.82rem;
+      white-space: nowrap;
+      overflow-x: auto;
+    }
+    .copy-btn {
+      font-family: var(--mono);
+      font-size: 0.76rem;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.26rem 0.7rem;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .copy-btn:hover { border-color: var(--muted); color: var(--text); }
+    .copy-btn.copied { color: var(--green); border-color: rgba(74, 222, 128, 0.5); }
+    .state { color: var(--muted); font-size: 0.95rem; }
+
+    /* ---------- footer ---------- */
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 2.2rem 0;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem 2rem; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); text-decoration: none; }
+
+    @media (max-width: 860px) {
+      .nav-links { gap: 0.8rem; font-size: 0.86rem; }
+      .nav-links a:not(.nav-gh) { display: none; }
+      .nav-gh-label { display: none; }
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 32px;
+        flex-direction: column;
+        gap: 4px;
+        color: var(--muted);
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        cursor: pointer;
+      }
+      .menu-toggle span { display: block; width: 14px; height: 1.6px; background: currentColor; border-radius: 1px; }
+      .menu-toggle:hover { border-color: var(--muted); color: var(--text); }
+      .mobile-menu {
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-soft);
+        padding: 0.4rem 1.1rem 0.7rem;
+        flex-direction: column;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        display: block;
+        color: var(--muted);
+        font-size: 0.95rem;
+        padding: 0.6rem 0.2rem;
+        border-bottom: 1px solid var(--border-soft);
+      }
+      .mobile-menu a:last-child { border-bottom: none; }
+      .mobile-menu a:hover { color: var(--text); text-decoration: none; }
+      section { padding: 3rem 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .card, .copy-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="/">
+      <span class="logo">π</span> Rpi
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span class="l-zh">首页</span><span class="l-en">Home</span></a>
+      <a href="/#features"><span class="l-zh">特性</span><span class="l-en">Features</span></a>
+      <a href="/#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
+      <a href="/extensions" class="active"><span class="l-zh">插件</span><span class="l-en">Extensions</span></a>
+      <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a>
+      <a href="/docs#/changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">
+        <span class="l-zh">EN</span><span class="l-en">中文</span>
+      </button>
+      <a class="nav-gh" href="https://github.com/revpidev/rpi">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span class="nav-gh-label">GitHub</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/"><span class="l-zh">首页</span><span class="l-en">Home</span></a>
+    <a href="/#features"><span class="l-zh">特性</span><span class="l-en">Features</span></a>
+    <a href="/#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
+    <a href="/extensions"><span class="l-zh">插件</span><span class="l-en">Extensions</span></a>
+    <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a>
+    <a href="/docs#/changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="container">
+      <p class="kicker">Extensions</p>
+      <h2><span class="l-zh">插件目录</span><span class="l-en">Extension registry</span></h2>
+      <p class="lead">
+        <span class="l-zh">一行 <code>rpi install &lt;name&gt;</code> 装好预编译插件，无需本地构建链。收录方式为评审制（curated），索引与校验和由本站托管，发布物存于各作者的 GitHub Releases。</span>
+        <span class="l-en">Install a prebuilt plugin with one <code>rpi install &lt;name&gt;</code> — no local toolchain needed. Listing is curated; the index and checksums are hosted here, artifacts live in each author's GitHub Releases.</span>
+      </p>
+      <p class="state" id="ext-state">
+        <span class="l-zh">加载中…</span><span class="l-en">Loading…</span>
+      </p>
+      <div class="grid" id="ext-list"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div>
+      <strong style="color: var(--text)">Rpi</strong> ·
+      <span class="l-zh">用 Rust 编写的终端 AI 编程助手</span>
+      <span class="l-en">a terminal AI coding assistant written in Rust</span>
+    </div>
+    <div>
+      <a href="https://github.com/revpidev/rpi">GitHub</a> ·
+      <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a> ·
+      <span>MIT License</span> ·
+      <span class="l-zh">致谢上游 </span><span class="l-en">Thanks to upstream </span><a href="https://github.com/earendil-works/pi">earendil-works/pi</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 语言切换
+  (function () {
+    var titles = {
+      zh: "Rpi 插件目录 — Extensions",
+      en: "Rpi Extensions — plugin registry"
+    };
+    function setLang(l) {
+      document.documentElement.dataset.lang = l;
+      document.documentElement.lang = (l === "zh") ? "zh-CN" : "en";
+      document.title = titles[l] || titles.zh;
+      try { localStorage.setItem("rpi-lang", l); } catch (e) {}
+    }
+    setLang(document.documentElement.dataset.lang === "en" ? "en" : "zh");
+    document.getElementById("lang-toggle").addEventListener("click", function () {
+      setLang(document.documentElement.dataset.lang === "zh" ? "en" : "zh");
+    });
+  })();
+
+  // 移动端汉堡菜单
+  (function () {
+    var btn = document.getElementById("menu-toggle");
+    var menu = document.getElementById("mobile-menu");
+    if (!btn || !menu) { return; }
+    btn.addEventListener("click", function () { menu.classList.toggle("open"); });
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) { menu.classList.remove("open"); }
+    });
+  })();
+
+  // 一键复制（卡片为动态渲染，用事件委托；交互同首页安装面板）
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest(".copy-btn") : null;
+    if (!btn) { return; }
+    var text = btn.getAttribute("data-copy") || "";
+    function feedback() {
+      if (btn.classList.contains("copied")) { return; }
+      btn.classList.add("copied");
+      var spans = btn.querySelectorAll("span");
+      var saved = [];
+      Array.prototype.forEach.call(spans, function (s, i) {
+        saved[i] = s.textContent;
+        s.textContent = (i === 0) ? "已复制 ✓" : "Copied ✓";
+      });
+      setTimeout(function () {
+        btn.classList.remove("copied");
+        Array.prototype.forEach.call(spans, function (s, i) { s.textContent = saved[i]; });
+      }, 1500);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(feedback, feedback);
+    } else {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); } catch (err) {}
+      document.body.removeChild(ta);
+      feedback();
+    }
+  });
+
+  // 插件目录：读 /api/extensions/index.json 渲染卡片（数据全部走
+  // textContent，不拼 HTML，索引字段不可信进 DOM）。
+  (function () {
+    var list = document.getElementById("ext-list");
+    var state = document.getElementById("ext-state");
+
+    function el(tag, className, text) {
+      var node = document.createElement(tag);
+      if (className) { node.className = className; }
+      if (text !== undefined) { node.textContent = text; }
+      return node;
+    }
+    function i18n(zh, en) {
+      var frag = document.createDocumentFragment();
+      frag.appendChild(el("span", "l-zh", zh));
+      frag.appendChild(el("span", "l-en", en));
+      return frag;
+    }
+
+    function renderCard(ext) {
+      var card = el("div", "card");
+
+      var head = el("div", "card-head");
+      head.appendChild(el("h3", null, ext.name));
+      if (ext.official) {
+        var official = el("span", "tag official");
+        official.appendChild(i18n("官方", "Official"));
+        head.appendChild(official);
+      }
+      if (ext.kind) {
+        head.appendChild(el("span", "tag kind-" + ext.kind, ext.kind));
+      }
+      card.appendChild(head);
+
+      var version = el("p", "version");
+      if (ext.latest) {
+        version.textContent = "v" + ext.latest;
+      } else {
+        version.appendChild(i18n("暂无发布版本", "no release yet"));
+      }
+      card.appendChild(version);
+
+      card.appendChild(el("p", "desc", ext.description || ""));
+
+      var caps = Array.isArray(ext.capabilities) ? ext.capabilities : [];
+      if (caps.length) {
+        var capRow = el("div", "caps");
+        caps.forEach(function (cap) { capRow.appendChild(el("span", "tag", cap)); });
+        card.appendChild(capRow);
+      }
+
+      // L0（native）信任提示：无沙箱、全 OS 权限；官方 ≠ 沙箱，提示仍然展示
+      // （extension-distribution.md §9.3 / pi-mcp-adapter R8）。
+      if (ext.kind === "native") {
+        var trust = el("p", "trust");
+        trust.appendChild(i18n(
+          "原生插件（L0）：无沙箱，拥有与 rpi 进程相同的全部操作系统权限。",
+          "Native plugin (L0): no sandbox — runs with the full OS permissions of the rpi process."
+        ));
+        if (ext.official) {
+          var note = el("span", "official-note");
+          note.appendChild(document.createElement("br"));
+          note.appendChild(i18n(
+            "rpi 官方插件，与本体同 CI 构建、同版本发布。",
+            "Official rpi plugin, built by the same CI and released in lockstep with the host."
+          ));
+          trust.appendChild(note);
+        }
+        card.appendChild(trust);
+      }
+
+      var cmd = "rpi install " + ext.name;
+      var install = el("div", "install-cmd");
+      install.appendChild(el("code", null, cmd));
+      var btn = el("button", "copy-btn");
+      btn.type = "button";
+      btn.setAttribute("data-copy", cmd);
+      btn.appendChild(i18n("复制", "Copy"));
+      install.appendChild(btn);
+      card.appendChild(install);
+
+      return card;
+    }
+
+    fetch("/api/extensions/index.json")
+      .then(function (res) {
+        if (!res.ok) { throw new Error("HTTP " + res.status); }
+        return res.json();
+      })
+      .then(function (index) {
+        var extensions = Array.isArray(index.extensions) ? index.extensions : [];
+        if (!extensions.length) {
+          state.textContent = "";
+          state.appendChild(i18n("索引为空。", "The registry is empty."));
+          return;
+        }
+        state.style.display = "none";
+        extensions.forEach(function (ext) { list.appendChild(renderCard(ext)); });
+      })
+      .catch(function () {
+        state.textContent = "";
+        state.appendChild(i18n(
+          "插件索引加载失败，请稍后重试。",
+          "Failed to load the extension index — please try again later."
+        ));
+      });
+  })();
+</script>
+</body>
+</html>

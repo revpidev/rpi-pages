@@ -1,0 +1,9 @@
+{
+  "name": "rpi-mcp-adapter",
+  "repository": "revpidev/rpi",
+  "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle (port of pi-mcp-adapter @ v2.24.0)",
+  "author": "revpidev",
+  "license": "MIT",
+  "official": true,
+  "lockstepHost": true
+}

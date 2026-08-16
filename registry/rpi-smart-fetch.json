@@ -1,0 +1,9 @@
+{
+  "name": "rpi-smart-fetch",
+  "repository": "revpidev/rpi",
+  "description": "Fingerprinted web fetch extension: `web_fetch`/`batch_web_fetch` tools with browser-grade TLS/HTTP2 emulation (wreq), readability extraction (dom_smoothie [VARIANT]) with a 1:1 DOM fallback chain, five output formats, a structured error model, streaming progress (toolUpdate) and ComponentTree renderers.",
+  "author": "revpidev",
+  "license": "MIT",
+  "official": true,
+  "lockstepHost": true
+}

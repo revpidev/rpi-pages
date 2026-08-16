@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "name": "rpi-subagents",
+  "repository": "revpidev/rpi",
+  "author": "revpidev",
+  "license": "MIT",
+  "kind": "native",
+  "official": true,
+  "versions": []
+}

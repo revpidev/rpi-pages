@@ -15,6 +15,11 @@ rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库
 | `GET /api/report-install` | `functions/api/report-install.js` | telemetry 收口，204；绑定 KV `ANALYTICS` 可记录安装统计 |
 | `GET /install.sh`、`GET /install.ps1` | `install.sh`、`install.ps1`（静态文件，站点根） | 安装脚本；单一事实源在 rpi 仓库，由 `scripts/generate-site.py` 同步拷贝 |
 | `GET /releases/download/v{ver}/{file}` | `functions/releases/download/[[path]].js` | GitHub Release 资产官网代理（URL 与 GitHub 同形只换 base，国内不可直连 GitHub 时由边缘节点回源转发）；key 形状严格校验，未命中/上游 404 均 404；零存储，发版零额外步骤 |
+| `GET /api/extensions/index.json` | `api/extensions/index.json`（生成） | 扩展插件索引（目录页与 `rpi list` 用），schema 见 extension-distribution §5.2；由 `registry/*.json` 条目 + 各仓库 GitHub Releases 枚举生成 |
+| `GET /api/extensions/{name}.json` | `api/extensions/<name>.json`（生成）+ `functions/api/extensions/[name].json.js` | 单插件版本矩阵（`rpi install/info` 的版本解析用）；未收录 name 返回裸 404（Function 层防 SPA fallback，同 providers 模式） |
+| `GET /api/extensions/allowlist.json` | `api/extensions/allowlist.json`（生成） | 下载代理的 repo 白名单（索引全量 repo 集合），`functions/extensions/download` 校验用 |
+| `GET /extensions/download/{owner}/{repo}/{tag}/{file}` | `functions/extensions/download/[[path]].js` | 插件 `.rpix` 资产官网代理；owner/repo 必须在 allowlist 内（否则 404，防开放转发器），tag 严格 `v<semver>`、file 严格 `*.rpix[.sha256]`；回源 GitHub 流式转发，上游 404→404，immutable 缓存 |
+| `/extensions` | `extensions.html` | 插件目录页：客户端读 index.json 渲染卡片（official 徽标、capabilities、L0 信任提示、安装命令复制） |
 | `/session/#{gistId}` | `session/index.html` | share viewer；gist id 在 URL fragment 里（`get_share_viewer_url` 拼 `#`），页面 JS 读取并渲染 gist raw |
 | `/changelog` | `changelog.html` | 更新横幅里的 changelog 链接 |
 
@@ -59,6 +64,27 @@ git add api/ install.sh install.ps1
 git commit -m "chore(api): 同步 catalog / latest-version"
 git push
 ```
+
+### 扩展插件 registry（`registry/`）
+
+`registry/<name>.json` 是扩展索引的**源数据**（每插件一条：
+`name/repository/description/author/license`，第一方附 `"official": true`，
+可选 `"yankedVersions": [...]` 做 yank 覆盖、`"lockstepHost": true` 表示
+插件与宿主锁步发布——生成时每个版本的 `minHostVersion` 回填为该版本自身，
+条目里的显式 `minHostVersion` 优先；对应 CI 打包时向 .rpix manifest 注入
+同值的语义）。**过渡说明**：设计
+（extension-distribution §5.1）中索引归属独立仓库 `revpidev/rpi-plugins`，
+该仓库尚未建立，本期先把索引数据放在本仓库 `registry/`；独立仓库建立后
+迁出，生成脚本改为读该仓库。
+
+`generate-site.py` 读 `registry/*.json`，对每个 `repository` 调 GitHub
+Releases API 枚举版本矩阵（按 `<name>-<version>[-<target>].rpix` 精确匹配
+资产，sha256 采信同 Release 的 `<file>.sha256` sidecar），产出
+`api/extensions/{index,allowlist,<name>}.json`——commit 即部署，与 catalog
+同管线。`GITHUB_TOKEN` 环境变量可选（匿名 60 次/时限流）；API 不可达时
+对应插件降级为 `versions: []` 并警告，不让整个生成失败。第一方插件的
+description/capabilities/kind 采信 `../rpi` 各 crate 根的
+`rpi-extension.json`。
 
 > Release 资产镜像（`/releases/download/*`）是 Function 代理回源 GitHub，
 > 零存储、发版零额外步骤——GitHub Release 资产发布即可用，无需上传。
