@@ -20,25 +20,25 @@
         {
           "target": "aarch64-apple-darwin",
           "file": "rpi-smart-fetch-0.1.1-aarch64-apple-darwin.rpix",
-          "sha256": "b31e36b4eca5759d714132cdbc8d55f8d58e06a2dcfd7426467da40dad242d6a",
+          "sha256": "1c0d59e276cafd48031cb8c1a18242e46d563192ea14b2c1fd490a83669ffa0c",
           "release": "v0.1.1"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
           "file": "rpi-smart-fetch-0.1.1-aarch64-unknown-linux-gnu.rpix",
-          "sha256": "a8b6d20ac34523705319fe42549b30912526d780ce71b4ef18ea55252f1d5c1a",
+          "sha256": "35d9acf0d6517b0d1e9d583628de2f1f8fe6326fb63a11981665fcc9be6ece24",
           "release": "v0.1.1"
         },
         {
           "target": "x86_64-pc-windows-msvc",
           "file": "rpi-smart-fetch-0.1.1-x86_64-pc-windows-msvc.rpix",
-          "sha256": "5ce5f929353e998488dcc0fb1f3962b42bfdcea9bf5e66e61512077243ee03c2",
+          "sha256": "386303aedffbc54a44e3dac250ab957b983ca9f562111266019069aa233343aa",
           "release": "v0.1.1"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-smart-fetch-0.1.1-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "39b084b73606c3c97b34d102af164e31402eddc6b306425b90d2fbe51cb37efc",
+          "sha256": "7c6aaea263d2d1e78f5453c92205e5cd2ec8cccc7a042e4bdf727ff4f6993964",
           "release": "v0.1.1"
         }
       ]
