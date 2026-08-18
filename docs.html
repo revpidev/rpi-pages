@@ -353,6 +353,7 @@
     <p class="nav-caption"><span class="l-zh">文档</span><span class="l-en">Docs</span></p>
     <a href="#/intro" data-doc="intro"><span class="l-zh">项目介绍</span><span class="l-en">Introduction</span></a>
     <a href="#/quickstart" data-doc="quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
+    <a href="#/settings" data-doc="settings"><span class="l-zh">配置参考</span><span class="l-en">Configuration</span></a>
     <a href="#/changelog" data-doc="changelog"><span class="l-zh">更新记录</span><span class="l-en">Changelog</span></a>
     <a href="#/extensions" data-doc="extensions"><span class="l-zh">插件开发指南</span><span class="l-en">Plugin guide</span></a>
   </aside>
@@ -502,6 +503,474 @@
       </p>
     </article>
 
+    <!-- ================= 配置参考 ================= -->
+    <article id="doc-settings">
+      <h1><span class="l-zh">配置参考</span><span class="l-en">Configuration</span></h1>
+      <p class="sub">
+        <span class="l-zh">所有配置项、默认值与作用位置。改动保存后重启 rpi 生效。</span>
+        <span class="l-en">Every setting, its default, and where it lives. Restart rpi after editing.</span>
+      </p>
+
+      <h2><span class="l-zh">配置文件</span><span class="l-en">Settings files</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">位置</span><span class="l-en">Location</span></th>
+            <th><span class="l-zh">作用域</span><span class="l-en">Scope</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>~/.rpi/agent/settings.json</code></td>
+            <td><span class="l-zh">全局(所有项目)</span><span class="l-en">Global (all projects)</span></td>
+          </tr>
+          <tr>
+            <td><code>&lt;project&gt;/.rpi/settings.json</code></td>
+            <td><span class="l-zh">仅当前项目;与全局深合并,项目键优先;项目首次打开需信任</span><span class="l-en">Current project only; deep-merged over global, project keys win; requires project trust</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <span class="l-zh">交互模式里执行 <code>/settings</code> 可在界面中直接修改常用项;类型写错的键会回退到默认值而不是报错。模型与 API Key 配置在 <a href="#/quickstart">快速开始</a> 一节。</span>
+        <span class="l-en">Run <code>/settings</code> inside a session to edit the common items in the UI; a wrongly-typed value silently falls back to the default. Model and API-key setup lives in <a href="#/quickstart">Quickstart</a>.</span>
+      </p>
+
+      <h2><span class="l-zh">请求超时与重试</span><span class="l-en">Timeouts &amp; retry</span></h2>
+      <p>
+        <span class="l-zh">最容易踩的一个设置:<code>httpIdleTimeoutMs</code> 名字里带 idle,实际是<strong>整个请求的总超时</strong>——从发起连接到流式响应读完为止,期间一直在正常收数据也会计时。默认 5 分钟;长思考档位(max 等)的深度推理模型单轮输出超过 5 分钟时,请求会在整 300 秒处被切断,表现为 <code>error decoding response body</code>。遇到这种情况把它调大:</span>
+        <span class="l-en">The one that bites most often: despite the name, <code>httpIdleTimeoutMs</code> is a <strong>total request timeout</strong> — it covers connecting through the last byte of a streamed response and keeps counting even while data flows. Default is 5 minutes; a deep-reasoning model on a high thinking level can exceed that in one turn, and the request is cut at exactly 300 s with <code>error decoding response body</code>. Raise it when that happens:</span>
+      </p>
+      <pre><code>{
+  <span class="p">"httpIdleTimeoutMs"</span>: 1800000
+}</code></pre>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">键</span><span class="l-en">Key</span></th>
+            <th><span class="l-zh">取值</span><span class="l-en">Value</span></th>
+            <th><span class="l-zh">默认</span><span class="l-en">Default</span></th>
+            <th><span class="l-zh">说明</span><span class="l-en">Notes</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>httpIdleTimeoutMs</code></td>
+            <td><span class="l-zh">毫秒数 / <code>0</code> / <code>"disabled"</code></span><span class="l-en">ms / <code>0</code> / <code>"disabled"</code></span></td>
+            <td><code>300000</code></td>
+            <td><span class="l-zh">模型请求总超时(含流式读取)。<code>0</code> 或 <code>"disabled"</code> 关闭</span><span class="l-en">Total timeout per model request, streaming included. <code>0</code>/<code>"disabled"</code> turns it off</span></td>
+          </tr>
+          <tr>
+            <td><code>websocketConnectTimeoutMs</code></td>
+            <td><span class="l-zh">毫秒数</span><span class="l-en">ms</span></td>
+            <td><code>15000</code></td>
+            <td><span class="l-zh">WebSocket 传输(如 codex-ws)的连接超时</span><span class="l-en">Connect timeout for WebSocket transports (e.g. codex-ws)</span></td>
+          </tr>
+          <tr>
+            <td><code>retry.enabled</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>true</code></td>
+            <td><span class="l-zh">可重试错误(429/5xx/网络)自动重试总开关</span><span class="l-en">Master switch for auto-retry on retryable errors (429/5xx/network)</span></td>
+          </tr>
+          <tr>
+            <td><code>retry.maxRetries</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><code>3</code></td>
+            <td><span class="l-zh">最大重试次数</span><span class="l-en">Maximum retry attempts</span></td>
+          </tr>
+          <tr>
+            <td><code>retry.baseDelayMs</code></td>
+            <td><span class="l-zh">毫秒数</span><span class="l-en">ms</span></td>
+            <td><code>2000</code></td>
+            <td><span class="l-zh">指数退避基数</span><span class="l-en">Exponential backoff base</span></td>
+          </tr>
+          <tr>
+            <td><code>retry.provider.timeoutMs</code></td>
+            <td><span class="l-zh">毫秒数</span><span class="l-en">ms</span></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">单次 provider 请求超时;设置后优先于 <code>httpIdleTimeoutMs</code></span><span class="l-en">Per-request provider timeout; takes precedence over <code>httpIdleTimeoutMs</code> when set</span></td>
+          </tr>
+          <tr>
+            <td><code>retry.provider.maxRetries</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">单 provider 重试覆盖</span><span class="l-en">Per-provider retry override</span></td>
+          </tr>
+          <tr>
+            <td><code>retry.provider.maxRetryDelayMs</code></td>
+            <td><span class="l-zh">毫秒数</span><span class="l-en">ms</span></td>
+            <td><code>60000</code></td>
+            <td><span class="l-zh">重试间隔上限</span><span class="l-en">Retry delay ceiling</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><span class="l-zh">模型与会话</span><span class="l-en">Model &amp; session</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">键</span><span class="l-en">Key</span></th>
+            <th><span class="l-zh">取值</span><span class="l-en">Value</span></th>
+            <th><span class="l-zh">默认</span><span class="l-en">Default</span></th>
+            <th><span class="l-zh">说明</span><span class="l-en">Notes</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>defaultProvider</code></td>
+            <td><span class="l-zh">字符串</span><span class="l-en">string</span></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">默认模型服务商</span><span class="l-en">Default model provider</span></td>
+          </tr>
+          <tr>
+            <td><code>defaultModel</code></td>
+            <td><span class="l-zh">字符串</span><span class="l-en">string</span></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">默认模型 ID</span><span class="l-en">Default model ID</span></td>
+          </tr>
+          <tr>
+            <td><code>defaultThinkingLevel</code></td>
+            <td><code>minimal|low|medium|high|xhigh|max|off</code></td>
+            <td><span class="l-zh">模型默认</span><span class="l-en">model default</span></td>
+            <td><span class="l-zh">默认思考档位;不支持的档位自动就近收敛(<code>xhigh</code>/<code>max</code> 仅部分模型支持)</span><span class="l-en">Default thinking level; unsupported levels clamp to the nearest supported one (<code>xhigh</code>/<code>max</code> on selected models only)</span></td>
+          </tr>
+          <tr>
+            <td><code>enabledModels</code></td>
+            <td><span class="l-zh">字符串数组</span><span class="l-en">string[]</span></td>
+            <td><span class="l-zh">未设(全部)</span><span class="l-en">unset (all)</span></td>
+            <td><span class="l-zh">模型选择列表白名单</span><span class="l-en">Whitelist for the model picker</span></td>
+          </tr>
+          <tr>
+            <td><code>sessionDir</code></td>
+            <td><span class="l-zh">路径</span><span class="l-en">path</span></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">会话 JSONL 存储目录覆盖</span><span class="l-en">Override for the session JSONL directory</span></td>
+          </tr>
+          <tr>
+            <td><code>steeringMode</code></td>
+            <td><code>one-at-a-time|all</code></td>
+            <td><code>one-at-a-time</code></td>
+            <td><span class="l-zh">生成途中插话的处理方式</span><span class="l-en">How queued steering messages are handled mid-generation</span></td>
+          </tr>
+          <tr>
+            <td><code>followUpMode</code></td>
+            <td><code>one-at-a-time|all</code></td>
+            <td><code>one-at-a-time</code></td>
+            <td><span class="l-zh">追问排队方式</span><span class="l-en">Follow-up message queuing</span></td>
+          </tr>
+          <tr>
+            <td><code>thinkingBudgets</code></td>
+            <td><code>{minimal,low,medium,high}</code></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">各思考档位的 token 预算上限(仅支持 <code>thinking_token_budget</code> 的服务商生效)</span><span class="l-en">Per-level token budgets (applies only to providers with <code>thinking_token_budget</code> support)</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><span class="l-zh">上下文管理</span><span class="l-en">Context management</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">键</span><span class="l-en">Key</span></th>
+            <th><span class="l-zh">取值</span><span class="l-en">Value</span></th>
+            <th><span class="l-zh">默认</span><span class="l-en">Default</span></th>
+            <th><span class="l-zh">说明</span><span class="l-en">Notes</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>compaction.enabled</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>true</code></td>
+            <td><span class="l-zh">长对话自动压缩</span><span class="l-en">Automatic context compaction</span></td>
+          </tr>
+          <tr>
+            <td><code>compaction.reserveTokens</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><code>16384</code></td>
+            <td><span class="l-zh">压缩触发的预留 token 数</span><span class="l-en">Token reserve that triggers compaction</span></td>
+          </tr>
+          <tr>
+            <td><code>compaction.keepRecentTokens</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><code>20000</code></td>
+            <td><span class="l-zh">压缩时保留的最近消息 token 数</span><span class="l-en">Recent tokens kept intact when compacting</span></td>
+          </tr>
+          <tr>
+            <td><code>branchSummary.reserveTokens</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><code>16384</code></td>
+            <td><span class="l-zh">分支切换摘要的预留</span><span class="l-en">Reserve for branch summaries</span></td>
+          </tr>
+          <tr>
+            <td><code>branchSummary.skipPrompt</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">生成分支摘要前不再询问</span><span class="l-en">Skip the confirmation prompt before summarizing</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><span class="l-zh">界面显示</span><span class="l-en">Display</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">键</span><span class="l-en">Key</span></th>
+            <th><span class="l-zh">取值</span><span class="l-en">Value</span></th>
+            <th><span class="l-zh">默认</span><span class="l-en">Default</span></th>
+            <th><span class="l-zh">说明</span><span class="l-en">Notes</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>theme</code></td>
+            <td><span class="l-zh">主题名</span><span class="l-en">theme name</span></td>
+            <td><code>dark</code></td>
+            <td><span class="l-zh">配色主题</span><span class="l-en">Color theme</span></td>
+          </tr>
+          <tr>
+            <td><code>tuiMode</code></td>
+            <td><code>regular|fullscreen</code></td>
+            <td><code>regular</code></td>
+            <td><span class="l-zh">界面模式;全屏模式占用 alt screen 并支持鼠标</span><span class="l-en">UI mode; fullscreen takes over the alt screen with mouse support</span></td>
+          </tr>
+          <tr>
+            <td><code>fullscreenExitOutput</code></td>
+            <td><code>transcript|resume-hint</code></td>
+            <td><code>transcript</code></td>
+            <td><span class="l-zh">退出全屏后主屏输出内容</span><span class="l-en">What the main screen prints after exiting fullscreen</span></td>
+          </tr>
+          <tr>
+            <td><code>hideThinkingBlock</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">默认折叠思考过程块</span><span class="l-en">Collapse thinking blocks by default</span></td>
+          </tr>
+          <tr>
+            <td><code>showCacheMissNotices</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">显示缓存未命中提示</span><span class="l-en">Show cache-miss notices</span></td>
+          </tr>
+          <tr>
+            <td><code>terminal.showImages</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>true</code></td>
+            <td><span class="l-zh">终端内联渲染图片(需终端支持)</span><span class="l-en">Render images inline (requires terminal support)</span></td>
+          </tr>
+          <tr>
+            <td><code>terminal.imageWidthCells</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><code>60</code></td>
+            <td><span class="l-zh">内联图片宽度(终端字符列)</span><span class="l-en">Inline image width in terminal cells</span></td>
+          </tr>
+          <tr>
+            <td><code>terminal.showTerminalProgress</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">在终端标题栏显示进度</span><span class="l-en">Progress in the terminal title bar</span></td>
+          </tr>
+          <tr>
+            <td><code>images.autoResize</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>true</code></td>
+            <td><span class="l-zh">图片自动缩放到终端宽度</span><span class="l-en">Auto-scale images to terminal width</span></td>
+          </tr>
+          <tr>
+            <td><code>images.blockImages</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">完全禁止图片渲染</span><span class="l-en">Block image rendering entirely</span></td>
+          </tr>
+          <tr>
+            <td><code>markdown.codeBlockIndent</code></td>
+            <td><span class="l-zh">字符串</span><span class="l-en">string</span></td>
+            <td><code>"&nbsp;&nbsp;"</code></td>
+            <td><span class="l-zh">代码块缩进</span><span class="l-en">Code block indent</span></td>
+          </tr>
+          <tr>
+            <td><code>markdown.mermaid</code></td>
+            <td><code>streaming|final|off</code></td>
+            <td><code>streaming</code></td>
+            <td><span class="l-zh">Mermaid 图渲染时机</span><span class="l-en">When Mermaid diagrams render</span></td>
+          </tr>
+          <tr>
+            <td><code>editorPaddingX</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><code>0</code></td>
+            <td><span class="l-zh">输入框左右留白</span><span class="l-en">Editor horizontal padding</span></td>
+          </tr>
+          <tr>
+            <td><code>outputPad</code></td>
+            <td><code>0|1</code></td>
+            <td><code>1</code></td>
+            <td><span class="l-zh">消息块之间的空行</span><span class="l-en">Blank lines between message blocks</span></td>
+          </tr>
+          <tr>
+            <td><code>autocompleteMaxVisible</code></td>
+            <td><span class="l-zh">整数</span><span class="l-en">integer</span></td>
+            <td><code>5</code></td>
+            <td><span class="l-zh">自动补全菜单最多可见项</span><span class="l-en">Max visible autocomplete items</span></td>
+          </tr>
+          <tr>
+            <td><code>doubleEscapeAction</code></td>
+            <td><code>tree|fork|none</code></td>
+            <td><code>tree</code></td>
+            <td><span class="l-zh">连按两次 Esc 的动作</span><span class="l-en">Action for a double Esc</span></td>
+          </tr>
+          <tr>
+            <td><code>treeFilterMode</code></td>
+            <td><code>default|no-tools|user-only|labeled-only|all</code></td>
+            <td><code>default</code></td>
+            <td><span class="l-zh">会话树节点过滤</span><span class="l-en">Session tree node filtering</span></td>
+          </tr>
+          <tr>
+            <td><code>showHardwareCursor</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><span class="l-zh">环境默认</span><span class="l-en">environment</span></td>
+            <td><span class="l-zh">硬件光标(部分终端需关闭)</span><span class="l-en">Hardware cursor (some terminals need it off)</span></td>
+          </tr>
+          <tr>
+            <td><code>quietStartup</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">静默启动(不打印横幅)</span><span class="l-en">Suppress the startup banner</span></td>
+          </tr>
+          <tr>
+            <td><code>collapseChangelog</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">默认折叠新版本变更列表</span><span class="l-en">Collapse the release changelog by default</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><span class="l-zh">Shell 与编辑器</span><span class="l-en">Shell &amp; editor</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">键</span><span class="l-en">Key</span></th>
+            <th><span class="l-zh">取值</span><span class="l-en">Value</span></th>
+            <th><span class="l-zh">默认</span><span class="l-en">Default</span></th>
+            <th><span class="l-zh">说明</span><span class="l-en">Notes</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>shellPath</code></td>
+            <td><span class="l-zh">路径</span><span class="l-en">path</span></td>
+            <td><span class="l-zh">未设(自动探测)</span><span class="l-en">unset (auto)</span></td>
+            <td><span class="l-zh">bash 工具使用的 shell</span><span class="l-en">Shell used by the bash tool</span></td>
+          </tr>
+          <tr>
+            <td><code>shellCommandPrefix</code></td>
+            <td><span class="l-zh">字符串</span><span class="l-en">string</span></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">命令包装前缀(如 docker exec 类沙箱)</span><span class="l-en">Command wrapper prefix (e.g. sandboxing via docker exec)</span></td>
+          </tr>
+          <tr>
+            <td><code>externalEditor</code></td>
+            <td><span class="l-zh">命令</span><span class="l-en">command</span></td>
+            <td><span class="l-zh"> nano / notepad</span><span class="l-en"> nano / notepad</span></td>
+            <td><span class="l-zh">外部编辑器;<code>EDITOR</code>/<code>VISUAL</code> 环境变量次之</span><span class="l-en">External editor; <code>EDITOR</code>/<code>VISUAL</code> env vars are checked next</span></td>
+          </tr>
+          <tr>
+            <td><code>npmCommand</code></td>
+            <td><span class="l-zh">字符串数组</span><span class="l-en">string[]</span></td>
+            <td><span class="l-zh">未设(自动探测)</span><span class="l-en">unset (auto)</span></td>
+            <td><span class="l-zh">npm: 包安装命令覆盖</span><span class="l-en">Override for npm-package installs</span></td>
+          </tr>
+          <tr>
+            <td><code>defaultProjectTrust</code></td>
+            <td><code>ask|always|never</code></td>
+            <td><code>ask</code></td>
+            <td><span class="l-zh">打开新项目时的默认信任策略</span><span class="l-en">Default trust policy for new projects</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><span class="l-zh">隐私与网络</span><span class="l-en">Privacy &amp; network</span></h2>
+      <p>
+        <span class="l-zh">rpi 默认只向三类官方端点发起非模型请求:模型目录更新、新版本检查、安装统计。三者都可以用设置键或同名环境变量指向自建地址,设为 <code>off</code> 整体禁用:</span>
+        <span class="l-en">Beyond your model providers, rpi contacts three house-keeping endpoints: model catalog refresh, version check, and install telemetry. Each can be pointed at a self-hosted URL via the setting or the matching env var, or disabled with <code>off</code>:</span>
+      </p>
+      <pre><code><span class="p">$</span> export RPI_MODEL_CATALOG_URL=off   <span class="c"># 禁用模型目录在线更新</span>
+<span class="p">$</span> export RPI_VERSION_CHECK_URL=off   <span class="c"># 禁用新版本检查</span>
+<span class="p">$</span> export RPI_TELEMETRY_URL=off       <span class="c"># 禁用安装统计上报</span>
+<span class="p">$</span> export RPI_REGISTRY_URL=off        <span class="c"># 禁用插件 registry(rpi install 退化为直连渠道)</span></code></pre>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">键</span><span class="l-en">Key</span></th>
+            <th><span class="l-zh">取值</span><span class="l-en">Value</span></th>
+            <th><span class="l-zh">默认</span><span class="l-en">Default</span></th>
+            <th><span class="l-zh">说明</span><span class="l-en">Notes</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>enableAnalytics</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>false</code></td>
+            <td><span class="l-zh">使用统计(默认关闭)</span><span class="l-en">Usage analytics (off by default)</span></td>
+          </tr>
+          <tr>
+            <td><code>enableInstallTelemetry</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>true</code></td>
+            <td><span class="l-zh">安装成功事件上报(仅一次)</span><span class="l-en">One-shot install-success event</span></td>
+          </tr>
+          <tr>
+            <td><code>modelCatalogUrl</code> / <code>versionCheckUrl</code> / <code>telemetryUrl</code></td>
+            <td><span class="l-zh">URL</span><span class="l-en">URL</span></td>
+            <td><span class="l-zh">官方地址</span><span class="l-en">official</span></td>
+            <td><span class="l-zh">对应环境变量 <code>RPI_MODEL_CATALOG_URL</code> / <code>RPI_VERSION_CHECK_URL</code> / <code>RPI_TELEMETRY_URL</code></span><span class="l-en">Matching env vars: <code>RPI_MODEL_CATALOG_URL</code> / <code>RPI_VERSION_CHECK_URL</code> / <code>RPI_TELEMETRY_URL</code></span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><span class="l-zh">扩展与包</span><span class="l-en">Extensions &amp; packages</span></h2>
+      <table>
+        <thead>
+          <tr>
+            <th><span class="l-zh">键</span><span class="l-en">Key</span></th>
+            <th><span class="l-zh">取值</span><span class="l-en">Value</span></th>
+            <th><span class="l-zh">默认</span><span class="l-en">Default</span></th>
+            <th><span class="l-zh">说明</span><span class="l-en">Notes</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>packages</code></td>
+            <td><span class="l-zh">包源数组</span><span class="l-en">package sources</span></td>
+            <td><span class="l-zh">空</span><span class="l-en">empty</span></td>
+            <td><span class="l-zh">每项 <code>{source, autoload, extensions, skills, prompts, themes}</code>;<code>source</code> 支持 npm/git 路径;<code>autoload:false</code> 时仅加载显式列出的资源</span><span class="l-en">Each item is <code>{source, autoload, extensions, skills, prompts, themes}</code>; npm/git paths; <code>autoload:false</code> loads only explicitly listed resources</span></td>
+          </tr>
+          <tr>
+            <td><code>extensionPaths</code></td>
+            <td><span class="l-zh">路径数组</span><span class="l-en">path[]</span></td>
+            <td><span class="l-zh">空</span><span class="l-en">empty</span></td>
+            <td><span class="l-zh">额外的扩展发现目录</span><span class="l-en">Extra extension discovery directories</span></td>
+          </tr>
+          <tr>
+            <td><code>skillPaths</code> / <code>promptTemplatePaths</code> / <code>themePaths</code></td>
+            <td><span class="l-zh">路径数组</span><span class="l-en">path[]</span></td>
+            <td><span class="l-zh">空</span><span class="l-en">empty</span></td>
+            <td><span class="l-zh">技能 / 提示模板 / 主题的额外发现目录</span><span class="l-en">Extra discovery dirs for skills / prompt templates / themes</span></td>
+          </tr>
+          <tr>
+            <td><code>enableSkillCommands</code></td>
+            <td><span class="l-zh">布尔</span><span class="l-en">boolean</span></td>
+            <td><code>true</code></td>
+            <td><span class="l-zh">把技能暴露为斜杠命令</span><span class="l-en">Expose skills as slash commands</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="muted">
+        <span class="l-zh">插件的安装与信任模型见 <a href="#/extensions">插件开发指南</a> 与 <code>rpi install --help</code>。</span>
+        <span class="l-en">For plugin installation and the trust model see the <a href="#/extensions">plugin guide</a> and <code>rpi install --help</code>.</span>
+      </p>
+    </article>
+
     <!-- ================= 更新记录 ================= -->
     <article id="doc-changelog">
       <h1><span class="l-zh">更新记录</span><span class="l-en">Changelog</span></h1>
@@ -518,7 +987,7 @@
         <li><span class="l-zh">对齐上游 Pi v0.84.1:消息类型与流终止语义、provider 修复与新增、auth 命令族、models refresh 事务化、会话行为修正。</span><span class="l-en">Aligned with upstream Pi v0.84.1: message types & stream termination, provider fixes and additions, auth commands, transactional models refresh, session behavior fixes.</span></li>
         <li><span class="l-zh">TUI:渲染器重构、全屏模式(alt screen / 鼠标)、LaTeX 与 Mermaid 渲染、布局引擎、<code>--tui-mode</code> 热切换。</span><span class="l-en">TUI: renderer refactor, fullscreen mode (alt screen / mouse), LaTeX & Mermaid rendering, layout engine, <code>--tui-mode</code> hot switching.</span></li>
         <li><span class="l-zh">行为变更:移除 npm/pnpm/yarn/bun 自更新分支(<code>rpi update</code> 恒为二进制真自更新);CI 构建改为仅 tag 触发。</span><span class="l-en">Behavior changes: npm/pnpm/yarn/bun self-update branches removed (<code>rpi update</code> is always a true binary self-update); CI builds now trigger on tags only.</span></li>
-        <li><span class="l-zh">修复:多原生插件共载失败、SSE 大行响应被吞、全屏热切换输入失效、/settings 卡死等。</span><span class="l-en">Fixes: multiple native plugins co-loading, SSE large-line responses dropped, input loss after fullscreen switch, /settings freezes, and more.</span></li>
+        <li><span class="l-zh">修复:多原生插件共载失败、SSE 大行响应被吞、全屏热切换输入失效、/settings 卡死、词级 diff 含中文内容 panic 等;docs 新增配置参考页。</span><span class="l-en">Fixes: multiple native plugins co-loading, SSE large-line responses dropped, input loss after fullscreen switch, /settings freezes, a panic in word-diff with CJK content, and more; new configuration reference in docs.</span></li>
       </ul>
 
       <h2><span class="version-tag">0.1.0</span><span class="l-zh">首个版本</span><span class="l-en">Initial release</span></h2>
@@ -660,11 +1129,12 @@
     });
   })();
 
-  // hash 路由：#/intro #/quickstart #/changelog #/extensions
-  var DOCS = ["intro", "quickstart", "changelog", "extensions"];
+  // hash 路由：#/intro #/quickstart #/settings #/changelog #/extensions
+  var DOCS = ["intro", "quickstart", "settings", "changelog", "extensions"];
   var TITLES = {
     intro:      { zh: "项目介绍 — Rpi 文档",   en: "Introduction — Rpi Docs" },
     quickstart: { zh: "快速开始 — Rpi 文档",   en: "Quickstart — Rpi Docs" },
+    settings:   { zh: "配置参考 — Rpi 文档",   en: "Configuration — Rpi Docs" },
     changelog:  { zh: "更新记录 — Rpi 文档",   en: "Changelog — Rpi Docs" },
     extensions: { zh: "插件开发指南 — Rpi 文档", en: "Plugin guide — Rpi Docs" }
   };
