@@ -23,25 +23,25 @@
         {
           "target": "aarch64-apple-darwin",
           "file": "rpi-subagents-0.1.1-aarch64-apple-darwin.rpix",
-          "sha256": "d686a82dc930bc82692482bdb64e5e31d3e8cc380ee77df737d6c6c06a510207",
+          "sha256": "10aa0fa8804d9e0638f9734e1d350dfb4b9c6265a4fb449da406faaede407d8e",
           "release": "v0.1.1"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
           "file": "rpi-subagents-0.1.1-aarch64-unknown-linux-gnu.rpix",
-          "sha256": "6165f2b7dd26b88141bb780b9361990a53f0fda67044848b98e5e5f053eef121",
+          "sha256": "7770cbe1537b686ac98ff53a59521d0ee13367f4e3d0e506eef1e05c099c3f2c",
           "release": "v0.1.1"
         },
         {
           "target": "x86_64-pc-windows-msvc",
           "file": "rpi-subagents-0.1.1-x86_64-pc-windows-msvc.rpix",
-          "sha256": "302f5d5e985f243a60c02e40829c4b4a7450f7e21e590af8adecbf2650a4559b",
+          "sha256": "e442cd06006388df9a9eced40b830bb930e399a1ad173a90df28464cc28328c3",
           "release": "v0.1.1"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-subagents-0.1.1-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "040b155d675d58a90b57029b58b088e0703fe503820fa5a15ff4e6a1e7c7aa2c",
+          "sha256": "cc6d6eac82b09e75107667c01cf6fb8668ee3910ad641f3371d61361922bf266",
           "release": "v0.1.1"
         }
       ]
