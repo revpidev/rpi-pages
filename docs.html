@@ -326,7 +326,7 @@
       <a href="/#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
       <a href="/extensions"><span class="l-zh">插件</span><span class="l-en">Extensions</span></a>
       <a href="/docs" data-nav="docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a>
-      <a href="/docs#/changelog" data-nav="changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
+      <a href="/changelog" data-nav="changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
       <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">
         <span class="l-zh">EN</span><span class="l-en">中文</span>
       </button>
@@ -343,7 +343,7 @@
     <a href="/#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
     <a href="/extensions"><span class="l-zh">插件</span><span class="l-en">Extensions</span></a>
     <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a>
-    <a href="/docs#/changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
+    <a href="/changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
   </div>
 </header>
 
@@ -354,7 +354,7 @@
     <a href="#/intro" data-doc="intro"><span class="l-zh">项目介绍</span><span class="l-en">Introduction</span></a>
     <a href="#/quickstart" data-doc="quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
     <a href="#/settings" data-doc="settings"><span class="l-zh">配置参考</span><span class="l-en">Configuration</span></a>
-    <a href="#/changelog" data-doc="changelog"><span class="l-zh">更新记录</span><span class="l-en">Changelog</span></a>
+    <a href="/changelog"><span class="l-zh">更新记录</span><span class="l-en">Changelog</span></a>
     <a href="#/extensions" data-doc="extensions"><span class="l-zh">插件开发指南</span><span class="l-en">Plugin guide</span></a>
   </aside>
 
@@ -977,34 +977,7 @@
       </p>
     </article>
 
-    <!-- ================= 更新记录 ================= -->
-    <article id="doc-changelog">
-      <h1><span class="l-zh">更新记录</span><span class="l-en">Changelog</span></h1>
-      <p class="sub">
-        <span class="l-zh">每个版本的变更记录。程序内的新版本提示也会链接到本页。</span>
-        <span class="l-en">What changed in each release. The in-app update notice links here too.</span>
-      </p>
-
-      <h2><span class="version-tag">0.1.1</span><span class="l-zh">插件生态与上游对齐</span><span class="l-en">Plugin ecosystem & upstream alignment</span></h2>
-      <ul>
-        <li><span class="l-zh">插件一键安装:<code>rpi install &lt;name&gt;</code> 从官网插件索引解析、校验(sha256 / ABI / 宿主版本)并安装预编译插件,无需本地构建链;也支持 <code>github:owner/repo</code> 直指安装。</span><span class="l-en">One-line plugin install: <code>rpi install &lt;name&gt;</code> resolves, verifies (sha256 / ABI / host version) and installs prebuilt plugins from the official registry — no local toolchain. Direct <code>github:owner/repo</code> installs also supported.</span></li>
-        <li><span class="l-zh">四个官方插件随主版本发布:子代理委派 <code>rpi-subagents</code>、MCP 适配器 <code>rpi-mcp-adapter</code>、指纹化网页抓取 <code>rpi-smart-fetch</code>、脚本式 statusline <code>rpi-statusline</code>(Windows x64 / macOS arm64 / Linux x64·arm64)。</span><span class="l-en">Four official plugins released in lockstep: <code>rpi-subagents</code> (delegation), <code>rpi-mcp-adapter</code> (MCP), <code>rpi-smart-fetch</code> (fingerprinted web fetch), <code>rpi-statusline</code> (script statusline) — Windows x64 / macOS arm64 / Linux x64·arm64.</span></li>
-        <li><span class="l-zh">新增插件目录页 <a href="/extensions">revpi.dev/extensions</a>:展示每个插件的能力声明(capabilities)与原生插件信任提示。</span><span class="l-en">New plugin catalog at <a href="/extensions">revpi.dev/extensions</a>, showing declared capabilities and native-plugin trust notices.</span></li>
-        <li><span class="l-zh">对齐上游 Pi v0.84.1:消息类型与流终止语义、provider 修复与新增、auth 命令族、models refresh 事务化、会话行为修正。</span><span class="l-en">Aligned with upstream Pi v0.84.1: message types & stream termination, provider fixes and additions, auth commands, transactional models refresh, session behavior fixes.</span></li>
-        <li><span class="l-zh">TUI:渲染器重构、全屏模式(alt screen / 鼠标)、LaTeX 与 Mermaid 渲染、布局引擎、<code>--tui-mode</code> 热切换。</span><span class="l-en">TUI: renderer refactor, fullscreen mode (alt screen / mouse), LaTeX & Mermaid rendering, layout engine, <code>--tui-mode</code> hot switching.</span></li>
-        <li><span class="l-zh">行为变更:移除 npm/pnpm/yarn/bun 自更新分支(<code>rpi update</code> 恒为二进制真自更新);CI 构建改为仅 tag 触发。</span><span class="l-en">Behavior changes: npm/pnpm/yarn/bun self-update branches removed (<code>rpi update</code> is always a true binary self-update); CI builds now trigger on tags only.</span></li>
-        <li><span class="l-zh">修复:多原生插件共载失败、SSE 大行响应被吞、全屏热切换输入失效、/settings 卡死、词级 diff 含中文内容 panic 等;docs 新增配置参考页。</span><span class="l-en">Fixes: multiple native plugins co-loading, SSE large-line responses dropped, input loss after fullscreen switch, /settings freezes, a panic in word-diff with CJK content, and more; new configuration reference in docs.</span></li>
-      </ul>
-
-      <h2><span class="version-tag">0.1.0</span><span class="l-zh">首个版本</span><span class="l-en">Initial release</span></h2>
-      <ul>
-        <li><span class="l-zh">终端 AI 编程助手的完整功能：多轮对话、内置工具、会话管理。</span><span class="l-en">The complete terminal AI coding assistant: multi-turn chat, built-in tools, session management.</span></li>
-        <li><span class="l-zh">交互 / 一次性问答 / RPC 三种运行模式。</span><span class="l-en">Three run modes: interactive, one-shot (<code>--print</code>) and RPC.</span></li>
-        <li><span class="l-zh">内置 38 家模型服务商。</span><span class="l-en">38 built-in model providers.</span></li>
-        <li><span class="l-zh">插件系统：WebAssembly 与原生动态库，支持热重载。</span><span class="l-en">Plugin system: WebAssembly and native dynamic libraries, with hot reload.</span></li>
-        <li><span class="l-zh">会话导出 HTML 与链接分享。</span><span class="l-en">Session export to HTML and link sharing.</span></li>
-      </ul>
-    </article>
+    <!-- 更新记录已独立为 /changelog 页(与 changes/ 目录同源、双语全量);#/changelog 旧链接由脚本重定向 -->
 
     <!-- ================= 插件开发指南 ================= -->
     <article id="doc-extensions">
@@ -1135,13 +1108,16 @@
     });
   })();
 
-  // hash 路由：#/intro #/quickstart #/settings #/changelog #/extensions
-  var DOCS = ["intro", "quickstart", "settings", "changelog", "extensions"];
+  // hash 路由：#/intro #/quickstart #/settings #/extensions
+  // changelog 已独立为 /changelog 页;旧 #/changelog 链接(含程序内更新提示)重定向过去
+  if (/^#\/?changelog\b/.test(location.hash || "")) {
+    location.replace("/changelog");
+  }
+  var DOCS = ["intro", "quickstart", "settings", "extensions"];
   var TITLES = {
     intro:      { zh: "项目介绍 — Rpi 文档",   en: "Introduction — Rpi Docs" },
     quickstart: { zh: "快速开始 — Rpi 文档",   en: "Quickstart — Rpi Docs" },
     settings:   { zh: "配置参考 — Rpi 文档",   en: "Configuration — Rpi Docs" },
-    changelog:  { zh: "更新记录 — Rpi 文档",   en: "Changelog — Rpi Docs" },
     extensions: { zh: "插件开发指南 — Rpi 文档", en: "Plugin guide — Rpi Docs" }
   };
   function currentDoc() {
@@ -1161,10 +1137,10 @@
     Array.prototype.forEach.call(links, function (a) {
       a.classList.toggle("active", a.dataset.doc === id);
     });
-    // 顶部菜单：更新日志页高亮「更新日志」，其余文档页高亮「文档」
+    // 顶部菜单：文档页高亮「文档」(更新日志为独立页 /changelog)
     var topLinks = document.querySelectorAll(".nav-links a[data-nav]");
     Array.prototype.forEach.call(topLinks, function (a) {
-      a.classList.toggle("active", a.dataset.nav === (id === "changelog" ? "changelog" : "docs"));
+      a.classList.toggle("active", a.dataset.nav === "docs");
     });
     updateTitle();
     window.scrollTo(0, 0);

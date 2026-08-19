@@ -1,105 +1,486 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN" data-lang="zh">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <title>rpi changelog</title>
+  <title>更新记录 — Rpi 文档</title>
+  <meta name="description" content="Rpi 更新日志:每个版本的变更记录,与源码仓库 changes/ 目录同源。">
+  <script>
+    (function () {
+      var l;
+      try { l = localStorage.getItem("rpi-lang"); } catch (e) {}
+      if (!l) { l = ((navigator.language || "").toLowerCase().indexOf("zh") === 0) ? "zh" : "en"; }
+      document.documentElement.dataset.lang = l;
+      document.documentElement.lang = (l === "zh") ? "zh-CN" : "en";
+    })();
+  </script>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 3rem auto; padding: 0 1rem; line-height: 1.6; color: #1a1a1a; }
-    h2 { margin-top: 2rem; }
-    h3 { margin-top: 1.4rem; font-size: 1.05rem; }
-    ul { padding-left: 1.2rem; }
+    :root {
+      --bg: #0b0e14;
+      --bg-soft: #11151d;
+      --bg-code: #080b10;
+      --border: #212833;
+      --border-soft: #1a212c;
+      --text: #e8eef6;
+      --muted: #8a94a3;
+      --green: #4ade80;
+      --green-deep: #22c55e;
+      --blue: #60a5fa;
+      --yellow: #fbbf24;
+      --purple: #c084fc;
+      --mono: ui-monospace, "SF Mono", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: rgba(74, 222, 128, 0.25); }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: var(--mono);
+      font-size: 0.88em;
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.12em 0.4em;
+    }
+    .container { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ---------- i18n ---------- */
+    html[data-lang="zh"] .l-en { display: none !important; }
+    html[data-lang="en"] .l-zh { display: none !important; }
+
+    /* ---------- nav ---------- */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 14, 20, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 58px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: var(--green);
+      color: #0b0e14;
+      font-family: Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 1.15rem;
+      line-height: 1;
+      padding-bottom: 2px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; font-size: 0.92rem; }
+    .nav-links a { color: var(--muted); }
+    .nav-links a:hover, .nav-links a.active { color: var(--text); text-decoration: none; }
+    .lang-toggle {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.3rem 0.7rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .lang-toggle:hover { border-color: var(--muted); color: var(--text); }
+    .nav-gh {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text) !important;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.3rem 0.8rem;
+      transition: border-color 0.15s ease;
+    }
+    .nav-gh:hover { border-color: var(--muted); }
+    .nav-gh svg { width: 15px; height: 15px; fill: currentColor; }
+    .menu-toggle { display: none; }
+    .mobile-menu { display: none; }
+
+    /* ---------- docs layout ---------- */
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 3rem;
+      padding-top: 3rem;
+      padding-bottom: 4.5rem;
+    }
+    .docs-nav {
+      position: sticky;
+      top: 90px;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+    .docs-nav .nav-caption {
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.7rem;
+      padding-left: 0.8rem;
+    }
+    .docs-nav a {
+      display: block;
+      color: var(--muted);
+      font-size: 0.93rem;
+      padding: 0.42rem 0.8rem;
+      border-radius: 8px;
+      border-left: 2px solid transparent;
+      transition: color 0.15s ease, background 0.15s ease;
+    }
+    .docs-nav a:hover { color: var(--text); text-decoration: none; background: var(--bg-soft); }
+    .docs-nav a.active {
+      color: var(--green);
+      background: rgba(74, 222, 128, 0.08);
+      border-left-color: var(--green);
+    }
+
+    /* ---------- article ---------- */
+    article { max-width: 720px; }
+    article h1 {
+      font-size: 1.9rem;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    article h1 + .sub { color: var(--muted); margin-bottom: 2rem; }
+    article h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 2.2rem 0 0.7rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--border-soft);
+    }
+    article h2:first-of-type { border-top: none; padding-top: 0; }
+    article h3 { font-size: 1.02rem; font-weight: 700; margin: 1.4rem 0 0.5rem; }
+    article p { margin-bottom: 0.9rem; color: #c4cdd9; }
+    article ul, article ol { margin: 0 0 1rem 1.3rem; color: #c4cdd9; }
+    article li { margin: 0.35rem 0; }
+    article .muted { color: var(--muted); }
+    .version-tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--green);
+      background: rgba(74, 222, 128, 0.1);
+      border: 1px solid rgba(74, 222, 128, 0.3);
+      border-radius: 6px;
+      padding: 0.05rem 0.5rem;
+      margin-right: 0.5rem;
+      vertical-align: 2px;
+    }
+
+    /* ---------- footer ---------- */
+    footer {
+      border-top: 1px solid var(--border-soft);
+      padding: 2.8rem 0;
+      color: var(--muted);
+      font-size: 0.89rem;
+    }
+    footer .container { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.8rem 2rem; }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--text); text-decoration: none; }
+
+    @media (max-width: 860px) {
+      .container { padding: 0 1.1rem; }
+      .docs-layout { grid-template-columns: 1fr; gap: 1.6rem; padding-top: 2rem; }
+      .docs-content { min-width: 0; }
+      .docs-nav {
+        position: static;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 0.4rem;
+        padding-bottom: 0.3rem;
+      }
+      .docs-nav .nav-caption { display: none; }
+      .docs-nav a { border-left: none; border: 1px solid var(--border); white-space: nowrap; flex-shrink: 0; }
+      .docs-nav a.active { border-color: rgba(74, 222, 128, 0.45); }
+      .nav-links { gap: 0.8rem; font-size: 0.86rem; }
+      .nav-links a:not(.nav-gh) { display: none; }
+      .nav-gh-label { display: none; }
+      .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 32px;
+        flex-direction: column;
+        gap: 4px;
+        color: var(--muted);
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: 7px;
+        cursor: pointer;
+      }
+      .menu-toggle span { display: block; width: 14px; height: 1.6px; background: currentColor; border-radius: 1px; }
+      .menu-toggle:hover { border-color: var(--muted); color: var(--text); }
+      .mobile-menu {
+        position: absolute;
+        top: 58px;
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border-soft);
+        padding: 0.4rem 1.1rem 0.7rem;
+        flex-direction: column;
+      }
+      .mobile-menu.open { display: flex; }
+      .mobile-menu a {
+        display: block;
+        color: var(--muted);
+        font-size: 0.95rem;
+        padding: 0.6rem 0.2rem;
+        border-bottom: 1px solid var(--border-soft);
+      }
+      .mobile-menu a:last-child { border-bottom: none; }
+      .mobile-menu a:hover { color: var(--text); text-decoration: none; }
+      article h1 { font-size: 1.55rem; }
+      article h2 { font-size: 1.12rem; }
+      article code { word-break: break-all; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
   </style>
 </head>
 <body>
-  <h1>rpi changelog</h1>
-  <p>与源码仓库 <code>changes/</code> 目录记录相同内容;更新横幅链接到本页(<code>https://revpi.dev/changelog</code>)。</p>
 
-  <h2>0.1.2(2026-08-19)</h2>
-  <p>主线:第四个第一方插件 rpi-ext-statusline 落地(TE12)、一批交互与模型运行时缺陷修复、<code>/changelog</code> 接入真实更新日志、subagents skill 文档按结构化入口本地化(ADR-0021)。</p>
+<header>
+  <div class="container nav">
+    <a class="brand" href="/">
+      <span class="logo">π</span> Rpi
+    </a>
+    <nav class="nav-links">
+      <a href="/"><span class="l-zh">首页</span><span class="l-en">Home</span></a>
+      <a href="/#features"><span class="l-zh">特性</span><span class="l-en">Features</span></a>
+      <a href="/#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
+      <a href="/extensions"><span class="l-zh">插件</span><span class="l-en">Extensions</span></a>
+      <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a>
+      <a href="/changelog" class="active"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">
+        <span class="l-zh">EN</span><span class="l-en">中文</span>
+      </button>
+      <a class="nav-gh" href="https://github.com/revpidev/rpi">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span class="nav-gh-label">GitHub</span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/"><span class="l-zh">首页</span><span class="l-en">Home</span></a>
+    <a href="/#features"><span class="l-zh">特性</span><span class="l-en">Features</span></a>
+    <a href="/#quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
+    <a href="/extensions"><span class="l-zh">插件</span><span class="l-en">Extensions</span></a>
+    <a href="/docs"><span class="l-zh">文档</span><span class="l-en">Docs</span></a>
+    <a href="/changelog"><span class="l-zh">更新日志</span><span class="l-en">Changelog</span></a>
+  </div>
+</header>
 
-  <h3>第一方插件(新)</h3>
-  <ul>
-    <li><strong>rpi-ext-statusline</strong>:CC 兼容脚本式自定义 statusline(L0 原生插件)。<code>settings.json</code> 写 <code>statusLine</code> 键即启用(命令 + padding/裁剪参数),两档 placement;脚本按 CC statusline JSON 协议 stdin/stdout 驱动,零新增 ABI。含实机追补:切换模型/思考档位/分支即时刷新、新会话 transcript latch 竞态修复、数据指纹轮询自愈。</li>
-  </ul>
+<div class="container docs-layout">
 
-  <h3>修复</h3>
-  <ul>
-    <li><code>/new</code> 与 <code>/resume</code> 切换 session 后 extension host 丢失 UI bridge——mcp 状态栏消失、MCP 工具审批被静默拒绝(<a href="https://github.com/revpidev/rpi/issues/1">#1</a>)。</li>
-    <li><code>models.json</code> 配置 apiKey 后仍强制要求 <code>auth.json</code>——字面 key 被误当环境变量名,改按上游 config-value DSL 解析(<a href="https://github.com/revpidev/rpi/issues/3">#3</a>)。</li>
-    <li><code>/changelog</code> 恒显示 "No changelog entries found."——changelog 资产从未落地;现 <code>CHANGELOG.md</code> 嵌入二进制 + <code>parseChangelog</code> 移植 + onboarding 显示半链(<a href="https://github.com/revpidev/rpi/issues/5">#5</a>)。</li>
-    <li><code>model_select</code> 事件从未发出——切换后捕获 previous 恒等短路。</li>
-    <li>onboarding 启动 header 品牌残留:上游 "Pi" 逐字文案改 rpi 实际能力表述,去掉 rpi 未带的 docs 查询承诺、指向官网(<a href="https://github.com/revpidev/rpi/issues/7">#7</a>)。</li>
-  </ul>
+  <aside class="docs-nav" id="docs-nav">
+    <p class="nav-caption"><span class="l-zh">文档</span><span class="l-en">Docs</span></p>
+    <a href="/docs#/intro"><span class="l-zh">项目介绍</span><span class="l-en">Introduction</span></a>
+    <a href="/docs#/quickstart"><span class="l-zh">快速开始</span><span class="l-en">Quickstart</span></a>
+    <a href="/docs#/settings"><span class="l-zh">配置参考</span><span class="l-en">Configuration</span></a>
+    <a href="/changelog" class="active"><span class="l-zh">更新记录</span><span class="l-en">Changelog</span></a>
+    <a href="/docs#/extensions"><span class="l-zh">插件开发指南</span><span class="l-en">Plugin guide</span></a>
+  </aside>
 
-  <h3>内部</h3>
-  <ul>
-    <li>subagents 编排 skill 文档与 prompt 模板按结构化入口本地化(ADR-0021):去除 <code>workflowScript</code> 教学与未实现机制段落,安装侧 <code>.rpi-layout-version</code> marker 自动升级旧版;工具描述补齐 <code>tasks</code>/<code>steps</code> 组合入口(ADR-0018 决策 5)。</li>
-    <li>registry / package_manager / package_command rustfmt 清账(纯格式化)。</li>
-  </ul>
+  <div class="docs-content">
 
-  <h2>0.1.1(2026-08-16)</h2>
-  <p>三大主线:对齐上游 Pi v0.84.1(T17–T32,parity freeze)、三个常用 Pi 插件的 Rust 移植落地(TE01–TE11)、扩展分发与安装链路打通。</p>
+    <article>
+      <h1><span class="l-zh">更新记录</span><span class="l-en">Changelog</span></h1>
+      <p class="sub">
+        <span class="l-zh">每个版本的变更记录,与源码仓库 <code>changes/</code> 目录同源;程序内的新版本提示也链接到本页。</span>
+        <span class="l-en">What changed in each release, mirroring the <code>changes/</code> directory of the source repository. The in-app update notice links here too.</span>
+      </p>
 
-  <h3>扩展分发与安装(新)</h3>
-  <ul>
-    <li><code>rpi install &lt;name&gt;[@&lt;range&gt;]</code>:registry 渠道——裸名解析 revpi.dev 索引,semver 选版(精确 / <code>^</code> / <code>~</code>,缺省最新),安装前预检 <code>rpiAbi</code> 与 <code>minHostVersion</code>;下载 GitHub 直连优先、官网边缘代理回退,sha256 以官网索引记录校验,不匹配立即中止不换源。</li>
-    <li><code>rpi install github:&lt;owner&gt;/&lt;repo&gt;[@&lt;tag&gt;]</code>:直指 GitHub Release artifact(未收录/私有插件),校验退化为 Release 自带 sidecar 并明示完整性级别差异。</li>
-    <li><code>.rpix</code> 打包格式:gzip tar,含 <code>rpi-extension.json</code> + 载体 + <code>SHA256SUMS</code>;逐文件校验、原子替换到 <code>~/.rpi/agent/extensions/&lt;name&gt;/</code>(或 <code>-l</code> 项目级)。</li>
-    <li>信任提示:install/update 展示 author 与 capabilities 全表;L0 原生插件(无沙箱、全 OS 权限)显著警告,需确认或 <code>--yes</code>。</li>
-    <li><code>remove</code> / <code>list</code> / <code>update</code> 全链路支持;<code>RPI_REGISTRY_URL</code> 可注入镜像/测试地址,<code>off</code> 整体禁用。</li>
-    <li>第一方插件随主版本发布:CI 将三个官方插件各自打成 <code>.rpix</code>(Windows x64 / macOS arm64 / Linux x64 与 arm64 glibc;musl 主机无法加载原生扩展,不出插件包),与本体同一 Release 发布、版本锁步,官网索引自动收录并标「官方插件」。</li>
-    <li>revpi.dev 新增 <code>/api/extensions/</code> 索引 API、<code>/extensions/download/</code> 下载代理(白名单 + 边缘回源)与插件目录页。</li>
-  </ul>
+      <h2><span class="version-tag">0.1.2</span><span class="l-zh">statusline 插件与修复簇(2026-08-19)</span><span class="l-en">statusline plugin &amp; fix wave (2026-08-19)</span></h2>
+      <p>
+        <span class="l-zh">主线:第四个第一方插件 rpi-ext-statusline 落地、一批交互与模型运行时缺陷修复、<code>/changelog</code> 接入真实更新日志、subagents skill 文档按结构化入口本地化(ADR-0021)。</span>
+        <span class="l-en">Highlights: the fourth official plugin <code>rpi-ext-statusline</code>, a wave of interactive and model-runtime fixes, a real <code>/changelog</code>, and the subagents skill docs localized to the structured entry points (ADR-0021).</span>
+      </p>
 
-  <h3>第一方插件移植(TE01–TE11)</h3>
-  <ul>
-    <li><strong>rpi-ext-mcp-adapter</strong>(pi-mcp-adapter v2.24.0):MCP 客户端——配置三源合并、stdio/SSE/HTTP 三传输、OAuth 全流程、代理与 direct 工具、懒连接与会话恢复、状态行与结果折叠渲染;parity 对拍证据链。</li>
-    <li><strong>rpi-ext-subagents</strong>(pi-subagents v0.48.0):<code>subagent</code> 工具——六内置 agents 与四级发现、fresh/fork、组合编排与后台异步、worktree 隔离、acceptance gates、supervisor 通道、流式进度与 TUI 可视化、<code>/run</code> <code>/subagents</code> <code>/subagents-doctor</code>;对拍全 MATCH。</li>
-    <li><strong>rpi-ext-smart-fetch</strong>(agent-smart-fetch v0.3.17):<code>web_fetch</code> 全管线——batch 并发、meta refresh / alternate 回退、流式下载、进度事件流与组件树渲染。</li>
-    <li>扩展 ABI 补齐(ADR-0015):<code>unregisterTool</code> / <code>toolUpdate</code> 双载体,完全 additive,<code>RPI_ABI_VERSION</code> 保持 1。</li>
-  </ul>
+      <h3><span class="l-zh">第一方插件(新)</span><span class="l-en">Official plugin (new)</span></h3>
+      <ul>
+        <li><span class="l-zh"><strong>rpi-ext-statusline</strong>:CC 兼容脚本式自定义 statusline(L0 原生插件)。<code>settings.json</code> 写 <code>statusLine</code> 键即启用(命令 + padding/裁剪参数),两档 placement;脚本按 CC statusline JSON 协议 stdin/stdout 驱动,零新增 ABI。含实机追补:切换模型/思考档位/分支即时刷新、新会话 transcript latch 竞态修复、数据指纹轮询自愈。</span><span class="l-en"><strong>rpi-ext-statusline</strong>: a Claude-Code-compatible script-driven statusline (native L0 plugin). Adding a <code>statusLine</code> key to <code>settings.json</code> enables it (command plus padding/trim options) with two placements; the script speaks the CC statusline JSON protocol over stdin/stdout with zero new ABI. Hardened in the field: instant refresh on model / thinking-level / branch switches, a transcript latch race fix for new sessions, and data-fingerprint polling self-healing.</span></li>
+      </ul>
 
-  <h3>上游对齐 Pi v0.84.1(T17–T32)</h3>
-  <ul>
-    <li>rpi-ai:v0.84 消息类型与请求选项、流终止语义、provider 修复与 compat 扩展、models refresh 事务化与 OAuth、auth 命令族、新 provider 与模型目录。</li>
-    <li>主路径:JSON/RPC delta 线格式与 stdout 背压、会话行为簇、资源加载与包管理。</li>
-    <li>rpi-agent:agent 循环微行为与 compaction 契约。</li>
-    <li>rpi-tui:渲染器 trait 化重构、行为修正簇(即时渲染 / grapheme / OSC8 / 键位 / Windows)、LaTeX 与 Mermaid、布局引擎、全屏渲染(alt screen / mouse / kitty)、UI 模式接线与 parity freeze。</li>
-    <li>扩展 API 面同步上游 12 项(ADR-0013)。</li>
-  </ul>
+      <h3><span class="l-zh">修复</span><span class="l-en">Fixes</span></h3>
+      <ul>
+        <li><span class="l-zh"><code>/new</code> 与 <code>/resume</code> 切换 session 后 extension host 丢失 UI bridge——mcp 状态栏消失、MCP 工具审批被静默拒绝(<a href="https://github.com/revpidev/rpi/issues/1">#1</a>)。</span><span class="l-en">Extension host lost the UI bridge after <code>/new</code> / <code>/resume</code> session switches — the mcp status line disappeared and MCP tool approvals were silently rejected (<a href="https://github.com/revpidev/rpi/issues/1">#1</a>).</span></li>
+        <li><span class="l-zh"><code>models.json</code> 配置 apiKey 后仍强制要求 <code>auth.json</code>——字面 key 被误当环境变量名,改按上游 config-value DSL 解析(<a href="https://github.com/revpidev/rpi/issues/3">#3</a>)。</span><span class="l-en">A literal <code>apiKey</code> in <code>models.json</code> still required <code>auth.json</code> — literal keys were misread as environment-variable names; now parsed with the upstream config-value DSL (<a href="https://github.com/revpidev/rpi/issues/3">#3</a>).</span></li>
+        <li><span class="l-zh"><code>/changelog</code> 恒显示 "No changelog entries found."——changelog 资产从未落地;现 <code>CHANGELOG.md</code> 嵌入二进制 + <code>parseChangelog</code> 移植 + onboarding 显示半链(<a href="https://github.com/revpidev/rpi/issues/5">#5</a>)。</span><span class="l-en"><code>/changelog</code> always showed "No changelog entries found." — the changelog asset never shipped. <code>CHANGELOG.md</code> is now embedded into the binary, with the <code>parseChangelog</code> port and the onboarding display half-chain (<a href="https://github.com/revpidev/rpi/issues/5">#5</a>).</span></li>
+        <li><span class="l-zh"><code>model_select</code> 事件从未发出——切换后捕获 previous 恒等短路。</span><span class="l-en">The <code>model_select</code> event was never emitted — the post-switch capture short-circuited on an identical <code>previous</code>.</span></li>
+        <li><span class="l-zh">onboarding 启动 header 品牌残留:上游 "Pi" 逐字文案改 rpi 实际能力表述,去掉 rpi 未带的 docs 查询承诺、指向官网(<a href="https://github.com/revpidev/rpi/issues/7">#7</a>)。</span><span class="l-en">Onboarding header branding leftovers: verbatim upstream "Pi" copy rewritten to Rpi's actual capabilities, dropping the docs-query promise Rpi does not ship and pointing to the website (<a href="https://github.com/revpidev/rpi/issues/7">#7</a>).</span></li>
+      </ul>
 
-  <h3>行为变更</h3>
-  <ul>
-    <li>移除 npm/pnpm/yarn/bun 自更新分支(ADR-0011 修订):二进制为唯一发行渠道,<code>update --self</code> 恒走真自更新;<code>npm:</code> 扩展包安装不受影响。</li>
-    <li>CI 构建改为仅 tag 触发,分支推送不再自动构建。</li>
-  </ul>
+      <h3><span class="l-zh">内部</span><span class="l-en">Internal</span></h3>
+      <ul>
+        <li><span class="l-zh">subagents 编排 skill 文档与 prompt 模板按结构化入口本地化(ADR-0021):去除 <code>workflowScript</code> 教学与未实现机制段落,安装侧 <code>.rpi-layout-version</code> marker 自动升级旧版;工具描述补齐 <code>tasks</code>/<code>steps</code> 组合入口(ADR-0018 决策 5)。</span><span class="l-en">Subagents orchestration skill docs and prompt templates localized to the structured entry points (ADR-0021): <code>workflowScript</code> teaching and unimplemented-mechanism sections removed, an install-side <code>.rpi-layout-version</code> marker upgrades older copies automatically; tool descriptions now document the <code>tasks</code>/<code>steps</code> composition entries (ADR-0018 decision 5).</span></li>
+        <li><span class="l-zh">registry / package_manager / package_command rustfmt 清账(纯格式化)。</span><span class="l-en">rustfmt cleanup across registry / package_manager / package_command (formatting only).</span></li>
+      </ul>
 
-  <h3>修复</h3>
-  <ul>
-    <li>主屏渲染器超宽行 panic 杀死运行中会话、满宽行宽度分歧换行漂移花屏——超宽行改截断继续渲染(诊断快照照写 <code>rpi-crash.log</code> 并注明渲染已继续);emoji 字体回退按 2 列渲染的风险字符(✓ 类)计入悲观宽度,满宽风险行保守截断消除行漂移(ADR-0020 / D-086)。</li>
-    <li>$$ / \[ 公式块内孤行 =/- 被解析成 setext 标题,公式在进入数学渲染前被切断损毁——修复为 parse 前 shadow source 等长改写(块内孤行运算符替换为等长 <code>.</code> 字节喂解析器,渲染与 LaTeX 输入仍用原始源),修复后与上游逐字节对拍一致;关闭 renderLatex 开关时保持原行为(D-078 补记)。</li>
-    <li>LaTeX 遇符号表不认识的命令时整块公式回退原文(单符号一票否决),<code>\blacksquare</code>(QED 证明结束符,LLM 数学输出高频)即触发——按 KaTeX 清单盘点 270 个常用宏实测 78 项缺口后全量补全:62 条符号映射 + 带参宏与 <code>subarray</code> 环境的终端降级渲染(<code>\xrightarrow[f]{g}</code> 脚注长箭,<code>\cfrac</code> 同 <code>\dfrac</code>,phantom 族等宽占位等);映射一律跟随 KaTeX,与上游 ground truth 对拍不破(T29 后续,D-087)。</li>
-    <li>词级 diff 的 trim 边界以字节索引 +1 推进,token 末字符为多字节 UTF-8(中文/全角)时切片落在字符中间,edit 渲染含此类内容的 diff 即 panic 杀死渲染线程——改按末字符长度推进,补多字节回归用例,与 jsdiff 8.0.4 参考向量对拍保持一致。</li>
-    <li>多 native 插件共载失败(abi_stable 按类型 memoize 根因,改 per-path 加载)。</li>
-    <li>SSE 行上限对齐 10MiB(8KiB 上限误吞大行响应)。</li>
-    <li>全屏热切换输入失效、/settings 两处卡死。</li>
-    <li>file_processor 测试命名竞态;bash 结果截断警告行按终端宽度换行。</li>
-  </ul>
+      <h2><span class="version-tag">0.1.1</span><span class="l-zh">插件生态与上游对齐(2026-08-16)</span><span class="l-en">Plugin ecosystem &amp; upstream alignment (2026-08-16)</span></h2>
+      <p>
+        <span class="l-zh">三大主线:对齐上游 Pi v0.84.1(T17–T32,parity freeze)、三个常用 Pi 插件的 Rust 移植落地(TE01–TE11)、扩展分发与安装链路打通。</span>
+        <span class="l-en">Three main lines: alignment with upstream Pi v0.84.1 (T17–T32, parity freeze), the Rust ports of three popular Pi plugins (TE01–TE11), and the extension distribution &amp; install pipeline.</span>
+      </p>
 
-  <h3>官网(revpi.dev)</h3>
-  <ul>
-    <li>Release 镜像改 Function 边缘代理回源(零存储),404/502 <code>no-store</code>;安装脚本托管站点根。</li>
-    <li>首页三平台安装面板;docs 快速开始重构;移动端导航与布局修复;favicon。</li>
-    <li>docs 新增配置参考页:全部设置键、默认值与作用域,含请求超时(httpIdleTimeoutMs 为总超时语义的澄清)与重试、隐私开关、环境变量。</li>
-  </ul>
+      <h3><span class="l-zh">扩展分发与安装(新)</span><span class="l-en">Extension distribution &amp; install (new)</span></h3>
+      <ul>
+        <li><span class="l-zh"><code>rpi install &lt;name&gt;[@&lt;range&gt;]</code>:registry 渠道——裸名解析 revpi.dev 索引,semver 选版(精确 / <code>^</code> / <code>~</code>,缺省最新),安装前预检 <code>rpiAbi</code> 与 <code>minHostVersion</code>;下载 GitHub 直连优先、官网边缘代理回退,sha256 以官网索引记录校验,不匹配立即中止不换源。</span><span class="l-en"><code>rpi install &lt;name&gt;[@&lt;range&gt;]</code>: the registry channel — a bare name resolves against the revpi.dev index, semver selection (exact / <code>^</code> / <code>~</code>, default latest), with <code>rpiAbi</code> and <code>minHostVersion</code> preflight; downloads prefer GitHub direct with the site edge proxy as fallback, sha256 verified against the site index and any mismatch aborts without switching sources.</span></li>
+        <li><span class="l-zh"><code>rpi install github:&lt;owner&gt;/&lt;repo&gt;[@&lt;tag&gt;]</code>:直指 GitHub Release artifact(未收录/私有插件),校验退化为 Release 自带 sidecar 并明示完整性级别差异。</span><span class="l-en"><code>rpi install github:&lt;owner&gt;/&lt;repo&gt;[@&lt;tag&gt;]</code>: points straight at a GitHub Release artifact (uncatalogued/private plugins); verification degrades to the release's own sidecar, with the integrity-level difference stated up front.</span></li>
+        <li><span class="l-zh"><code>.rpix</code> 打包格式:gzip tar,含 <code>rpi-extension.json</code> + 载体 + <code>SHA256SUMS</code>;逐文件校验、原子替换到 <code>~/.rpi/agent/extensions/&lt;name&gt;/</code>(或 <code>-l</code> 项目级)。</span><span class="l-en">The <code>.rpix</code> format: a gzip tar containing <code>rpi-extension.json</code>, the carrier, and <code>SHA256SUMS</code>; per-file verification and an atomic replace into <code>~/.rpi/agent/extensions/&lt;name&gt;/</code> (or project-level with <code>-l</code>).</span></li>
+        <li><span class="l-zh">信任提示:install/update 展示 author 与 capabilities 全表;L0 原生插件(无沙箱、全 OS 权限)显著警告,需确认或 <code>--yes</code>。</span><span class="l-en">Trust prompts: install/update show the author and the full capabilities table; native L0 plugins (no sandbox, full OS access) carry a prominent warning and need confirmation or <code>--yes</code>.</span></li>
+        <li><span class="l-zh"><code>remove</code> / <code>list</code> / <code>update</code> 全链路支持;<code>RPI_REGISTRY_URL</code> 可注入镜像/测试地址,<code>off</code> 整体禁用。</span><span class="l-en"><code>remove</code> / <code>list</code> / <code>update</code> across the whole chain; <code>RPI_REGISTRY_URL</code> can inject a mirror/test endpoint and <code>off</code> disables everything.</span></li>
+        <li><span class="l-zh">第一方插件随主版本发布:CI 将官方插件各自打成 <code>.rpix</code>(Windows x64 / macOS arm64 / Linux x64 与 arm64 glibc;musl 主机无法加载原生扩展,不出插件包),与本体同一 Release 发布、版本锁步,官网索引自动收录并标「官方插件」。</span><span class="l-en">Official plugins ship with each release: CI packs every official plugin as a <code>.rpix</code> (Windows x64 / macOS arm64 / Linux x64 &amp; arm64 glibc; musl hosts cannot load native extensions, so no plugin packages there), published in the same GitHub Release as the binary, version-locked, and auto-listed in the site index as official.</span></li>
+        <li><span class="l-zh">revpi.dev 新增 <code>/api/extensions/</code> 索引 API、<code>/extensions/download/</code> 下载代理(白名单 + 边缘回源)与插件目录页。</span><span class="l-en">revpi.dev gained the <code>/api/extensions/</code> index API, the <code>/extensions/download/</code> proxy (allowlist + edge fetch), and the plugin catalog page.</span></li>
+      </ul>
 
-  <h2>0.1.0</h2>
-  <ul>
-    <li>Initial release.</li>
-  </ul>
+      <h3><span class="l-zh">第一方插件移植(TE01–TE11)</span><span class="l-en">Official plugin ports (TE01–TE11)</span></h3>
+      <ul>
+        <li><span class="l-zh"><strong>rpi-ext-mcp-adapter</strong>(pi-mcp-adapter v2.24.0):MCP 客户端——配置三源合并、stdio/SSE/HTTP 三传输、OAuth 全流程、代理与 direct 工具、懒连接与会话恢复、状态行与结果折叠渲染;parity 对拍证据链。</span><span class="l-en"><strong>rpi-ext-mcp-adapter</strong> (pi-mcp-adapter v2.24.0): the MCP client — three-source config merge, stdio/SSE/HTTP transports, the full OAuth flow, proxy and direct tools, lazy connect with session resume, status line and collapsible result rendering; parity evidence chain included.</span></li>
+        <li><span class="l-zh"><strong>rpi-ext-subagents</strong>(pi-subagents v0.48.0):<code>subagent</code> 工具——六内置 agents 与四级发现、fresh/fork、组合编排与后台异步、worktree 隔离、acceptance gates、supervisor 通道、流式进度与 TUI 可视化、<code>/run</code> <code>/subagents</code> <code>/subagents-doctor</code>;对拍全 MATCH。</span><span class="l-en"><strong>rpi-ext-subagents</strong> (pi-subagents v0.48.0): the <code>subagent</code> tool — six builtin agents with four-level discovery, fresh/fork contexts, composition and background async, worktree isolation, acceptance gates, the supervisor channel, streaming progress with TUI visibility, and <code>/run</code> <code>/subagents</code> <code>/subagents-doctor</code>; full MATCH on parity runs.</span></li>
+        <li><span class="l-zh"><strong>rpi-ext-smart-fetch</strong>(agent-smart-fetch v0.3.17):<code>web_fetch</code> 全管线——batch 并发、meta refresh / alternate 回退、流式下载、进度事件流与组件树渲染。</span><span class="l-en"><strong>rpi-ext-smart-fetch</strong> (agent-smart-fetch v0.3.17): the full <code>web_fetch</code> pipeline — batch concurrency, meta-refresh / alternate fallbacks, streaming downloads, progress event streams, and component-tree rendering.</span></li>
+        <li><span class="l-zh">扩展 ABI 补齐(ADR-0015):<code>unregisterTool</code> / <code>toolUpdate</code> 双载体,完全 additive,<code>RPI_ABI_VERSION</code> 保持 1。</span><span class="l-en">Extension ABI completion (ADR-0015): <code>unregisterTool</code> / <code>toolUpdate</code> on both carriers, fully additive, <code>RPI_ABI_VERSION</code> stays 1.</span></li>
+      </ul>
+
+      <h3><span class="l-zh">上游对齐 Pi v0.84.1(T17–T32)</span><span class="l-en">Upstream alignment with Pi v0.84.1 (T17–T32)</span></h3>
+      <ul>
+        <li><span class="l-zh">rpi-ai:v0.84 消息类型与请求选项、流终止语义、provider 修复与 compat 扩展、models refresh 事务化与 OAuth、auth 命令族、新 provider 与模型目录。</span><span class="l-en">rpi-ai: v0.84 message types and request options, stream-termination semantics, provider fixes and compat extensions, transactional models refresh with OAuth, the auth command family, and new providers with model catalogs.</span></li>
+        <li><span class="l-zh">主路径:JSON/RPC delta 线格式与 stdout 背压、会话行为簇、资源加载与包管理。</span><span class="l-en">Main paths: JSON/RPC delta wire format with stdout backpressure, session behavior fixes, resource loading, and package management.</span></li>
+        <li><span class="l-zh">rpi-agent:agent 循环微行为与 compaction 契约。</span><span class="l-en">rpi-agent: agent-loop micro-behaviors and the compaction contract.</span></li>
+        <li><span class="l-zh">rpi-tui:渲染器 trait 化重构、行为修正簇(即时渲染 / grapheme / OSC8 / 键位 / Windows)、LaTeX 与 Mermaid、布局引擎、全屏渲染(alt screen / mouse / kitty)、UI 模式接线与 parity freeze。</span><span class="l-en">rpi-tui: the renderer trait refactor, a behavior-fix cluster (instant rendering / graphemes / OSC8 / keybindings / Windows), LaTeX and Mermaid, the layout engine, fullscreen rendering (alt screen / mouse / kitty), UI-mode wiring, and the parity freeze.</span></li>
+        <li><span class="l-zh">扩展 API 面同步上游 12 项(ADR-0013)。</span><span class="l-en">12 extension-API items synced with upstream (ADR-0013).</span></li>
+      </ul>
+
+      <h3><span class="l-zh">行为变更</span><span class="l-en">Behavior changes</span></h3>
+      <ul>
+        <li><span class="l-zh">移除 npm/pnpm/yarn/bun 自更新分支(ADR-0011 修订):二进制为唯一发行渠道,<code>update --self</code> 恒走真自更新;<code>npm:</code> 扩展包安装不受影响。</span><span class="l-en">The npm/pnpm/yarn/bun self-update branches are gone (ADR-0011 revision): the binary is the only distribution channel and <code>update --self</code> always performs a true self-update; <code>npm:</code> extension-package installs are unaffected.</span></li>
+        <li><span class="l-zh">CI 构建改为仅 tag 触发,分支推送不再自动构建。</span><span class="l-en">CI builds now trigger on tags only; branch pushes no longer build.</span></li>
+      </ul>
+
+      <h3><span class="l-zh">修复</span><span class="l-en">Fixes</span></h3>
+      <ul>
+        <li><span class="l-zh">主屏渲染器超宽行 panic 杀死运行中会话、满宽行宽度分歧换行漂移花屏——超宽行改截断继续渲染(诊断快照照写 <code>rpi-crash.log</code> 并注明渲染已继续);emoji 字体回退按 2 列渲染的风险字符(✓ 类)计入悲观宽度,满宽风险行保守截断消除行漂移(ADR-0020 / D-086)。</span><span class="l-en">The main-screen renderer panicked on overwide lines, killing live sessions, and full-width lines drifted into garbled wraps — overwide lines are now truncated with rendering continuing (diagnostic snapshots still go to <code>rpi-crash.log</code> with a note); fallback-glyph risk characters (✓ and friends) rendered two cells wide are counted pessimistically, and risky full-width lines are conservatively truncated to kill the drift (ADR-0020 / D-086).</span></li>
+        <li><span class="l-zh">$$ / \[ 公式块内孤行 =/- 被解析成 setext 标题,公式在进入数学渲染前被切断损毁——修复为 parse 前 shadow source 等长改写(块内孤行运算符替换为等长 <code>.</code> 字节喂解析器,渲染与 LaTeX 输入仍用原始源),修复后与上游逐字节对拍一致;关闭 renderLatex 开关时保持原行为(D-078 补记)。</span><span class="l-en">Lone <code>=</code>/<code>-</code> lines inside <code>$$</code> / <code>\[</code> blocks parsed as setext headings, corrupting formulas before math rendering — fixed by an equal-length shadow-source rewrite before parsing (the lone operator is replaced with <code>.</code> bytes for the parser while rendering and LaTeX input keep the original source); byte-for-byte parity with upstream after the fix, and the original behavior is kept when renderLatex is off (D-078 follow-up).</span></li>
+        <li><span class="l-zh">LaTeX 遇符号表不认识的命令时整块公式回退原文(单符号一票否决),<code>\blacksquare</code>(QED 证明结束符,LLM 数学输出高频)即触发——按 KaTeX 清单盘点 270 个常用宏实测 78 项缺口后全量补全:62 条符号映射 + 带参宏与 <code>subarray</code> 环境的终端降级渲染;映射一律跟随 KaTeX,与上游 ground truth 对拍不破(T29 后续,D-087)。</span><span class="l-en">A single unknown LaTeX command made the whole formula fall back to raw text; <code>\blacksquare</code> (the QED marker, frequent in LLM math output) was enough to trigger it — audited 270 common macros against the KaTeX list, found 78 gaps, and filled them all: 62 symbol mappings plus terminal-degraded rendering for parameterized macros and the <code>subarray</code> environment; mappings follow KaTeX and parity against upstream ground truth holds (T29 follow-up, D-087).</span></li>
+        <li><span class="l-zh">词级 diff 的 trim 边界以字节索引 +1 推进,token 末字符为多字节 UTF-8(中文/全角)时切片落在字符中间,edit 渲染含此类内容的 diff 即 panic 杀死渲染线程——改按末字符长度推进,补多字节回归用例,与 jsdiff 8.0.4 参考向量对拍保持一致。</span><span class="l-en">Word-diff trim advanced its boundary by one byte, so a multi-byte UTF-8 final character (CJK/full-width) put the slice mid-character and rendering an edited diff with such content panicked the render thread — now advances by the final character's length, with multibyte regression cases added and parity against jsdiff 8.0.4 reference vectors preserved.</span></li>
+        <li><span class="l-zh">多 native 插件共载失败(abi_stable 按类型 memoize 根因,改 per-path 加载)。</span><span class="l-en">Multiple native plugins failed to co-load (abi_stable memoizing by type at the root; now loaded per-path).</span></li>
+        <li><span class="l-zh">SSE 行上限对齐 10MiB(8KiB 上限误吞大行响应)。</span><span class="l-en">The SSE line cap aligned to 10 MiB (the 8 KiB cap was dropping large-line responses).</span></li>
+        <li><span class="l-zh">全屏热切换输入失效、/settings 两处卡死。</span><span class="l-en">Input loss after fullscreen hot-switching and two /settings freezes.</span></li>
+        <li><span class="l-zh">file_processor 测试命名竞态;bash 结果截断警告行按终端宽度换行。</span><span class="l-en">A file_processor test-name race; the bash result-truncation warning now wraps to terminal width.</span></li>
+      </ul>
+
+      <h3><span class="l-zh">官网(revpi.dev)</span><span class="l-en">Website (revpi.dev)</span></h3>
+      <ul>
+        <li><span class="l-zh">Release 镜像改 Function 边缘代理回源(零存储),404/502 <code>no-store</code>;安装脚本托管站点根。</span><span class="l-en">Release mirrors moved to a Function edge proxy with origin fetch (zero storage), 404/502 served <code>no-store</code>; installer scripts hosted at the site root.</span></li>
+        <li><span class="l-zh">首页三平台安装面板;docs 快速开始重构;移动端导航与布局修复;favicon。</span><span class="l-en">Three-platform install panel on the landing page; quickstart restructured; mobile nav and layout fixes; favicon.</span></li>
+        <li><span class="l-zh">docs 新增配置参考页:全部设置键、默认值与作用域,含请求超时与重试、隐私开关、环境变量。</span><span class="l-en">New configuration reference in docs: every settings key with defaults and scope, including request timeouts and retries, privacy switches, and environment variables.</span></li>
+      </ul>
+
+      <h2><span class="version-tag">0.1.0</span><span class="l-zh">首个版本(2026-08-15)</span><span class="l-en">Initial release (2026-08-15)</span></h2>
+      <ul>
+        <li><span class="l-zh">终端 AI 编程助手的完整功能:多轮对话、内置工具、会话管理。</span><span class="l-en">The complete terminal AI coding assistant: multi-turn chat, built-in tools, session management.</span></li>
+        <li><span class="l-zh">交互 / 一次性问答 / RPC 三种运行模式。</span><span class="l-en">Three run modes: interactive, one-shot (<code>--print</code>) and RPC.</span></li>
+        <li><span class="l-zh">内置 38 家模型服务商。</span><span class="l-en">38 built-in model providers.</span></li>
+        <li><span class="l-zh">插件系统:WebAssembly 与原生动态库,支持热重载。</span><span class="l-en">Plugin system: WebAssembly and native dynamic libraries, with hot reload.</span></li>
+        <li><span class="l-zh">会话导出 HTML 与链接分享。</span><span class="l-en">Session export to HTML and link sharing.</span></li>
+      </ul>
+    </article>
+
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div>
+      <strong style="color: var(--text)">Rpi</strong> ·
+      <span class="l-zh">用 Rust 编写的终端 AI 编程助手</span>
+      <span class="l-en">a terminal AI coding assistant written in Rust</span>
+    </div>
+    <div>
+      <a href="https://github.com/revpidev/rpi">GitHub</a> ·
+      <a href="/"><span class="l-zh">首页</span><span class="l-en">Home</span></a> ·
+      <span>MIT License</span> ·
+      <span class="l-zh">致谢上游 </span><span class="l-en">Thanks to upstream </span><a href="https://github.com/earendil-works/pi">earendil-works/pi</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // 语言切换
+  (function () {
+    function updateTitle() {
+      var en = document.documentElement.dataset.lang === "en";
+      document.title = en ? "Changelog — Rpi Docs" : "更新记录 — Rpi 文档";
+    }
+    function setLang(l) {
+      document.documentElement.dataset.lang = l;
+      document.documentElement.lang = (l === "zh") ? "zh-CN" : "en";
+      try { localStorage.setItem("rpi-lang", l); } catch (e) {}
+      updateTitle();
+    }
+    window.__setLang = setLang;
+    document.getElementById("lang-toggle").addEventListener("click", function () {
+      setLang(document.documentElement.dataset.lang === "zh" ? "en" : "zh");
+    });
+    updateTitle();
+  })();
+
+  // 移动端汉堡菜单
+  (function () {
+    var btn = document.getElementById("menu-toggle");
+    var menu = document.getElementById("mobile-menu");
+    if (!btn || !menu) { return; }
+    btn.addEventListener("click", function () { menu.classList.toggle("open"); });
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest && e.target.closest("a")) { menu.classList.remove("open"); }
+    });
+  })();
+</script>
 </body>
 </html>
