@@ -646,6 +646,12 @@
             <td><span class="l-zh">会话 JSONL 存储目录覆盖</span><span class="l-en">Override for the session JSONL directory</span></td>
           </tr>
           <tr>
+            <td><code>statusLine</code></td>
+            <td><span class="l-zh">对象</span><span class="l-en">object</span></td>
+            <td><span class="l-zh">未设</span><span class="l-en">unset</span></td>
+            <td><span class="l-zh">自定义 statusline(需安装 <code>rpi-statusline</code> 插件):<code>{type:"command", command, padding?, placement?, refreshInterval?, timeoutMs?}</code>——命令收到 Claude Code 契约的会话 JSON(stdin),其 stdout(多行+ANSI)渲染为 footer;<code>placement</code> 默认 <code>replace</code> 整条替换内置 footer,可选 <code>widget</code>(编辑器与内置 footer 之间的独立行,多行全彩且保留内置 footer 与其他插件状态行)或 <code>status</code> 追加单行状态</span><span class="l-en">Custom statusline (requires the <code>rpi-statusline</code> plugin): <code>{type:"command", command, padding?, placement?, refreshInterval?, timeoutMs?}</code> — the command receives the session JSON (Claude Code contract) on stdin and its stdout (multi-line + ANSI) renders as the footer; <code>placement</code> defaults to <code>replace</code> (replaces the built-in footer), <code>widget</code> (an independent multi-line row between the editor and the built-in footer, which is preserved) or <code>status</code> (appends a single status row)</span></td>
+          </tr>
+          <tr>
             <td><code>steeringMode</code></td>
             <td><code>one-at-a-time|all</code></td>
             <td><code>one-at-a-time</code></td>
@@ -982,7 +988,7 @@
       <h2><span class="version-tag">0.1.1</span><span class="l-zh">插件生态与上游对齐</span><span class="l-en">Plugin ecosystem & upstream alignment</span></h2>
       <ul>
         <li><span class="l-zh">插件一键安装:<code>rpi install &lt;name&gt;</code> 从官网插件索引解析、校验(sha256 / ABI / 宿主版本)并安装预编译插件,无需本地构建链;也支持 <code>github:owner/repo</code> 直指安装。</span><span class="l-en">One-line plugin install: <code>rpi install &lt;name&gt;</code> resolves, verifies (sha256 / ABI / host version) and installs prebuilt plugins from the official registry — no local toolchain. Direct <code>github:owner/repo</code> installs also supported.</span></li>
-        <li><span class="l-zh">三个官方插件随主版本发布:子代理委派 <code>rpi-subagents</code>、MCP 适配器 <code>rpi-mcp-adapter</code>、指纹化网页抓取 <code>rpi-smart-fetch</code>(Windows x64 / macOS arm64 / Linux x64·arm64)。</span><span class="l-en">Three official plugins released in lockstep: <code>rpi-subagents</code> (delegation), <code>rpi-mcp-adapter</code> (MCP), <code>rpi-smart-fetch</code> (fingerprinted web fetch) — Windows x64 / macOS arm64 / Linux x64·arm64.</span></li>
+        <li><span class="l-zh">四个官方插件随主版本发布:子代理委派 <code>rpi-subagents</code>、MCP 适配器 <code>rpi-mcp-adapter</code>、指纹化网页抓取 <code>rpi-smart-fetch</code>、脚本式 statusline <code>rpi-statusline</code>(Windows x64 / macOS arm64 / Linux x64·arm64)。</span><span class="l-en">Four official plugins released in lockstep: <code>rpi-subagents</code> (delegation), <code>rpi-mcp-adapter</code> (MCP), <code>rpi-smart-fetch</code> (fingerprinted web fetch), <code>rpi-statusline</code> (script statusline) — Windows x64 / macOS arm64 / Linux x64·arm64.</span></li>
         <li><span class="l-zh">新增插件目录页 <a href="/extensions">revpi.dev/extensions</a>:展示每个插件的能力声明(capabilities)与原生插件信任提示。</span><span class="l-en">New plugin catalog at <a href="/extensions">revpi.dev/extensions</a>, showing declared capabilities and native-plugin trust notices.</span></li>
         <li><span class="l-zh">对齐上游 Pi v0.84.1:消息类型与流终止语义、provider 修复与新增、auth 命令族、models refresh 事务化、会话行为修正。</span><span class="l-en">Aligned with upstream Pi v0.84.1: message types & stream termination, provider fixes and additions, auth commands, transactional models refresh, session behavior fixes.</span></li>
         <li><span class="l-zh">TUI:渲染器重构、全屏模式(alt screen / 鼠标)、LaTeX 与 Mermaid 渲染、布局引擎、<code>--tui-mode</code> 热切换。</span><span class="l-en">TUI: renderer refactor, fullscreen mode (alt screen / mouse), LaTeX & Mermaid rendering, layout engine, <code>--tui-mode</code> hot switching.</span></li>

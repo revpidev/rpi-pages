@@ -1,0 +1,10 @@
+{
+  "name": "rpi-statusline",
+  "repository": "revpidev/rpi",
+  "description": "Claude Code-compatible script statusline: configure a shell command in settings.json, feed it session JSON (model, context usage, cost, effort) on stdin, render its stdout as the footer.",
+  "author": "revpidev",
+  "license": "MIT",
+  "official": true,
+  "lockstepHost": true,
+  "descriptionZh": "Claude Code 兼容的脚本式自定义 statusline:在 settings.json 配一条 shell 命令,把会话数据(模型/上下文占用/费用/思考档位)以 CC 契约 JSON 喂给其 stdin,用其 stdout 渲染 footer。"
+}
