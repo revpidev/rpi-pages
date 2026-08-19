@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "name": "rpi-statusline",
+  "repository": "revpidev/rpi",
+  "author": "revpidev",
+  "license": "MIT",
+  "kind": "native",
+  "official": true,
+  "versions": [
+    {
+      "version": "0.1.2",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.2",
+      "capabilities": [
+        "ui",
+        "session"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-statusline-0.1.2-aarch64-apple-darwin.rpix",
+          "sha256": "058e5662fb00550bd08b7390ecbe3eba43281d0e06e169ee447bead49e42c184",
+          "release": "v0.1.2"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.2-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "a1c2811a074e322bcba71c9eda8e8f5955ca9cee38cf8f10dcd18db82fb358e7",
+          "release": "v0.1.2"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-statusline-0.1.2-x86_64-pc-windows-msvc.rpix",
+          "sha256": "4395f062155108094def79ae17e12c7ea2790e8398010af5aa85a096bbac3f31",
+          "release": "v0.1.2"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.2-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "ef1062e73b5c7f9a1e1dddfdd4150dd690d3ce2d52cc7970e57683a64a2778c7",
+          "release": "v0.1.2"
+        }
+      ]
+    }
+  ]
+}

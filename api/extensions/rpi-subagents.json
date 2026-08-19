@@ -8,6 +8,45 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.2",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.2",
+      "capabilities": [
+        "tools",
+        "commands",
+        "session",
+        "events",
+        "ui"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-subagents-0.1.2-aarch64-apple-darwin.rpix",
+          "sha256": "5abd39ea067b1cf792491aa015f78dd8a7560cb6088adca4ee80a8f78e2399bd",
+          "release": "v0.1.2"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.2-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "3ee413e638d49c9b519aec19a70f7fb10fa5db7ace5b827566d91450b8184b3a",
+          "release": "v0.1.2"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-subagents-0.1.2-x86_64-pc-windows-msvc.rpix",
+          "sha256": "75e897efbe94761d69baa2dc56eda72c72b75199a5d6c8b96f845f81aaa31305",
+          "release": "v0.1.2"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.2-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "ccaa02e1e040bc34bd32d79d8617efb6fa00b0341d72fafe0637143f18bd396a",
+          "release": "v0.1.2"
+        }
+      ]
+    },
+    {
       "version": "0.1.1",
       "rpiAbi": 1,
       "minHostVersion": "0.1.1",

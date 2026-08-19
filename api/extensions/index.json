@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-18T04:00:18Z",
+  "generatedAt": "2026-08-19T07:01:10Z",
   "extensions": [
     {
       "name": "rpi-mcp-adapter",
-      "latest": "0.1.1",
+      "latest": "0.1.2",
       "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle (port of pi-mcp-adapter @ v2.24.0)",
       "kind": "native",
       "capabilities": [
@@ -19,7 +19,7 @@
     },
     {
       "name": "rpi-smart-fetch",
-      "latest": "0.1.1",
+      "latest": "0.1.2",
       "description": "Fingerprinted web fetch extension: `web_fetch`/`batch_web_fetch` tools with browser-grade TLS/HTTP2 emulation (wreq), readability extraction (dom_smoothie [VARIANT]) with a 1:1 DOM fallback chain, five output formats, a structured error model, streaming progress (toolUpdate) and ComponentTree renderers.",
       "kind": "native",
       "capabilities": [
@@ -31,8 +31,21 @@
       "official": true
     },
     {
+      "name": "rpi-statusline",
+      "latest": "0.1.2",
+      "description": "Claude Code-compatible script statusline: configure a shell command in settings.json, feed it session JSON (model, context usage, cost, effort) on stdin, render its stdout as the footer.",
+      "kind": "native",
+      "capabilities": [
+        "ui",
+        "session"
+      ],
+      "downloads": null,
+      "descriptionZh": "Claude Code 兼容的脚本式自定义 statusline:在 settings.json 配一条 shell 命令,把会话数据(模型/上下文占用/费用/思考档位)以 CC 契约 JSON 喂给其 stdin,用其 stdout 渲染 footer。",
+      "official": true
+    },
+    {
       "name": "rpi-subagents",
-      "latest": "0.1.1",
+      "latest": "0.1.2",
       "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), model fallback chains.",
       "kind": "native",
       "capabilities": [

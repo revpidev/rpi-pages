@@ -18,6 +18,29 @@
   <h1>rpi changelog</h1>
   <p>与源码仓库 <code>changes/</code> 目录记录相同内容;更新横幅链接到本页(<code>https://revpi.dev/changelog</code>)。</p>
 
+  <h2>0.1.2(2026-08-19)</h2>
+  <p>主线:第四个第一方插件 rpi-ext-statusline 落地(TE12)、一批交互与模型运行时缺陷修复、<code>/changelog</code> 接入真实更新日志、subagents skill 文档按结构化入口本地化(ADR-0021)。</p>
+
+  <h3>第一方插件(新)</h3>
+  <ul>
+    <li><strong>rpi-ext-statusline</strong>:CC 兼容脚本式自定义 statusline(L0 原生插件)。<code>settings.json</code> 写 <code>statusLine</code> 键即启用(命令 + padding/裁剪参数),两档 placement;脚本按 CC statusline JSON 协议 stdin/stdout 驱动,零新增 ABI。含实机追补:切换模型/思考档位/分支即时刷新、新会话 transcript latch 竞态修复、数据指纹轮询自愈。</li>
+  </ul>
+
+  <h3>修复</h3>
+  <ul>
+    <li><code>/new</code> 与 <code>/resume</code> 切换 session 后 extension host 丢失 UI bridge——mcp 状态栏消失、MCP 工具审批被静默拒绝(<a href="https://github.com/revpidev/rpi/issues/1">#1</a>)。</li>
+    <li><code>models.json</code> 配置 apiKey 后仍强制要求 <code>auth.json</code>——字面 key 被误当环境变量名,改按上游 config-value DSL 解析(<a href="https://github.com/revpidev/rpi/issues/3">#3</a>)。</li>
+    <li><code>/changelog</code> 恒显示 "No changelog entries found."——changelog 资产从未落地;现 <code>CHANGELOG.md</code> 嵌入二进制 + <code>parseChangelog</code> 移植 + onboarding 显示半链(<a href="https://github.com/revpidev/rpi/issues/5">#5</a>)。</li>
+    <li><code>model_select</code> 事件从未发出——切换后捕获 previous 恒等短路。</li>
+    <li>onboarding 启动 header 品牌残留:上游 "Pi" 逐字文案改 rpi 实际能力表述,去掉 rpi 未带的 docs 查询承诺、指向官网(<a href="https://github.com/revpidev/rpi/issues/7">#7</a>)。</li>
+  </ul>
+
+  <h3>内部</h3>
+  <ul>
+    <li>subagents 编排 skill 文档与 prompt 模板按结构化入口本地化(ADR-0021):去除 <code>workflowScript</code> 教学与未实现机制段落,安装侧 <code>.rpi-layout-version</code> marker 自动升级旧版;工具描述补齐 <code>tasks</code>/<code>steps</code> 组合入口(ADR-0018 决策 5)。</li>
+    <li>registry / package_manager / package_command rustfmt 清账(纯格式化)。</li>
+  </ul>
+
   <h2>0.1.1(2026-08-16)</h2>
   <p>三大主线:对齐上游 Pi v0.84.1(T17–T32,parity freeze)、三个常用 Pi 插件的 Rust 移植落地(TE01–TE11)、扩展分发与安装链路打通。</p>
 
