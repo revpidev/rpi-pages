@@ -360,6 +360,10 @@
           <span class="l-en"><b>Atomic UI swaps &amp; streaming hot path</b>: single-critical-section widget/selector swaps (no more missing/bare frames); same-frame MessageUpdate folding plus borrow-based <code>update_content</code>.</span>
         </li>
         <li>
+          <span class="l-zh"><b>扩展升级漏掉未跟踪插件</b>:<code>rpi update --extensions</code> 只认 settings 的 packages 条目,而加载器加载安装目录下全部插件——早期版本安装/手工复制的未跟踪插件被静默跳过,多插件场景即“只升级一个”;update 现与加载器发现对齐(identity 去重并入、不回写 settings),<code>rpi update &lt;name&gt;</code> 可命中,<code>rpi list</code> 标注 (untracked);registry 批量单个失败不再阻断其余,未收录(404)的未跟踪安装降级为跳过提示。</span>
+          <span class="l-en"><b>update --extensions missed untracked installs</b>: update/list only iterated the settings <code>packages</code> entries while the loader loads every manifest directory under the install roots — untracked installs (legacy versions / hand-copied) were silently skipped, so a multi-extension setup updated just one. update now matches the loader's discovery (identity-deduped, never writes settings), <code>rpi update &lt;name&gt;</code> can target them, and <code>rpi list</code> marks them <code>(untracked)</code>; a failing registry source no longer blocks the rest of the batch, and an untracked install absent from the registry (404) downgrades to a skip note.</span>
+        </li>
+        <li>
           <span class="l-zh"><b>低档杂项</b>:mcp-adapter 秘钥解析改阻塞池、无 UI 期免推 status bar、<code>getAllTools</code> 惰性查询;statusline 变化 tick 复用 ctx 取数;TUI 每帧尺寸读取 4→1 次 ioctl。</span>
           <span class="l-en"><b>Misc cleanup</b>: blocking-pool secret resolution, no wasted status-bar pushes without a UI, lazy <code>getAllTools</code>, ctx-fetch reuse on statusline change ticks, and 4→1 terminal size reads per TUI frame.</span>
         </li>
