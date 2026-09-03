@@ -337,6 +337,34 @@
         <span class="l-en">What changed in each release, mirroring the <code>changes/</code> directory of the source repository. The in-app update notice links here too.</span>
       </p>
 
+      <h2><span class="version-tag">0.1.3</span><span class="l-zh">性能与并发治理(2026-09-03)</span><span class="l-en">Performance &amp; concurrency governance (2026-09-03)</span></h2>
+      <p>
+        <span class="l-zh">主线:全仓审计驱动的 7 项性能/并发治理任务(V13-01…07)+ 两支先行 PR 收口(流式请求超时空闲语义 / write 流式渲染 O(n²))。断裂修复:长推理总超时误杀、write 大文件卡顿、扩展 UI 换装撕帧、statusline 双开串数据。零新 ABI、零新 ADR。</span>
+        <span class="l-en">Highlights: seven audit-driven performance and concurrency tasks (V13-01…07) plus two lead-in PRs (idle-timeout streaming semantics / O(n²) write rendering fix). Notable fixes: long-inference total-timeout kills, write rendering stalls, extension UI swap tearing, and the dual-instance statusline data-mixup. Zero new ABI or ADR.</span>
+      </p>
+      <ul>
+        <li>
+          <span class="l-zh"><b>父会话权威定位</b>:subagents 用 <code>ctx.sessionFile</code> 权威值替代目录启发式(双开同 cwd / fork 自污染不再误锁),兜底加 mtime 下界与 stem 形状过滤(关闭 TE-D16)。</span>
+          <span class="l-en"><b>Authoritative parent session</b>: subagents now prefer <code>ctx.sessionFile</code> over the directory heuristic (fixes dual-instance same-cwd / fork self-pollution); the fallback gains an mtime floor and a stem-shape filter (closes TE-D16).</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>子进程事件落盘与帧节流</b>:events/transcript 改每 child 单持久句柄 + 50MiB 上限;status.json 100ms 写入门控;update 帧签名门控 + subagent_wait 轮询脏检查——50 个相同事件 toolUpdate 从 50 帧压到 3 帧。</span>
+          <span class="l-en"><b>Child event persistence &amp; frame throttling</b>: per-child persistent JSONL handles with a 50MiB ceiling; 100ms status-write coalescing; signature-gated streaming frames and a wait-poll dirty check — 50 identical events now push 3 toolUpdate frames instead of 50.</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>smart-fetch 进度节流</b>:下载进度 100ms/64KiB 双阈值门控 + batch 快照 1% 签名短路;终态帧与帧形状零变化(TE08 对拍口径缩减中间帧)。</span>
+          <span class="l-en"><b>smart-fetch progress throttling</b>: 100ms/64KiB dual-threshold gating for body progress plus a 1%-granularity batch-snapshot dirty check; terminal frames and shapes stay byte-exact.</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>TUI 换装原子化与热路径</b>:widget/selector 换装单临界区化(不再闪缺失帧/裸 editor);流式 MessageUpdate 队列同帧折叠保尾 + 借用化消除深拷贝。</span>
+          <span class="l-en"><b>Atomic UI swaps &amp; streaming hot path</b>: single-critical-section widget/selector swaps (no more missing/bare frames); same-frame MessageUpdate folding plus borrow-based <code>update_content</code>.</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>低档杂项</b>:mcp-adapter 秘钥解析改阻塞池、无 UI 期免推 status bar、<code>getAllTools</code> 惰性查询;statusline 变化 tick 复用 ctx 取数;TUI 每帧尺寸读取 4→1 次 ioctl。</span>
+          <span class="l-en"><b>Misc cleanup</b>: blocking-pool secret resolution, no wasted status-bar pushes without a UI, lazy <code>getAllTools</code>, ctx-fetch reuse on statusline change ticks, and 4→1 terminal size reads per TUI frame.</span>
+        </li>
+      </ul>
+
       <h2><span class="version-tag">0.1.2</span><span class="l-zh">statusline 插件与修复簇(2026-08-19)</span><span class="l-en">statusline plugin &amp; fix wave (2026-08-19)</span></h2>
       <p>
         <span class="l-zh">主线:第四个第一方插件 rpi-ext-statusline 落地、一批交互与模型运行时缺陷修复、<code>/changelog</code> 接入真实更新日志、subagents skill 文档按结构化入口本地化(ADR-0021)。</span>
