@@ -22,25 +22,25 @@
         {
           "target": "aarch64-apple-darwin",
           "file": "rpi-mcp-adapter-0.1.3-aarch64-apple-darwin.rpix",
-          "sha256": "6c7c7531826efdb78fb32b77de67fe263517095f0017d27580f3f22c317fd7d7",
+          "sha256": "df9838e54d94e2aafef6d157b429c7a45d72e35afa9ad22fc2dd2caf48c94ef2",
           "release": "v0.1.3"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
           "file": "rpi-mcp-adapter-0.1.3-aarch64-unknown-linux-gnu.rpix",
-          "sha256": "2b93b70f7a51f77375cc5a8ef77f9e060193810bf26d0df0592e501675a3dda7",
+          "sha256": "a0054d8b3ea50478edb6760b9b06c9fcde8bb3e28dbcc2d9a76cab55a0637c39",
           "release": "v0.1.3"
         },
         {
           "target": "x86_64-pc-windows-msvc",
           "file": "rpi-mcp-adapter-0.1.3-x86_64-pc-windows-msvc.rpix",
-          "sha256": "1d03d1154b5b8fb688ebfa76b045164b6f2a6179e2863e0706bba551c6187a15",
+          "sha256": "46cd346e7533e225d8d49c4a346b9f2eb0058ef1f41d3c975cc490cc82bc91ef",
           "release": "v0.1.3"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-mcp-adapter-0.1.3-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "b75274f8ab3e2d06f341e8fc2cfe8b2a59e15e7f99f94b7323a6344f279e0df3",
+          "sha256": "576be3aa34f73fc12ccce966238b9aa44e353e6ea7166d4a5320f66ee8e1d651",
           "release": "v0.1.3"
         }
       ]
