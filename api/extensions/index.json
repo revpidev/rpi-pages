@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-03T07:52:49Z",
+  "generatedAt": "2026-09-03T11:13:05Z",
   "extensions": [
     {
       "name": "rpi-mcp-adapter",
-      "latest": "0.1.2",
+      "latest": "0.1.3",
       "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle (port of pi-mcp-adapter @ v2.24.0)",
       "kind": "native",
       "capabilities": [
@@ -19,7 +19,7 @@
     },
     {
       "name": "rpi-smart-fetch",
-      "latest": "0.1.2",
+      "latest": "0.1.3",
       "description": "Fingerprinted web fetch extension: `web_fetch`/`batch_web_fetch` tools with browser-grade TLS/HTTP2 emulation (wreq), readability extraction (dom_smoothie [VARIANT]) with a 1:1 DOM fallback chain, five output formats, a structured error model, streaming progress (toolUpdate) and ComponentTree renderers.",
       "kind": "native",
       "capabilities": [
@@ -32,7 +32,7 @@
     },
     {
       "name": "rpi-statusline",
-      "latest": "0.1.2",
+      "latest": "0.1.3",
       "description": "Claude Code-compatible script statusline: configure a shell command in settings.json, feed it session JSON (model, context usage, cost, effort) on stdin, render its stdout as the footer.",
       "kind": "native",
       "capabilities": [
@@ -45,7 +45,7 @@
     },
     {
       "name": "rpi-subagents",
-      "latest": "0.1.2",
+      "latest": "0.1.3",
       "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), model fallback chains.",
       "kind": "native",
       "capabilities": [
