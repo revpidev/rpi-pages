@@ -2,9 +2,7 @@
 
 rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库是 rpi 的官网 / 产品端点部署仓库（Cloudflare Pages 项目，项目名 `revpi`）：静态目录内容 + Pages Functions，零后端。
 
-> 仓库拆分（rpi 源码仓库与本部署仓库独立；需求 / 设计 / ADR 等工程文档维护在私有文档仓库，未随仓库公开）：本站为 **rpi-pages**；rpi 源码在 **rpi** 仓库，端点契约与部署说明见本 README。
-`index.html` 为站点首页（开源项目主页，含特性/快速开始/端点说明），
-`/` 请求直接命中。
+> 仓库拆分（rpi 源码仓库与本部署仓库独立；需求 / 设计 / ADR 等工程文档维护在私有文档仓库，未随仓库公开）：本站为 **rpi-pages**；rpi 源码在 **rpi** 仓库，端点契约与部署说明见本 README。`index.html` 为站点首页（开源项目主页，含特性/快速开始/端点说明），`/` 请求直接命中。
 
 ## 端点 → 文件映射
 
@@ -27,8 +25,7 @@ rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库
 
 ### 部署：Cloudflare Pages Git 集成（push 即发布）
 
-仓库已连接到 Pages 项目 `revpi`：push 到 `main` 自动部署生产，PR 自动创建
-preview 环境。构建配置（连接时在控制台填写，见下方步骤）：
+仓库已连接到 Pages 项目 `revpi`：push 到 `main` 自动部署生产，PR 自动创建 preview 环境。构建配置（连接时在控制台填写，见下方步骤）：
 
 | 配置项 | 值 | 说明 |
 |---|---|---|
@@ -36,9 +33,7 @@ preview 环境。构建配置（连接时在控制台填写，见下方步骤）
 | Build command | 留空 | 生成产物 `api/*.json` 已提交入库；构建环境没有 `../rpi` 源码，跑生成脚本会失败 |
 | Output directory | `.` | 仓库根即站点根 |
 
-> **注意**：连接后不要再手动 `npx wrangler pages deploy` —— 手动部署与
-> Git 集成互相覆盖（最后部署者赢），会造成线上与仓库不一致。
-> 本地预览用 `npx wrangler pages dev .`。
+> **注意**：连接后不要再手动 `npx wrangler pages deploy` —— 手动部署与 Git 集成互相覆盖（最后部署者赢），会造成线上与仓库不一致。本地预览用 `npx wrangler pages dev .`。
 
 控制台连接步骤（一次性）：
 
@@ -67,27 +62,11 @@ git push
 
 ### 扩展插件 registry（`registry/`）
 
-`registry/<name>.json` 是扩展索引的**源数据**（每插件一条：
-`name/repository/description/author/license`，第一方附 `"official": true`，
-可选 `"yankedVersions": [...]` 做 yank 覆盖、`"lockstepHost": true` 表示
-插件与宿主锁步发布——生成时每个版本的 `minHostVersion` 回填为该版本自身，
-条目里的显式 `minHostVersion` 优先；对应 CI 打包时向 .rpix manifest 注入
-同值的语义）。**过渡说明**：设计
-（extension-distribution §5.1）中索引归属独立仓库 `revpidev/rpi-plugins`，
-该仓库尚未建立，本期先把索引数据放在本仓库 `registry/`；独立仓库建立后
-迁出，生成脚本改为读该仓库。
+`registry/<name>.json` 是扩展索引的**源数据**（每插件一条：`name/repository/description/author/license`，第一方附 `"official": true`，可选 `"yankedVersions": [...]` 做 yank 覆盖、`"lockstepHost": true` 表示插件与宿主锁步发布——生成时每个版本的 `minHostVersion` 回填为该版本自身，条目里的显式 `minHostVersion` 优先；对应 CI 打包时向 .rpix manifest 注入同值的语义）。**过渡说明**：设计（extension-distribution §5.1）中索引归属独立仓库 `revpidev/rpi-plugins`，该仓库尚未建立，本期先把索引数据放在本仓库 `registry/`；独立仓库建立后迁出，生成脚本改为读该仓库。
 
-`generate-site.py` 读 `registry/*.json`，对每个 `repository` 调 GitHub
-Releases API 枚举版本矩阵（按 `<name>-<version>[-<target>].rpix` 精确匹配
-资产，sha256 采信同 Release 的 `<file>.sha256` sidecar），产出
-`api/extensions/{index,allowlist,<name>}.json`——commit 即部署，与 catalog
-同管线。`GITHUB_TOKEN` 环境变量可选（匿名 60 次/时限流）；API 不可达时
-对应插件降级为 `versions: []` 并警告，不让整个生成失败。第一方插件的
-description/capabilities/kind 采信 `../rpi` 各 crate 根的
-`rpi-extension.json`。
+`generate-site.py` 读 `registry/*.json`，对每个 `repository` 调 GitHub Releases API 枚举版本矩阵（按 `<name>-<version>[-<target>].rpix` 精确匹配资产，sha256 采信同 Release 的 `<file>.sha256` sidecar），产出 `api/extensions/{index,allowlist,<name>}.json`——commit 即部署，与 catalog 同管线。`GITHUB_TOKEN` 环境变量可选（匿名 60 次/时限流）；API 不可达时对应插件降级为 `versions: []` 并警告，不让整个生成失败。第一方插件的 description/capabilities/kind 采信 `../rpi` 各 crate 根的 `rpi-extension.json`。
 
-> Release 资产镜像（`/releases/download/*`）是 Function 代理回源 GitHub，
-> 零存储、发版零额外步骤——GitHub Release 资产发布即可用，无需上传。
+> Release 资产镜像（`/releases/download/*`）是 Function 代理回源 GitHub，零存储、发版零额外步骤——GitHub Release 资产发布即可用，无需上传。
 
 ### 首次创建项目（旧流程，仅存档）
 
@@ -120,11 +99,6 @@ RPI_SHARE_VIEWER_URL=https://revpi.dev/session
 
 ## 兼容性注意
 
-- **Last-Modified 必须晚于本地 builtin `generated_at`**：`remote_models`
-  在 `last_modified <= local_generated_at` 时忽略 overlay（用本地数据）。
-  Pages 静态资产的 Last-Modified 是部署时间，天然满足；重新部署即刷新。
-- **radius 不在 catalog 内**：radius 是动态 gateway provider（默认
-  `https://radius.pi.dev`，上游托管服务，非静态内容），`/api/models/providers/radius`
-  返回 404 即"overlay 不可用"语义，radius 用户不受影响。
-- **数据源**：catalog 由 rpi 源码仓库的 `crates/rpi-ai/src/providers/data/*.json`
-  生成（`scripts/generate-site.py` 读取，默认同级 `../rpi`），与 rpi 发版同步更新。
+- **Last-Modified 必须晚于本地 builtin `generated_at`**：`remote_models` 在 `last_modified <= local_generated_at` 时忽略 overlay（用本地数据）。Pages 静态资产的 Last-Modified 是部署时间，天然满足；重新部署即刷新。
+- **radius 不在 catalog 内**：radius 是动态 gateway provider（默认 `https://radius.pi.dev`，上游托管服务，非静态内容），`/api/models/providers/radius` 返回 404 即"overlay 不可用"语义，radius 用户不受影响。
+- **数据源**：catalog 由 rpi 源码仓库的 `crates/rpi-ai/src/providers/data/*.json` 生成（`scripts/generate-site.py` 读取，默认同级 `../rpi`），与 rpi 发版同步更新。
