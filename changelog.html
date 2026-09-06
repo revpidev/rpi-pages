@@ -337,6 +337,34 @@
         <span class="l-en">What changed in each release, mirroring the <code>changes/</code> directory of the source repository. The in-app update notice links here too.</span>
       </p>
 
+      <h2><span class="version-tag">0.1.4</span><span class="l-zh">上游追平 v0.85.0(2026-09-08)</span><span class="l-en">Upstream parity to v0.85.0 (2026-09-08)</span></h2>
+      <p>
+        <span class="l-zh">主线:行为金标准从 v0.84.1+ 升级到 v0.85.0+(698 commits / 866 文件,ADR-0023),18 个对拍任务(V14-01…18)按「上游锚点→rpi 落点→断言证据」三元组逐条恢复行为对拍绿;M5 收口完成主题校验拆分移植与 fixtures 全量重录。偏离 D-092…D-100 全数闭环。</span>
+        <span class="l-en">Highlights: the behavioral gold standard moves from v0.84.1+ to v0.85.0+ (698 commits / 866 files, ADR-0023); eighteen parity tasks (V14-01…18) restore behavioral parity with an "upstream anchor &rarr; rpi landing &rarr; assertion evidence" triple each; the M5 closeout ports the theme-validation split and re-records every fixture. Deviations D-092&hellip;D-100 all closed.</span>
+      </p>
+      <ul>
+        <li>
+          <span class="l-zh"><b>协议与会话</b>:agent loop 的 compaction 触发时机对齐(#6879 Breaking,终轮不再触发);会话管理修复九项(fork compaction 重映射 #8989 / import 同名后缀 #8985 / share 独立临时目录 / RPC abort 取消手动 compaction #8920 等);JSON/RPC 增量(message_update 恢复累计 usage #7982、toolcall_start 附 id/toolName #7953、新命令 clear_queue #8432);流事件契约补全(custom_tool_call 事件族、immediate_retry 计数 #8016)。</span>
+          <span class="l-en"><b>Protocol &amp; sessions</b>: compaction trigger timing aligned with #6879 (breaking — terminal turns no longer fire it); nine session-manager repairs (fork compaction remap #8989, import same-name suffix #8985, concurrent-share isolation, RPC abort cancels manual compaction #8920, …); JSON/RPC deltas (message_update restores cumulative usage #7982, toolcall_start carries id/toolName #7953, new clear_queue command #8432); stream-event contract completion (custom_tool_call family, immediate_retry counts #8016).</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>Providers 与模型目录</b>:Anthropic 每轮 effort 持久化与 refusal fallback(managed Claude 请求体组合 + providerThinkingLevel 落盘,上游测试逐条移植);OpenAI 系与其余 provider 修复簇(Bedrock 全头转发、openrouter 双 API map);基础设施——严格 schema 自动转换、NO_PROXY 语义重写(#8737 根域/子域/IPv6/host:port)、七 adapter 默认 User-Agent、uuidv7 外部时间戳;模型目录整体重生成至 v0.85.0 数据(GPT-6 Astra、compat 字段等)。</span>
+          <span class="l-en"><b>Providers &amp; model catalog</b>: Anthropic mid-conversation effort persistence plus refusal fallback (managed-Claude request composition and providerThinkingLevel persistence, upstream tests ported one by one); OpenAI-family and remaining-provider fix clusters (Bedrock raw headers, the openrouter dual-API map); infrastructure — strict JSON-schema coercion, rewritten NO_PROXY semantics (#8737: root/subdomain, IPv6, host:port), a default User-Agent across seven adapters, uuidv7 external timestamps; the vendored model catalog regenerated against v0.85.0 data (GPT-6 Astra, compat fields, …).</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>工具 / CLI / 扩展</b>:七内建工具 cwd 基准改「执行时会话 cwd」(#8627);skills 三修复(Bash 不消失 #8552、根目录 md 不误报 #7805、嵌套发现 #8255);扩展 API 行为对齐(triggerTurn:false 不 steer #8022、ui_prompt_start/end #8355 等);CLI/设置面——<code>--</code> 分隔符、<code>--use-theme</code>、选择器会话级作用域(#8356 Ctrl+S 才写全局)、Windows/WSL 键位表、配置健壮性(BOM/权限/带路径错误)。</span>
+          <span class="l-en"><b>Tools / CLI / extensions</b>: the seven built-in tools resolve cwd at execution time (#8627); three skills fixes (Bash no longer vanishes #8552, root-level plain markdown no longer reports broken #7805, nested discovery #8255); extension-API behavior parity (triggerTurn:false never steers #8022, ui_prompt_start/end #8355, …); CLI &amp; settings — the <code>--</code> separator, <code>--use-theme</code>, session-scoped selector changes (#8356: Ctrl+S persists globally), Windows/WSL default bindings, config robustness (BOM, permissions, errors with paths).</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>TUI</b>:鼠标分发基础设施全套(归一化事件/click 合成/冒泡命中/指针捕获/overlay 分发)+ 选择修复族(双击选词 joiner、hover 不改列表选择、右键粘贴去重等);全屏 transcript 搜索与跳转指示器(#8800);滚动条重设计(全轨 │/┃/█ + hover/active 态)+ 验证式复制体系(OSC 52 + 回读 + toast);渲染修复族(LaTeX join 符号、表格换行样式重置序列、working indicator 内嵌 editor 边框、thinking 切换就地更新);终端能力与环境变量(库与配置 env 离婚 c505f4c19、能力覆盖三 env + set_capability_overrides、Zed 检测、SSH 下 Alt+Enter 双超时 #7899)。</span>
+          <span class="l-en"><b>TUI</b>: the full mouse-dispatch infrastructure (normalized events, synthesized clicks, bubbling hit-testing, pointer capture, overlay dispatch) plus the selection-fix family (double-click word joiners, hover keeps list selection, right-click paste dedup, …); full-screen transcript search with jump indicators (#8800); the scrollbar redesign (full-track │/┃/█ with hover/active states) and verified copying (OSC 52 + readback + toasts); the render-fix family (LaTeX join symbols, table-wrap style resets, the working indicator embedded in the editor border, in-place thinking toggles); terminal capabilities &amp; environment (library/app env divorce c505f4c19, three capability-override envs plus set_capability_overrides, Zed detection, dual escape/sequence timeouts so Alt+Enter survives SSH #7899).</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>收口</b>:主题校验拆分移植(eb3e9feed——库路径改 lenient cast、结构化诊断移入应用层安装式校验器,themes golden 转正全量对拍);fixtures 全量重录钉死 v0.85.0+(session 场景 ×7 + resources golden ×6,runbook 可重复性抽查通过);workspace 版本 0.1.4。</span>
+          <span class="l-en"><b>Closeout</b>: the theme-validation split ported (eb3e9feed — the library path becomes a lenient cast while structured diagnostics move into an app-installed validator; the themes golden now compares every case); all fixtures re-recorded and pinned to v0.85.0+ (seven session scenarios + six resource goldens, runbook repeatability spot-check green); workspace version 0.1.4.</span>
+        </li>
+      </ul>
+
       <h2><span class="version-tag">0.1.3</span><span class="l-zh">性能与并发治理(2026-09-03)</span><span class="l-en">Performance &amp; concurrency governance (2026-09-03)</span></h2>
       <p>
         <span class="l-zh">主线:全仓审计驱动的 7 项性能/并发治理任务(V13-01…07)+ 两支先行 PR 收口(流式请求超时空闲语义 / write 流式渲染 O(n²))。断裂修复:长推理总超时误杀、write 大文件卡顿、扩展 UI 换装撕帧、statusline 双开串数据。零新 ABI、零新 ADR。</span>
