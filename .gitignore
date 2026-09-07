@@ -4,3 +4,4 @@
 # 编辑器与系统
 *.swp
 .DS_Store
+__pycache__/
