@@ -8,6 +8,42 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.4-rc.3",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.4-rc.3",
+      "capabilities": [
+        "ui",
+        "session"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-statusline-0.1.4-rc.3-aarch64-apple-darwin.rpix",
+          "sha256": "66450380da6652e70c4d7b7302afd27f05a889a3fc525f75725a56d8bbd1738c",
+          "release": "v0.1.4-rc.3"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.4-rc.3-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "888a02d4009f58582e36e5067b76d161499df09e86f441c7330101d49c750c8d",
+          "release": "v0.1.4-rc.3"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-statusline-0.1.4-rc.3-x86_64-pc-windows-msvc.rpix",
+          "sha256": "59f2b6dec55201e8794ffc57586f3dd2c5674aa9c4cae187a001077496f578bc",
+          "release": "v0.1.4-rc.3"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.4-rc.3-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "e25f50e0de60be1d8a6b3a2be0b228898a5a483f54a62979ba4c8915a90e1b76",
+          "release": "v0.1.4-rc.3"
+        }
+      ]
+    },
+    {
       "version": "0.1.4-rc.2",
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.2",
