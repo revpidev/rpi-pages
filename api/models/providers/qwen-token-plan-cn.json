@@ -63,6 +63,7 @@
         "supportsReasoningEffort": true
       },
       "thinkingLevelMap": {
+        "off": null,
         "minimal": null,
         "low": null,
         "medium": null,
@@ -96,6 +97,7 @@
         "supportsReasoningEffort": true
       },
       "thinkingLevelMap": {
+        "off": null,
         "minimal": null,
         "low": null,
         "medium": null,
@@ -129,6 +131,41 @@
         "supportsReasoningEffort": true
       },
       "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
+      },
+      "reasoning": true,
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 384000
+    },
+    {
+      "id": "deepseek-v4-pro-0813",
+      "name": "DeepSeek V4 Pro 0813",
+      "api": "openai-completions",
+      "provider": "qwen-token-plan-cn",
+      "baseUrl": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "compat": {
+        "thinkingFormat": "qwen",
+        "supportsDeveloperRole": false,
+        "supportsStore": false,
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
         "minimal": null,
         "low": null,
         "medium": null,
@@ -228,6 +265,7 @@
         "supportsReasoningEffort": true
       },
       "thinkingLevelMap": {
+        "off": null,
         "minimal": null,
         "low": null,
         "medium": null,
@@ -430,6 +468,41 @@
       "maxTokens": 65536
     },
     {
+      "id": "qwen3.8-flash",
+      "name": "Qwen3.8 Flash",
+      "api": "openai-completions",
+      "provider": "qwen-token-plan-cn",
+      "baseUrl": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
+      "compat": {
+        "thinkingFormat": "qwen",
+        "supportsDeveloperRole": false,
+        "supportsStore": false,
+        "supportsReasoningEffort": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": null,
+        "xhigh": "xhigh",
+        "max": null
+      },
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 131072
+    },
+    {
       "id": "qwen3.8-max",
       "name": "Qwen3.8 Max",
       "api": "openai-completions",
@@ -442,6 +515,7 @@
         "supportsReasoningEffort": true
       },
       "thinkingLevelMap": {
+        "off": null,
         "minimal": null,
         "low": "low",
         "medium": "medium",
