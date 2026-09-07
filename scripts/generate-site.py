@@ -21,6 +21,10 @@ Output (Cloudflare Pages project rooted at this repository):
   the version check (version_check.rs: `version` is required, non-2xx or a
   missing version means "no update"). Defaults to the rpi workspace version;
   override with --version when publishing a release.
+- api/latest-rc-version.json — same schema, the RC (pre-release) channel
+  endpoint probed by `rpi update --rc` (V14-19; the client derives the URL
+  from the stable endpoint's directory). Only written when --rc-version is
+  given; stable releases never touch it (RELEASING.md RC section).
 - install.sh / install.ps1 — the installer scripts served at the site root
   (`https://revpi.dev/install.sh`, `.../install.ps1`). The single source of
   truth lives in the rpi repository; this step copies them verbatim.
@@ -91,6 +95,24 @@ def generate_latest_version(version: str, note: str | None) -> None:
     out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def generate_latest_rc_version(version: str, note: str | None) -> None:
+    """V14-19（rpi 自有）：写 RC 端点 `api/latest-rc-version.json`——
+    schema 与 stable 端点一致，内容为最新 RC tag 版本（R6.2.2）；仅
+    `--rc-version` 显式给出时才触碰该文件（与 `--version` 独立，可分别
+    刷新）；stable 发布不调用本函数（RELEASING.md RC 小节）。"""
+    if not is_rc_version(version):
+        raise SystemExit(
+            f"invalid RC version {version!r}: expected <stable>-rc.<N> "
+            "(lowercase rc, dotted numeric field, no leading zeros)"
+        )
+    out = SITE / "api/latest-rc-version.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    payload = {"version": version, "packageName": PACKAGE_NAME}
+    if note:
+        payload["note"] = note
+    out.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 INSTALL_SCRIPTS = ["install.sh", "install.ps1"]
 
 
@@ -122,6 +144,22 @@ def sync_install_scripts(rpi_repo: Path) -> list[str]:
 NAME_PATTERN = re.compile(r"^[a-z0-9][a-z0-9-]{1,63}$")
 TAG_PATTERN = re.compile(r"^v(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)$")
 SHA256_LINE = re.compile(r"^([0-9a-fA-F]{64})\s+\S+$")
+
+# V14-19（rpi 自有）：RC 版本号规范（rpi-docs v0.1.4 需求基线 R6.1.1）——
+# `<stable>-rc.<N>`，小写、点分数字段、数字段禁前导零（SemVer §9）。
+# 发布侧（--rc-version）与索引侧（预发布形态闸）共用。
+RC_VERSION_PATTERN = re.compile(r"^\d+\.\d+\.\d+-rc\.(0|[1-9]\d*)$")
+
+
+def is_prerelease_version(version: str) -> bool:
+    """含 semver 预发布段（`X.Y.Z-<pre>`）即预发布版本。"""
+    return bool(re.match(r"^\d+\.\d+\.\d+-[0-9A-Za-z.-]+$", version))
+
+
+def is_rc_version(version: str) -> bool:
+    """合法 RC 形态（`<stable>-rc.<N>`）；非 rc 形态的预发布版本会被
+    索引侧形态闸拦下（R6.5.3）。"""
+    return bool(RC_VERSION_PATTERN.match(version))
 
 
 def load_registry() -> list[dict]:
@@ -219,6 +257,16 @@ def extension_versions(entry: dict) -> list[dict] | None:
         if not tag_match:
             continue  # 只认 v<semver> 形态的 tag
         version = tag_match.group(1)
+        # V14-19 预发布形态闸（R6.5.3/R6.1.1）：预发布版本只认
+        # `<stable>-rc.<N>` 形态——误打的 beta/大写 RC/无点 rc 等告警并
+        # 拒入索引（SemVer 层无法强制约定层形态）。
+        if is_prerelease_version(version) and not is_rc_version(version):
+            print(
+                f"warning: {name}: prerelease tag {release['tag_name']!r} does not match "
+                "the <stable>-rc.<N> convention (R6.1.1); skipped",
+                file=sys.stderr,
+            )
+            continue
         assets_by_name = {a["name"]: a for a in release.get("assets", [])}
         artifacts = []
         for asset_name in sorted(assets_by_name):
@@ -288,7 +336,12 @@ def generate_extensions(rpi_repo: Path) -> list[str]:
             for record in versions
         ]
 
-        latest = next((r["version"] for r in versions if not r["yanked"]), None)
+        # V14-19（R6.5.3）：latest 排除预发布——rc 入 versions 矩阵供
+        # `--rc` 通道解析，但不顶掉 stable 展示位。
+        latest = next(
+            (r["version"] for r in versions if not r["yanked"] and not is_prerelease_version(r["version"])),
+            None,
+        )
         detail = {
             "schemaVersion": 1,
             "name": name,
@@ -364,6 +417,19 @@ def main() -> int:
         default=None,
         help="optional release note shown by the client's update banner",
     )
+    parser.add_argument(
+        "--rc-version",
+        default=None,
+        help=(
+            "latest RC version for api/latest-rc-version.json (V14-19; "
+            "skipped unless given; must match <stable>-rc.<N>)"
+        ),
+    )
+    parser.add_argument(
+        "--rc-note",
+        default=None,
+        help="optional note carried by the RC endpoint payload",
+    )
     args = parser.parse_args()
 
     rpi_repo = Path(args.rpi_repo).resolve()
@@ -373,10 +439,15 @@ def main() -> int:
     generated = generate_catalogs(rpi_repo)
     version = args.version or workspace_version(rpi_repo)
     generate_latest_version(version, args.note)
+    # V14-19：RC 端点独立刷新（未给 --rc-version 时不触碰，stable 发布零影响）。
+    if args.rc_version is not None:
+        generate_latest_rc_version(args.rc_version, args.rc_note)
     copied = sync_install_scripts(rpi_repo)
     extensions = generate_extensions(rpi_repo)
     print(f"catalogs: {len(generated)} providers under {SITE / 'api/models/providers'}")
     print(f"version:  api/latest-version.json -> v{version}")
+    if args.rc_version is not None:
+        print(f"rc:       api/latest-rc-version.json -> v{args.rc_version}")
     print(f"install:  {', '.join(copied)} synced to site root")
     print(f"extensions: {len(extensions)} plugins under {SITE / 'api/extensions'} "
           f"({', '.join(extensions)})")
