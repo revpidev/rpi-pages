@@ -190,6 +190,25 @@ class StableEndpointGuardTests(unittest.TestCase):
                 payload, {"version": "0.1.4", "packageName": "rpi", "note": "hello"}
             )
 
+    def test_main_action_matrix(self):
+        # stable_endpoint_action 决策矩阵（rpi-pages#4）：
+        # - 稳定版本 → write（幂等重写）
+        # - RC-only（--rc-version、无 --version）+ 预发布 workspace → skip
+        #   （RELEASING.md RC 流程不碰 stable 端点）
+        # - 裸跑 + 预发布 workspace → refuse（事故闸）
+        # - 显式预发布 --version → refuse（手滑闸，含 RC-only 时）
+        self.assertEqual(gs.stable_endpoint_action(None, None, "0.1.3"), "write")
+        self.assertEqual(gs.stable_endpoint_action("0.1.3", None, "0.1.3"), "write")
+        self.assertEqual(
+            gs.stable_endpoint_action(None, "0.1.4-rc.5", "0.1.4-rc.5"), "skip"
+        )
+        self.assertEqual(gs.stable_endpoint_action(None, None, "0.1.4-rc.5"), "refuse")
+        self.assertEqual(
+            gs.stable_endpoint_action("0.1.4-rc.5", "0.1.4-rc.5", "0.1.4-rc.5"),
+            "refuse",
+        )
+        self.assertEqual(gs.stable_endpoint_action("0.1.4-rc.5", None, "0.1.4-rc.5"), "refuse")
+
 
 if __name__ == "__main__":
     unittest.main()
