@@ -50,6 +50,12 @@ catalog 与 latest-version 由 rpi 源码仓库生成。更新数据：
 # 1. 生成 catalog 与 latest-version，并同步安装脚本 install.sh/install.ps1
 #    到站点根（rpi 源码仓库默认取同级 `../rpi`，可用 --rpi-repo 覆盖；
 #    版本默认取 rpi workspace Cargo.toml）
+#    ⚠ RC 窗口内勿裸跑：workspace 版本是预发布（如 0.1.4-rc.4），
+#    stable 端点会被预发布形态闸拦下直接报错——此时显式传
+#    `--version <stable>`（RC 发布走 --rc-version，不碰 stable 端点）；
+#    确要把预发布写进 stable 端点须显式 --allow-prerelease（勿用）。
+#    RC 窗口内仅刷新 RC 端点：`--rc-version <stable>-rc.N`（此时 stable
+#    端点自动跳过不写入，无需额外旗标）。
 python3 scripts/generate-site.py
 #    发版时：python3 scripts/generate-site.py --version 0.2.0 --note "..."
 

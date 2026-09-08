@@ -86,7 +86,23 @@ def generate_catalogs(rpi_repo: Path) -> list[str]:
     return generated
 
 
-def generate_latest_version(version: str, note: str | None) -> None:
+def generate_latest_version(version: str, note: str | None, allow_prerelease: bool = False) -> None:
+    """写 stable 端点 `api/latest-version.json`。
+
+    预发布形态闸（rpi-pages#4，对称于 RC 端点侧的 `is_rc_version` 闸）：
+    RC 窗口内裸跑（版本回落 workspace Cargo.toml，如 `0.1.4-rc.4`）会把
+    预发布写进 stable 端点——stable 用户的更新横幅提示 pre-release、
+    `rpi update`（无旗标）真装 RC、install.sh 回退路径装 RC（历史上已
+    发生过一次，见 4160d1e 拆弹）。确需写预发布时须显式传
+    `--allow-prerelease`。
+    """
+    if is_prerelease_version(version) and not allow_prerelease:
+        raise SystemExit(
+            f"refusing to write prerelease version {version!r} to the stable endpoint "
+            "api/latest-version.json (R6.2.4: the stable channel must never point at a "
+            "pre-release). During an RC window, pass the stable version explicitly "
+            "(--version <stable>) or use --allow-prerelease to override."
+        )
     out = SITE / "api/latest-version.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     payload = {"version": version, "packageName": PACKAGE_NAME}
@@ -400,6 +416,27 @@ def generate_extensions(rpi_repo: Path) -> list[str]:
     return names
 
 
+def stable_endpoint_action(
+    args_version: str | None, rc_version: str | None, version: str
+) -> str:
+    """Decide what `main()` does with the stable endpoint (rpi-pages#4):
+
+    - `"write"` — resolved version is stable, safe to (re)write;
+    - `"skip"` — RC-only refresh (`--rc-version` given, no `--version`)
+      while the workspace sits on a prerelease: leave the stable endpoint
+      untouched (RELEASING.md RC 流程: RC 发布不碰 stable 端点);
+    - `"refuse"` — bare run during an RC window (version falls back to a
+      prerelease workspace), or an explicitly prerelease `--version`:
+      refuse (R6.2.4 — the stable channel must never point at a
+      pre-release; `--allow-prerelease` escapes at the call site).
+    """
+    if not is_prerelease_version(version):
+        return "write"
+    if args_version is None and rc_version is not None:
+        return "skip"
+    return "refuse"
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -416,6 +453,14 @@ def main() -> int:
         "--note",
         default=None,
         help="optional release note shown by the client's update banner",
+    )
+    parser.add_argument(
+        "--allow-prerelease",
+        action="store_true",
+        help=(
+            "let the stable endpoint carry a prerelease version (escapes the "
+            "prerelease shape guard; RC window bare runs are refused otherwise)"
+        ),
     )
     parser.add_argument(
         "--rc-version",
@@ -438,14 +483,37 @@ def main() -> int:
 
     generated = generate_catalogs(rpi_repo)
     version = args.version or workspace_version(rpi_repo)
-    generate_latest_version(version, args.note)
+    # rpi-pages#4: stable 端点预发布形态闸。RC 窗口内的 RC-only 刷新
+    # （--rc-version、未给 --version）不触碰 stable 端点；裸跑或显式
+    # 预发布 --version 拒绝（--allow-prerelease 显式逃生门）。
+    stable_written = True
+    if args.allow_prerelease:
+        generate_latest_version(version, args.note, allow_prerelease=True)
+    else:
+        action = stable_endpoint_action(args.version, args.rc_version, version)
+        if action == "write":
+            generate_latest_version(version, args.note)
+        elif action == "skip":
+            stable_written = False
+            print(
+                f"stable endpoint untouched: workspace is {version} (RC-only refresh); "
+                "refresh it explicitly with --version <stable> at stable release time"
+            )
+        else:
+            raise SystemExit(
+                f"refusing to write prerelease version {version!r} to the stable endpoint "
+                "api/latest-version.json (R6.2.4: the stable channel must never point at a "
+                "pre-release). During an RC window, pass the stable version explicitly "
+                "(--version <stable>) or use --allow-prerelease to override."
+            )
     # V14-19：RC 端点独立刷新（未给 --rc-version 时不触碰，stable 发布零影响）。
     if args.rc_version is not None:
         generate_latest_rc_version(args.rc_version, args.rc_note)
     copied = sync_install_scripts(rpi_repo)
     extensions = generate_extensions(rpi_repo)
     print(f"catalogs: {len(generated)} providers under {SITE / 'api/models/providers'}")
-    print(f"version:  api/latest-version.json -> v{version}")
+    if stable_written:
+        print(f"version:  api/latest-version.json -> v{version}")
     if args.rc_version is not None:
         print(f"rc:       api/latest-rc-version.json -> v{args.rc_version}")
     print(f"install:  {', '.join(copied)} synced to site root")
