@@ -155,5 +155,41 @@ class RcEndpointTests(unittest.TestCase):
                 self.assertFalse((Path(tmp) / "api/latest-version.json").exists())
 
 
+class StableEndpointGuardTests(unittest.TestCase):
+    """stable 端点预发布形态闸（rpi-pages#4）。"""
+
+    def test_refuses_prerelease_version(self):
+        # RC 窗口内裸跑（workspace 回落 0.1.4-rc.4）与手滑 --version 预发布
+        # 同样拒绝——stable 端点不得携带预发布（R6.2.4，防 4160d1e 事故重演）。
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(gs, "SITE", Path(tmp)):
+                with self.assertRaises(SystemExit) as ctx:
+                    gs.generate_latest_version("0.1.4-rc.4", None)
+                self.assertIn("prerelease", str(ctx.exception))
+                with self.assertRaises(SystemExit):
+                    gs.generate_latest_version("0.1.5-beta.1", None)
+                self.assertFalse((Path(tmp) / "api/latest-version.json").exists())
+
+    def test_allow_prerelease_escape_hatch(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(gs, "SITE", Path(tmp)):
+                gs.generate_latest_version("0.1.4-rc.4", None, allow_prerelease=True)
+                payload = json.loads(
+                    (Path(tmp) / "api/latest-version.json").read_text(encoding="utf-8")
+                )
+            self.assertEqual(payload["version"], "0.1.4-rc.4")
+
+    def test_stable_version_passes_guard(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(gs, "SITE", Path(tmp)):
+                gs.generate_latest_version("0.1.4", "hello")
+                payload = json.loads(
+                    (Path(tmp) / "api/latest-version.json").read_text(encoding="utf-8")
+                )
+            self.assertEqual(
+                payload, {"version": "0.1.4", "packageName": "rpi", "note": "hello"}
+            )
+
+
 if __name__ == "__main__":
     unittest.main()

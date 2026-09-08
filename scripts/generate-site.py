@@ -86,7 +86,23 @@ def generate_catalogs(rpi_repo: Path) -> list[str]:
     return generated
 
 
-def generate_latest_version(version: str, note: str | None) -> None:
+def generate_latest_version(version: str, note: str | None, allow_prerelease: bool = False) -> None:
+    """写 stable 端点 `api/latest-version.json`。
+
+    预发布形态闸（rpi-pages#4，对称于 RC 端点侧的 `is_rc_version` 闸）：
+    RC 窗口内裸跑（版本回落 workspace Cargo.toml，如 `0.1.4-rc.4`）会把
+    预发布写进 stable 端点——stable 用户的更新横幅提示 pre-release、
+    `rpi update`（无旗标）真装 RC、install.sh 回退路径装 RC（历史上已
+    发生过一次，见 4160d1e 拆弹）。确需写预发布时须显式传
+    `--allow-prerelease`。
+    """
+    if is_prerelease_version(version) and not allow_prerelease:
+        raise SystemExit(
+            f"refusing to write prerelease version {version!r} to the stable endpoint "
+            "api/latest-version.json (R6.2.4: the stable channel must never point at a "
+            "pre-release). During an RC window, pass the stable version explicitly "
+            "(--version <stable>) or use --allow-prerelease to override."
+        )
     out = SITE / "api/latest-version.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     payload = {"version": version, "packageName": PACKAGE_NAME}
@@ -418,6 +434,14 @@ def main() -> int:
         help="optional release note shown by the client's update banner",
     )
     parser.add_argument(
+        "--allow-prerelease",
+        action="store_true",
+        help=(
+            "let the stable endpoint carry a prerelease version (escapes the "
+            "prerelease shape guard; RC window bare runs are refused otherwise)"
+        ),
+    )
+    parser.add_argument(
         "--rc-version",
         default=None,
         help=(
@@ -438,7 +462,7 @@ def main() -> int:
 
     generated = generate_catalogs(rpi_repo)
     version = args.version or workspace_version(rpi_repo)
-    generate_latest_version(version, args.note)
+    generate_latest_version(version, args.note, allow_prerelease=args.allow_prerelease)
     # V14-19：RC 端点独立刷新（未给 --rc-version 时不触碰，stable 发布零影响）。
     if args.rc_version is not None:
         generate_latest_rc_version(args.rc_version, args.rc_note)
