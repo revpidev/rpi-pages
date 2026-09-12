@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-12T06:05:05Z",
+  "generatedAt": "2026-09-12T15:20:46Z",
   "extensions": [
     {
       "name": "rpi-mcp-adapter",
       "latest": "0.1.3",
-      "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle (port of pi-mcp-adapter @ v2.24.0)",
+      "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle (port of pi-mcp-adapter @ v2.32.1)",
       "kind": "native",
       "capabilities": [
         "tools",
@@ -14,7 +14,7 @@
         "ui"
       ],
       "downloads": null,
-      "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具,懒连接服务器生命周期(pi-mcp-adapter @ v2.24.0 移植)。",
+      "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具,懒连接服务器生命周期(pi-mcp-adapter @ v2.32.1 移植)。",
       "official": true
     },
     {

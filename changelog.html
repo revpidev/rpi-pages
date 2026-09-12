@@ -364,6 +364,24 @@
           <span class="l-en"><b>Closeout</b>: the theme-validation split ported (eb3e9feed — the library path becomes a lenient cast while structured diagnostics move into an app-installed validator; the themes golden now compares every case); all fixtures re-recorded and pinned to v0.85.0+ (seven session scenarios + six resource goldens, runbook repeatability spot-check green); workspace version 0.1.4.</span>
         </li>
       </ul>
+      <ul>
+        <li>
+          <span class="l-zh"><b>插件重定基</b>(TE13–TE27,ADR-0025):双插件 pin 原子切换(subagents v0.48.0→v0.66.0 / mcp-adapter v2.24.0→v2.32.1);<b>Breaking</b>:mcp direct 工具命名(#342/#346/#463/#455——server 前缀保留 provider-valid <code>-</code>/<code>_</code>,含 <code>-</code>/<code>_</code> 的 server 名工具名改变,不做新旧双注册,兼容指引见 <code>toolPrefix: "none"</code>);subagents 语义变更族(worktree preserved、generations/文件门户、锁域边界等)与 mcp 适配器 v2.32 系行为逐条对齐。</span>
+          <span class="l-en"><b>Plugin rebases</b> (TE13&ndash;TE27, ADR-0025): atomic pin switches (subagents v0.48.0&rarr;v0.66.0, mcp-adapter v2.24.0&rarr;v2.32.1); <b>breaking</b>: mcp direct-tool naming (#342/#346/#463/#455 — server prefixes keep provider-valid <code>-</code>/<code>_</code>, tool names change for servers containing them, no dual registration; see <code>toolPrefix: "none"</code> for the migration); the subagents semantic-change family and the mcp-adapter v2.32 line aligned item by item.</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>交互式自定义 UI ABI</b>(V14-20–V14-25,ADR-0024/ADR-0027):扩展可挂载交互组件的宿主 ABI(native + wasm 双载体)——7 个 additive <code>ui.*</code> host-call、行帧合成与输入分发、帧限额与 wasm fuel 预算(trap 结构化错误 + 强制卸载,宿主不崩溃)、七结束路径清理矩阵、<code>ui.editExternal</code> 外部编辑器链;新 additive host-call <code>ctx.sessionEntries</code>(活动分支 entries 只读,fail-closed;mcp 审批恢复已迁移消费)。</span>
+          <span class="l-en"><b>Interactive custom-UI ABI</b> (V14-20&ndash;V14-25, ADR-0024/ADR-0027): a host ABI for extension-mounted interactive components (native + wasm) — seven additive <code>ui.*</code> host calls, line-frame composition with input dispatch, frame caps and wasm fuel budgets (traps surface as structured errors with forced unload; the host never crashes), a seven-exit-path cleanup matrix, and <code>ui.editExternal</code>; plus the additive <code>ctx.sessionEntries</code> host call (read-only active-branch entries, fail-closed; the mcp approval restore now consumes it).</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>新插件 rpiv-ask-user-question</b>(TE28–TE32):结构化 ask_user_question 工具(上游 rpiv-mono @ v2.9.0+)——模型在需求不清时发起 1–4 题问卷(选项/预览/多选/备注),交互终端渲染底部 tabbed overlay,RPC/ACP 宿主降级为宿主原生逐题 walker;契约面与上游逐字节对拍;对话框高度稳定两轮修复;随宿主 Release 锁步发布并入 registry 索引(<code>rpi install rpiv-ask-user-question --rc</code> 解锁 rc 窗口)。</span>
+          <span class="l-en"><b>New plugin rpiv-ask-user-question</b> (TE28&ndash;TE32): the structured ask_user_question tool (upstream rpiv-mono @ v2.9.0+) — the model can ask 1&ndash;4 questions (options, previews, multi-select, notes) when requirements are unclear; interactive terminals render a bottom tabbed overlay while RPC/ACP hosts fall back to a native per-question walker; contract surfaces match upstream byte-for-byte; two rounds of dialog-height stabilization; shipped lockstep with host releases and indexed in the registry (<code>rpi install rpiv-ask-user-question --rc</code> during the rc window).</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>发布前审查修复</b>(rc.11):P0——交互模式 panic hook 接线(主屏/alt-screen 双变体,任一 panic 后终端必恢复);P1——read 负 limit 不再 panic、Windows bash kill/超时收敛、subagents syntheticPaths 越界校验、并行工具批 panic 事件配对、mcp adapter Ready/on_ready 竞态消除、8 个 SSE adapter 取消立即中断;P2 加固——wasm 内存上限、SSE/Bedrock 帧上限、auth.json 原子写、会话环防护等(全项见 changes/v0.1.4.md)。</span>
+          <span class="l-en"><b>Pre-release review fixes</b> (rc.11): P0 — the interactive mode now installs the panic hook (both renderer variants; any panic restores the terminal); P1 — negative read limits no longer panic, Windows bash kill/timeout converges, subagents syntheticPaths validated against escapes, parallel tool batches keep start/end pairing through panics, the mcp-adapter Ready/on_ready race window eliminated, all eight SSE adapters abort body reads immediately; P2 hardening — wasm memory caps, SSE/Bedrock frame caps, atomic auth.json writes, session-cycle guards and more (full list in changes/v0.1.4.md).</span>
+        </li>
+      </ul>
 
       <h2><span class="version-tag">0.1.3</span><span class="l-zh">性能与并发治理(2026-09-03)</span><span class="l-en">Performance &amp; concurrency governance (2026-09-03)</span></h2>
       <p>
