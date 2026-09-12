@@ -8,6 +8,44 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.4-rc.8",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.4-rc.8",
+      "capabilities": [
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpiv-ask-user-question-0.1.4-rc.8-aarch64-apple-darwin.rpix",
+          "sha256": "b61c7a2ec3bd3906c17ab5ead015ee179af5144fb0b787a7cd9eebb3c8272ced",
+          "release": "v0.1.4-rc.8"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpiv-ask-user-question-0.1.4-rc.8-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "eed7f80be7ad0741cea16633be81a74324fa660296749492a330778fefca566b",
+          "release": "v0.1.4-rc.8"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpiv-ask-user-question-0.1.4-rc.8-x86_64-pc-windows-msvc.rpix",
+          "sha256": "36baaf16440f29af82a968dd98a2cf38e0321d06fa5e0e061532b2dbc9008f53",
+          "release": "v0.1.4-rc.8"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpiv-ask-user-question-0.1.4-rc.8-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "6f12b1a8d6eea25d19e557f291761851c3c7e58a481b5671ca12805613af673c",
+          "release": "v0.1.4-rc.8"
+        }
+      ]
+    },
+    {
       "version": "0.1.4-rc.7",
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.7",
