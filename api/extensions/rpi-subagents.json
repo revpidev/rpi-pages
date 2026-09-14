@@ -8,6 +8,84 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.4-rc.13",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.4-rc.13",
+      "capabilities": [
+        "tools",
+        "commands",
+        "session",
+        "events",
+        "ui"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-subagents-0.1.4-rc.13-aarch64-apple-darwin.rpix",
+          "sha256": "d5593cbb3018dcb10d5f722717e6a9c0759d8620754e5440fb73676e377893e8",
+          "release": "v0.1.4-rc.13"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.4-rc.13-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "c3cfaf839e67909f11c21535523ef7a0c867de85dbdc19c4152952cb7e8c1e56",
+          "release": "v0.1.4-rc.13"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-subagents-0.1.4-rc.13-x86_64-pc-windows-msvc.rpix",
+          "sha256": "016bb9c0b2577fbf13ca41517d92e2c26664ba9a293b72a0b493792e960191ca",
+          "release": "v0.1.4-rc.13"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.4-rc.13-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "0452ea504f882e0adcb48c5fbd793c23ca735fb00ecf199ea74e24142de993bc",
+          "release": "v0.1.4-rc.13"
+        }
+      ]
+    },
+    {
+      "version": "0.1.4-rc.12",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.4-rc.12",
+      "capabilities": [
+        "tools",
+        "commands",
+        "session",
+        "events",
+        "ui"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-subagents-0.1.4-rc.12-aarch64-apple-darwin.rpix",
+          "sha256": "c0b5dfbe45502a5c3f6bb5cb3cb838e96aa780ca8a033d2780aed1e00fcc500a",
+          "release": "v0.1.4-rc.12"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.4-rc.12-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "a8adc4c7c9928320a48fc57b4a414da1af2f8254b2db68186ff92cc26d2a1ad2",
+          "release": "v0.1.4-rc.12"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-subagents-0.1.4-rc.12-x86_64-pc-windows-msvc.rpix",
+          "sha256": "edb2f7547f45d4f250ad4e9dc96219b630c10514fa5e355c2b4c543add856890",
+          "release": "v0.1.4-rc.12"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.4-rc.12-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "928cff6b2c3f0ad0a1db32f0f9d943b03deb855b8220850b5b4cc22d775a07f2",
+          "release": "v0.1.4-rc.12"
+        }
+      ]
+    },
+    {
       "version": "0.1.4-rc.11",
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.11",
