@@ -234,37 +234,6 @@
       "maxTokens": 131072
     },
     {
-      "id": "minimaxai/minimax-m3",
-      "name": "MiniMax-M3",
-      "api": "openai-completions",
-      "provider": "nvidia",
-      "baseUrl": "https://integrate.api.nvidia.com/v1",
-      "headers": {
-        "NVCF-POLL-SECONDS": "3600"
-      },
-      "reasoning": true,
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 0,
-        "output": 0,
-        "cacheRead": 0,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "maxTokensField": "max_tokens",
-        "supportsStrictMode": false,
-        "supportsLongCacheRetention": false
-      },
-      "contextWindow": 1000000,
-      "maxTokens": 16384
-    },
-    {
       "id": "mistralai/mistral-7b-instruct-v0.3",
       "name": "Mistral-7B-Instruct-v0.3",
       "api": "openai-completions",
@@ -627,6 +596,37 @@
       },
       "contextWindow": 262144,
       "maxTokens": 16384
+    },
+    {
+      "id": "z-ai/glm-5.3-flash",
+      "name": "GLM-5.3-Flash",
+      "api": "openai-completions",
+      "provider": "nvidia",
+      "baseUrl": "https://integrate.api.nvidia.com/v1",
+      "headers": {
+        "NVCF-POLL-SECONDS": "3600"
+      },
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "compat": {
+        "supportsStore": false,
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false,
+        "maxTokensField": "max_tokens",
+        "supportsStrictMode": false,
+        "supportsLongCacheRetention": false
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 131072
     }
   ]
 }

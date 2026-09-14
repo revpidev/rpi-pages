@@ -19,10 +19,22 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       }
     },
     {
@@ -45,10 +57,22 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       }
     },
     {
@@ -70,10 +94,60 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
+      }
+    },
+    {
+      "id": "accounts/fireworks/models/deepseek-v4p1-flash",
+      "name": "DeepSeek V4.1 Flash",
+      "provider": "fireworks",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0.22,
+        "output": 0.66,
+        "cacheRead": 0.007,
+        "cacheWrite": 0
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 384000,
+      "api": "anthropic-messages",
+      "baseUrl": "https://api.fireworks.ai/inference",
+      "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
+        "sendSessionAffinityHeaders": true,
+        "supportsEagerToolInputStreaming": false,
+        "supportsCacheControlOnTools": false,
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       }
     },
     {
@@ -95,10 +169,22 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
       }
     },
     {
@@ -121,6 +207,8 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
@@ -147,6 +235,8 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
@@ -173,6 +263,8 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
@@ -199,6 +291,46 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
+        "sendSessionAffinityHeaders": true,
+        "supportsEagerToolInputStreaming": false,
+        "supportsCacheControlOnTools": false,
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      }
+    },
+    {
+      "id": "accounts/fireworks/models/mistral-large-3-fp8",
+      "name": "Mistral Large 3 675B Instruct 2512",
+      "provider": "fireworks",
+      "reasoning": false,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 262144,
+      "maxTokens": 262144,
+      "api": "anthropic-messages",
+      "baseUrl": "https://api.fireworks.ai/inference",
+      "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
@@ -225,10 +357,22 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": null
       }
     },
     {
@@ -250,6 +394,8 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
@@ -275,6 +421,8 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
@@ -301,10 +449,22 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
       }
     },
     {
@@ -326,10 +486,22 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": null,
+        "xhigh": "xhigh",
+        "max": null
       }
     },
     {
@@ -351,10 +523,22 @@
       "api": "anthropic-messages",
       "baseUrl": "https://api.fireworks.ai/inference",
       "compat": {
+        "supportsToolReferences": true,
+        "allowEmptySignature": true,
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": null,
+        "xhigh": "xhigh",
+        "max": null
       }
     },
     {
@@ -384,8 +568,8 @@
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
-        "low": "high",
-        "medium": "high",
+        "low": null,
+        "medium": null,
         "high": "high",
         "xhigh": null,
         "max": "max"
@@ -405,8 +589,8 @@
         "cacheRead": 0.26,
         "cacheWrite": 0
       },
-      "contextWindow": 1000000,
-      "maxTokens": 131072,
+      "contextWindow": 1048573,
+      "maxTokens": 262144,
       "api": "openai-completions",
       "baseUrl": "https://api.fireworks.ai/inference/v1",
       "compat": {
@@ -440,7 +624,7 @@
         "cacheRead": 0.03,
         "cacheWrite": 0
       },
-      "contextWindow": 1000000,
+      "contextWindow": 1048573,
       "maxTokens": 131072,
       "api": "openai-completions",
       "baseUrl": "https://api.fireworks.ai/inference/v1",
@@ -492,7 +676,7 @@
         "off": null,
         "minimal": null,
         "low": "low",
-        "medium": "medium",
+        "medium": null,
         "high": "high",
         "xhigh": null,
         "max": "max"
@@ -525,8 +709,42 @@
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
-        "low": "high",
-        "medium": "high",
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
+      }
+    },
+    {
+      "id": "accounts/fireworks/routers/glm-5p3-fast",
+      "name": "GLM 5.3 Fast",
+      "provider": "fireworks",
+      "reasoning": true,
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 2.1,
+        "output": 6.6,
+        "cacheRead": 0.39,
+        "cacheWrite": 0
+      },
+      "contextWindow": 1048572,
+      "maxTokens": 262144,
+      "api": "openai-completions",
+      "baseUrl": "https://api.fireworks.ai/inference/v1",
+      "compat": {
+        "supportsStore": false,
+        "supportsDeveloperRole": false,
+        "sendSessionAffinityHeaders": true,
+        "supportsLongCacheRetention": false
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": null,
         "high": "high",
         "xhigh": null,
         "max": "max"
@@ -564,7 +782,7 @@
         "off": null,
         "minimal": null,
         "low": "low",
-        "medium": "medium",
+        "medium": null,
         "high": "high",
         "xhigh": null,
         "max": "max"

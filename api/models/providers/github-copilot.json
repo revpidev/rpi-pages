@@ -393,50 +393,6 @@
       }
     },
     {
-      "id": "gpt-6-astra",
-      "name": "GPT-6 Astra",
-      "api": "openai-completions",
-      "provider": "github-copilot",
-      "baseUrl": "https://api.individual.githubcopilot.com",
-      "reasoning": true,
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 10,
-        "output": 50,
-        "cacheRead": 1,
-        "cacheWrite": 12.5,
-        "tiers": [
-          {
-            "inputTokensAbove": 272000,
-            "input": 20,
-            "output": 75,
-            "cacheRead": 2,
-            "cacheWrite": 25
-          }
-        ]
-      },
-      "contextWindow": 1050000,
-      "maxTokens": 128000,
-      "headers": {
-        "User-Agent": "GitHubCopilotChat/0.35.0",
-        "Editor-Version": "vscode/1.107.0",
-        "Editor-Plugin-Version": "copilot-chat/0.35.0",
-        "Copilot-Integration-Id": "vscode-chat"
-      },
-      "compat": {
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false
-      },
-      "thinkingLevelMap": {
-        "xhigh": "xhigh",
-        "max": "max"
-      }
-    },
-    {
       "id": "kimi-k2.7-code",
       "name": "Kimi K2.7 Code",
       "api": "openai-completions",
@@ -871,6 +827,53 @@
       "thinkingLevelMap": {
         "off": null,
         "minimal": "low",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "compat": {
+        "supportsOpenAIGrammarTools": true
+      }
+    },
+    {
+      "id": "gpt-6-astra",
+      "name": "GPT-6 Astra",
+      "api": "openai-responses",
+      "provider": "github-copilot",
+      "baseUrl": "https://api.individual.githubcopilot.com",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 10,
+        "output": 50,
+        "cacheRead": 1,
+        "cacheWrite": 12.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 20,
+            "output": 75,
+            "cacheRead": 2,
+            "cacheWrite": 25
+          }
+        ]
+      },
+      "contextWindow": 1050000,
+      "maxTokens": 128000,
+      "headers": {
+        "User-Agent": "GitHubCopilotChat/0.35.0",
+        "Editor-Version": "vscode/1.107.0",
+        "Editor-Plugin-Version": "copilot-chat/0.35.0",
+        "Copilot-Integration-Id": "vscode-chat"
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
         "low": "low",
         "medium": "medium",
         "high": "high",
