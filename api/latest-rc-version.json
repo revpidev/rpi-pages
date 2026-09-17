@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4-rc.14",
+  "version": "0.1.4-rc.15",
   "packageName": "rpi",
-  "note": "高亮引擎跨语法 panic 根治(#47)+ 全仓 mod.rs 清零"
+  "note": "statusline live_output 原始材料透传(#45)"
 }
