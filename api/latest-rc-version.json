@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4-rc.15",
+  "version": "0.1.4-rc.16",
   "packageName": "rpi",
-  "note": "statusline live_output 原始材料透传(#45)"
+  "note": "statusline live_output 冻结 decode_ms(#50)"
 }
