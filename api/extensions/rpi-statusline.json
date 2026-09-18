@@ -20,25 +20,25 @@
         {
           "target": "aarch64-apple-darwin",
           "file": "rpi-statusline-0.1.4-aarch64-apple-darwin.rpix",
-          "sha256": "3b6b9a0720892a6143df8a2d6a3341c483630c8eb8e04538be60a1846a748450",
+          "sha256": "6a51c709dc083526459cac91012b14b42eb32ba93e67776117dafa3398b42f47",
           "release": "v0.1.4"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
           "file": "rpi-statusline-0.1.4-aarch64-unknown-linux-gnu.rpix",
-          "sha256": "d001a65f9a0bd2e60a208cb79088a021cac513bf195fcd441de5322456e1eb5d",
+          "sha256": "81a1317c86d8cdd450da6f944982c607cf5f577f36c25c7f29b5f99c3ad0b7d2",
           "release": "v0.1.4"
         },
         {
           "target": "x86_64-pc-windows-msvc",
           "file": "rpi-statusline-0.1.4-x86_64-pc-windows-msvc.rpix",
-          "sha256": "0c78eb392690886c48e2a29210a1aa81c8558d232f702ae8b2a8b5080e6337ae",
+          "sha256": "2c3680ef6ba3b5a115587c7d7f76e419bef515537de19627517926cdd6690475",
           "release": "v0.1.4"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-statusline-0.1.4-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "65c6e4ca027b371450b0e259bfe93a9d675343d145c483d8109a6bc4efede0e0",
+          "sha256": "cefb3984ec8f3392c814aa22784dbefe00c09915a7c7f6433e0e7b5e674caeaa",
           "release": "v0.1.4"
         }
       ]
