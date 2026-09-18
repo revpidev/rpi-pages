@@ -74,8 +74,13 @@ function headersFor(key, upstream) {
       headers.set(name, value);
     }
   }
-  // 版本化资产内容不可变，允许边缘与客户端长期缓存
-  headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  // Versioned asset URLs are *mostly* immutable, but tag re-pushes (a
+  // sanctioned operation — see the rpi repository's RELEASING.md) replace
+  // asset bytes under the same URL. A year-long immutable edge cache would
+  // then keep serving stale payloads whose sha256 no longer matches the
+  // refreshed sidecars. Cap the edge TTL at one hour so a re-push self-heals
+  // quickly; the extra origin fetches are negligible.
+  headers.set("Cache-Control", "public, max-age=3600");
   return headers;
 }
 

@@ -1,25 +1,30 @@
-// GitHub Release 资产官网代理：`/releases/download/v{version}/{filename}`
+// Official-site proxy for GitHub Release assets: `/releases/download/v{version}/{filename}`
 //
-// 用途：GitHub Releases 在部分网络（中国大陆）不可直连，这里由 Cloudflare
-// 边缘节点回源 GitHub 并流式转发，用户只需能访问 revpi.dev。URL 形态与
-// GitHub 完全同形、只换 base：
+// Purpose: GitHub Releases are unreachable from some networks (mainland China);
+// this Pages Function pulls from GitHub at the Cloudflare edge and streams the
+// bytes through, so users only need access to revpi.dev. The URL shape matches
+// GitHub exactly with only the base swapped:
 //   https://revpi.dev/releases/download/v0.1.0/rpi-0.1.0-x86_64-unknown-linux-gnu.tar.gz
 //
-// 为什么不是 R2/静态文件：单资产约 30MB（压缩后约 15MB）虽低于 Pages
-// 25MiB 静态上限，但入 git 会让仓库每版膨胀约 180MB；R2 需要账号绑定
-// 支付方式。代理回源零存储、零费用、发版零额外步骤（GitHub Release
-// 发布即镜像可用）。资产命名与 rpi 仓库 .github/workflows/build.yml 一致
-// （6 目标 × 资产 + .sha256 sidecar）。
+// Why not R2/static files: a single asset is ~30MB (~15MB compressed) — under
+// the Pages 25MiB static limit, but committing them would grow the repository
+// by ~180MB per release; R2 requires a payment method on the account. The
+// proxy keeps zero storage, zero cost, and zero extra release steps (the
+// mirror is live as soon as the GitHub Release assets exist). Asset naming
+// matches the rpi repository's .github/workflows/build.yml (6 targets ×
+// asset + .sha256 sidecar).
 //
-// 严格校验 key 形状，不匹配一律 404 —— 防止借该路由代理任意上游路径。
+// Strict key-shape validation; anything else is a 404 — this route must never
+// become an open proxy for arbitrary upstream paths.
 const KEY_PATTERN =
   /^v\d+\.\d+\.\d+(-[0-9A-Za-z.]+)?\/rpi-[0-9A-Za-z.+-]+-(x86_64-pc-windows-msvc|aarch64-apple-darwin|x86_64-unknown-linux-gnu|x86_64-unknown-linux-musl|aarch64-unknown-linux-musl|aarch64-unknown-linux-gnu)\.(tar\.gz|zip)(\.sha256)?$/;
 
 const UPSTREAM_BASE =
   "https://github.com/revpidev/rpi/releases/download";
 
-// 错误响应必须 no-store：上游瞬时缺失（如发版资产逐个上传中）若被边缘
-// 缓存，默认 max-age=14400 会让镜像在资产就绪后仍返回 404 长达 4 小时。
+// Error responses must be no-store: if an edge cached a transient upstream
+// miss (assets upload one by one during a release), the default max-age would
+// keep serving 404s long after the assets became available.
 function errorResponse(status) {
   const headers = new Headers();
   headers.set("Cache-Control", "no-store");
@@ -49,21 +54,28 @@ function headersFor(key, upstream) {
       headers.set(name, value);
     }
   }
-  // 版本化资产内容不可变，允许边缘与客户端长期缓存
-  headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  // Versioned asset URLs are *mostly* immutable, but tag re-pushes are a
+  // sanctioned operation in this project (RELEASING.md: a re-pushed tag
+  // refreshes both assets and notes) and replace asset bytes under the same
+  // URL. A year-long immutable edge cache would then keep serving stale
+  // payloads whose sha256 no longer matches the refreshed sidecars (observed
+  // once during the v0.1.4 release re-push). Cap the edge TTL at one hour so
+  // a re-push self-heals quickly; the extra origin fetches are negligible.
+  headers.set("Cache-Control", "public, max-age=3600");
   return headers;
 }
 
 async function proxy(key, method) {
-  // GitHub 对 release 资产返回 302 到 CDN，fetch 默认跟随；body 直接透传
-  // 流式转发，不在 Worker 内存中缓冲。
+  // GitHub answers release assets with a 302 to its CDN; fetch follows by
+  // default. The body is streamed through, never buffered in the Worker.
   const upstream = await fetch(`${UPSTREAM_BASE}/${key}`, {
     method,
     redirect: "follow",
     headers: { "User-Agent": "revpi.dev release proxy" },
   });
   if (!upstream.ok) {
-    // 上游 404（版本/资产不存在）原样透传语义；其余上游错误归一为 502。
+    // Upstream 404 (version/asset doesn't exist) passes the semantics through
+    // verbatim; every other upstream error normalizes to 502.
     return upstream.status === 404 ? notFound() : errorResponse(502);
   }
   return new Response(upstream.body, {
