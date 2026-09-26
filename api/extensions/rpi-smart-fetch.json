@@ -8,6 +8,42 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.5-rc.3",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.5-rc.3",
+      "capabilities": [
+        "tools",
+        "session"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-smart-fetch-0.1.5-rc.3-aarch64-apple-darwin.rpix",
+          "sha256": "90f67671a68e2ebfe420673272237dd9088ec6e54b2bd80194a816475b66035c",
+          "release": "v0.1.5-rc.3"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.5-rc.3-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "588ccd62c5f7742b9b1125d83349fb21b15b02f6966421e5acd6f7325e28305b",
+          "release": "v0.1.5-rc.3"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-smart-fetch-0.1.5-rc.3-x86_64-pc-windows-msvc.rpix",
+          "sha256": "ac88e03226405988a8609192b32ae2a417ab4059207dca53a71e0a8604b09a2d",
+          "release": "v0.1.5-rc.3"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.5-rc.3-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "f53abaa799409c589f6d7c2d94fe8789ff8a35c3b7734119376cc4615fd6428a",
+          "release": "v0.1.5-rc.3"
+        }
+      ]
+    },
+    {
       "version": "0.1.5-rc.2",
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.2",
