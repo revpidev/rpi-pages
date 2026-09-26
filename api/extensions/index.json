@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-18T04:13:52Z",
+  "generatedAt": "2026-09-26T02:21:11Z",
   "extensions": [
     {
       "name": "rpi-mcp-adapter",
@@ -72,6 +72,22 @@
       ],
       "downloads": null,
       "descriptionZh": "结构化 ask_user_question 工具:模型在需求不清时向你发起的问卷(1-4 题、每题 2-4 个带描述选项、可选 markdown 预览、多选、备注),以交互式 overlay 渲染并提供 RPC 对话框降级。",
+      "official": true
+    },
+    {
+      "name": "rpiv-todo",
+      "latest": null,
+      "description": "Task-list todo tool: a live overlay panel above the editor the model keeps current with one tool call (six actions, four-state machine, dependency tracking), rebuilt from the session branch so it survives compaction and /reload, plus a /todos command and a collapse shortcut.",
+      "kind": "native",
+      "capabilities": [
+        "tools",
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "downloads": null,
+      "descriptionZh": "任务清单工具:编辑器上方常驻 overlay 面板,模型经 todo 工具(六动作/四态状态机/依赖追踪)单次调用即可保持清单最新,从会话分支重放重建,跨 compaction 与 /reload 存活,附 /todos 命令与折叠快捷键。",
       "official": true
     }
   ]

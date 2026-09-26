@@ -25,13 +25,14 @@
         "Editor-Plugin-Version": "copilot-chat/0.35.0",
         "Copilot-Integration-Id": "vscode-chat"
       },
+      "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "forceAdaptiveThinking": true
+      },
       "thinkingLevelMap": {
         "off": null,
         "xhigh": "xhigh",
         "max": "max"
-      },
-      "compat": {
-        "forceAdaptiveThinking": true
       }
     },
     {
@@ -59,13 +60,14 @@
         "Editor-Plugin-Version": "copilot-chat/0.35.0",
         "Copilot-Integration-Id": "vscode-chat"
       },
+      "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "forceAdaptiveThinking": true
+      },
       "thinkingLevelMap": {
         "off": null,
         "xhigh": "xhigh",
         "max": "max"
-      },
-      "compat": {
-        "forceAdaptiveThinking": true
       }
     },
     {
@@ -157,14 +159,15 @@
         "Editor-Plugin-Version": "copilot-chat/0.35.0",
         "Copilot-Integration-Id": "vscode-chat"
       },
+      "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "forceAdaptiveThinking": true,
+        "supportsTemperature": false
+      },
       "thinkingLevelMap": {
         "xhigh": "xhigh",
         "max": "max",
         "minimal": "low"
-      },
-      "compat": {
-        "forceAdaptiveThinking": true,
-        "supportsTemperature": false
       }
     },
     {
@@ -192,14 +195,15 @@
         "Editor-Plugin-Version": "copilot-chat/0.35.0",
         "Copilot-Integration-Id": "vscode-chat"
       },
+      "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "forceAdaptiveThinking": true,
+        "supportsTemperature": false
+      },
       "thinkingLevelMap": {
         "xhigh": "xhigh",
         "max": "max",
         "minimal": "low"
-      },
-      "compat": {
-        "forceAdaptiveThinking": true,
-        "supportsTemperature": false
       }
     },
     {
@@ -451,7 +455,8 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false
+        "supportsReasoningEffort": false,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -574,7 +579,9 @@
         "max": null
       },
       "compat": {
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       }
     },
     {
@@ -612,7 +619,9 @@
         "max": null
       },
       "compat": {
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       }
     },
     {
@@ -693,7 +702,9 @@
         "max": null
       },
       "compat": {
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       }
     },
     {
@@ -740,7 +751,9 @@
         "max": "max"
       },
       "compat": {
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       }
     },
     {
@@ -787,7 +800,9 @@
         "max": "max"
       },
       "compat": {
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       }
     },
     {
@@ -834,7 +849,9 @@
         "max": "max"
       },
       "compat": {
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       }
     },
     {
@@ -881,7 +898,9 @@
         "max": "max"
       },
       "compat": {
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       }
     },
     {

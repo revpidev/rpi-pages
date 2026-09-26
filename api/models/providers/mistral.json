@@ -620,6 +620,25 @@
       },
       "contextWindow": 1000000,
       "maxTokens": 131072
+    },
+    {
+      "id": "zai-glm-5-3",
+      "name": "GLM-5.3",
+      "api": "mistral-conversations",
+      "provider": "mistral",
+      "baseUrl": "https://api.mistral.ai",
+      "reasoning": true,
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.14,
+        "cacheWrite": 0
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 131072
     }
   ]
 }

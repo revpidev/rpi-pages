@@ -32,6 +32,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -70,6 +71,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -108,6 +110,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -147,6 +150,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -186,6 +190,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -230,6 +235,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -274,6 +280,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -318,6 +325,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -356,6 +364,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -399,6 +408,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -442,6 +452,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -481,6 +492,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -520,6 +532,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -558,6 +571,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -601,6 +615,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -644,6 +659,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -687,6 +703,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -730,6 +747,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "baseten",
         "chatTemplateArgs": {
@@ -774,6 +792,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -813,6 +832,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },
@@ -852,6 +872,7 @@
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": true,
+        "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
         "thinkingFormat": "openai"
       },

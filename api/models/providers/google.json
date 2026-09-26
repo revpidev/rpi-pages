@@ -127,6 +127,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -138,10 +147,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.1-flash-lite",
@@ -150,6 +156,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -161,10 +176,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.1-flash-lite-image",
@@ -173,6 +185,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": null,
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -184,10 +205,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 65536,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.1-flash-lite-preview",
@@ -196,6 +214,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -207,10 +234,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.1-flash-live-preview",
@@ -219,6 +243,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -230,10 +263,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 131072,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.1-pro-preview",
@@ -242,6 +272,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -253,14 +292,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": null,
-        "low": "LOW",
-        "medium": null,
-        "high": "HIGH"
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.1-pro-preview-customtools",
@@ -269,6 +301,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -280,14 +321,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": null,
-        "low": "LOW",
-        "medium": null,
-        "high": "HIGH"
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.5-flash",
@@ -296,6 +330,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -307,10 +350,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.5-flash-lite",
@@ -319,6 +359,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -330,10 +379,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.6-flash",
@@ -342,6 +388,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -353,10 +408,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.7-flash",
@@ -365,6 +417,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -376,10 +437,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-3.8-flash",
@@ -388,6 +446,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -399,10 +466,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-flash-latest",
@@ -411,6 +475,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -422,10 +495,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemini-flash-lite-latest",
@@ -434,6 +504,15 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
+      },
       "input": [
         "text",
         "image"
@@ -445,10 +524,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536,
-      "thinkingLevelMap": {
-        "off": null
-      }
+      "maxTokens": 65536
     },
     {
       "id": "gemma-4-26b-a4b-it",
@@ -457,6 +533,13 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "MINIMAL",
+        "low": null,
+        "medium": null,
+        "high": "HIGH"
+      },
       "input": [
         "text",
         "image"
@@ -468,14 +551,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 262144,
-      "maxTokens": 32768,
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": "MINIMAL",
-        "low": null,
-        "medium": null,
-        "high": "HIGH"
-      }
+      "maxTokens": 32768
     },
     {
       "id": "gemma-4-31b-it",
@@ -484,6 +560,13 @@
       "provider": "google",
       "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
       "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "MINIMAL",
+        "low": null,
+        "medium": null,
+        "high": "HIGH"
+      },
       "input": [
         "text",
         "image"
@@ -495,14 +578,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 262144,
-      "maxTokens": 32768,
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": "MINIMAL",
-        "low": null,
-        "medium": null,
-        "high": "HIGH"
-      }
+      "maxTokens": 32768
     }
   ]
 }

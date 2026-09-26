@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "name": "rpiv-todo",
+  "repository": "revpidev/rpi",
+  "author": "revpidev",
+  "license": "MIT",
+  "kind": "native",
+  "official": true,
+  "versions": [
+    {
+      "version": "0.1.5-rc.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.5-rc.1",
+      "capabilities": [
+        "tools",
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpiv-todo-0.1.5-rc.1-aarch64-apple-darwin.rpix",
+          "sha256": "98df694ea59e84f7cb0e7721978642cc6a455f06bbac140e760100f3568738ee",
+          "release": "v0.1.5-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpiv-todo-0.1.5-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "bc606c4249b6f4a4ec82bfbe7cac70fcf29041d4672e55c2dcb389b77e951a08",
+          "release": "v0.1.5-rc.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpiv-todo-0.1.5-rc.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "409d5cdfde7fb9bae90393e1a7aa5de9d710609f20b4fe557c06752a57a177d9",
+          "release": "v0.1.5-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpiv-todo-0.1.5-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "f8c094b75c1916202a36c0ea81ebe3057b5812ead588b521f6e08979c7489047",
+          "release": "v0.1.5-rc.1"
+        }
+      ]
+    }
+  ]
+}

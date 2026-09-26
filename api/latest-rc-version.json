@@ -1,5 +1,4 @@
 {
-  "version": "0.1.4-rc.16",
-  "packageName": "rpi",
-  "note": "statusline live_output 冻结 decode_ms(#50)"
+  "version": "0.1.5-rc.1",
+  "packageName": "rpi"
 }

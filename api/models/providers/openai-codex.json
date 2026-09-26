@@ -60,7 +60,8 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -99,7 +100,8 @@
       "compat": {
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -138,7 +140,8 @@
       "compat": {
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -177,7 +180,8 @@
       "compat": {
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -220,7 +224,8 @@
       "compat": {
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     }
   ]

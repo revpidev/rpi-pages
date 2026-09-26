@@ -20,7 +20,8 @@
       "maxTokens": 40960,
       "compat": {
         "supportsStore": false,
-        "supportsDeveloperRole": false
+        "supportsDeveloperRole": false,
+        "supportsStrictMode": false
       },
       "thinkingLevelMap": {
         "off": null,
@@ -53,7 +54,8 @@
       "maxTokens": 32768,
       "compat": {
         "supportsStore": false,
-        "supportsDeveloperRole": false
+        "supportsDeveloperRole": false,
+        "supportsStrictMode": false
       },
       "thinkingLevelMap": {
         "off": "none",

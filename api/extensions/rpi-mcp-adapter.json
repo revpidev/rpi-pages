@@ -8,6 +8,44 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.5-rc.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.5-rc.1",
+      "capabilities": [
+        "tools",
+        "commands",
+        "session",
+        "ui"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-mcp-adapter-0.1.5-rc.1-aarch64-apple-darwin.rpix",
+          "sha256": "c687f330a962bdc2ad5375a3cef4e4469384b684c580c5042bcfddf0bb5a1323",
+          "release": "v0.1.5-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-mcp-adapter-0.1.5-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "6cecb3d803c02cdba0ab14fa391a0e01d8ace1e6f9955014921f53fbe0a6e660",
+          "release": "v0.1.5-rc.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-mcp-adapter-0.1.5-rc.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "ed355a12eda90f139293fda0d4984022fec0f32b3a3c7d852ba0fab964d2e4be",
+          "release": "v0.1.5-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-mcp-adapter-0.1.5-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "c23bc36b44ea844e2d85e184621af02e83759a1709cd6cc0384b54a27733666c",
+          "release": "v0.1.5-rc.1"
+        }
+      ]
+    },
+    {
       "version": "0.1.4",
       "rpiAbi": 1,
       "minHostVersion": "0.1.4",

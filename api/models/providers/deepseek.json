@@ -57,7 +57,8 @@
         "supportsDeveloperRole": false,
         "maxTokensField": "max_tokens",
         "requiresReasoningContentOnAssistantMessages": true,
-        "thinkingFormat": "deepseek"
+        "thinkingFormat": "deepseek",
+        "supportsMidConvoSystemMessages": true
       },
       "thinkingLevelMap": {
         "minimal": null,

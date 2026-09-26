@@ -655,7 +655,8 @@
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -690,7 +691,8 @@
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -767,7 +769,8 @@
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -811,7 +814,8 @@
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
-        "supportsToolSearch": true
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -898,6 +902,7 @@
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
         "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true,
         "supportsExplicitPromptCacheMode": true
       }
     },
@@ -943,6 +948,7 @@
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
         "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true,
         "supportsExplicitPromptCacheMode": true
       }
     },
@@ -988,6 +994,7 @@
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
         "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true,
         "supportsExplicitPromptCacheMode": true
       }
     },
@@ -1033,6 +1040,7 @@
         "supportsOpenAIGrammarTools": true,
         "supportsAdditionalTools": true,
         "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true,
         "supportsExplicitPromptCacheMode": true
       }
     },

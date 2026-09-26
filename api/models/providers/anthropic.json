@@ -19,12 +19,9 @@
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
-      "thinkingLevelMap": {
-        "off": null,
-        "xhigh": "xhigh",
-        "max": "max"
-      },
       "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "supportsMidConvoToolChanges": true,
         "forceAdaptiveThinking": true,
         "supportsStrictTools": true,
         "allowedFallbackModels": [
@@ -49,6 +46,15 @@
             }
           }
         ]
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -72,6 +78,8 @@
       "maxTokens": 128000,
       "compat": {
         "supportsMidConvoEffort": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsMidConvoToolChanges": true,
         "forceAdaptiveThinking": true,
         "supportsStrictTools": true
       },
@@ -79,6 +87,10 @@
         "off": null,
         "xhigh": "xhigh",
         "max": "max"
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -102,6 +114,10 @@
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -125,6 +141,10 @@
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -148,6 +168,10 @@
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -171,6 +195,10 @@
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -198,6 +226,10 @@
       "compat": {
         "forceAdaptiveThinking": true,
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -227,6 +259,10 @@
         "forceAdaptiveThinking": true,
         "supportsTemperature": false,
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -248,14 +284,20 @@
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "supportsMidConvoToolChanges": true,
+        "forceAdaptiveThinking": true,
+        "supportsTemperature": false,
+        "supportsStrictTools": true
+      },
       "thinkingLevelMap": {
         "xhigh": "xhigh",
         "max": "max"
       },
-      "compat": {
-        "forceAdaptiveThinking": true,
-        "supportsTemperature": false,
-        "supportsStrictTools": true
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -279,6 +321,8 @@
       "maxTokens": 128000,
       "compat": {
         "supportsMidConvoEffort": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsMidConvoToolChanges": true,
         "forceAdaptiveThinking": true,
         "supportsTemperature": false,
         "supportsStrictTools": true
@@ -287,6 +331,10 @@
         "off": null,
         "xhigh": "xhigh",
         "max": "max"
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -310,6 +358,10 @@
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -333,6 +385,10 @@
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -360,6 +416,10 @@
       "compat": {
         "forceAdaptiveThinking": true,
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     },
     {
@@ -388,6 +448,10 @@
       "compat": {
         "forceAdaptiveThinking": true,
         "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
       }
     }
   ]

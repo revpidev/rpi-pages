@@ -25,7 +25,8 @@
         "supportsReasoningEffort": false,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": false,
-        "thinkingFormat": "deepseek"
+        "thinkingFormat": "deepseek",
+        "supportsMidConvoSystemMessages": true
       }
     },
     {
@@ -53,7 +54,8 @@
         "supportsReasoningEffort": false,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": false,
-        "thinkingFormat": "deepseek"
+        "thinkingFormat": "deepseek",
+        "supportsMidConvoSystemMessages": true
       },
       "thinkingLevelMap": {
         "off": null
@@ -84,7 +86,8 @@
         "supportsReasoningEffort": false,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": false,
-        "thinkingFormat": "deepseek"
+        "thinkingFormat": "deepseek",
+        "supportsMidConvoSystemMessages": true
       },
       "thinkingLevelMap": {
         "off": null
@@ -117,7 +120,8 @@
         "supportsStrictMode": false,
         "thinkingFormat": "openai",
         "requiresReasoningContentOnAssistantMessages": true,
-        "deferredToolsMode": "kimi"
+        "supportsMidConvoSystemMessages": true,
+        "supportsMidConvoToolAdditions": true
       },
       "thinkingLevelMap": {
         "off": null,
