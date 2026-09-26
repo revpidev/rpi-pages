@@ -8,6 +8,45 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.5-rc.4",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.5-rc.4",
+      "capabilities": [
+        "tools",
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpiv-todo-0.1.5-rc.4-aarch64-apple-darwin.rpix",
+          "sha256": "35ab9f19423a57998712db1a1b4a71ba7efffb4b94bd8b71c1874fd883479af9",
+          "release": "v0.1.5-rc.4"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpiv-todo-0.1.5-rc.4-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "d512c80b0f0ab28dd04989017d136461f522c8b6a37225e5c82c8d8b54ad5e4b",
+          "release": "v0.1.5-rc.4"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpiv-todo-0.1.5-rc.4-x86_64-pc-windows-msvc.rpix",
+          "sha256": "6badb1fefba14d2641e83682cd27b23476f3115b16173fc7602b5af2e0a89bb6",
+          "release": "v0.1.5-rc.4"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpiv-todo-0.1.5-rc.4-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "80dd2b410abfb80e338a5b990eef1765b3d50d913e7f9a2061bcf653cd303dd2",
+          "release": "v0.1.5-rc.4"
+        }
+      ]
+    },
+    {
       "version": "0.1.5-rc.3",
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.3",
