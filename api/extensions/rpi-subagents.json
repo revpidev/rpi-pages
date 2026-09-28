@@ -8,6 +8,45 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.5-rc.6",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.5-rc.6",
+      "capabilities": [
+        "tools",
+        "commands",
+        "session",
+        "events",
+        "ui"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-subagents-0.1.5-rc.6-aarch64-apple-darwin.rpix",
+          "sha256": "42968374eebb3e2defccbd2b3931649c375fff71eeadeb29189a3ab1d4c3d474",
+          "release": "v0.1.5-rc.6"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.5-rc.6-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "df60d12a07dec1ac48a7f68dddae8473b4add4300526a5c860b44eebe63dd1da",
+          "release": "v0.1.5-rc.6"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-subagents-0.1.5-rc.6-x86_64-pc-windows-msvc.rpix",
+          "sha256": "823b7204552dcb17380da2a6fb0acd00bd8eacbd07df54ed0e15dd79f187fb43",
+          "release": "v0.1.5-rc.6"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-subagents-0.1.5-rc.6-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "5b7311d669f42ecc4aea754161e2f457f28d1bf95da87cfad6f437625cc4fce2",
+          "release": "v0.1.5-rc.6"
+        }
+      ]
+    },
+    {
       "version": "0.1.5-rc.5",
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.5",
