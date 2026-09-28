@@ -94,10 +94,10 @@
         "sendSessionAffinityHeaders": true
       },
       "thinkingLevelMap": {
-        "off": null,
+        "off": "none",
         "minimal": null,
-        "low": "low",
-        "medium": "medium",
+        "low": null,
+        "medium": null,
         "high": "high",
         "xhigh": null,
         "max": null
@@ -230,10 +230,10 @@
         "sendSessionAffinityHeaders": true
       },
       "thinkingLevelMap": {
-        "off": null,
+        "off": "none",
         "minimal": null,
-        "low": "low",
-        "medium": "medium",
+        "low": null,
+        "medium": null,
         "high": "high",
         "xhigh": null,
         "max": null
@@ -263,15 +263,6 @@
         "supportsDeveloperRole": false,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      },
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": null,
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": null,
-        "max": null
       }
     },
     {
@@ -365,6 +356,15 @@
         "supportsDeveloperRole": false,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": null,
+        "max": null
       }
     },
     {
@@ -450,15 +450,6 @@
         "supportsDeveloperRole": false,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      },
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": null,
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": null,
-        "max": null
       }
     },
     {
@@ -486,13 +477,13 @@
         "sendSessionAffinityHeaders": true
       },
       "thinkingLevelMap": {
-        "off": null,
+        "off": "none",
         "minimal": null,
-        "low": "low",
-        "medium": "medium",
+        "low": null,
+        "medium": null,
         "high": "high",
         "xhigh": null,
-        "max": null
+        "max": "max"
       }
     },
     {
@@ -512,7 +503,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1310720,
-      "maxTokens": 1310720,
+      "maxTokens": 1048576,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
@@ -523,10 +514,10 @@
         "off": null,
         "minimal": null,
         "low": "low",
-        "medium": "medium",
+        "medium": null,
         "high": "high",
         "xhigh": null,
-        "max": null
+        "max": "max"
       }
     },
     {
@@ -553,6 +544,15 @@
         "supportsDeveloperRole": false,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       }
     }
   ]

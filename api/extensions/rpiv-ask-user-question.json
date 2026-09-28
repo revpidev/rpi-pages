@@ -8,6 +8,44 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.5-rc.5",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.5-rc.5",
+      "capabilities": [
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpiv-ask-user-question-0.1.5-rc.5-aarch64-apple-darwin.rpix",
+          "sha256": "5b2050e312d541217a20e6d4639c2b62d73786436a98918c67be27dfd9babf97",
+          "release": "v0.1.5-rc.5"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpiv-ask-user-question-0.1.5-rc.5-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "3e77eebba4a9cda600af476260cce44267da5be1734742ea1a6df239d7f56583",
+          "release": "v0.1.5-rc.5"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpiv-ask-user-question-0.1.5-rc.5-x86_64-pc-windows-msvc.rpix",
+          "sha256": "0efa6c43e0fde739d40f7ddcf8f8bbde623ef58686eca866e2712cf1c8133aaa",
+          "release": "v0.1.5-rc.5"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpiv-ask-user-question-0.1.5-rc.5-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "d6cf64e204206b85442da781a91a1c74aa6464bdb7d331e90fc474226f78dd99",
+          "release": "v0.1.5-rc.5"
+        }
+      ]
+    },
+    {
       "version": "0.1.5-rc.4",
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.4",
@@ -295,6 +333,12 @@
           "target": "aarch64-unknown-linux-gnu",
           "file": "rpiv-ask-user-question-0.1.4-rc.14-aarch64-unknown-linux-gnu.rpix",
           "sha256": "351eb9b5f3346fdaa070bf75fa4bc891a12f6d0c1d56a6b89caa2edb2ac29da4",
+          "release": "v0.1.4-rc.14"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpiv-ask-user-question-0.1.4-rc.14-x86_64-pc-windows-msvc.rpix",
+          "sha256": "c607ba52e9f1c96d39f13400c6c9de1565f14a382c45c7c56d1a60e224d65034",
           "release": "v0.1.4-rc.14"
         },
         {
