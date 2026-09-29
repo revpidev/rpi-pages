@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-28T14:13:16Z",
+  "generatedAt": "2026-09-29T11:24:34Z",
   "extensions": [
     {
       "name": "rpi-mcp-adapter",
-      "latest": "0.1.4",
+      "latest": "0.1.5",
       "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle (port of pi-mcp-adapter @ v2.32.1)",
       "kind": "native",
       "capabilities": [
@@ -19,7 +19,7 @@
     },
     {
       "name": "rpi-smart-fetch",
-      "latest": "0.1.4",
+      "latest": "0.1.5",
       "description": "Fingerprinted web fetch extension: `web_fetch`/`batch_web_fetch` tools with browser-grade TLS/HTTP2 emulation (wreq), readability extraction (dom_smoothie [VARIANT]) with a 1:1 DOM fallback chain, five output formats, a structured error model, streaming progress (toolUpdate) and ComponentTree renderers.",
       "kind": "native",
       "capabilities": [
@@ -32,7 +32,7 @@
     },
     {
       "name": "rpi-statusline",
-      "latest": "0.1.4",
+      "latest": "0.1.5",
       "description": "Claude Code-compatible script statusline: configure a shell command in settings.json, feed it session JSON (model, context usage, cost, effort) on stdin, render its stdout as the footer.",
       "kind": "native",
       "capabilities": [
@@ -45,7 +45,7 @@
     },
     {
       "name": "rpi-subagents",
-      "latest": "0.1.4",
+      "latest": "0.1.5",
       "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), model fallback chains.",
       "kind": "native",
       "capabilities": [
@@ -61,7 +61,7 @@
     },
     {
       "name": "rpiv-ask-user-question",
-      "latest": "0.1.4",
+      "latest": "0.1.5",
       "description": "Structured ask_user_question tool: a questionnaire the model can put to you (1-4 questions, 2-4 described options each, optional markdown preview, multi-select, notes), rendered as an interactive overlay with an RPC dialog fallback.",
       "kind": "native",
       "capabilities": [
@@ -76,7 +76,7 @@
     },
     {
       "name": "rpiv-todo",
-      "latest": null,
+      "latest": "0.1.5",
       "description": "Task-list todo tool: a live overlay panel above the editor the model keeps current with one tool call (six actions, four-state machine, dependency tracking), rebuilt from the session branch so it survives compaction and /reload, plus a /todos command and a collapse shortcut.",
       "kind": "native",
       "capabilities": [
