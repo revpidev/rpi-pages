@@ -210,5 +210,155 @@ class StableEndpointGuardTests(unittest.TestCase):
         self.assertEqual(gs.stable_endpoint_action("0.1.4-rc.5", None, "0.1.4-rc.5"), "refuse")
 
 
+class OfficialNamingTests(unittest.TestCase):
+    """R7.1.1/R7.1.3（ADR-0033，TE42）：`rpi-` 前缀官方保留 + 索引层拒绝。"""
+
+    def _entry(self, **overrides):
+        entry = {
+            "name": "rpi-todo",
+            "repository": "revpidev/rpi",
+            "description": "d",
+            "author": "revpidev",
+            "license": "MIT",
+            "official": True,
+        }
+        entry.update(overrides)
+        return entry
+
+    def test_prefix_requires_official_and_allowlisted_repository(self):
+        # 正例：official + 官方 allowlist repository。
+        gs.validate_official_naming("rpi-todo.json", self._entry())
+        # 负例：第三方声称 rpi- 前缀 → 拒绝。
+        with self.assertRaises(SystemExit):
+            gs.validate_official_naming("rpi-fake.json", self._entry(official=False))
+        # 负例：official 但 repository 不在官方 allowlist → 拒绝。
+        with self.assertRaises(SystemExit):
+            gs.validate_official_naming(
+                "rpi-fake.json", self._entry(repository="evil/rpi-todo")
+            )
+        # 负例：official 条目必须使用 rpi- 前缀（R7.1.1 反向）。
+        with self.assertRaises(SystemExit):
+            gs.validate_official_naming("todo.json", self._entry(name="todo"))
+        # 第三方（非 official）非 rpi- 前缀不受约束。
+        gs.validate_official_naming(
+            "acme-todo.json", self._entry(name="acme-todo", official=False, repository="acme/x")
+        )
+
+    def test_load_registry_rejects_third_party_official_prefix(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            registry = Path(tmp) / "registry"
+            registry.mkdir()
+            (registry / "rpi-fake.json").write_text(
+                json.dumps(
+                    {
+                        "name": "rpi-fake",
+                        "repository": "acme/rpi-fake",
+                        "description": "d",
+                        "author": "acme",
+                        "license": "MIT",
+                        "official": False,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with mock.patch.object(gs, "SITE", Path(tmp)):
+                with self.assertRaises(SystemExit):
+                    gs.load_registry()
+
+
+class HistoricNamesTests(unittest.TestCase):
+    """TE42/R7.2.2：改名插件的旧资产经 `historicNames` 保留在版本矩阵。"""
+
+    def test_old_assets_match_through_historic_names_and_keep_file_names(self):
+        entry = {
+            "name": "rpi-todo",
+            "repository": "revpidev/rpi",
+            "historicNames": ["rpiv-todo"],
+        }
+        releases = [
+            _release("v0.1.5", {"rpiv-todo-0.1.5-x86_64-unknown-linux-gnu.rpix": "x"}),
+            _release("v0.1.6", {"rpi-todo-0.1.6-x86_64-unknown-linux-gnu.rpix": "x"}),
+        ]
+        with mock.patch.object(gs, "release_assets", return_value=releases), mock.patch.object(
+            gs, "artifact_sha256", return_value="a" * 64
+        ):
+            versions = gs.extension_versions(entry)
+        self.assertEqual([v["version"] for v in versions], ["0.1.6", "0.1.5"])
+        old = next(v for v in versions if v["version"] == "0.1.5")
+        self.assertEqual(
+            old["artifacts"][0]["file"], "rpiv-todo-0.1.5-x86_64-unknown-linux-gnu.rpix"
+        )
+        new = next(v for v in versions if v["version"] == "0.1.6")
+        self.assertEqual(
+            new["artifacts"][0]["file"], "rpi-todo-0.1.6-x86_64-unknown-linux-gnu.rpix"
+        )
+
+    def test_historic_names_validation(self):
+        for bad in ["rpi-todo", "Bad Name", "", 7]:
+            with self.assertRaises(SystemExit):
+                gs.validate_historic_names("x.json", {"name": "rpi-todo", "historicNames": [bad]})
+        with self.assertRaises(SystemExit):
+            gs.validate_historic_names("x.json", {"name": "rpi-todo", "historicNames": "rpiv-todo"})
+        self.assertEqual(
+            gs.validate_historic_names(
+                "x.json", {"name": "rpi-todo", "historicNames": ["rpiv-todo"]}
+            ),
+            ["rpiv-todo"],
+        )
+
+
+class RenamedIndexTests(unittest.TestCase):
+    """TE42：索引换键 + 详情文件名/内容由生成器产出（不手编）。"""
+
+    def test_generate_extensions_rekeys_index_and_detail(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            registry = site / "registry"
+            registry.mkdir()
+            (registry / "rpi-todo.json").write_text(
+                json.dumps(
+                    {
+                        "name": "rpi-todo",
+                        "historicNames": ["rpiv-todo"],
+                        "repository": "revpidev/rpi",
+                        "description": "d",
+                        "author": "revpidev",
+                        "license": "MIT",
+                        "official": True,
+                        "lockstepHost": True,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            rpi_repo = site / "rpi"
+            crate = rpi_repo / "crates" / "rpi-ext-todo"
+            crate.mkdir(parents=True)
+            (crate / "rpi-extension.json").write_text(
+                json.dumps(
+                    {
+                        "name": "rpi-todo",
+                        "native": "librpi_ext_todo.so",
+                        "capabilities": ["tools"],
+                        "rpiAbi": 1,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            releases = [_release("v0.1.5", {"rpiv-todo-0.1.5.rpix": "x"})]
+            with mock.patch.object(gs, "SITE", site), mock.patch.object(
+                gs, "release_assets", return_value=releases
+            ), mock.patch.object(gs, "artifact_sha256", return_value="b" * 64):
+                names = gs.generate_extensions(rpi_repo)
+            self.assertEqual(names, ["rpi-todo"])
+            index = json.loads((site / "api/extensions/index.json").read_text(encoding="utf-8"))
+            self.assertEqual([e["name"] for e in index["extensions"]], ["rpi-todo"])
+            detail = json.loads((site / "api/extensions/rpi-todo.json").read_text(encoding="utf-8"))
+            self.assertEqual(detail["name"], "rpi-todo")
+            self.assertEqual(detail["versions"][0]["artifacts"][0]["file"], "rpiv-todo-0.1.5.rpix")
+            self.assertEqual(detail["versions"][0]["minHostVersion"], "0.1.5")
+            allow = json.loads((site / "api/extensions/allowlist.json").read_text(encoding="utf-8"))
+            self.assertEqual(allow["repositories"], ["revpidev/rpi"])
+
+
 if __name__ == "__main__":
     unittest.main()
