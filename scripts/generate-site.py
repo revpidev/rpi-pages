@@ -46,6 +46,7 @@ import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -246,16 +247,31 @@ def load_extension_manifests(rpi_repo: Path) -> dict[str, dict]:
     return manifests
 
 
-def github_api(url: str):
-    """GitHub API 请求；GITHUB_TOKEN 可选（匿名有 60 次/时限流）。"""
+def github_api(url: str, attempts: int = 3):
+    """GitHub API 请求；GITHUB_TOKEN 可选（匿名有 60 次/时限流）。
+
+    TE47 §8-3 网络重试：GitHub 抖动（连接被关闭 / 5xx / 超时）会静默
+    削掉版本矩阵里的资产（泪点：sidecar 拉取失败即跳过该 artifact），
+    这里对 `URLError`/`OSError` 重试 `attempts` 次，退避 0.5s/1s；最终
+    失败仍抛出，交给调用方的降级路径（versions: [] 或跳过该资产）。
+    """
     request = urllib.request.Request(url)
     request.add_header("Accept", "application/vnd.github+json")
     request.add_header("User-Agent", "rpi-pages generate-site")
     token = os.environ.get("GITHUB_TOKEN")
     if token:
         request.add_header("Authorization", f"Bearer {token}")
-    with urllib.request.urlopen(request, timeout=20) as response:
-        return response.read()
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(request, timeout=20) as response:
+                return response.read()
+        except (urllib.error.URLError, OSError) as exc:
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(0.5 * (2**attempt))
+    assert last_error is not None
+    raise last_error
 
 
 def semver_key(version: str):

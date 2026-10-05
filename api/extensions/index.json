@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T00:13:31Z",
+  "generatedAt": "2026-10-05T11:08:17Z",
   "extensions": [
     {
       "name": "rpi-ask-user-question",
@@ -20,7 +20,7 @@
     {
       "name": "rpi-mcp-adapter",
       "latest": "0.1.5",
-      "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle (port of pi-mcp-adapter @ v2.32.1)",
+      "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle — an optional replacement for the built-in MCP extension, sharing the same `mcp.json` layout (port of pi-mcp-adapter @ v4.0.0)",
       "kind": "native",
       "capabilities": [
         "tools",
@@ -29,7 +29,23 @@
         "ui"
       ],
       "downloads": null,
-      "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具,懒连接服务器生命周期(pi-mcp-adapter @ v2.32.1 移植)。",
+      "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具与懒连接服务器生命周期——内建 MCP 扩展的可选替换,共享同一 `mcp.json` 配置布局(pi-mcp-adapter @ v4.0.0 移植)。",
+      "official": true
+    },
+    {
+      "name": "rpi-plan-mode",
+      "latest": null,
+      "description": "Plan mode: /plan (or Shift+Tab) switches the session to a read-only research state where write tools are hidden; the model writes a structured plan with write_plan, and a review dialog approves it (returning to default mode to execute), requests revisions, or abandons it.",
+      "kind": "native",
+      "capabilities": [
+        "commands",
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "downloads": null,
+      "descriptionZh": "计划模式:/plan(或 Shift+Tab)把会话切到只读研究态,写类工具对模型隐藏;模型经 write_plan 产出结构化计划,批准流三选(批准并执行 / 继续修订 / 放弃)回到默认态执行。",
       "official": true
     },
     {
@@ -88,6 +104,21 @@
       ],
       "downloads": null,
       "descriptionZh": "任务清单工具:编辑器上方常驻 overlay 面板,模型经 todo 工具(六动作/四态状态机/依赖追踪)单次调用即可保持清单最新,从会话分支重放重建,跨 compaction 与 /reload 存活,附 /todos 命令与折叠快捷键。",
+      "official": true
+    },
+    {
+      "name": "rpi-usage",
+      "latest": null,
+      "description": "Usage lookup: /usage queries the current model provider's balance or plan quota through the host scripted usage-provider framework — built-in DeepSeek, GLM Coding Plan, MiniMax Token Plan and Kimi Code scripts — and keeps a footer status line; custom providers drop in as user scripts.",
+      "kind": "native",
+      "capabilities": [
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "downloads": null,
+      "descriptionZh": "用量查询:/usage 经宿主脚本化 usage-provider 框架查询当前接入 provider 的余额/套餐配额(内置 DeepSeek/GLM Coding Plan/MiniMax Token Plan/Kimi Code 四家脚本),footer 自动展示;用户脚本可扩展自定义 provider。",
       "official": true
     }
   ]

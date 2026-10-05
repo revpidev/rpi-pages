@@ -7,7 +7,8 @@ stdlib unittest，零第三方依赖；`python3 scripts/test_generate_site.py` �
 - 预发布形态闸：非 rc 形态的预发布 tag 告警并拒入索引（R6.5.3）；
 - `latest` 字段排除预发布（rc 不顶掉 stable 展示位）；
 - `--rc-version` 写 RC 端点（合法形态校验 + payload schema）；
-- semver 排序键的预发布段（rc.10 > rc.9；rc < stable）。
+- semver 排序键的预发布段（rc.10 > rc.9；rc < stable）；
+- TE47 §8-3：`github_api` 网络抖动重试（URL/OSError）与最终失败降级。
 """
 
 from __future__ import annotations
@@ -17,6 +18,7 @@ import json
 import re
 import tempfile
 import unittest
+import urllib.error
 from pathlib import Path
 from unittest import mock
 
@@ -317,6 +319,46 @@ class RenamedIndexTests(unittest.TestCase):
             self.assertEqual(detail["versions"][0]["minHostVersion"], "0.1.5")
             allow = json.loads((site / "api/extensions/allowlist.json").read_text(encoding="utf-8"))
             self.assertEqual(allow["repositories"], ["revpidev/rpi"])
+
+
+class GithubApiRetryTests(unittest.TestCase):
+    """TE47 §8-3：GitHub 抖动重试（连接关闭 / 5xx / 超时）。"""
+
+    class _Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return False
+
+        def read(self):
+            return b'{"ok": true}'
+
+    def test_retries_transient_errors_and_succeeds(self):
+        calls = {"n": 0}
+
+        def fake_urlopen(_request, timeout=20):
+            calls["n"] += 1
+            if calls["n"] < 3:
+                raise urllib.error.URLError("remote end closed connection")
+            return self._Response()
+
+        with mock.patch.object(gs.urllib.request, "urlopen", side_effect=fake_urlopen), \
+                mock.patch.object(gs.time, "sleep") as sleep:
+            self.assertEqual(gs.github_api("https://api.github.com/x"), b'{"ok": true}')
+        self.assertEqual(calls["n"], 3, "two failures retried, third attempt served")
+        self.assertEqual(sleep.call_count, 2, "backoff between attempts only")
+
+    def test_gives_up_after_attempts_and_raises(self):
+        with mock.patch.object(
+            gs.urllib.request,
+            "urlopen",
+            side_effect=urllib.error.HTTPError(  # 5xx 同走重试/降级路径
+                "https://api.github.com/x", 500, "server error", {}, None
+            ),
+        ), mock.patch.object(gs.time, "sleep"):
+            with self.assertRaises(urllib.error.HTTPError):
+                gs.github_api("https://api.github.com/x")
 
 
 if __name__ == "__main__":
