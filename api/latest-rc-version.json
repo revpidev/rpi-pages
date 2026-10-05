@@ -1,4 +1,5 @@
 {
-  "version": "0.1.5-rc.6",
-  "packageName": "rpi"
+  "version": "0.1.6-rc.1",
+  "packageName": "rpi",
+  "note": "v0.1.6-rc.1: upstream parity to v1.0.0, built-in codemode/MCP, two new plugins (rpi-plan-mode/rpi-usage), eight-plugin lockstep"
 }

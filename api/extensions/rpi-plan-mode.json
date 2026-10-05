@@ -6,5 +6,45 @@
   "license": "MIT",
   "kind": "native",
   "official": true,
-  "versions": []
+  "versions": [
+    {
+      "version": "0.1.6-rc.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.6-rc.1",
+      "capabilities": [
+        "commands",
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-plan-mode-0.1.6-rc.1-aarch64-apple-darwin.rpix",
+          "sha256": "6a92f00119c79605daf9e06f7ecf50b5a8a323f364df9e94e4a2ad28e9e6fbd5",
+          "release": "v0.1.6-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.6-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "1a4a88fa27f463fca9865eae39d70d545d77f2e141fb3b8a4fe7e6093790b88a",
+          "release": "v0.1.6-rc.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-plan-mode-0.1.6-rc.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "25bce992238b5555f2f7f087601b647b545fa2221771a9fbc35107e8af780c65",
+          "release": "v0.1.6-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.6-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "31639fb86118941f47528dd40d9f9a128bd3bbf3571be117c389fcb25d9bb8e9",
+          "release": "v0.1.6-rc.1"
+        }
+      ]
+    }
+  ]
 }
