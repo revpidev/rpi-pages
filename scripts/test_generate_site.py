@@ -266,49 +266,8 @@ class OfficialNamingTests(unittest.TestCase):
                     gs.load_registry()
 
 
-class HistoricNamesTests(unittest.TestCase):
-    """TE42/R7.2.2：改名插件的旧资产经 `historicNames` 保留在版本矩阵。"""
-
-    def test_old_assets_match_through_historic_names_and_keep_file_names(self):
-        entry = {
-            "name": "rpi-todo",
-            "repository": "revpidev/rpi",
-            "historicNames": ["rpiv-todo"],
-        }
-        releases = [
-            _release("v0.1.5", {"rpiv-todo-0.1.5-x86_64-unknown-linux-gnu.rpix": "x"}),
-            _release("v0.1.6", {"rpi-todo-0.1.6-x86_64-unknown-linux-gnu.rpix": "x"}),
-        ]
-        with mock.patch.object(gs, "release_assets", return_value=releases), mock.patch.object(
-            gs, "artifact_sha256", return_value="a" * 64
-        ):
-            versions = gs.extension_versions(entry)
-        self.assertEqual([v["version"] for v in versions], ["0.1.6", "0.1.5"])
-        old = next(v for v in versions if v["version"] == "0.1.5")
-        self.assertEqual(
-            old["artifacts"][0]["file"], "rpiv-todo-0.1.5-x86_64-unknown-linux-gnu.rpix"
-        )
-        new = next(v for v in versions if v["version"] == "0.1.6")
-        self.assertEqual(
-            new["artifacts"][0]["file"], "rpi-todo-0.1.6-x86_64-unknown-linux-gnu.rpix"
-        )
-
-    def test_historic_names_validation(self):
-        for bad in ["rpi-todo", "Bad Name", "", 7]:
-            with self.assertRaises(SystemExit):
-                gs.validate_historic_names("x.json", {"name": "rpi-todo", "historicNames": [bad]})
-        with self.assertRaises(SystemExit):
-            gs.validate_historic_names("x.json", {"name": "rpi-todo", "historicNames": "rpiv-todo"})
-        self.assertEqual(
-            gs.validate_historic_names(
-                "x.json", {"name": "rpi-todo", "historicNames": ["rpiv-todo"]}
-            ),
-            ["rpiv-todo"],
-        )
-
-
 class RenamedIndexTests(unittest.TestCase):
-    """TE42：索引换键 + 详情文件名/内容由生成器产出（不手编）。"""
+    """TE42：索引换键 + 详情文件名/内容由生成器产出（不手编；无旧名匹配表）。"""
 
     def test_generate_extensions_rekeys_index_and_detail(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -319,7 +278,6 @@ class RenamedIndexTests(unittest.TestCase):
                 json.dumps(
                     {
                         "name": "rpi-todo",
-                        "historicNames": ["rpiv-todo"],
                         "repository": "revpidev/rpi",
                         "description": "d",
                         "author": "revpidev",
@@ -344,7 +302,8 @@ class RenamedIndexTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
-            releases = [_release("v0.1.5", {"rpiv-todo-0.1.5.rpix": "x"})]
+            # TE42: renamed releases carry rpi- asset names (renamed in place).
+            releases = [_release("v0.1.5", {"rpi-todo-0.1.5.rpix": "x"})]
             with mock.patch.object(gs, "SITE", site), mock.patch.object(
                 gs, "release_assets", return_value=releases
             ), mock.patch.object(gs, "artifact_sha256", return_value="b" * 64):
@@ -354,7 +313,7 @@ class RenamedIndexTests(unittest.TestCase):
             self.assertEqual([e["name"] for e in index["extensions"]], ["rpi-todo"])
             detail = json.loads((site / "api/extensions/rpi-todo.json").read_text(encoding="utf-8"))
             self.assertEqual(detail["name"], "rpi-todo")
-            self.assertEqual(detail["versions"][0]["artifacts"][0]["file"], "rpiv-todo-0.1.5.rpix")
+            self.assertEqual(detail["versions"][0]["artifacts"][0]["file"], "rpi-todo-0.1.5.rpix")
             self.assertEqual(detail["versions"][0]["minHostVersion"], "0.1.5")
             allow = json.loads((site / "api/extensions/allowlist.json").read_text(encoding="utf-8"))
             self.assertEqual(allow["repositories"], ["revpidev/rpi"])

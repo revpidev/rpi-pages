@@ -22,25 +22,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-todo-0.1.5-aarch64-apple-darwin.rpix",
+          "file": "rpi-todo-0.1.5-aarch64-apple-darwin.rpix",
           "sha256": "3a0f58003970f6cd7d4047e66cc1d4b19f2e424408420d93d38995c5e1e237dd",
           "release": "v0.1.5"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-aarch64-unknown-linux-gnu.rpix",
           "sha256": "62d088fee51139b256c8bdebf69e2c228831dbe67b574a269951417b7711cd0a",
           "release": "v0.1.5"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-todo-0.1.5-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-todo-0.1.5-x86_64-pc-windows-msvc.rpix",
           "sha256": "6480b1641eb038205be61be176f6980609de468104dac9869f8d799c39925c6c",
           "release": "v0.1.5"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-x86_64-unknown-linux-gnu.rpix",
           "sha256": "7958ea91dcf0ec48f3c37bd5b46f0e9138914f2f01c283c4ba608741dcd0c5f1",
           "release": "v0.1.5"
         }
@@ -61,25 +61,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-todo-0.1.5-rc.6-aarch64-apple-darwin.rpix",
+          "file": "rpi-todo-0.1.5-rc.6-aarch64-apple-darwin.rpix",
           "sha256": "c841e123a71e9b357fa87ec5f8a6e5a79aac135ff7adfa2546e6fd3ee33c8b08",
           "release": "v0.1.5-rc.6"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.6-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.6-aarch64-unknown-linux-gnu.rpix",
           "sha256": "f88382cf11501ebc24a71632b5b3203aab1b4325a248b81ea8b27d22e0a02daa",
           "release": "v0.1.5-rc.6"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-todo-0.1.5-rc.6-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-todo-0.1.5-rc.6-x86_64-pc-windows-msvc.rpix",
           "sha256": "0bb2c7b4a941c7570fa4bda681e4c8a814091bfd07e0f3ff5c88b5cd979ccf35",
           "release": "v0.1.5-rc.6"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.6-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.6-x86_64-unknown-linux-gnu.rpix",
           "sha256": "11548b3e2c6b0a208c76a7e7c4829efb05c22ddac7b7188947fdb02053b9d9d7",
           "release": "v0.1.5-rc.6"
         }
@@ -100,25 +100,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-todo-0.1.5-rc.5-aarch64-apple-darwin.rpix",
+          "file": "rpi-todo-0.1.5-rc.5-aarch64-apple-darwin.rpix",
           "sha256": "0fe207abfe8aa5c73631a5aae01cb24ef24d7d077c30638f133c26a6d5060890",
           "release": "v0.1.5-rc.5"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.5-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.5-aarch64-unknown-linux-gnu.rpix",
           "sha256": "08c0510b78f07c57db86580d56c537cd7d19312cf8eca7cd3d5b20f274410fff",
           "release": "v0.1.5-rc.5"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-todo-0.1.5-rc.5-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-todo-0.1.5-rc.5-x86_64-pc-windows-msvc.rpix",
           "sha256": "64862434e28db825466f169b8a7fdd62a1217c2249f194c9aee84b7b0a843c46",
           "release": "v0.1.5-rc.5"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.5-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.5-x86_64-unknown-linux-gnu.rpix",
           "sha256": "1119f7c33f790f4f6549e3fa8cd2e1c108e74fba85b7ffba2b480fae6838fdb6",
           "release": "v0.1.5-rc.5"
         }
@@ -139,25 +139,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-todo-0.1.5-rc.4-aarch64-apple-darwin.rpix",
+          "file": "rpi-todo-0.1.5-rc.4-aarch64-apple-darwin.rpix",
           "sha256": "35ab9f19423a57998712db1a1b4a71ba7efffb4b94bd8b71c1874fd883479af9",
           "release": "v0.1.5-rc.4"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.4-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.4-aarch64-unknown-linux-gnu.rpix",
           "sha256": "d512c80b0f0ab28dd04989017d136461f522c8b6a37225e5c82c8d8b54ad5e4b",
           "release": "v0.1.5-rc.4"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-todo-0.1.5-rc.4-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-todo-0.1.5-rc.4-x86_64-pc-windows-msvc.rpix",
           "sha256": "6badb1fefba14d2641e83682cd27b23476f3115b16173fc7602b5af2e0a89bb6",
           "release": "v0.1.5-rc.4"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.4-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.4-x86_64-unknown-linux-gnu.rpix",
           "sha256": "80dd2b410abfb80e338a5b990eef1765b3d50d913e7f9a2061bcf653cd303dd2",
           "release": "v0.1.5-rc.4"
         }
@@ -178,25 +178,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-todo-0.1.5-rc.3-aarch64-apple-darwin.rpix",
+          "file": "rpi-todo-0.1.5-rc.3-aarch64-apple-darwin.rpix",
           "sha256": "2d80f7bc01ab9d2f91630e95471de91cc1dece46cdee1351a9d341d5d78025df",
           "release": "v0.1.5-rc.3"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.3-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.3-aarch64-unknown-linux-gnu.rpix",
           "sha256": "b8279f51d1368c9689b19e6b96009cdbd066757e3427229a460d63dc8e95b9a4",
           "release": "v0.1.5-rc.3"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-todo-0.1.5-rc.3-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-todo-0.1.5-rc.3-x86_64-pc-windows-msvc.rpix",
           "sha256": "7639dbc56f9a4d17c4e9962903435cae2e517428292649115d755b62de58a1b4",
           "release": "v0.1.5-rc.3"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.3-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.3-x86_64-unknown-linux-gnu.rpix",
           "sha256": "957a7e5747578368385eeed1238a5c8f1c5309dd3028440afd127cb42078aa28",
           "release": "v0.1.5-rc.3"
         }
@@ -217,25 +217,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-todo-0.1.5-rc.2-aarch64-apple-darwin.rpix",
+          "file": "rpi-todo-0.1.5-rc.2-aarch64-apple-darwin.rpix",
           "sha256": "4e95c5f780a404ad5e1970544905e2884d0f2bf36f22c57b795e892813ddd8a3",
           "release": "v0.1.5-rc.2"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.2-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.2-aarch64-unknown-linux-gnu.rpix",
           "sha256": "954391669db737c21bb585bdb1f74eb3334ffaf74831018da9ea3c4288826b4b",
           "release": "v0.1.5-rc.2"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-todo-0.1.5-rc.2-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-todo-0.1.5-rc.2-x86_64-pc-windows-msvc.rpix",
           "sha256": "9f926c7b740d3cc78f94134b06b61d4a56ebe726131fb8ef91dbb54b8134988c",
           "release": "v0.1.5-rc.2"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.2-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.2-x86_64-unknown-linux-gnu.rpix",
           "sha256": "1ba2498a84d5fb290a68c17e002f5e154ac2eb00d793c6d0861acdbb3bb7838e",
           "release": "v0.1.5-rc.2"
         }
@@ -256,25 +256,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-todo-0.1.5-rc.1-aarch64-apple-darwin.rpix",
+          "file": "rpi-todo-0.1.5-rc.1-aarch64-apple-darwin.rpix",
           "sha256": "98df694ea59e84f7cb0e7721978642cc6a455f06bbac140e760100f3568738ee",
           "release": "v0.1.5-rc.1"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.1-aarch64-unknown-linux-gnu.rpix",
           "sha256": "bc606c4249b6f4a4ec82bfbe7cac70fcf29041d4672e55c2dcb389b77e951a08",
           "release": "v0.1.5-rc.1"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-todo-0.1.5-rc.1-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-todo-0.1.5-rc.1-x86_64-pc-windows-msvc.rpix",
           "sha256": "409d5cdfde7fb9bae90393e1a7aa5de9d710609f20b4fe557c06752a57a177d9",
           "release": "v0.1.5-rc.1"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-todo-0.1.5-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-todo-0.1.5-rc.1-x86_64-unknown-linux-gnu.rpix",
           "sha256": "f8c094b75c1916202a36c0ea81ebe3057b5812ead588b521f6e08979c7489047",
           "release": "v0.1.5-rc.1"
         }

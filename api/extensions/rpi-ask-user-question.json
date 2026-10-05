@@ -21,25 +21,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.5-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.5-aarch64-apple-darwin.rpix",
           "sha256": "7ffd3c63973d5375518813d32c1292c3a323f8ad8c43bae07528b5d2bc5f85a5",
           "release": "v0.1.5"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-aarch64-unknown-linux-gnu.rpix",
           "sha256": "4cc1aa36454d7d73d057e37c9a15a19fd440d658d3c35c6dccae1d095f379311",
           "release": "v0.1.5"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.5-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.5-x86_64-pc-windows-msvc.rpix",
           "sha256": "53358e88cc3181a1fb9d92f45060b8d8d9ae0fbcf50df90f2dc9c41a2d6ca8b5",
           "release": "v0.1.5"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-x86_64-unknown-linux-gnu.rpix",
           "sha256": "950a561de08364518886f104206f540a0020ac662f5f3a642c8135600effa78a",
           "release": "v0.1.5"
         }
@@ -59,25 +59,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.5-rc.6-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.6-aarch64-apple-darwin.rpix",
           "sha256": "6c6877df333729f6e8d3cdd32802e5cb3a889bb6e0465b624cb8e85fc5256615",
           "release": "v0.1.5-rc.6"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.6-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.6-aarch64-unknown-linux-gnu.rpix",
           "sha256": "968256098ddc1a391e83447e7c8097223b0910abb1fe3c7f22226dcdccdc80c2",
           "release": "v0.1.5-rc.6"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.5-rc.6-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.6-x86_64-pc-windows-msvc.rpix",
           "sha256": "9bd5b3abf5018f1213f765b22c34a9e401ddf41a985fa391d844c8b081ff20af",
           "release": "v0.1.5-rc.6"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.6-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.6-x86_64-unknown-linux-gnu.rpix",
           "sha256": "463ace719e13e26d24cda92fffae40540f10750b63257e525915a30b8f45ea63",
           "release": "v0.1.5-rc.6"
         }
@@ -97,25 +97,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.5-rc.5-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.5-aarch64-apple-darwin.rpix",
           "sha256": "5b2050e312d541217a20e6d4639c2b62d73786436a98918c67be27dfd9babf97",
           "release": "v0.1.5-rc.5"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.5-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.5-aarch64-unknown-linux-gnu.rpix",
           "sha256": "3e77eebba4a9cda600af476260cce44267da5be1734742ea1a6df239d7f56583",
           "release": "v0.1.5-rc.5"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.5-rc.5-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.5-x86_64-pc-windows-msvc.rpix",
           "sha256": "0efa6c43e0fde739d40f7ddcf8f8bbde623ef58686eca866e2712cf1c8133aaa",
           "release": "v0.1.5-rc.5"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.5-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.5-x86_64-unknown-linux-gnu.rpix",
           "sha256": "d6cf64e204206b85442da781a91a1c74aa6464bdb7d331e90fc474226f78dd99",
           "release": "v0.1.5-rc.5"
         }
@@ -135,25 +135,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.5-rc.4-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.4-aarch64-apple-darwin.rpix",
           "sha256": "3afb0e1c5129a15f83e1d2db92be2e24b48bf378bd2523131b421d1fcf5cd71e",
           "release": "v0.1.5-rc.4"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.4-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.4-aarch64-unknown-linux-gnu.rpix",
           "sha256": "99f7cc9da0768b0404a7d1669e2bd68755cecfe0ad1a261abd91770df0734ed6",
           "release": "v0.1.5-rc.4"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.5-rc.4-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.4-x86_64-pc-windows-msvc.rpix",
           "sha256": "6419f8e89050123941f68bd290e1acac54a4152c7994479f6d670ce9d896641e",
           "release": "v0.1.5-rc.4"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.4-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.4-x86_64-unknown-linux-gnu.rpix",
           "sha256": "fe7af30be27c5a212ca873ec3280e05094a502abea18e1c619854cc7bafc871f",
           "release": "v0.1.5-rc.4"
         }
@@ -173,25 +173,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.5-rc.3-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.3-aarch64-apple-darwin.rpix",
           "sha256": "b6d97b26d34586fc017f698f94735d4181755493f8841a1c74892df900b0a7d0",
           "release": "v0.1.5-rc.3"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.3-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.3-aarch64-unknown-linux-gnu.rpix",
           "sha256": "272da2cbf852b8e8afa9cfc6355156c913a412a5523e916c3a3bef543a7c2eac",
           "release": "v0.1.5-rc.3"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.5-rc.3-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.3-x86_64-pc-windows-msvc.rpix",
           "sha256": "5e5e04e2ce06a302a7b5e865c16af0b93b1a8c703e57e10d489cc3a3df630323",
           "release": "v0.1.5-rc.3"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.3-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.3-x86_64-unknown-linux-gnu.rpix",
           "sha256": "2b9adba7f85217080dfea7fb368e92740619fd9b335c8d257bd165d485b3c97a",
           "release": "v0.1.5-rc.3"
         }
@@ -211,25 +211,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.5-rc.2-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.2-aarch64-apple-darwin.rpix",
           "sha256": "74631cea5872ae38053f62f2c8a3d7cd49da8ba4d5ff1cd10ed9f6efaa5d27a4",
           "release": "v0.1.5-rc.2"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.2-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.2-aarch64-unknown-linux-gnu.rpix",
           "sha256": "8cc64ac24e711505d2619a19acef4fc51a4118b2f9c39f7fd8f0c16340cd3097",
           "release": "v0.1.5-rc.2"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.5-rc.2-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.2-x86_64-pc-windows-msvc.rpix",
           "sha256": "71ad6b317b04f9d4f0f4e891e3bdfea69b5537946fe34d852f1f69c7eb470b36",
           "release": "v0.1.5-rc.2"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.2-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.2-x86_64-unknown-linux-gnu.rpix",
           "sha256": "55660726e9db9c37caa44f5faf8fa3d549a58aeefe486b078bccefef2aa34208",
           "release": "v0.1.5-rc.2"
         }
@@ -249,25 +249,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.5-rc.1-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.1-aarch64-apple-darwin.rpix",
           "sha256": "d7eb57ef02b75dddec7358b392abe175b7798d8aead47cfb7cd253a25f06058c",
           "release": "v0.1.5-rc.1"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.1-aarch64-unknown-linux-gnu.rpix",
           "sha256": "208bc87147f7ab2c3b415500b224576a5a8d6a61e823c1c90d630ceb0654e3b0",
           "release": "v0.1.5-rc.1"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.5-rc.1-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.1-x86_64-pc-windows-msvc.rpix",
           "sha256": "9f854fa9c1ad2b33fce5178bd3ec68bf9aeabab29d6c581dc90683d0f3ba250d",
           "release": "v0.1.5-rc.1"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.5-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.5-rc.1-x86_64-unknown-linux-gnu.rpix",
           "sha256": "4600cc95d792dbce907eb939f53c9f3a7d59de566e25bf7741252162ce5b0e72",
           "release": "v0.1.5-rc.1"
         }
@@ -287,25 +287,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-aarch64-apple-darwin.rpix",
           "sha256": "85d124d0ba09743ccf613d135ec857fe970c33437b5ef7c570f0ad0ce91f6fcd",
           "release": "v0.1.4"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-aarch64-unknown-linux-gnu.rpix",
           "sha256": "20828344325354887f58c6c6357b4eb4e1ad132421e898ba1849974443f1d862",
           "release": "v0.1.4"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-x86_64-pc-windows-msvc.rpix",
           "sha256": "625ffc58521467d2147d135eefd509edab4ee402d1ff178b3e7f9cd3b5e7178c",
           "release": "v0.1.4"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-x86_64-unknown-linux-gnu.rpix",
           "sha256": "299822850180bd8e8f4a0393334bf93be51ce52daa931e5163a890119be44a58",
           "release": "v0.1.4"
         }
@@ -325,25 +325,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.16-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.16-aarch64-apple-darwin.rpix",
           "sha256": "d54f08c19d0746e98a062ad157bec9edfa1d2f8e1567411f4dcddad2e9f90adb",
           "release": "v0.1.4-rc.16"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.16-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.16-aarch64-unknown-linux-gnu.rpix",
           "sha256": "2b3209ea8f37b590948ec838a8d6c7e97bbf0f9f0658911765a197e0d329ff7c",
           "release": "v0.1.4-rc.16"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.16-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.16-x86_64-pc-windows-msvc.rpix",
           "sha256": "1b129b95d48eec810b62048e1d35c3aa43a0813b5860f262c6b916fa5c02d8a7",
           "release": "v0.1.4-rc.16"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.16-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.16-x86_64-unknown-linux-gnu.rpix",
           "sha256": "929fdc9aa0455d7798c251932c6c7a9c41db310677f09e0166f0181d53862369",
           "release": "v0.1.4-rc.16"
         }
@@ -363,25 +363,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.15-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.15-aarch64-apple-darwin.rpix",
           "sha256": "3c1b7dc27ccac4b2938574c836efd2ae1e1cfa0386fa0c9bf8715a28dd6e939a",
           "release": "v0.1.4-rc.15"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.15-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.15-aarch64-unknown-linux-gnu.rpix",
           "sha256": "01bd1b80134b916a445fd8d5551d15803bf21fc8b5481acffa25e6e513cbc308",
           "release": "v0.1.4-rc.15"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.15-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.15-x86_64-pc-windows-msvc.rpix",
           "sha256": "4ced644505c2c6ebf825f564a7d60fdef1e31492d1a1e43bce4da50c6b7bcc88",
           "release": "v0.1.4-rc.15"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.15-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.15-x86_64-unknown-linux-gnu.rpix",
           "sha256": "870fffd55640cd88eea034e145553afd3a3c93ec3835b5e72261fe2e242d5500",
           "release": "v0.1.4-rc.15"
         }
@@ -401,25 +401,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.14-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.14-aarch64-apple-darwin.rpix",
           "sha256": "028562de82047bfa9fae53a4bc73035dbacb2e72cb31ca9eba12306595d7bf66",
           "release": "v0.1.4-rc.14"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.14-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.14-aarch64-unknown-linux-gnu.rpix",
           "sha256": "351eb9b5f3346fdaa070bf75fa4bc891a12f6d0c1d56a6b89caa2edb2ac29da4",
           "release": "v0.1.4-rc.14"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.14-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.14-x86_64-pc-windows-msvc.rpix",
           "sha256": "c607ba52e9f1c96d39f13400c6c9de1565f14a382c45c7c56d1a60e224d65034",
           "release": "v0.1.4-rc.14"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.14-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.14-x86_64-unknown-linux-gnu.rpix",
           "sha256": "013502e0c788da5f5d581b536dca21fe45b36c0f271eee5c47e7958dd2541dc6",
           "release": "v0.1.4-rc.14"
         }
@@ -439,25 +439,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.13-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.13-aarch64-apple-darwin.rpix",
           "sha256": "75450979ab12840f20bb046f91e12f61ea98c6ccdcc48467d7f628ffed120f59",
           "release": "v0.1.4-rc.13"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.13-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.13-aarch64-unknown-linux-gnu.rpix",
           "sha256": "455d03c6fe12e02b3a0563655ef6bbd5cb367a6e20141f6f5b673b9ee40c9c67",
           "release": "v0.1.4-rc.13"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.13-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.13-x86_64-pc-windows-msvc.rpix",
           "sha256": "1e88c90fadb628c57183a69ef42eae8b7557b095a5876aeab7682745c041f04f",
           "release": "v0.1.4-rc.13"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.13-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.13-x86_64-unknown-linux-gnu.rpix",
           "sha256": "ca9176a965e75547a3fe4440b2d14aa97aa9eb489f1d70d427a66ca2d648a18a",
           "release": "v0.1.4-rc.13"
         }
@@ -477,25 +477,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.12-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.12-aarch64-apple-darwin.rpix",
           "sha256": "dca8c18301a2529c05c38bc900976c1623244766fd6ff074b3e5f1570666d697",
           "release": "v0.1.4-rc.12"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.12-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.12-aarch64-unknown-linux-gnu.rpix",
           "sha256": "68ad1f549273a3d24b5c351491a3ffe7208cc39cc76f3061865f43a2745d53fa",
           "release": "v0.1.4-rc.12"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.12-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.12-x86_64-pc-windows-msvc.rpix",
           "sha256": "b5d2eddfeeb19a2a517dd7319e012d44ed4c8c0eff8415777a1d9bd97c2d39a5",
           "release": "v0.1.4-rc.12"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.12-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.12-x86_64-unknown-linux-gnu.rpix",
           "sha256": "640a6c81f2e982300b827203021f0a057b7e19fdccffe6ba3f1c32d8c497d247",
           "release": "v0.1.4-rc.12"
         }
@@ -515,25 +515,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.11-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.11-aarch64-apple-darwin.rpix",
           "sha256": "887bc20f0dcdc0d75e5d814c17ac47b290b34dc335fd7404f6e4125b1d79e2a0",
           "release": "v0.1.4-rc.11"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.11-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.11-aarch64-unknown-linux-gnu.rpix",
           "sha256": "0292347e05959bf54417d99f83166b8e20051e2d187cdfbaa93dbffd1e72261b",
           "release": "v0.1.4-rc.11"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.11-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.11-x86_64-pc-windows-msvc.rpix",
           "sha256": "a585296249107703fb447cc7947d8e0beadc2969dd6695b2523b6e5aa8bc5f73",
           "release": "v0.1.4-rc.11"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.11-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.11-x86_64-unknown-linux-gnu.rpix",
           "sha256": "f2f15aa241dcdd3fd5e8fce0bed9b1e15ba4c24e20fb64203b5c81b3a2d93c45",
           "release": "v0.1.4-rc.11"
         }
@@ -553,25 +553,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.10-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.10-aarch64-apple-darwin.rpix",
           "sha256": "ee232904df71c67b98d272419c580852275ee5d78f85ff29709e2eac02a80de6",
           "release": "v0.1.4-rc.10"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.10-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.10-aarch64-unknown-linux-gnu.rpix",
           "sha256": "baf5c22351953947c225db232cd394e560c21e2ccc9ef696c71ebeb03259f265",
           "release": "v0.1.4-rc.10"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.10-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.10-x86_64-pc-windows-msvc.rpix",
           "sha256": "09e53fb7927df7b7955199fa9370c7ab3fc68b9caaf939ef728f7687bc3d6d93",
           "release": "v0.1.4-rc.10"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.10-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.10-x86_64-unknown-linux-gnu.rpix",
           "sha256": "e2e2668cf7e1b92f9b17f056a1db29a8940e84a8efb9d5cce9dfecd11adf21f8",
           "release": "v0.1.4-rc.10"
         }
@@ -591,25 +591,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.9-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.9-aarch64-apple-darwin.rpix",
           "sha256": "16524f63a33cd0c40bfe4753b7f88f96c29d353ee8ade6902a5892f204f84398",
           "release": "v0.1.4-rc.9"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.9-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.9-aarch64-unknown-linux-gnu.rpix",
           "sha256": "fc3da698ae03d2fd59f210114ad9a842917653b3dbabc54c6a9410cfac60fd82",
           "release": "v0.1.4-rc.9"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.9-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.9-x86_64-pc-windows-msvc.rpix",
           "sha256": "c74202b99f4d6c0a77b015fb5a724178af0cb4bdb4dc5fe3ee8873ad676bab08",
           "release": "v0.1.4-rc.9"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.9-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.9-x86_64-unknown-linux-gnu.rpix",
           "sha256": "2d2ab295913412f2b202b10c88b3e982d5b8b2098f000d05d5ac35bc546ef891",
           "release": "v0.1.4-rc.9"
         }
@@ -629,25 +629,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.8-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.8-aarch64-apple-darwin.rpix",
           "sha256": "b61c7a2ec3bd3906c17ab5ead015ee179af5144fb0b787a7cd9eebb3c8272ced",
           "release": "v0.1.4-rc.8"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.8-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.8-aarch64-unknown-linux-gnu.rpix",
           "sha256": "eed7f80be7ad0741cea16633be81a74324fa660296749492a330778fefca566b",
           "release": "v0.1.4-rc.8"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.8-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.8-x86_64-pc-windows-msvc.rpix",
           "sha256": "36baaf16440f29af82a968dd98a2cf38e0321d06fa5e0e061532b2dbc9008f53",
           "release": "v0.1.4-rc.8"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.8-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.8-x86_64-unknown-linux-gnu.rpix",
           "sha256": "6f12b1a8d6eea25d19e557f291761851c3c7e58a481b5671ca12805613af673c",
           "release": "v0.1.4-rc.8"
         }
@@ -667,25 +667,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.7-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.7-aarch64-apple-darwin.rpix",
           "sha256": "c8d8d54b29c16a05f4dee2a56ace3137b98c3de43420bf4544ac284706999ea6",
           "release": "v0.1.4-rc.7"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.7-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.7-aarch64-unknown-linux-gnu.rpix",
           "sha256": "db6f1db773b23da1f1e14dc36e961e7eb437f865e2a452c2434876948477263e",
           "release": "v0.1.4-rc.7"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.7-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.7-x86_64-pc-windows-msvc.rpix",
           "sha256": "a692265fea14bd9bf5457c1d5bc0823766cc642ddae4ffa5cd837281123545ce",
           "release": "v0.1.4-rc.7"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.7-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.7-x86_64-unknown-linux-gnu.rpix",
           "sha256": "6a26f58c99aba141d36dcb850f98d1e4b8a91bf22b337f342ede6df1c614cc35",
           "release": "v0.1.4-rc.7"
         }
@@ -705,25 +705,25 @@
       "artifacts": [
         {
           "target": "aarch64-apple-darwin",
-          "file": "rpiv-ask-user-question-0.1.4-rc.6-aarch64-apple-darwin.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.6-aarch64-apple-darwin.rpix",
           "sha256": "756de62d0ffaee5caf250a9559556f542b117acaa39458e455e26b4d9a48e362",
           "release": "v0.1.4-rc.6"
         },
         {
           "target": "aarch64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.6-aarch64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.6-aarch64-unknown-linux-gnu.rpix",
           "sha256": "05a5ba3aea69c865414892128ae5300e062910405e9d7f60f841d369a824bd27",
           "release": "v0.1.4-rc.6"
         },
         {
           "target": "x86_64-pc-windows-msvc",
-          "file": "rpiv-ask-user-question-0.1.4-rc.6-x86_64-pc-windows-msvc.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.6-x86_64-pc-windows-msvc.rpix",
           "sha256": "496e87d88ff8a550e46cf387e3a677f5de8cc9e7195e653e72c64af36fd55c5b",
           "release": "v0.1.4-rc.6"
         },
         {
           "target": "x86_64-unknown-linux-gnu",
-          "file": "rpiv-ask-user-question-0.1.4-rc.6-x86_64-unknown-linux-gnu.rpix",
+          "file": "rpi-ask-user-question-0.1.4-rc.6-x86_64-unknown-linux-gnu.rpix",
           "sha256": "665744872c497dbc1768b9df144ee34128eea0fa4ec73f30fa63f4885bca6182",
           "release": "v0.1.4-rc.6"
         }

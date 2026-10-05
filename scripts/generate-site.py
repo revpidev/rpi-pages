@@ -151,11 +151,10 @@ def sync_install_scripts(rpi_repo: Path) -> list[str]:
 # registry/ 目录是索引仓库 revpidev/rpi-plugins 建立前的过渡位置：每个插件
 # 一条 <name>.json（name/repository/description/author/license，第一方附
 # "official": true，可选 "yankedVersions": [...] 覆盖、"lockstepHost": true
-# 表示与宿主锁步发布、每个版本 minHostVersion = 该版本自身、
-# "historicNames": [旧名...] 声明改名前的产物前缀）。版本矩阵不由作者手填
-# ——这里枚举各 repository 的 GitHub Release，按
-# `<name>-<version>[-<target>].rpix` 精确匹配资产（`historicNames` 内的旧名
-# 同规则参与匹配，旧资产文件原样保留、不重定向），从同 Release 的
+# 表示与宿主锁步发布、每个版本 minHostVersion = 该版本自身）。版本矩阵不由
+# 作者手填——这里枚举各 repository 的 GitHub Release，按
+# `<name>-<version>[-<target>].rpix` 精确匹配资产（TE42 起不保留旧名匹配表：
+# 已发布资产已就地改名为 `rpi-` 前缀），从同 Release 的
 # `<file>.sha256` sidecar（coreutils 格式 `<hex>  <basename>`）采信 sha256。
 # ---------------------------------------------------------------------------
 
@@ -216,25 +215,6 @@ def validate_official_naming(path_name: str, entry: dict) -> None:
         )
 
 
-def validate_historic_names(path_name: str, entry: dict) -> list[str]:
-    """`historicNames`（改名前的旧产物前缀，TE42/R7.2.2）：形态校验。
-
-    旧名同样受扩展名正则约束，不得与现名/彼此重复；版本枚举按现名 +
-    旧名合并匹配（旧资产文件原样保留，不重定向）。
-    """
-    historic = entry.get("historicNames", [])
-    if not isinstance(historic, list):
-        raise SystemExit(f"registry/{path_name}: historicNames must be a list")
-    seen = {entry["name"]}
-    for value in historic:
-        if not isinstance(value, str) or not NAME_PATTERN.match(value):
-            raise SystemExit(f"registry/{path_name}: invalid historic name {value!r}")
-        if value in seen:
-            raise SystemExit(f"registry/{path_name}: duplicate extension name {value!r}")
-        seen.add(value)
-    return historic
-
-
 def load_registry() -> list[dict]:
     registry_dir = SITE / "registry"
     entries = []
@@ -251,7 +231,6 @@ def load_registry() -> list[dict]:
             if not entry.get(field):
                 raise SystemExit(f"registry/{path.name}: missing required field {field!r}")
         validate_official_naming(path.name, entry)
-        validate_historic_names(path.name, entry)
         entries.append(entry)
     return entries
 
@@ -320,10 +299,9 @@ def artifact_sha256(assets_by_name: dict, file_name: str) -> str | None:
 def extension_versions(entry: dict) -> list[dict] | None:
     """按 §3.2 命名规则匹配 .rpix 资产，生成版本矩阵（semver 降序）。
 
-    改名插件（TE42/R7.2.2）：`historicNames` 内的旧名前缀同规则参与匹配，
-    保证旧版本条目保留在新索引键下；产物文件按原名原样入矩阵（不重命名、
-    不重定向）。返回 None 表示 releases 枚举失败（降级路径）。"""
-    names = [entry["name"], *entry.get("historicNames", [])]
+    TE42 起无旧名匹配表：已发布资产已就地改名为 `rpi-` 前缀，历史版本由
+    现名直接匹配。返回 None 表示 releases 枚举失败（降级路径）。"""
+    name = entry["name"]
     releases = release_assets(entry["repository"])
     if releases is None:
         return None
@@ -340,7 +318,7 @@ def extension_versions(entry: dict) -> list[dict] | None:
         # 拒入索引（SemVer 层无法强制约定层形态）。
         if is_prerelease_version(version) and not is_rc_version(version):
             print(
-                f"warning: {entry['name']}: prerelease tag {release['tag_name']!r} does not match "
+                f"warning: {name}: prerelease tag {release['tag_name']!r} does not match "
                 "the <stable>-rc.<N> convention (R6.1.1); skipped",
                 file=sys.stderr,
             )
@@ -350,19 +328,12 @@ def extension_versions(entry: dict) -> list[dict] | None:
         for asset_name in sorted(assets_by_name):
             if not asset_name.endswith(".rpix"):
                 continue  # 本体 rpi-* 资产无 .rpix 后缀，天然不串扰（§9.3）
-            target = None
-            matched = False
-            for candidate in names:
-                prefix = f"{candidate}-{version}"
-                if asset_name == f"{prefix}.rpix":
-                    matched = True
-                    target = None  # wasm 载体：单 artifact 全平台通用
-                    break
-                if asset_name.startswith(f"{prefix}-") and asset_name.endswith(".rpix"):
-                    matched = True
-                    target = asset_name[len(prefix) + 1 : -len(".rpix")]
-                    break
-            if not matched:
+            prefix = f"{name}-{version}"
+            if asset_name == f"{prefix}.rpix":
+                target = None  # wasm 载体：单 artifact 全平台通用
+            elif asset_name.startswith(f"{prefix}-") and asset_name.endswith(".rpix"):
+                target = asset_name[len(prefix) + 1 : -len(".rpix")]
+            else:
                 continue  # 别的插件的资产
             sha256 = artifact_sha256(assets_by_name, asset_name)
             if not sha256:
