@@ -27,7 +27,18 @@
         "supportsStrictMode": false,
         "thinkingFormat": "deepseek",
         "supportsMidConvoSystemMessages": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k2.7-code",
@@ -59,7 +70,18 @@
       },
       "thinkingLevelMap": {
         "off": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k2.7-code-highspeed",
@@ -91,7 +113,18 @@
       },
       "thinkingLevelMap": {
         "off": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k3",
@@ -111,7 +144,7 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072,
+      "maxTokens": 1048576,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
@@ -131,7 +164,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

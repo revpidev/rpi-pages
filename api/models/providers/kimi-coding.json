@@ -31,7 +31,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "k3-256k",
@@ -63,7 +74,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-for-coding",
@@ -96,7 +118,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-for-coding-highspeed",
@@ -119,7 +152,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 262144,
-      "maxTokens": 32768
+      "maxTokens": 32768,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

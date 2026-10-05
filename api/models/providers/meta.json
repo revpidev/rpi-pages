@@ -27,7 +27,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "muse-spark-1.2",
@@ -56,7 +67,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "muse-spark-1.2-contributor",
@@ -85,7 +107,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "muse-spark-1.3",
@@ -114,7 +147,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "muse-spark-1.3-contributor",
@@ -143,7 +187,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

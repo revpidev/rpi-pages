@@ -27,7 +27,18 @@
         "off": null,
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-fable-5-1",
@@ -56,7 +67,18 @@
         "off": null,
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-haiku-4-5",
@@ -76,7 +98,18 @@
         "cacheWrite": 1.25
       },
       "contextWindow": 200000,
-      "maxTokens": 64000
+      "maxTokens": 64000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-4-5",
@@ -96,7 +129,18 @@
         "cacheWrite": 6.25
       },
       "contextWindow": 200000,
-      "maxTokens": 64000
+      "maxTokens": 64000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-4-6",
@@ -122,7 +166,18 @@
       },
       "compat": {
         "forceAdaptiveThinking": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-4-7",
@@ -150,7 +205,18 @@
       "compat": {
         "forceAdaptiveThinking": true,
         "supportsTemperature": false
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-4-8",
@@ -179,7 +245,18 @@
       "thinkingLevelMap": {
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-5",
@@ -208,7 +285,18 @@
       "thinkingLevelMap": {
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-5-5",
@@ -229,14 +317,26 @@
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "forceAdaptiveThinking": true,
+        "supportsTemperature": false
+      },
       "thinkingLevelMap": {
         "xhigh": "xhigh",
         "max": "max"
       },
-      "compat": {
-        "forceAdaptiveThinking": true,
-        "supportsTemperature": false
-      }
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-sonnet-4",
@@ -256,7 +356,18 @@
         "cacheWrite": 3.75
       },
       "contextWindow": 200000,
-      "maxTokens": 64000
+      "maxTokens": 64000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-sonnet-4-5",
@@ -276,7 +387,18 @@
         "cacheWrite": 3.75
       },
       "contextWindow": 200000,
-      "maxTokens": 64000
+      "maxTokens": 64000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-sonnet-4-6",
@@ -302,7 +424,18 @@
       },
       "compat": {
         "forceAdaptiveThinking": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-sonnet-5",
@@ -329,7 +462,58 @@
       },
       "compat": {
         "forceAdaptiveThinking": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "id": "claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5",
+      "api": "anthropic-messages",
+      "provider": "opencode",
+      "baseUrl": "https://opencode.ai/zen",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": 2.5
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 128000,
+      "compat": {
+        "supportsMidConvoSystemMessages": true,
+        "forceAdaptiveThinking": true,
+        "supportsTemperature": false
+      },
+      "thinkingLevelMap": {
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "qwen3.5-plus",
@@ -349,7 +533,18 @@
         "cacheWrite": 0.25
       },
       "contextWindow": 262144,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "qwen3.6-plus",
@@ -369,7 +564,18 @@
         "cacheWrite": 0.625
       },
       "contextWindow": 262144,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "qwen3.8-flash",
@@ -389,7 +595,21 @@
         "cacheWrite": 0.2
       },
       "contextWindow": 1000000,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "compat": {
+        "allowEmptySignature": true
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gemini-3-flash",
@@ -418,7 +638,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gemini-3.1-pro",
@@ -447,7 +678,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gemini-3.5-flash",
@@ -476,7 +718,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gemini-3.5-flash-lite",
@@ -505,7 +758,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gemini-3.6-flash",
@@ -534,7 +798,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gemini-3.7-flash",
@@ -563,7 +838,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gemini-3.8-flash",
@@ -592,7 +878,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "big-pickle",
@@ -613,10 +910,12 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 200000,
-      "maxTokens": 32000
+      "maxTokens": 32000,
+      "type": "chat"
     },
     {
       "id": "deepseek-v4-flash",
@@ -637,6 +936,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens",
         "supportsLongCacheRetention": false,
         "requiresReasoningContentOnAssistantMessages": true
@@ -651,7 +951,8 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "deepseek-v4-flash-vision-exp",
@@ -673,6 +974,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens",
         "requiresReasoningContentOnAssistantMessages": true
       },
@@ -686,7 +988,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "deepseek-v4-pro",
@@ -707,6 +1020,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens",
         "supportsLongCacheRetention": false,
         "requiresReasoningContentOnAssistantMessages": true
@@ -721,7 +1035,8 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "deepseek-v4.1-flash",
@@ -743,6 +1058,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens",
         "requiresReasoningContentOnAssistantMessages": true
       },
@@ -756,7 +1072,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "glm-5",
@@ -777,10 +1104,12 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 204800,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "glm-5.1",
@@ -801,10 +1130,12 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 204800,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "glm-5.2",
@@ -825,6 +1156,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 1000000,
@@ -837,7 +1169,8 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "glm-5.3",
@@ -858,6 +1191,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 1000000,
@@ -870,7 +1204,8 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "glm-5.3-flash",
@@ -892,6 +1227,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 1000000,
@@ -904,7 +1240,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k2.5",
@@ -926,11 +1273,23 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens",
         "supportsLongCacheRetention": false
       },
       "contextWindow": 262144,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k2.6",
@@ -952,13 +1311,25 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "thinkingFormat": "deepseek",
         "supportsReasoningEffort": false,
         "maxTokensField": "max_tokens",
         "supportsLongCacheRetention": false
       },
       "contextWindow": 262144,
-      "maxTokens": 65536
+      "maxTokens": 65536,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k2.7-code",
@@ -980,10 +1351,22 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 262144,
-      "maxTokens": 262144
+      "maxTokens": 262144,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k3",
@@ -1005,6 +1388,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens",
         "supportsMidConvoSystemMessages": true,
         "supportsMidConvoToolAdditions": true
@@ -1019,7 +1403,18 @@
         "high": null,
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "ling-3.0-flash-fin-free",
@@ -1040,10 +1435,49 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 262144,
-      "maxTokens": 32768
+      "maxTokens": 32768,
+      "type": "chat"
+    },
+    {
+      "id": "longcat-2.5-preview-free",
+      "name": "LongCat 2.5 Preview Free",
+      "api": "openai-completions",
+      "provider": "opencode",
+      "baseUrl": "https://opencode.ai/zen/v1",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "compat": {
+        "supportsStore": false,
+        "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
+        "maxTokensField": "max_tokens"
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "mimo-v2.6-flash-free",
@@ -1065,10 +1499,22 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 200000,
-      "maxTokens": 32000
+      "maxTokens": 32000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "minimax-m2.5",
@@ -1089,10 +1535,12 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 204800,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "minimax-m2.7",
@@ -1113,11 +1561,13 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens",
         "supportsLongCacheRetention": false
       },
       "contextWindow": 204800,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "minimax-m3",
@@ -1139,10 +1589,22 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 512000,
-      "maxTokens": 128000
+      "maxTokens": 128000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "nemotron-3-ultra-free",
@@ -1163,10 +1625,12 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 1000000,
-      "maxTokens": 128000
+      "maxTokens": 128000,
+      "type": "chat"
     },
     {
       "id": "nemotron-3.5-lightning-free",
@@ -1187,10 +1651,95 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "maxTokensField": "max_tokens"
       },
       "contextWindow": 262144,
-      "maxTokens": 262144
+      "maxTokens": 262144,
+      "type": "chat"
+    },
+    {
+      "id": "qwen3.8-max",
+      "name": "Qwen3.8 Max",
+      "api": "openai-completions",
+      "provider": "opencode",
+      "baseUrl": "https://opencode.ai/zen/v1",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.25,
+        "cacheWrite": 2.5
+      },
+      "compat": {
+        "supportsStore": false,
+        "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
+        "maxTokensField": "max_tokens"
+      },
+      "contextWindow": 262144,
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "id": "space-bunny-free",
+      "name": "Space Bunny Free",
+      "api": "openai-completions",
+      "provider": "opencode",
+      "baseUrl": "https://opencode.ai/zen/v1",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "compat": {
+        "supportsStore": false,
+        "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
+        "maxTokensField": "max_tokens"
+      },
+      "contextWindow": 1048576,
+      "maxTokens": 524288,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5",
@@ -1223,7 +1772,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5-codex",
@@ -1256,7 +1816,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5-nano",
@@ -1289,7 +1860,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.1",
@@ -1322,7 +1904,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.1-codex",
@@ -1355,7 +1948,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.1-codex-max",
@@ -1388,7 +1992,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.1-codex-mini",
@@ -1421,7 +2036,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.2",
@@ -1454,7 +2080,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.2-codex",
@@ -1487,7 +2124,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.3-codex",
@@ -1520,7 +2168,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4",
@@ -1555,7 +2214,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4-mini",
@@ -1590,7 +2260,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4-nano",
@@ -1623,7 +2304,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4-pro",
@@ -1658,7 +2350,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.5",
@@ -1693,7 +2396,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.5-pro",
@@ -1726,7 +2440,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-luna",
@@ -1761,7 +2486,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-sol",
@@ -1796,7 +2532,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-terra",
@@ -1831,7 +2578,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-astra",
@@ -1866,7 +2624,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-luna",
@@ -1887,7 +2656,9 @@
       },
       "compat": {
         "sessionAffinityFormat": "openai-nosession",
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -1899,7 +2670,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-sol",
@@ -1920,7 +2702,9 @@
       },
       "compat": {
         "sessionAffinityFormat": "openai-nosession",
-        "supportsOpenAIGrammarTools": true
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -1932,7 +2716,64 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "name": "GPT-6.1 Sol",
+      "api": "openai-responses",
+      "provider": "opencode",
+      "baseUrl": "https://opencode.ai/zen/v1",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": 2.5
+      },
+      "compat": {
+        "sessionAffinityFormat": "openai-nosession",
+        "supportsOpenAIGrammarTools": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsAdditionalTools": true
+      },
+      "contextWindow": 1050000,
+      "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "grok-4.5",
@@ -1964,7 +2805,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "grok-4.6",
@@ -1996,11 +2848,22 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "grok-4.7",
-      "name": "Grok 4.7 (30% Off)",
+      "name": "Grok 4.7",
       "api": "openai-responses",
       "provider": "opencode",
       "baseUrl": "https://opencode.ai/zen/v1",
@@ -2010,9 +2873,9 @@
         "image"
       ],
       "cost": {
-        "input": 1.4,
-        "output": 4.2,
-        "cacheRead": 0.35,
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.5,
         "cacheWrite": 0
       },
       "compat": {
@@ -2028,7 +2891,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "grok-build-0.1",
@@ -2058,7 +2932,18 @@
         "minimal": null,
         "low": null,
         "medium": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "muse-spark-1.2",
@@ -2090,39 +2975,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
-    },
-    {
-      "id": "muse-spark-1.2-contributor-free",
-      "name": "Muse Spark 1.2 Free",
-      "api": "openai-responses",
-      "provider": "opencode",
-      "baseUrl": "https://opencode.ai/zen/v1",
-      "reasoning": true,
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 0,
-        "output": 0,
-        "cacheRead": 0,
-        "cacheWrite": 0
       },
-      "compat": {
-        "sessionAffinityFormat": "openai-nosession"
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
       },
-      "contextWindow": 1048576,
-      "maxTokens": 131072,
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": "minimal",
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": "xhigh",
-        "max": null
-      }
+      "type": "chat"
     },
     {
       "id": "muse-spark-1.3",
@@ -2154,7 +3018,18 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "muse-spark-1.3-contributor-free",
@@ -2186,7 +3061,54 @@
         "high": "high",
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "type": "classifier",
+      "id": "jev-1.13",
+      "name": "Jev 1.13",
+      "api": "typesafe-system-one",
+      "provider": "opencode",
+      "baseUrl": "https://opencode.ai/zen/v1",
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0.042,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 32000
+    },
+    {
+      "type": "classifier",
+      "id": "jev-1.13-free",
+      "name": "Jev 1.13 Free",
+      "api": "typesafe-system-one",
+      "provider": "opencode",
+      "baseUrl": "https://opencode.ai/zen/v1",
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 32000
     }
   ]
 }

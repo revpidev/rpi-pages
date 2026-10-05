@@ -17,7 +17,8 @@
         "cacheWrite": 0.375
       },
       "contextWindow": 204800,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "MiniMax-M2.7-highspeed",
@@ -36,7 +37,8 @@
         "cacheWrite": 0.375
       },
       "contextWindow": 204800,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "MiniMax-M3",
@@ -55,8 +57,19 @@
         "cacheRead": 0.06,
         "cacheWrite": 0
       },
-      "contextWindow": 1048576,
-      "maxTokens": 512000
+      "contextWindow": 1000000,
+      "maxTokens": 512000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

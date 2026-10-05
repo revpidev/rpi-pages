@@ -7,6 +7,7 @@
       "provider": "xiaomi-token-plan-ams",
       "baseUrl": "https://token-plan-ams.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -22,7 +23,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "mimo-v2.5-pro",
@@ -31,6 +43,7 @@
       "provider": "xiaomi-token-plan-ams",
       "baseUrl": "https://token-plan-ams.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -45,7 +58,8 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "mimo-v2.6-flash",
@@ -54,6 +68,7 @@
       "provider": "xiaomi-token-plan-ams",
       "baseUrl": "https://token-plan-ams.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -69,7 +84,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "mimo-v2.6-pro",
@@ -78,6 +104,7 @@
       "provider": "xiaomi-token-plan-ams",
       "baseUrl": "https://token-plan-ams.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -93,7 +120,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

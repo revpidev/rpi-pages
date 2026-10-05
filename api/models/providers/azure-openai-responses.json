@@ -17,7 +17,8 @@
         "cacheWrite": 0
       },
       "contextWindow": 8192,
-      "maxTokens": 8192
+      "maxTokens": 8192,
+      "type": "chat"
     },
     {
       "id": "gpt-4-turbo",
@@ -37,7 +38,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 128000,
-      "maxTokens": 4096
+      "maxTokens": 4096,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4.1",
@@ -57,7 +69,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1047576,
-      "maxTokens": 32768
+      "maxTokens": 32768,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4.1-mini",
@@ -77,7 +100,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1047576,
-      "maxTokens": 32768
+      "maxTokens": 32768,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4.1-nano",
@@ -97,7 +131,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1047576,
-      "maxTokens": 32768
+      "maxTokens": 32768,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4o",
@@ -117,7 +162,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 128000,
-      "maxTokens": 16384
+      "maxTokens": 16384,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4o-2024-05-13",
@@ -137,7 +193,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 128000,
-      "maxTokens": 4096
+      "maxTokens": 4096,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4o-2024-08-06",
@@ -157,7 +224,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 128000,
-      "maxTokens": 16384
+      "maxTokens": 16384,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4o-2024-11-20",
@@ -177,7 +255,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 128000,
-      "maxTokens": 16384
+      "maxTokens": 16384,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-4o-mini",
@@ -197,7 +286,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 128000,
-      "maxTokens": 16384
+      "maxTokens": 16384,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5",
@@ -223,7 +323,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5-chat-latest",
@@ -249,7 +360,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5-mini",
@@ -275,7 +397,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5-nano",
@@ -301,7 +434,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5-pro",
@@ -327,7 +471,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.1",
@@ -353,7 +508,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.2",
@@ -380,7 +546,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.2-chat-latest",
@@ -407,7 +584,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.2-pro",
@@ -434,7 +622,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.3-chat-latest",
@@ -461,7 +660,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.3-codex",
@@ -488,7 +698,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.3-codex-spark",
@@ -515,7 +736,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4",
@@ -542,7 +774,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4-mini",
@@ -569,7 +812,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4-nano",
@@ -596,7 +850,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4-pro",
@@ -623,7 +888,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.5",
@@ -650,7 +926,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.5-pro",
@@ -679,7 +966,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-luna",
@@ -707,7 +1005,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-sol",
@@ -735,7 +1044,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-terra",
@@ -763,7 +1083,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-astra",
@@ -795,7 +1126,18 @@
       },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-luna",
@@ -814,11 +1156,31 @@
         "cacheRead": 0.01,
         "cacheWrite": 0.125
       },
-      "contextWindow": 1050000,
+      "contextWindow": 272000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-sol",
@@ -837,11 +1199,136 @@
         "cacheRead": 0.2,
         "cacheWrite": 2.5
       },
-      "contextWindow": 1050000,
+      "contextWindow": 272000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "compat": {
         "supportsOpenAIGrammarTools": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "id": "gpt-6.1-sol",
+      "name": "GPT-6.1 Sol",
+      "api": "azure-openai-responses",
+      "provider": "azure-openai-responses",
+      "baseUrl": "",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": 2.5
+      },
+      "contextWindow": 272000,
+      "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "compat": {
+        "supportsOpenAIGrammarTools": true
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "id": "gpt-daybreak-blue-latest",
+      "name": "Daybreak Blue",
+      "api": "azure-openai-responses",
+      "provider": "azure-openai-responses",
+      "baseUrl": "",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 4,
+        "output": 20,
+        "cacheRead": 0.4,
+        "cacheWrite": 5
+      },
+      "contextWindow": 1050000,
+      "maxTokens": 128000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "id": "gpt-daybreak-red-latest",
+      "name": "Daybreak Red",
+      "api": "azure-openai-responses",
+      "provider": "azure-openai-responses",
+      "baseUrl": "",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 12.5,
+        "output": 75,
+        "cacheRead": 1.25,
+        "cacheWrite": 15.625
+      },
+      "contextWindow": 400000,
+      "maxTokens": 128000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-realtime-2.1",
@@ -861,7 +1348,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 128000,
-      "maxTokens": 32000
+      "maxTokens": 32000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "o1",
@@ -881,7 +1379,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 200000,
-      "maxTokens": 100000
+      "maxTokens": 100000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "o1-pro",
@@ -901,7 +1410,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 200000,
-      "maxTokens": 100000
+      "maxTokens": 100000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "o3",
@@ -921,7 +1441,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 200000,
-      "maxTokens": 100000
+      "maxTokens": 100000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "o3-mini",
@@ -940,7 +1471,8 @@
         "cacheWrite": 0
       },
       "contextWindow": 200000,
-      "maxTokens": 100000
+      "maxTokens": 100000,
+      "type": "chat"
     },
     {
       "id": "o3-pro",
@@ -960,7 +1492,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 200000,
-      "maxTokens": 100000
+      "maxTokens": 100000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "o4-mini",
@@ -980,7 +1523,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 200000,
-      "maxTokens": 100000
+      "maxTokens": 100000,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

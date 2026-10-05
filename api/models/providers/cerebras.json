@@ -20,8 +20,7 @@
       "maxTokens": 40960,
       "compat": {
         "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsStrictMode": false
+        "supportsDeveloperRole": false
       },
       "thinkingLevelMap": {
         "off": null,
@@ -31,7 +30,8 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "qwen-3.8-27b",
@@ -47,15 +47,14 @@
       "cost": {
         "input": 0.99,
         "output": 1.49,
-        "cacheRead": 0,
+        "cacheRead": 0.99,
         "cacheWrite": 0
       },
-      "contextWindow": 65536,
-      "maxTokens": 32768,
+      "contextWindow": 131072,
+      "maxTokens": 40960,
       "compat": {
         "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsStrictMode": false
+        "supportsDeveloperRole": false
       },
       "thinkingLevelMap": {
         "off": "none",
@@ -65,7 +64,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

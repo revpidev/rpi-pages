@@ -7,6 +7,7 @@
       "provider": "xiaomi",
       "baseUrl": "https://api.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -22,7 +23,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "mimo-v2.5-pro",
@@ -31,6 +43,7 @@
       "provider": "xiaomi",
       "baseUrl": "https://api.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -45,7 +58,8 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "mimo-v2.5-pro-ultraspeed",
@@ -54,6 +68,7 @@
       "provider": "xiaomi",
       "baseUrl": "https://api.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -68,7 +83,8 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "mimo-v2.6-flash",
@@ -77,6 +93,7 @@
       "provider": "xiaomi",
       "baseUrl": "https://api.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -92,7 +109,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "mimo-v2.6-pro",
@@ -101,6 +129,7 @@
       "provider": "xiaomi",
       "baseUrl": "https://api.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -116,7 +145,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "mimo-v2.6-pro-ultraspeed",
@@ -125,6 +165,7 @@
       "provider": "xiaomi",
       "baseUrl": "https://api.xiaomimimo.com/v1",
       "compat": {
+        "supportsStrictMode": true,
         "requiresReasoningContentOnAssistantMessages": true,
         "thinkingFormat": "deepseek"
       },
@@ -140,7 +181,18 @@
         "cacheWrite": 0
       },
       "contextWindow": 1048576,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

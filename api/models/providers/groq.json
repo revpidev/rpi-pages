@@ -17,7 +17,11 @@
         "cacheWrite": 0
       },
       "contextWindow": 131072,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "compat": {
+        "supportsStrictMode": true
+      },
+      "type": "chat"
     },
     {
       "id": "llama-3.3-70b-versatile",
@@ -36,7 +40,11 @@
         "cacheWrite": 0
       },
       "contextWindow": 131072,
-      "maxTokens": 32768
+      "maxTokens": 32768,
+      "compat": {
+        "supportsStrictMode": true
+      },
+      "type": "chat"
     },
     {
       "id": "openai/gpt-oss-120b",
@@ -56,6 +64,9 @@
       },
       "contextWindow": 131072,
       "maxTokens": 65536,
+      "compat": {
+        "supportsStrictMode": true
+      },
       "thinkingLevelMap": {
         "off": null,
         "minimal": null,
@@ -64,7 +75,8 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "openai/gpt-oss-20b",
@@ -84,6 +96,9 @@
       },
       "contextWindow": 131072,
       "maxTokens": 65536,
+      "compat": {
+        "supportsStrictMode": true
+      },
       "thinkingLevelMap": {
         "off": null,
         "minimal": null,
@@ -92,7 +107,8 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "openai/gpt-oss-safeguard-20b",
@@ -112,6 +128,9 @@
       },
       "contextWindow": 131072,
       "maxTokens": 65536,
+      "compat": {
+        "supportsStrictMode": true
+      },
       "thinkingLevelMap": {
         "off": null,
         "minimal": null,
@@ -120,7 +139,8 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "qwen/qwen3.6-27b",
@@ -141,6 +161,9 @@
       },
       "contextWindow": 131072,
       "maxTokens": 16384,
+      "compat": {
+        "supportsStrictMode": true
+      },
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
@@ -149,7 +172,18 @@
         "high": "default",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "qwen/qwen3.8-27b",
@@ -170,6 +204,9 @@
       },
       "contextWindow": 131042,
       "maxTokens": 16384,
+      "compat": {
+        "supportsStrictMode": true
+      },
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
@@ -178,7 +215,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

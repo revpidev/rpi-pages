@@ -35,6 +35,12 @@
           "source": "radius"
         },
         {
+          "id": "relace",
+          "name": "Relace",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
           "id": "sference",
           "name": "sference",
           "credential": "radius",
@@ -49,7 +55,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "cheap",
@@ -57,18 +74,19 @@
       "reasoning": true,
       "thinkingLevelMap": {
         "off": "none",
-        "minimal": "minimal",
+        "minimal": null,
         "low": "low",
-        "medium": "medium",
+        "medium": null,
         "high": "high",
-        "xhigh": "xhigh",
-        "max": "xhigh"
+        "xhigh": null,
+        "max": "max"
       },
       "input": [
-        "text"
+        "text",
+        "image"
       ],
       "contextWindow": 1000000,
-      "maxTokens": 384000,
+      "maxTokens": 32768,
       "lab": "DeepSeek",
       "cost": {
         "input": 0.22,
@@ -79,14 +97,14 @@
       "enabled": true,
       "providers": [
         {
-          "id": "sference",
-          "name": "sference",
+          "id": "fireworks",
+          "name": "Fireworks AI",
           "credential": "radius",
           "source": "radius"
         },
         {
-          "id": "fireworks",
-          "name": "Fireworks AI",
+          "id": "relace",
+          "name": "Relace",
           "credential": "radius",
           "source": "radius"
         },
@@ -95,17 +113,22 @@
           "name": "Baseten",
           "credential": "radius",
           "source": "radius"
-        },
-        {
-          "id": "deepinfra",
-          "name": "DeepInfra",
-          "credential": "radius",
-          "source": "radius"
         }
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-fable-5",
@@ -140,7 +163,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-fable-5-1",
@@ -175,7 +209,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-haiku-4-5",
@@ -205,7 +250,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-4-5",
@@ -235,7 +291,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-4-8",
@@ -269,7 +336,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-5",
@@ -304,7 +382,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-opus-5-5",
@@ -343,7 +432,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-sonnet-4-5",
@@ -373,7 +473,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "claude-sonnet-5",
@@ -407,111 +518,68 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
-      "id": "deepseek-v4-flash",
-      "name": "DeepSeek V4.1 Flash",
+      "id": "claude-sonnet-5-5",
+      "name": "Claude Sonnet 5.5",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": "none",
-        "minimal": "minimal",
+        "off": null,
+        "minimal": null,
         "low": "low",
         "medium": "medium",
         "high": "high",
         "xhigh": "xhigh",
-        "max": "xhigh"
-      },
-      "input": [
-        "text"
-      ],
-      "contextWindow": 1000000,
-      "maxTokens": 384000,
-      "lab": "DeepSeek",
-      "cost": {
-        "input": 0.22,
-        "output": 0.66,
-        "cacheRead": 0.007,
-        "cacheWrite": 0
-      },
-      "enabled": true,
-      "providers": [
-        {
-          "id": "sference",
-          "name": "sference",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "fireworks",
-          "name": "Fireworks AI",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "baseten",
-          "name": "Baseten",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "deepinfra",
-          "name": "DeepInfra",
-          "credential": "radius",
-          "source": "radius"
-        }
-      ],
-      "api": "pi-messages",
-      "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
-    },
-    {
-      "id": "deepseek-v4-pro",
-      "name": "DeepSeek V4 Pro",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
         "max": "max"
       },
       "input": [
-        "text"
+        "text",
+        "image"
       ],
       "contextWindow": 1000000,
-      "maxTokens": 262144,
-      "lab": "DeepSeek",
+      "maxTokens": 128000,
+      "lab": "Anthropic",
       "cost": {
-        "input": 1.32,
-        "output": 3.96,
-        "cacheRead": 0.044,
-        "cacheWrite": 0
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.2,
+        "cacheWrite": 2.5
       },
       "enabled": true,
       "providers": [
         {
-          "id": "fireworks",
-          "name": "Fireworks AI",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "baseten",
-          "name": "Baseten",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "deepinfra",
-          "name": "DeepInfra",
+          "id": "anthropic",
+          "name": "Anthropic",
           "credential": "radius",
           "source": "radius"
         }
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "deepseek-v4.1-flash",
@@ -527,10 +595,11 @@
         "max": "max"
       },
       "input": [
-        "text"
+        "text",
+        "image"
       ],
       "contextWindow": 1000000,
-      "maxTokens": 384000,
+      "maxTokens": 32768,
       "lab": "DeepSeek",
       "cost": {
         "input": 0.22,
@@ -547,52 +616,8 @@
           "source": "radius"
         },
         {
-          "id": "sference",
-          "name": "sference",
-          "credential": "radius",
-          "source": "radius"
-        }
-      ],
-      "api": "pi-messages",
-      "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
-    },
-    {
-      "id": "glm-5.2",
-      "name": "GLM 5.2",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "none",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": "max"
-      },
-      "input": [
-        "text"
-      ],
-      "contextWindow": 432000,
-      "maxTokens": 131072,
-      "lab": "Z.ai",
-      "cost": {
-        "input": 1.4,
-        "output": 4.4,
-        "cacheRead": 0.26,
-        "cacheWrite": 0
-      },
-      "enabled": true,
-      "providers": [
-        {
-          "id": "fireworks",
-          "name": "Fireworks AI",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "deepinfra",
-          "name": "DeepInfra",
+          "id": "relace",
+          "name": "Relace",
           "credential": "radius",
           "source": "radius"
         },
@@ -605,11 +630,79 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "glm-5.3",
       "name": "GLM-5.3",
+      "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": "minimal",
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "xhigh"
+      },
+      "input": [
+        "text"
+      ],
+      "contextWindow": 1000000,
+      "maxTokens": 131072,
+      "lab": "Z.ai",
+      "cost": {
+        "input": 1.4,
+        "output": 4.4,
+        "cacheRead": 0.26,
+        "cacheWrite": 0
+      },
+      "enabled": true,
+      "providers": [
+        {
+          "id": "sference",
+          "name": "sference",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
+          "id": "fireworks",
+          "name": "Fireworks AI",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
+          "id": "baseten",
+          "name": "Baseten",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
+          "id": "deepinfra",
+          "name": "DeepInfra",
+          "credential": "radius",
+          "source": "radius"
+        }
+      ],
+      "api": "pi-messages",
+      "provider": "radius",
+      "baseUrl": "https://radius.pi.dev/v1",
+      "type": "chat"
+    },
+    {
+      "id": "glm-5.3-flash",
+      "name": "GLM-5.3 Flash",
       "reasoning": true,
       "thinkingLevelMap": {
         "off": null,
@@ -619,50 +712,6 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      },
-      "input": [
-        "text"
-      ],
-      "contextWindow": 1048576,
-      "maxTokens": 131072,
-      "lab": "Z.ai",
-      "cost": {
-        "input": 1.4,
-        "output": 4.4,
-        "cacheRead": 0.26,
-        "cacheWrite": 0
-      },
-      "enabled": true,
-      "providers": [
-        {
-          "id": "baseten",
-          "name": "Baseten",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "deepinfra",
-          "name": "DeepInfra",
-          "credential": "radius",
-          "source": "radius"
-        }
-      ],
-      "api": "pi-messages",
-      "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
-    },
-    {
-      "id": "glm-5.3-flash",
-      "name": "GLM-5.3 Flash",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "none",
-        "minimal": "minimal",
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": "xhigh",
-        "max": "xhigh"
       },
       "input": [
         "text"
@@ -679,20 +728,26 @@
       "enabled": true,
       "providers": [
         {
-          "id": "sference",
-          "name": "sference",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
           "id": "fireworks",
           "name": "Fireworks AI",
           "credential": "radius",
           "source": "radius"
         },
         {
+          "id": "relace",
+          "name": "Relace",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
           "id": "baseten",
           "name": "Baseten",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
+          "id": "sference",
+          "name": "sference",
           "credential": "radius",
           "source": "radius"
         },
@@ -705,7 +760,8 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "type": "chat"
     },
     {
       "id": "gpt-5.3-codex",
@@ -744,7 +800,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4",
@@ -792,7 +859,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.4-mini",
@@ -831,7 +909,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.5",
@@ -879,7 +968,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-luna",
@@ -927,7 +1027,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-sol",
@@ -975,7 +1086,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-5.6-terra",
@@ -1023,7 +1145,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-astra",
@@ -1071,7 +1204,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-luna",
@@ -1119,7 +1263,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "gpt-6-sol",
@@ -1167,46 +1322,77 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
-      "id": "kimi-k2.7-code",
-      "name": "Kimi K2.7 Code",
+      "id": "grok-4.7",
+      "name": "Grok 4.7",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": null
       },
       "input": [
         "text",
         "image"
       ],
-      "contextWindow": 262000,
-      "maxTokens": 262000,
-      "lab": "Moonshot AI",
+      "contextWindow": 500000,
+      "maxTokens": 500000,
+      "lab": "xAI",
       "cost": {
-        "input": 0.95,
-        "output": 4,
-        "cacheRead": 0.19,
-        "cacheWrite": 0
+        "input": 2,
+        "output": 6,
+        "cacheRead": 0.5,
+        "cacheWrite": 0,
+        "tiers": [
+          {
+            "inputTokensAbove": 200000,
+            "input": 4,
+            "output": 12,
+            "cacheRead": 1,
+            "cacheWrite": 0
+          }
+        ]
       },
       "enabled": true,
       "providers": [
         {
-          "id": "fireworks",
-          "name": "Fireworks AI",
-          "credential": "radius",
-          "source": "radius"
-        },
-        {
-          "id": "deepinfra",
-          "name": "DeepInfra",
+          "id": "xai",
+          "name": "xAI",
           "credential": "radius",
           "source": "radius"
         }
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "kimi-k3",
@@ -1243,6 +1429,12 @@
           "source": "radius"
         },
         {
+          "id": "relace",
+          "name": "Relace",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
           "id": "sference",
           "name": "sference",
           "credential": "radius",
@@ -1257,7 +1449,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "precise",
@@ -1305,7 +1508,18 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1"
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

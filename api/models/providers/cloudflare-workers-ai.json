@@ -1,6 +1,24 @@
 {
   "models": [
     {
+      "type": "classifier",
+      "id": "typesafe/jev",
+      "name": "Jev",
+      "api": "cloudflare-workers-ai-system-one",
+      "provider": "cloudflare-workers-ai",
+      "baseUrl": "https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai",
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 32000
+    },
+    {
       "id": "@cf/deepseek-ai/deepseek-v4-flash-0731",
       "name": "DeepSeek V4 Flash 0731",
       "api": "openai-completions",
@@ -16,11 +34,12 @@
         "cacheRead": 0.014,
         "cacheWrite": 0
       },
-      "contextWindow": 1310720,
+      "contextWindow": 1048576,
       "maxTokens": 1048576,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true,
         "requiresReasoningContentOnAssistantMessages": true,
@@ -32,7 +51,8 @@
         "medium": null,
         "high": "high",
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/deepseek-ai/deepseek-v4-pro-0813",
@@ -55,6 +75,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true,
         "requiresReasoningContentOnAssistantMessages": true,
@@ -66,7 +87,8 @@
         "medium": null,
         "high": "high",
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/google/gemma-4-26b-a4b-it",
@@ -90,6 +112,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -101,7 +124,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/ibm-granite/granite-4.0-h-micro",
@@ -124,9 +158,11 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
@@ -149,9 +185,11 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/meta/llama-4-scout-17b-16e-instruct",
@@ -175,9 +213,21 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/mistralai/mistral-small-3.1-24b-instruct",
@@ -200,9 +250,11 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/moonshotai/kimi-k2.6",
@@ -226,6 +278,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -237,7 +290,18 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/moonshotai/kimi-k2.7-code",
@@ -261,9 +325,21 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/nvidia/nemotron-3-120b-a12b",
@@ -286,6 +362,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -297,7 +374,8 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/openai/gpt-oss-120b",
@@ -320,6 +398,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -331,7 +410,8 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/openai/gpt-oss-20b",
@@ -354,6 +434,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -365,7 +446,8 @@
         "high": "high",
         "xhigh": null,
         "max": null
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/qwen/qwen3-30b-a3b-fp8",
@@ -388,9 +470,11 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/qwen/qwen3.8-27b",
@@ -414,6 +498,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -425,7 +510,18 @@
         "high": null,
         "xhigh": "xhigh",
         "max": null
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/zai-org/glm-4.7-flash",
@@ -448,9 +544,11 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/zai-org/glm-5.2",
@@ -473,6 +571,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -484,7 +583,8 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/zai-org/glm-5.3",
@@ -502,11 +602,12 @@
         "cacheRead": 0.26,
         "cacheWrite": 0
       },
-      "contextWindow": 1310720,
+      "contextWindow": 1048576,
       "maxTokens": 1048576,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -518,7 +619,8 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "type": "chat"
     },
     {
       "id": "@cf/zai-org/glm-5.3-flash",
@@ -537,11 +639,12 @@
         "cacheRead": 0.03,
         "cacheWrite": 0
       },
-      "contextWindow": 1310720,
+      "contextWindow": 1048576,
       "maxTokens": 1048576,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
+        "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
       },
@@ -553,7 +656,18 @@
         "high": "high",
         "xhigh": null,
         "max": "max"
-      }
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     }
   ]
 }

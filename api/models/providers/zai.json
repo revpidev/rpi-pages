@@ -22,10 +22,12 @@
         "supportsReasoningEffort": false,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "zai",
+        "supportsStrictMode": true,
         "zaiToolStream": true
       },
       "contextWindow": 204800,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "glm-5-turbo",
@@ -49,10 +51,12 @@
         "supportsReasoningEffort": false,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "zai",
+        "supportsStrictMode": true,
         "zaiToolStream": true
       },
       "contextWindow": 200000,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "glm-5.2",
@@ -85,10 +89,12 @@
         "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "zai",
+        "supportsStrictMode": true,
         "zaiToolStream": true
       },
       "contextWindow": 1000000,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "glm-5.2-highspeed",
@@ -121,10 +127,12 @@
         "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "zai",
+        "supportsStrictMode": true,
         "zaiToolStream": true
       },
       "contextWindow": 1000000,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "glm-5.3",
@@ -157,10 +165,12 @@
         "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "zai",
+        "supportsStrictMode": true,
         "zaiToolStream": true
       },
       "contextWindow": 1000000,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     },
     {
       "id": "glm-5.3-flash",
@@ -194,10 +204,22 @@
         "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "zai",
+        "supportsStrictMode": true,
         "zaiToolStream": true
       },
       "contextWindow": 1000000,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
     },
     {
       "id": "glm-5.3-highspeed",
@@ -230,10 +252,12 @@
         "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "zai",
+        "supportsStrictMode": true,
         "zaiToolStream": true
       },
       "contextWindow": 1000000,
-      "maxTokens": 131072
+      "maxTokens": 131072,
+      "type": "chat"
     }
   ]
 }
