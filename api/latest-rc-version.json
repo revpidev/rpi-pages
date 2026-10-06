@@ -1,5 +1,5 @@
 {
-  "version": "0.1.6-rc.2",
+  "version": "0.1.6-rc.3",
   "packageName": "rpi",
-  "note": "v0.1.6-rc.2: pre-stable review hardening across codemode/MCP/plan-mode/subagents/extension-host/usage/render (two review rounds on rc.1)"
+  "note": "v0.1.6-rc.3: built-in MCP servers/connection lock order fix (found verifying rc.2)"
 }
