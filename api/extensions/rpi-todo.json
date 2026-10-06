@@ -8,6 +8,45 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.6-rc.2",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.6-rc.2",
+      "capabilities": [
+        "tools",
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-todo-0.1.6-rc.2-aarch64-apple-darwin.rpix",
+          "sha256": "6301b1e4e8ac4c9f12dc09a911d2d1a1be3b580dfaf61a66953378c9c3c63f2e",
+          "release": "v0.1.6-rc.2"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-todo-0.1.6-rc.2-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "316d35d3973c1ae66c178ed6eab26fc2196658be26e454535fa320c488517afe",
+          "release": "v0.1.6-rc.2"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-todo-0.1.6-rc.2-x86_64-pc-windows-msvc.rpix",
+          "sha256": "edecd6981fabb39399b0866c0db882b349af7f53b3c3352982ff92c0a518be38",
+          "release": "v0.1.6-rc.2"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-todo-0.1.6-rc.2-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "7abce938945bb0da9f6550d993189abb2fcc4665943a5287516639edbbb5242c",
+          "release": "v0.1.6-rc.2"
+        }
+      ]
+    },
+    {
       "version": "0.1.6-rc.1",
       "rpiAbi": 1,
       "minHostVersion": "0.1.6-rc.1",

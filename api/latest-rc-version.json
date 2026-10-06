@@ -1,5 +1,5 @@
 {
-  "version": "0.1.6-rc.1",
+  "version": "0.1.6-rc.2",
   "packageName": "rpi",
-  "note": "v0.1.6-rc.1: upstream parity to v1.0.0, built-in codemode/MCP, two new plugins (rpi-plan-mode/rpi-usage), eight-plugin lockstep"
+  "note": "v0.1.6-rc.2: pre-stable review hardening across codemode/MCP/plan-mode/subagents/extension-host/usage/render (two review rounds on rc.1)"
 }
