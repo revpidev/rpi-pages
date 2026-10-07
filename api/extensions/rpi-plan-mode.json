@@ -41,7 +41,7 @@
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-plan-mode-0.1.6-rc.4-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "34f734151105dfa5ada4febf0c848ae276689a88a7fe3d00db6edbdc3cc91bad",
+          "sha256": "fbd8d2959b249b90dbc72902a2ad32759a134b0d86082a94907941ce818e7181",
           "release": "v0.1.6-rc.4"
         }
       ]

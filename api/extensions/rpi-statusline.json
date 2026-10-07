@@ -38,7 +38,7 @@
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-statusline-0.1.6-rc.4-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "02965477aeb0692b68eebe226640ef51e80d6a8d3d85eb39ea369cf7168d4b12",
+          "sha256": "0eb427fb2abb241ab21a92878ec990856b8b245bd50da94126213d803a55cfbe",
           "release": "v0.1.6-rc.4"
         }
       ]

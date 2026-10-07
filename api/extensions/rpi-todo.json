@@ -41,7 +41,7 @@
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-todo-0.1.6-rc.4-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "6fd30aac6ca3a69d0252fe41beb113f6af9c6203261f12f41a2f3c147190b12c",
+          "sha256": "63dd7bf6057786f97adffa3f4a4c3c4dbe2d337bce1e7717e741276cfec67dee",
           "release": "v0.1.6-rc.4"
         }
       ]

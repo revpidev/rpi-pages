@@ -38,7 +38,7 @@
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-smart-fetch-0.1.6-rc.4-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "b9c4edcece7052aeb4a21c814610817a2068ed0479d8d4c12fd301cbe27f9e06",
+          "sha256": "1d2c78fd9abaed04b97c96fb54f61b58bb643562b602d9ce3d2fe339b285a9f0",
           "release": "v0.1.6-rc.4"
         }
       ]

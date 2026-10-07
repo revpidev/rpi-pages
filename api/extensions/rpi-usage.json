@@ -40,7 +40,7 @@
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-usage-0.1.6-rc.4-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "8d06fae4a8c86caebe4cb7c95e63ad21b364b00cdf6887ec7a225e9642da987b",
+          "sha256": "15e8761a655df815d012e60717c5cfd395de6f3aa013246f0bbca9a02c6e19f6",
           "release": "v0.1.6-rc.4"
         }
       ]

@@ -40,7 +40,7 @@
         {
           "target": "x86_64-unknown-linux-gnu",
           "file": "rpi-ask-user-question-0.1.6-rc.4-x86_64-unknown-linux-gnu.rpix",
-          "sha256": "6c462942d807c3cc94d5188ef626eae5385b9f24c9d275a739694a9faffa2025",
+          "sha256": "bbf5be54b2fefb3f594e9c74c16718ab20627423279213a0a3d48ba911af0392",
           "release": "v0.1.6-rc.4"
         }
       ]
