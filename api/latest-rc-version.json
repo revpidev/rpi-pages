@@ -1,5 +1,5 @@
 {
-  "version": "0.1.6-rc.3",
+  "version": "0.1.6-rc.4",
   "packageName": "rpi",
-  "note": "v0.1.6-rc.3: built-in MCP servers/connection lock order fix (found verifying rc.2)"
+  "note": "v0.1.6-rc.4: built-in codemode renderer parity fix (found verifying rc.3)"
 }
