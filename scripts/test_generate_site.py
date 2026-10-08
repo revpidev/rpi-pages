@@ -320,6 +320,65 @@ class RenamedIndexTests(unittest.TestCase):
             allow = json.loads((site / "api/extensions/allowlist.json").read_text(encoding="utf-8"))
             self.assertEqual(allow["repositories"], ["revpidev/rpi"])
 
+    def test_generate_extensions_carries_deprecated_marker(self):
+        # v0.1.6: the index/detail payloads carry the registry entry's
+        # deprecation marker (built-in MCP retires rpi-mcp-adapter).
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            registry = site / "registry"
+            registry.mkdir()
+            (registry / "rpi-mcp-adapter.json").write_text(
+                json.dumps(
+                    {
+                        "name": "rpi-mcp-adapter",
+                        "repository": "revpidev/rpi",
+                        "description": "d",
+                        "author": "revpidev",
+                        "license": "MIT",
+                        "official": True,
+                        "lockstepHost": True,
+                        "deprecated": True,
+                        "deprecatedMessage": "MCP is built in.",
+                        "deprecatedMessageZh": "MCP 已内置。",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            rpi_repo = site / "rpi"
+            crate = rpi_repo / "crates" / "rpi-ext-mcp-adapter"
+            crate.mkdir(parents=True)
+            (crate / "rpi-extension.json").write_text(
+                json.dumps(
+                    {
+                        "name": "rpi-mcp-adapter",
+                        "native": "librpi_ext_mcp_adapter.so",
+                        "capabilities": ["tools"],
+                        "rpiAbi": 1,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            releases = [_release("v0.1.5", {"rpi-mcp-adapter-0.1.5.rpix": "x"})]
+            with mock.patch.object(gs, "SITE", site), mock.patch.object(
+                gs, "release_assets", return_value=releases
+            ), mock.patch.object(gs, "artifact_sha256", return_value="b" * 64):
+                gs.generate_extensions(rpi_repo)
+            index = json.loads((site / "api/extensions/index.json").read_text(encoding="utf-8"))
+            entry = index["extensions"][0]
+            self.assertTrue(entry["deprecated"])
+            self.assertEqual(entry["deprecatedMessage"], "MCP is built in.")
+            self.assertEqual(entry["deprecatedMessageZh"], "MCP 已内置。")
+            detail = json.loads(
+                (site / "api/extensions/rpi-mcp-adapter.json").read_text(encoding="utf-8")
+            )
+            self.assertTrue(detail["deprecated"])
+            self.assertEqual(detail["deprecatedMessage"], "MCP is built in.")
+            self.assertEqual(detail["deprecatedMessageZh"], "MCP 已内置。")
+
+    def test_generate_extensions_omits_deprecated_for_active_plugins(self):
+        deprecation_fields = gs.deprecated_fields({"name": "rpi-todo"})
+        self.assertEqual(deprecation_fields, {})
+
 
 class GithubApiRetryTests(unittest.TestCase):
     """TE47 §8-3：GitHub 抖动重试（连接关闭 / 5xx / 超时）。"""

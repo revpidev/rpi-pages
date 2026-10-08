@@ -30,7 +30,10 @@
       ],
       "downloads": null,
       "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具与懒连接服务器生命周期——内建 MCP 扩展的可选替换,共享同一 `mcp.json` 配置布局(pi-mcp-adapter @ v4.0.0 移植)。",
-      "official": true
+      "official": true,
+      "deprecated": true,
+      "deprecatedMessage": "MCP is now built into rpi (v0.1.6). This extension is no longer updated or packaged; uninstall it with `rpi remove rpi-mcp-adapter` and use the built-in MCP extension.",
+      "deprecatedMessageZh": "MCP 已内置于 rpi(v0.1.6)。本插件不再更新与发布;请用 `rpi remove rpi-mcp-adapter` 卸载,改用内建 MCP 扩展。"
     },
     {
       "name": "rpi-plan-mode",

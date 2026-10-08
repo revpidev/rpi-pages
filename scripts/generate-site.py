@@ -366,6 +366,18 @@ def extension_versions(entry: dict) -> list[dict] | None:
     return [{"version": v, "yanked": v in yanked, "artifacts": versions[v]} for v in ordered]
 
 
+def deprecated_fields(entry: dict) -> dict:
+    """Deprecation marker shared by the index and detail payloads (v0.1.6:
+    MCP moved into the host, retiring rpi-mcp-adapter)."""
+    if not entry.get("deprecated"):
+        return {}
+    fields: dict = {"deprecated": True}
+    for key in ("deprecatedMessage", "deprecatedMessageZh"):
+        if entry.get(key):
+            fields[key] = entry[key]
+    return fields
+
+
 def generate_extensions(rpi_repo: Path) -> list[str]:
     """产出 api/extensions/{index,allowlist,<name>}.json，schema 见设计 §5.2。"""
     entries = load_registry()
@@ -427,6 +439,7 @@ def generate_extensions(rpi_repo: Path) -> list[str]:
             detail["kind"] = kind
         if entry.get("official"):
             detail["official"] = True
+        detail.update(deprecated_fields(entry))
         detail["versions"] = versions
         (out_dir / f"{name}.json").write_text(
             json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
@@ -445,6 +458,7 @@ def generate_extensions(rpi_repo: Path) -> list[str]:
             index_entry["descriptionZh"] = entry["descriptionZh"]
         if entry.get("official"):
             index_entry["official"] = True
+        index_entry.update(deprecated_fields(entry))
         index.append(index_entry)
 
     (out_dir / "index.json").write_text(

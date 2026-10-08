@@ -177,10 +177,21 @@
       color: var(--muted);
     }
     .tag.official { color: var(--green); border-color: rgba(74, 222, 128, 0.45); }
+    .tag.deprecated { color: var(--red); border-color: rgba(248, 113, 113, 0.45); }
     .tag.kind-native { color: var(--yellow); border-color: rgba(251, 191, 36, 0.4); }
     .tag.kind-wasm { color: var(--blue); border-color: rgba(96, 165, 250, 0.4); }
     .card .version { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); margin-bottom: 0.6rem; }
     .card .desc { color: var(--muted); font-size: 0.92rem; margin-bottom: 0.9rem; }
+    .deprecated-note {
+      font-size: 0.8rem;
+      color: var(--red);
+      background: rgba(248, 113, 113, 0.07);
+      border: 1px solid rgba(248, 113, 113, 0.25);
+      border-radius: 8px;
+      padding: 0.55rem 0.8rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.6;
+    }
     .caps { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.9rem; }
     .trust {
       font-size: 0.8rem;
@@ -448,6 +459,11 @@
         official.appendChild(i18n("官方", "Official"));
         head.appendChild(official);
       }
+      if (ext.deprecated) {
+        var deprecated = el("span", "tag deprecated");
+        deprecated.appendChild(i18n("已弃用", "Deprecated"));
+        head.appendChild(deprecated);
+      }
       if (ext.kind) {
         head.appendChild(el("span", "tag kind-" + ext.kind, ext.kind));
       }
@@ -465,6 +481,17 @@
       // 索引可选 descriptionZh（registry 条目维护）；缺省两种语言都用英文描述
       desc.appendChild(i18n(ext.descriptionZh || ext.description || "", ext.description || ""));
       card.appendChild(desc);
+
+      // Deprecated marker (registry entry `deprecated` + optional message):
+      // the extension still installs, but is no longer updated/packaged.
+      if (ext.deprecated) {
+        var deprecatedNote = el("p", "deprecated-note");
+        deprecatedNote.appendChild(i18n(
+          ext.deprecatedMessageZh || ext.deprecatedMessage || "该插件已弃用。",
+          ext.deprecatedMessage || "This extension is deprecated."
+        ));
+        card.appendChild(deprecatedNote);
+      }
 
       var caps = Array.isArray(ext.capabilities) ? ext.capabilities : [];
       if (caps.length) {
