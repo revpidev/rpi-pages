@@ -200,6 +200,46 @@
       "type": "chat"
     },
     {
+      "id": "claude-haiku-5-5",
+      "name": "Claude Haiku 5.5",
+      "api": "anthropic-messages",
+      "provider": "anthropic",
+      "baseUrl": "https://api.anthropic.com",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0.1,
+        "output": 0.5,
+        "cacheRead": 0.01,
+        "cacheWrite": 0.125
+      },
+      "contextWindow": 1000000,
+      "maxTokens": 128000,
+      "compat": {
+        "supportsStrictTools": true
+      },
+      "promptCache": {
+        "short": 300,
+        "long": 3600
+      },
+      "inputLimits": {
+        "maxRequestBytes": 33554432,
+        "images": {
+          "maxPerRequest": 600,
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
       "id": "claude-opus-4-5",
       "name": "Claude Opus 4.5 (latest)",
       "api": "anthropic-messages",
@@ -538,7 +578,7 @@
         "cacheRead": 0.3,
         "cacheWrite": 3.75
       },
-      "contextWindow": 1000000,
+      "contextWindow": 200000,
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
@@ -550,7 +590,7 @@
       "inputLimits": {
         "maxRequestBytes": 33554432,
         "images": {
-          "maxPerRequest": 600,
+          "maxPerRequest": 100,
           "resize": {
             "maxWidth": 2000,
             "maxHeight": 2000,
@@ -578,7 +618,7 @@
         "cacheRead": 0.3,
         "cacheWrite": 3.75
       },
-      "contextWindow": 1000000,
+      "contextWindow": 200000,
       "maxTokens": 64000,
       "compat": {
         "supportsStrictTools": true
@@ -590,7 +630,7 @@
       "inputLimits": {
         "maxRequestBytes": 33554432,
         "images": {
-          "maxPerRequest": 600,
+          "maxPerRequest": 100,
           "resize": {
             "maxWidth": 2000,
             "maxHeight": 2000,
@@ -704,7 +744,7 @@
       "cost": {
         "input": 2,
         "output": 10,
-        "cacheRead": 0.2,
+        "cacheRead": 0.1,
         "cacheWrite": 2.5
       },
       "contextWindow": 1000000,

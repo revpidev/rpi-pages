@@ -89,9 +89,9 @@
       "maxTokens": 32768,
       "lab": "DeepSeek",
       "cost": {
-        "input": 0.22,
-        "output": 0.66,
-        "cacheRead": 0.007,
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
         "cacheWrite": 0
       },
       "enabled": true,
@@ -602,9 +602,9 @@
       "maxTokens": 32768,
       "lab": "DeepSeek",
       "cost": {
-        "input": 0.22,
-        "output": 0.66,
-        "cacheRead": 0.007,
+        "input": 0.3,
+        "output": 1.2,
+        "cacheRead": 0.006,
         "cacheWrite": 0
       },
       "enabled": true,
@@ -691,6 +691,18 @@
         {
           "id": "deepinfra",
           "name": "DeepInfra",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
+          "id": "openrouter",
+          "name": "OpenRouter",
+          "credential": "radius",
+          "source": "radius"
+        },
+        {
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
