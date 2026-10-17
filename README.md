@@ -8,7 +8,7 @@ rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库
 
 | 端点 | 实现 | 说明 |
 |---|---|---|
-| `GET /api/models/providers/{id}` | `api/models/providers/*.json`（生成） | 模型目录 overlay，`{"models":[...]}`；静态资产自动带 ETag/Last-Modified，客户端 `If-None-Match` 4h 窗口 revalidate 走 304；未收录 provider 返回 404 = "overlay 不可用"（由 `functions/api/models/providers/[id].json.js` 代理实现，SPA fallback 会兜底 index.html，函数层以 content-type 区分） |
+| `GET /api/models/providers/{id}`、`GET /api/models/providers/{id}.json` | `api/models/providers/*.json`（生成）+ `functions/api/models/providers/[id].js`（无后缀，客户端请求形态）+ `functions/api/models/providers/[id].json.js`（文档形态） | 模型目录 overlay，`{"models":[...]}`；静态资产自动带 ETag/Last-Modified，客户端 `If-None-Match` 4h 窗口 revalidate 走 304；未收录 provider 返回 404 = "overlay 不可用"（由 `functions/api/models/providers/[id].js` / `[id].json.js` 代理实现，SPA fallback 会兜底 index.html，函数层以 content-type 区分） |
 | `GET /api/latest-version` | `api/latest-version.json`（生成） | 版本检查 `{"version","packageName","note"}`；发版时更新；无后缀路径由 `_redirects` rewrite |
 | `GET /api/report-install` | `functions/api/report-install.js` | telemetry 收口，204；绑定 KV `ANALYTICS` 可记录安装统计 |
 | `GET /install.sh`、`GET /install.ps1` | `install.sh`、`install.ps1`（静态文件，站点根） | 安装脚本；单一事实源在 rpi 仓库，由 `scripts/generate-site.py` 同步拷贝 |

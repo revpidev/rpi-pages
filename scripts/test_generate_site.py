@@ -322,7 +322,11 @@ class RenamedIndexTests(unittest.TestCase):
 
     def test_generate_extensions_carries_deprecated_marker(self):
         # v0.1.6: the index/detail payloads carry the registry entry's
-        # deprecation marker (built-in MCP retires rpi-mcp-adapter).
+        # deprecation marker (built-in MCP retired rpi-mcp-adapter). The
+        # adapter entry itself was removed with ADR-0037 (TE49 tail); this
+        # fixture stays as a synthetic sample so the marker path keeps a
+        # regression test (same precedent as the deprecated-extension
+        # runtime fixtures).
         with tempfile.TemporaryDirectory() as tmp:
             site = Path(tmp)
             registry = site / "registry"

@@ -501,7 +501,7 @@
       }
 
       // L0（native）信任提示：无沙箱、全 OS 权限；官方 ≠ 沙箱，提示仍然展示
-      // （extension-distribution.md §9.3 / pi-mcp-adapter R8）。
+      // （extension-distribution.md §9.3）。
       if (ext.kind === "native") {
         var trust = el("p", "trust");
         trust.appendChild(i18n(
