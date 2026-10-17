@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-09T02:09:49Z",
+  "generatedAt": "2026-10-17T03:58:05Z",
   "extensions": [
     {
       "name": "rpi-ask-user-question",
@@ -21,13 +21,8 @@
       "name": "rpi-mcp-adapter",
       "latest": "0.1.5",
       "description": "MCP client adapter: single `mcp` proxy tool with lazy server lifecycle — an optional replacement for the built-in MCP extension, sharing the same `mcp.json` layout (port of pi-mcp-adapter @ v4.0.0)",
-      "kind": "native",
-      "capabilities": [
-        "tools",
-        "commands",
-        "session",
-        "ui"
-      ],
+      "kind": null,
+      "capabilities": [],
       "downloads": null,
       "descriptionZh": "MCP 客户端适配器:单个 `mcp` 代理工具与懒连接服务器生命周期——内建 MCP 扩展的可选替换,共享同一 `mcp.json` 配置布局(pi-mcp-adapter @ v4.0.0 移植)。",
       "official": true,

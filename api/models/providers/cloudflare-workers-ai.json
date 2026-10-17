@@ -2,6 +2,42 @@
   "models": [
     {
       "type": "classifier",
+      "id": "@cf/cloudflare/clef",
+      "name": "Clef",
+      "api": "cloudflare-workers-ai-system-one",
+      "provider": "cloudflare-workers-ai",
+      "baseUrl": "https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai",
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0.24,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 65536
+    },
+    {
+      "type": "classifier",
+      "id": "@cf/cloudflare/clef-flash",
+      "name": "Clef Flash",
+      "api": "cloudflare-workers-ai-system-one",
+      "provider": "cloudflare-workers-ai",
+      "baseUrl": "https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai",
+      "input": [
+        "text"
+      ],
+      "cost": {
+        "input": 0.09,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "contextWindow": 65536
+    },
+    {
+      "type": "classifier",
       "id": "typesafe/jev",
       "name": "Jev",
       "api": "cloudflare-workers-ai-system-one",
@@ -237,7 +273,8 @@
       "baseUrl": "https://api.cloudflare.com/client/v4/accounts/{CLOUDFLARE_ACCOUNT_ID}/ai/v1",
       "reasoning": false,
       "input": [
-        "text"
+        "text",
+        "image"
       ],
       "cost": {
         "input": 0.351,
@@ -253,6 +290,16 @@
         "supportsStrictMode": true,
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
       },
       "type": "chat"
     },

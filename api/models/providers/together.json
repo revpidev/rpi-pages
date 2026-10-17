@@ -44,7 +44,9 @@
       "thinkingLevelMap": {
         "minimal": null,
         "low": null,
-        "medium": null
+        "medium": null,
+        "high": "high",
+        "xhigh": null
       },
       "input": [
         "text"
@@ -58,7 +60,7 @@
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
+        "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "thinkingFormat": "together",
         "supportsLongCacheRetention": false,

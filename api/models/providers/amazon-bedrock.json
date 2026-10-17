@@ -240,10 +240,23 @@
         "input": 0.1,
         "output": 0.5,
         "cacheRead": 0.01,
-        "cacheWrite": 0.125
+        "cacheWrite": 0.125,
+        "tiers": [
+          {
+            "inputTokensAbove": 100000,
+            "input": 0.5,
+            "output": 2.5,
+            "cacheRead": 0.05,
+            "cacheWrite": 0.625
+          }
+        ]
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "inputLimits": {
         "images": {
           "maxPerMessage": 20,
@@ -593,7 +606,7 @@
       "cost": {
         "input": 2,
         "output": 10,
-        "cacheRead": 0.2,
+        "cacheRead": 0.1,
         "cacheWrite": 2.5
       },
       "contextWindow": 1000000,
@@ -781,10 +794,23 @@
         "input": 0.11,
         "output": 0.55,
         "cacheRead": 0.011,
-        "cacheWrite": 0.1375
+        "cacheWrite": 0.1375,
+        "tiers": [
+          {
+            "inputTokensAbove": 100000,
+            "input": 0.55,
+            "output": 2.75,
+            "cacheRead": 0.055,
+            "cacheWrite": 0.6875
+          }
+        ]
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "inputLimits": {
         "images": {
           "maxPerMessage": 20,
@@ -1370,10 +1396,23 @@
         "input": 0.11,
         "output": 0.55,
         "cacheRead": 0.011,
-        "cacheWrite": 0.1375
+        "cacheWrite": 0.1375,
+        "tiers": [
+          {
+            "inputTokensAbove": 100000,
+            "input": 0.55,
+            "output": 2.75,
+            "cacheRead": 0.055,
+            "cacheWrite": 0.6875
+          }
+        ]
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "inputLimits": {
         "images": {
           "maxPerMessage": 20,
@@ -1759,7 +1798,7 @@
       "cost": {
         "input": 2.2,
         "output": 11,
-        "cacheRead": 0.22,
+        "cacheRead": 0.11,
         "cacheWrite": 2.75
       },
       "contextWindow": 1000000,
@@ -1969,10 +2008,23 @@
         "input": 0.1,
         "output": 0.5,
         "cacheRead": 0.01,
-        "cacheWrite": 0.125
+        "cacheWrite": 0.125,
+        "tiers": [
+          {
+            "inputTokensAbove": 100000,
+            "input": 0.5,
+            "output": 2.5,
+            "cacheRead": 0.05,
+            "cacheWrite": 0.625
+          }
+        ]
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "inputLimits": {
         "images": {
           "maxPerMessage": 20,
@@ -2358,7 +2410,7 @@
       "cost": {
         "input": 2,
         "output": 10,
-        "cacheRead": 0.2,
+        "cacheRead": 0.1,
         "cacheWrite": 2.5
       },
       "contextWindow": 1000000,
@@ -2430,7 +2482,16 @@
         "input": 0.2,
         "output": 1.2,
         "cacheRead": 0.02,
-        "cacheWrite": 0.25
+        "cacheWrite": 0.25,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 0.4,
+            "output": 1.8,
+            "cacheRead": 0.04,
+            "cacheWrite": 0.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -2468,7 +2529,16 @@
         "input": 4,
         "output": 20,
         "cacheRead": 0.4,
-        "cacheWrite": 5
+        "cacheWrite": 5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 8,
+            "output": 30,
+            "cacheRead": 0.8,
+            "cacheWrite": 10
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -2503,7 +2573,16 @@
         "input": 2,
         "output": 12,
         "cacheRead": 0.2,
-        "cacheWrite": 2.5
+        "cacheWrite": 2.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4,
+            "output": 18,
+            "cacheRead": 0.4,
+            "cacheWrite": 5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -2538,7 +2617,16 @@
         "input": 10,
         "output": 50,
         "cacheRead": 1,
-        "cacheWrite": 12.5
+        "cacheWrite": 12.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 20,
+            "output": 75,
+            "cacheRead": 2,
+            "cacheWrite": 25
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -2576,7 +2664,16 @@
         "input": 0.1,
         "output": 0.5,
         "cacheRead": 0.01,
-        "cacheWrite": 0.125
+        "cacheWrite": 0.125,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 0.2,
+            "output": 0.75,
+            "cacheRead": 0.02,
+            "cacheWrite": 0.25
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -2614,7 +2711,16 @@
         "input": 2,
         "output": 10,
         "cacheRead": 0.2,
-        "cacheWrite": 2.5
+        "cacheWrite": 2.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4,
+            "output": 15,
+            "cacheRead": 0.4,
+            "cacheWrite": 5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -2652,7 +2758,16 @@
         "input": 2,
         "output": 10,
         "cacheRead": 0.1,
-        "cacheWrite": 2.5
+        "cacheWrite": 2.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4,
+            "output": 15,
+            "cacheRead": 0.2,
+            "cacheWrite": 5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -2989,7 +3104,16 @@
         "input": 0.22,
         "output": 1.32,
         "cacheRead": 0.022,
-        "cacheWrite": 0.275
+        "cacheWrite": 0.275,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 0.44,
+            "output": 1.98,
+            "cacheRead": 0.044,
+            "cacheWrite": 0.55
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -3027,7 +3151,16 @@
         "input": 2.2,
         "output": 13.2,
         "cacheRead": 0.22,
-        "cacheWrite": 2.75
+        "cacheWrite": 2.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4.4,
+            "output": 19.8,
+            "cacheRead": 0.44,
+            "cacheWrite": 5.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -3129,10 +3262,23 @@
         "input": 0.11,
         "output": 0.55,
         "cacheRead": 0.011,
-        "cacheWrite": 0.1375
+        "cacheWrite": 0.1375,
+        "tiers": [
+          {
+            "inputTokensAbove": 100000,
+            "input": 0.55,
+            "output": 2.75,
+            "cacheRead": 0.055,
+            "cacheWrite": 0.6875
+          }
+        ]
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "inputLimits": {
         "images": {
           "maxPerMessage": 20,
@@ -4121,7 +4267,16 @@
         "input": 0.22,
         "output": 1.32,
         "cacheRead": 0.022,
-        "cacheWrite": 0.275
+        "cacheWrite": 0.275,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 0.44,
+            "output": 1.98,
+            "cacheRead": 0.044,
+            "cacheWrite": 0.55
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -4159,7 +4314,16 @@
         "input": 4.4,
         "output": 22,
         "cacheRead": 0.44,
-        "cacheWrite": 5.5
+        "cacheWrite": 5.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 8.8,
+            "output": 33,
+            "cacheRead": 0.88,
+            "cacheWrite": 11
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -4197,7 +4361,16 @@
         "input": 2.2,
         "output": 13.2,
         "cacheRead": 0.22,
-        "cacheWrite": 2.75
+        "cacheWrite": 2.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4.4,
+            "output": 19.8,
+            "cacheRead": 0.44,
+            "cacheWrite": 5.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -4235,7 +4408,16 @@
         "input": 11,
         "output": 55,
         "cacheRead": 1.1,
-        "cacheWrite": 13.75
+        "cacheWrite": 13.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 22,
+            "output": 82.5,
+            "cacheRead": 2.2,
+            "cacheWrite": 27.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -4273,7 +4455,16 @@
         "input": 0.11,
         "output": 0.55,
         "cacheRead": 0.011,
-        "cacheWrite": 0.1375
+        "cacheWrite": 0.1375,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 0.22,
+            "output": 0.825,
+            "cacheRead": 0.022,
+            "cacheWrite": 0.275
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -4311,7 +4502,16 @@
         "input": 2.2,
         "output": 11,
         "cacheRead": 0.22,
-        "cacheWrite": 2.75
+        "cacheWrite": 2.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4.4,
+            "output": 16.5,
+            "cacheRead": 0.44,
+            "cacheWrite": 5.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -4349,7 +4549,16 @@
         "input": 2.2,
         "output": 11,
         "cacheRead": 0.11,
-        "cacheWrite": 2.75
+        "cacheWrite": 2.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4.4,
+            "output": 16.5,
+            "cacheRead": 0.22,
+            "cacheWrite": 5.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -5001,10 +5210,23 @@
         "input": 0.11,
         "output": 0.55,
         "cacheRead": 0.011,
-        "cacheWrite": 0.1375
+        "cacheWrite": 0.1375,
+        "tiers": [
+          {
+            "inputTokensAbove": 100000,
+            "input": 0.55,
+            "output": 2.75,
+            "cacheRead": 0.055,
+            "cacheWrite": 0.6875
+          }
+        ]
       },
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "xhigh": "xhigh",
+        "max": "max"
+      },
       "inputLimits": {
         "images": {
           "maxPerMessage": 20,
@@ -5422,7 +5644,7 @@
       "cost": {
         "input": 2.2,
         "output": 11,
-        "cacheRead": 0.22,
+        "cacheRead": 0.11,
         "cacheWrite": 2.75
       },
       "contextWindow": 1000000,
@@ -5650,7 +5872,16 @@
         "input": 0.22,
         "output": 1.32,
         "cacheRead": 0.022,
-        "cacheWrite": 0.275
+        "cacheWrite": 0.275,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 0.44,
+            "output": 1.98,
+            "cacheRead": 0.044,
+            "cacheWrite": 0.55
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -5688,7 +5919,16 @@
         "input": 4.4,
         "output": 22,
         "cacheRead": 0.44,
-        "cacheWrite": 5.5
+        "cacheWrite": 5.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 8.8,
+            "output": 33,
+            "cacheRead": 0.88,
+            "cacheWrite": 11
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -5723,7 +5963,16 @@
         "input": 2.2,
         "output": 13.2,
         "cacheRead": 0.22,
-        "cacheWrite": 2.75
+        "cacheWrite": 2.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4.4,
+            "output": 19.8,
+            "cacheRead": 0.44,
+            "cacheWrite": 5.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -5758,7 +6007,16 @@
         "input": 11,
         "output": 55,
         "cacheRead": 1.1,
-        "cacheWrite": 13.75
+        "cacheWrite": 13.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 22,
+            "output": 82.5,
+            "cacheRead": 2.2,
+            "cacheWrite": 27.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -5796,7 +6054,16 @@
         "input": 0.11,
         "output": 0.55,
         "cacheRead": 0.011,
-        "cacheWrite": 0.1375
+        "cacheWrite": 0.1375,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 0.22,
+            "output": 0.825,
+            "cacheRead": 0.022,
+            "cacheWrite": 0.275
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -5834,7 +6101,16 @@
         "input": 2.2,
         "output": 11,
         "cacheRead": 0.22,
-        "cacheWrite": 2.75
+        "cacheWrite": 2.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4.4,
+            "output": 16.5,
+            "cacheRead": 0.44,
+            "cacheWrite": 5.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,
@@ -5872,7 +6148,16 @@
         "input": 2.2,
         "output": 11,
         "cacheRead": 0.11,
-        "cacheWrite": 2.75
+        "cacheWrite": 2.75,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4.4,
+            "output": 16.5,
+            "cacheRead": 0.22,
+            "cacheWrite": 5.5
+          }
+        ]
       },
       "contextWindow": 1050000,
       "maxTokens": 128000,

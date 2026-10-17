@@ -1,5 +1,5 @@
 {
-  "version": "0.1.6-rc.5",
+  "version": "0.1.7-rc.1",
   "packageName": "rpi",
-  "note": "v0.1.6-rc.5: rpi-mcp-adapter deprecated (update skip + startup removal hint); off-TTY TUI test hang fix"
+  "note": "v0.1.7-rc.1: upstream parity to v1.1.0, issue line #57-#71, rpi-durable (experimental), rpi-mcp-adapter removal"
 }

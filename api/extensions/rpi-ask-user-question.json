@@ -8,6 +8,44 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.7-rc.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.7-rc.1",
+      "capabilities": [
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-ask-user-question-0.1.7-rc.1-aarch64-apple-darwin.rpix",
+          "sha256": "53fede0b2454b034b5bb0535e1898b6d1a9e3f6d4f33862cb626795146042ce2",
+          "release": "v0.1.7-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-ask-user-question-0.1.7-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "544f1949daa16c041d9d7be768ac039c0d5e6acb091d6d22963f34729ad22ea7",
+          "release": "v0.1.7-rc.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-ask-user-question-0.1.7-rc.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "36eb647b22c84af47aa0ab4db615850d831641efebd47ba7b11a7ef73a43faff",
+          "release": "v0.1.7-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-ask-user-question-0.1.7-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "86548a299ca6f889f87eb9ba2b077a937d490ec47fb8c21b4fdc4da0c8224558",
+          "release": "v0.1.7-rc.1"
+        }
+      ]
+    },
+    {
       "version": "0.1.6",
       "rpiAbi": 1,
       "minHostVersion": "0.1.6",

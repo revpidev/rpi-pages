@@ -41,7 +41,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-fable-5.1",
+      "id": "claude-fable-5-1",
       "name": "Claude Fable 5.1",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -81,7 +81,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-haiku-4.5",
+      "id": "claude-haiku-4-5",
       "name": "Claude Haiku 4.5 (latest)",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -115,7 +115,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-opus-4.5",
+      "id": "claude-opus-4-5",
       "name": "Claude Opus 4.5 (latest)",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -149,7 +149,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-opus-4.6",
+      "id": "claude-opus-4-6",
       "name": "Claude Opus 4.6",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -187,7 +187,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-opus-4.7",
+      "id": "claude-opus-4-7",
       "name": "Claude Opus 4.7",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -227,7 +227,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-opus-4.8",
+      "id": "claude-opus-4-8",
       "name": "Claude Opus 4.8",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -307,7 +307,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-opus-5.5",
+      "id": "claude-opus-5-5",
       "name": "Claude Opus 5.5",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -347,7 +347,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-sonnet-4.5",
+      "id": "claude-sonnet-4-5",
       "name": "Claude Sonnet 4.5 (latest)",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -381,7 +381,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-sonnet-4.6",
+      "id": "claude-sonnet-4-6",
       "name": "Claude Sonnet 4.6",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -458,7 +458,7 @@
       "type": "chat"
     },
     {
-      "id": "claude-sonnet-5.5",
+      "id": "claude-sonnet-5-5",
       "name": "Claude Sonnet 5.5",
       "api": "anthropic-messages",
       "provider": "cloudflare-ai-gateway",
@@ -713,7 +713,8 @@
       "baseUrl": "https://gateway.ai.cloudflare.com/v1/{CLOUDFLARE_ACCOUNT_ID}/{CLOUDFLARE_GATEWAY_ID}/compat",
       "reasoning": false,
       "input": [
-        "text"
+        "text",
+        "image"
       ],
       "cost": {
         "input": 0.351,
@@ -730,6 +731,16 @@
         "maxTokensField": "max_tokens",
         "supportsLongCacheRetention": false,
         "sendSessionAffinityHeaders": true
+      },
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
       },
       "type": "chat"
     },

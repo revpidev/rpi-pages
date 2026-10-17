@@ -532,7 +532,7 @@
         "cacheRead": 0.07,
         "cacheWrite": 0
       },
-      "contextWindow": 524288,
+      "contextWindow": 1048576,
       "maxTokens": 262144,
       "inputLimits": {
         "images": {
