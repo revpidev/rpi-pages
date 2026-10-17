@@ -16,6 +16,7 @@ rpi 的 5 个产品端点默认值自 ADR-0009 起指向 `revpi.dev`。本仓库
 | `GET /api/extensions/index.json` | `api/extensions/index.json`（生成） | 扩展插件索引（目录页与 `rpi list` 用），schema 见 extension-distribution §5.2；由 `registry/*.json` 条目 + 各仓库 GitHub Releases 枚举生成 |
 | `GET /api/extensions/{name}.json` | `api/extensions/<name>.json`（生成）+ `functions/api/extensions/[name].json.js` | 单插件版本矩阵（`rpi install/info` 的版本解析用）；未收录 name 返回裸 404（Function 层防 SPA fallback，同 providers 模式） |
 | `GET /api/extensions/allowlist.json` | `api/extensions/allowlist.json`（生成） | 下载代理的 repo 白名单（索引全量 repo 集合），`functions/extensions/download` 校验用 |
+| `GET /oauth/client.json`、`GET /oauth/{callbackId}/client.json` | `functions/oauth/[[path]].js` | rpi 的 Client ID Metadata Documents（MCP OAuth `clientRegistration: "cimd"` 面）：共享文档 + per-server 文档，形状对齐上游 pi.dev 服务（`callbackId` = MCP server URL SHA-256 前 9 字节 base64url，12 字符）；格式不符的 id/路径返回裸 404 |
 | `GET /extensions/download/{owner}/{repo}/{tag}/{file}` | `functions/extensions/download/[[path]].js` | 插件 `.rpix` 资产官网代理；owner/repo 必须在 allowlist 内（否则 404，防开放转发器），tag 严格 `v<semver>`、file 严格 `*.rpix[.sha256]`；回源 GitHub 流式转发，上游 404→404，immutable 缓存 |
 | `/extensions` | `extensions.html` | 插件目录页：客户端读 index.json 渲染卡片（official 徽标、capabilities、L0 信任提示、安装命令复制） |
 | `/session/#{gistId}` | `session/index.html` | share viewer；gist id 在 URL fragment 里（`get_share_viewer_url` 拼 `#`），页面 JS 读取并渲染 gist raw |
