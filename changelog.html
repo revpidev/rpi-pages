@@ -337,6 +337,12 @@
         <span class="l-en">What changed in each release, mirroring the <code>changes/</code> directory of the source repository. The in-app update notice links here too.</span>
       </p>
 
+      <h2><span class="version-tag">0.1.7-rc.2</span><span class="l-zh">rc.1 预发布审查加固(预发布,2026-10-18)</span><span class="l-en">rc.1 pre-release review hardening (pre-release, 2026-10-18)</span></h2>
+      <p>
+        <span class="l-zh">内容 = 0.1.7-rc.1 + 发布前审查加固:Windows 剪贴板文本/文件拖放、离线程读取与 0600 临时文件;compaction 队列消息并入首轮;durable SQLite 事务取消/关闭安全与 0700/0600 临时文件;/usage all provider 标签;MCP close 终态;字面量工具模式锚定;测试 flake 修复;MSRV 1.95 与 wasmtime 48.0.6/rustls 0.23.46/quinn-proto 0.11.18 安全升级。已知问题:MCP OAuth issuer binding 延至 v0.1.8(GHSA-6qxp-vccf-f47h)。安装:rpi update --rc。</span>
+        <span class="l-en">Content = 0.1.7-rc.1 plus pre-stable review hardening: Windows clipboard text/file-drop, off-thread reads, and 0600 temp files; compaction-queue messages join the first run; durable SQLite transaction cancellation/close safety with 0700/0600 temp files; /usage all provider labels; terminal MCP close state; anchored literal tool patterns; test-flake fixes; MSRV 1.95 and the wasmtime 48.0.6 / rustls 0.23.46 / quinn-proto 0.11.18 security updates. Known issue: the MCP OAuth issuer binding is deferred to v0.1.8 (GHSA-6qxp-vccf-f47h). Install: rpi update --rc.</span>
+      </p>
+
       <h2><span class="version-tag">0.1.7-rc.1</span><span class="l-zh">上游追平 v1.1.0 + issue #57–#71 + durable 栈 + mcp-adapter 移除(预发布,2026-10-17)</span><span class="l-en">Upstream parity to v1.1.0 + issues #57&ndash;#71 + the durable stack + mcp-adapter removal (pre-release, 2026-10-17)</span></h2>
       <p>
         <span class="l-zh">主线:行为金标准升级至 v1.1.0(abe508e1b,ADR-0036,含 v1.0.1–v1.1.0 增量);issue 线 #57–#71 十五条修复;mcp-adapter 移除(ADR-0037);durable 栈首次落地(rpi-durable:存储/运行时/工具链,experimental,默认 CLI 路径零变化);插件线:subagents v0.76.1 与 ask-user-question/todo rpiv-mono v2.13.8 重定基、usage footer 紧凑化、mcp-adapter 退役。本页为预发布(RC)通道,正式版随后。安装:老用户 rpi update --rc(或 rpi update --all --rc 同时升级七款锁步插件);install.sh 不提供 RC。多处 Breaking,见下。</span>
