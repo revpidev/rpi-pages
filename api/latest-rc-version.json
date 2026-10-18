@@ -1,5 +1,5 @@
 {
-  "version": "0.1.7-rc.1",
+  "version": "0.1.7-rc.2",
   "packageName": "rpi",
-  "note": "v0.1.7-rc.1: upstream parity to v1.1.0, issue line #57-#71, rpi-durable (experimental), rpi-mcp-adapter removal"
+  "note": "v0.1.7-rc.2: rc.1 review hardening — Windows clipboard, compaction queue, durable cancellation, /usage labels, MSRV 1.95"
 }

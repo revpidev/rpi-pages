@@ -8,6 +8,45 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.7-rc.2",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.7-rc.2",
+      "capabilities": [
+        "commands",
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-plan-mode-0.1.7-rc.2-aarch64-apple-darwin.rpix",
+          "sha256": "7957e2da8a491f4d7e9b83e492c0568df17b99e617cb8d1783dbd5eb413cc345",
+          "release": "v0.1.7-rc.2"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.7-rc.2-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "297a5f141ee0d8c6ecdc24162b5bf8d051a9b000f47fb66cb1c4c3613292c786",
+          "release": "v0.1.7-rc.2"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-plan-mode-0.1.7-rc.2-x86_64-pc-windows-msvc.rpix",
+          "sha256": "4efd9b22459e97858eb3e3ec1d5b4f8c8b379ee5c9fe224e2ab171f25dda242b",
+          "release": "v0.1.7-rc.2"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.7-rc.2-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "c45d0a1807ebb409a7929aa94995d52ea968fb817835c7332d04576a30c9541e",
+          "release": "v0.1.7-rc.2"
+        }
+      ]
+    },
+    {
       "version": "0.1.7-rc.1",
       "rpiAbi": 1,
       "minHostVersion": "0.1.7-rc.1",
