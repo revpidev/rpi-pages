@@ -377,48 +377,6 @@
       "type": "chat"
     },
     {
-      "id": "moonshotai/kimi-k3",
-      "name": "Kimi K3",
-      "api": "openai-completions",
-      "provider": "nvidia",
-      "baseUrl": "https://integrate.api.nvidia.com/v1",
-      "headers": {
-        "NVCF-POLL-SECONDS": "3600"
-      },
-      "reasoning": true,
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 0,
-        "output": 0,
-        "cacheRead": 0,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "maxTokensField": "max_tokens",
-        "supportsLongCacheRetention": false,
-        "supportsStrictMode": false
-      },
-      "contextWindow": 1048576,
-      "maxTokens": 131072,
-      "inputLimits": {
-        "images": {
-          "resize": {
-            "maxWidth": 2000,
-            "maxHeight": 2000,
-            "maxBytes": 4718592,
-            "jpegQuality": 80
-          }
-        }
-      },
-      "type": "chat"
-    },
-    {
       "id": "nvidia/cosmos-reason2-8b",
       "name": "Cosmos Reason2 8B",
       "api": "openai-completions",
@@ -565,37 +523,6 @@
       "type": "chat"
     },
     {
-      "id": "nvidia/nemotron-3-super-120b-a12b",
-      "name": "Nemotron 3 Super",
-      "api": "openai-completions",
-      "provider": "nvidia",
-      "baseUrl": "https://integrate.api.nvidia.com/v1",
-      "headers": {
-        "NVCF-POLL-SECONDS": "3600"
-      },
-      "reasoning": true,
-      "input": [
-        "text"
-      ],
-      "cost": {
-        "input": 0.2,
-        "output": 0.8,
-        "cacheRead": 0,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "maxTokensField": "max_tokens",
-        "supportsLongCacheRetention": false,
-        "supportsStrictMode": false
-      },
-      "contextWindow": 262144,
-      "maxTokens": 262144,
-      "type": "chat"
-    },
-    {
       "id": "nvidia/nemotron-3-ultra-550b-a55b",
       "name": "Nemotron 3 Ultra 550B A55B",
       "api": "openai-completions",
@@ -658,6 +585,48 @@
       "type": "chat"
     },
     {
+      "id": "nvidia/nemotron-3.5-super-vl-120b-a12b",
+      "name": "Nemotron 3.5 Super VL 120B A12B",
+      "api": "openai-completions",
+      "provider": "nvidia",
+      "baseUrl": "https://integrate.api.nvidia.com/v1",
+      "headers": {
+        "NVCF-POLL-SECONDS": "3600"
+      },
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "compat": {
+        "supportsStore": false,
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false,
+        "maxTokensField": "max_tokens",
+        "supportsLongCacheRetention": false,
+        "supportsStrictMode": false
+      },
+      "contextWindow": 1048576,
+      "maxTokens": 8192,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
       "id": "openai/gpt-oss-20b",
       "name": "GPT OSS 20B",
       "api": "openai-completions",
@@ -717,6 +686,48 @@
       },
       "contextWindow": 262144,
       "maxTokens": 16384,
+      "type": "chat"
+    },
+    {
+      "id": "stepfun-ai/step-5-preview",
+      "name": "Step 5 Preview",
+      "api": "openai-completions",
+      "provider": "nvidia",
+      "baseUrl": "https://integrate.api.nvidia.com/v1",
+      "headers": {
+        "NVCF-POLL-SECONDS": "3600"
+      },
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "compat": {
+        "supportsStore": false,
+        "supportsDeveloperRole": false,
+        "supportsReasoningEffort": false,
+        "maxTokensField": "max_tokens",
+        "supportsLongCacheRetention": false,
+        "supportsStrictMode": false
+      },
+      "contextWindow": 1048576,
+      "maxTokens": 1048576,
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
       "type": "chat"
     },
     {
