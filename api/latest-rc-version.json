@@ -1,5 +1,5 @@
 {
-  "version": "0.1.7-rc.2",
+  "version": "0.1.7-rc.3",
   "packageName": "rpi",
-  "note": "v0.1.7-rc.2: rc.1 review hardening — Windows clipboard, compaction queue, durable cancellation, /usage labels, MSRV 1.95"
+  "note": "v0.1.7-rc.3: installer and uninstall PATH hardening - profile-preserving idempotent PATH blocks, automation-safe prompts, explicit shell detection, Windows registry-kind preservation, self-uninstall cleanup"
 }
