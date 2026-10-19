@@ -8,6 +8,44 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.7",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.7",
+      "capabilities": [
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-ask-user-question-0.1.7-aarch64-apple-darwin.rpix",
+          "sha256": "1380cb51af173ea485de01c7477cd2edb225eb2bb5cd9873f8833e3e0026fae3",
+          "release": "v0.1.7"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-ask-user-question-0.1.7-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "452b9ee510ad8832c4eb29f874560605954028621348056738a0fa11c590d55d",
+          "release": "v0.1.7"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-ask-user-question-0.1.7-x86_64-pc-windows-msvc.rpix",
+          "sha256": "21cf43aaa0b1fd332d253993f12469390383e5f36a13992d2a466d3ffee9f939",
+          "release": "v0.1.7"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-ask-user-question-0.1.7-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "c85290f7437d8c51cab942223b0b0c89815fd390abf864e0fa30578f6e457304",
+          "release": "v0.1.7"
+        }
+      ]
+    },
+    {
       "version": "0.1.7-rc.3",
       "rpiAbi": 1,
       "minHostVersion": "0.1.7-rc.3",

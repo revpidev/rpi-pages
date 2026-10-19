@@ -1,4 +1,5 @@
 {
-  "version": "0.1.6",
-  "packageName": "rpi"
+  "version": "0.1.7",
+  "packageName": "rpi",
+  "note": "v0.1.7: upstream parity to Pi v1.1.0, issues #57-#71, installer hardening, and the 2026-10-19 model catalog"
 }

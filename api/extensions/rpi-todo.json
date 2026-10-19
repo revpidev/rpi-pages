@@ -8,6 +8,45 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.7",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.7",
+      "capabilities": [
+        "tools",
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-todo-0.1.7-aarch64-apple-darwin.rpix",
+          "sha256": "7492dec3a1be616ef2ee94c9ca21ff4467b18f8deafd4cbe252f331c86de2aa1",
+          "release": "v0.1.7"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-todo-0.1.7-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "6e895cdd3130f93559faabae95482ef7c01e40685f0ffd4b6e060003278a62d7",
+          "release": "v0.1.7"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-todo-0.1.7-x86_64-pc-windows-msvc.rpix",
+          "sha256": "595ea687677cdf890f253b4f6bbd2447fca49cfcdad69709939484814b2ea09f",
+          "release": "v0.1.7"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-todo-0.1.7-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "7fd9355e2b197e86ce841ba1a2c7b0e1c6080c24a64c03659f86fb2ac12ea432",
+          "release": "v0.1.7"
+        }
+      ]
+    },
+    {
       "version": "0.1.7-rc.3",
       "rpiAbi": 1,
       "minHostVersion": "0.1.7-rc.3",
