@@ -1,6 +1,6 @@
 # revpi.dev — rpi product endpoints (Cloudflare Pages)
 
-Since ADR-0009, the default values of rpi's five product endpoints point at `revpi.dev`. This repository is the deployment repository for the rpi website / product endpoints (Cloudflare Pages project `revpi`): static directory content plus Pages Functions, with no backend.
+Since ADR-0009, the default values of rpi's product endpoints point at `revpi.dev`. This repository is the deployment repository for the rpi website / product endpoints (Cloudflare Pages project `revpi`): static directory content plus Pages Functions, with no backend. The original five endpoints (model catalog, version check, telemetry, share viewer, registry) have since grown the RC version endpoint, extension APIs, download proxies, and MCP OAuth client metadata documents.
 
 > Repository split (the rpi source repository and this deployment repository are independent; requirements / design / ADR documents live in a private documentation repository and are not published): this site is **rpi-pages**; the rpi source lives in the **rpi** repository. The endpoint contract and deployment notes are in this README. `index.html` is the site home page (open-source project page with features / quick start / endpoint notes); `/` requests hit it directly.
 
@@ -9,18 +9,21 @@ Since ADR-0009, the default values of rpi's five product endpoints point at `rev
 | Endpoint | Implementation | Notes |
 |---|---|---|
 | `GET /api/models/providers/{id}`, `GET /api/models/providers/{id}.json` | `api/models/providers/*.json` (generated) + `functions/api/models/providers/[id].js` (extensionless, the client's request shape) + `functions/api/models/providers/[id].json.js` (documented shape) | Model-catalog overlay, `{"models":[...]}`; static assets carry ETag/Last-Modified automatically, and client `If-None-Match` revalidation in the 4h window returns 304; an unknown provider returns 404 = "overlay unavailable" (proxied by `functions/api/models/providers/[id].js` / `[id].json.js`; the SPA fallback would otherwise serve index.html, so the function distinguishes by content-type) |
-| `GET /api/latest-version` | `api/latest-version.json` (generated) | Version check `{"version","packageName","note"}`; updated on release; the extensionless path is rewritten by `_redirects` |
+| `GET /api/latest-version` | `api/latest-version.json` (generated) | Stable version check `{"version","packageName","note"}`; updated on release; the extensionless path is rewritten by `_redirects` |
+| `GET /api/latest-rc-version.json` | `api/latest-rc-version.json` (generated) | RC (pre-release) channel endpoint probed by `rpi update --rc` and by the startup version check on pre-release builds; written only with `generate-site.py --rc-version`, never touched by a stable release |
 | `GET /api/report-install` | `functions/api/report-install.js` | Telemetry sink, 204; binding KV `ANALYTICS` records install statistics |
 | `GET /install.sh`, `GET /install.ps1` | `install.sh`, `install.ps1` (static files at the site root) | Install scripts; the single source of truth is the rpi repository, copied by `scripts/generate-site.py` |
 | `GET /releases/download/v{ver}/{file}` | `functions/releases/download/[[path]].js` | GitHub Release asset proxy on the official site (same URL shape as GitHub, only the base changes; edge nodes fetch from GitHub when it is unreachable); the key shape is validated strictly, and both misses and upstream 404s return 404; zero storage, zero extra release steps |
-| `GET /api/extensions/index.json` | `api/extensions/index.json` (generated) | Extension index (used by the directory page and `rpi list`); schema in extension-distribution §5.2; generated from `registry/*.json` entries plus each repository's GitHub Releases |
-| `GET /api/extensions/{name}.json` | `api/extensions/<name>.json` (generated) + `functions/api/extensions/[name].json.js` | Per-extension version matrix (used by `rpi install/info` for version resolution); an unknown name returns a bare 404 (the function prevents the SPA fallback, same as providers) |
+| `GET /api/extensions/index.json` | `api/extensions/index.json` (generated) | Extension index (used by the directory page and `rpi install`); schema in extension-distribution §5.2; generated from `registry/*.json` entries plus each repository's GitHub Releases |
+| `GET /api/extensions/{name}.json` | `api/extensions/<name>.json` (generated) + `functions/api/extensions/[name].json.js` | Per-extension version matrix (used by `rpi install` for version resolution); an unknown name returns a bare 404 (the function prevents the SPA fallback, same as providers) |
 | `GET /api/extensions/allowlist.json` | `api/extensions/allowlist.json` (generated) | Repository allowlist for the download proxy (the full repository set of the index), validated by `functions/extensions/download` |
 | `GET /oauth/client.json`, `GET /oauth/{callbackId}/client.json` | `functions/oauth/[[path]].js` | rpi's Client ID Metadata Documents (the MCP OAuth `clientRegistration: "cimd"` surface): shared document + per-server documents, shaped like the upstream pi.dev service (`callbackId` = the first 9 bytes of the MCP server URL SHA-256, base64url, 12 characters); malformed ids/paths return a bare 404 |
 | `GET /extensions/download/{owner}/{repo}/{tag}/{file}` | `functions/extensions/download/[[path]].js` | `.rpix` extension asset proxy; owner/repo must be in the allowlist (otherwise 404, preventing an open relay); tag is strictly `v<semver>`, file is strictly `*.rpix[.sha256]`; streams from GitHub, upstream 404→404, immutable caching |
 | `/extensions` | `extensions.html` | Extension directory: the client reads index.json and renders cards (official badge, capabilities, L0 trust notice, install-command copy) |
 | `/session/#{gistId}` | `session/index.html` | Share viewer; the gist id is in the URL fragment (`get_share_viewer_url` joins `#`), and the page JS reads and renders the raw gist |
 | `/changelog` | `changelog.html` | Changelog link in the update banner |
+| `/docs` | `docs.html` | User guide / settings reference (bilingual); linked from the site navigation and the startup onboarding line |
+| `/README.md`, `/wrangler.toml`, `/registry/*`, `/scripts/*` | `functions/README.md.js`, `functions/wrangler.toml.js`, `functions/registry/[[path]].js`, `functions/scripts/[[path]].js` | Internal repository files are not published: route-level Functions return a bare 404 (the SPA fallback and `.assetsignore` are not sufficient on direct upload) |
 
 ## Generation + deployment
 
@@ -61,8 +64,12 @@ The catalog and latest-version are generated by the rpi source repository. To up
 #    During an RC window refresh only the RC endpoint:
 #    `--rc-version <stable>-rc.N` (the stable endpoint is skipped
 #    automatically; no extra flag needed).
+#    Example: python3 scripts/generate-site.py --rc-version 0.1.7-rc.3
 python3 scripts/generate-site.py
-#    On release: python3 scripts/generate-site.py --version 0.2.0 --note "..."
+#    On release: python3 scripts/generate-site.py --version 0.1.7 --note "..."
+
+#    The same run also regenerates api/extensions/*.json from registry/*.json,
+#    so commit registry changes in the same push when entries move.
 
 # 2. Commit and push — the Git integration deploys automatically
 cd /home/leven/develop/ai/revpi/rpi-pages
@@ -73,9 +80,9 @@ git push
 
 ### Extension registry (`registry/`)
 
-`registry/<name>.json` is the **source data** for the extension index (one entry per extension: `name/repository/description/author/license`; first-party entries add `"official": true`; optional `"yankedVersions": [...]` overrides yanks, and `"lockstepHost": true` means the extension is released in lockstep with the host — generation backfills each version's `minHostVersion` to that version itself; an explicit `minHostVersion` in the entry takes precedence; CI injects the same value into the `.rpix` manifest at pack time). **Transitional note**: the design (extension-distribution §5.1) assigns the index to a separate repository, `revpidev/rpi-plugins`, which does not exist yet; for now the index data lives in this repository's `registry/` and will move once that repository exists, with the generator switched to read it.
+`registry/<name>.json` is the **source data** for the extension index (one entry per extension: `name/repository/description/author/license`; first-party entries add `"official": true`; optional `"yankedVersions": [...]` overrides yanks, and `"lockstepHost": true` means the extension is released in lockstep with the host — generation backfills each version's `minHostVersion` to that version itself; an explicit `minHostVersion` in the entry takes precedence; CI injects the same value into the `.rpix` manifest at pack time). **Current state (v0.1.7)**: seven first-party entries (`rpi-subagents`, `rpi-smart-fetch`, `rpi-statusline`, `rpi-ask-user-question`, `rpi-todo`, `rpi-plan-mode`, `rpi-usage`); `rpi-mcp-adapter` was removed with ADR-0037/TE49. **Transitional note**: the design (extension-distribution §5.1) assigns the index to a separate repository, `revpidev/rpi-plugins`, which does not exist yet; for now the index data lives in this repository's `registry/` and will move once that repository exists, with the generator switched to read it.
 
-`generate-site.py` reads `registry/*.json`, calls the GitHub Releases API for each `repository` to enumerate the version matrix (matching assets exactly as `<name>-<version>[-<target>].rpix`, trusting the `<file>.sha256` sidecar in the same Release), and produces `api/extensions/{index,allowlist,<name>}.json` — commit means deploy, on the same pipeline as the catalog. `GITHUB_TOKEN` is optional (anonymous requests are limited to 60/hour); if the API is unreachable, the affected extension degrades to `versions: []` with a warning instead of failing the whole generation. First-party extension description/capabilities/kind come from each crate's `rpi-extension.json` in `../rpi`.
+`generate-site.py` reads `registry/*.json`, calls the GitHub Releases API for each `repository` to enumerate the version matrix (matching assets exactly as `<name>-<version>[-<target>].rpix`, trusting the `<file>.sha256` sidecar in the same Release), and produces `api/extensions/{index,allowlist,<name>}.json` — commit means deploy, on the same pipeline as the catalog. `GITHUB_TOKEN` is optional (anonymous requests are limited to 60/hour); if the API is unreachable, the affected extension degrades to `versions: []` with a warning instead of failing the whole generation. First-party extension description/capabilities/kind come from each crate's `rpi-extension.json` in `../rpi`. The stable and RC version endpoints are refreshed separately: `--version <stable>` writes `api/latest-version.json`; `--rc-version <stable>-rc.N` writes `api/latest-rc-version.json` and leaves the stable endpoint untouched.
 
 > Release asset mirroring (`/releases/download/*`) is a Function proxy back to GitHub: zero storage, zero extra release steps — assets are usable as soon as the GitHub Release is published.
 
@@ -106,7 +113,9 @@ RPI_MODEL_CATALOG_URL=https://revpi.dev        # or settings.json modelCatalogUr
 RPI_VERSION_CHECK_URL=https://revpi.dev/api/latest-version
 RPI_TELEMETRY_URL=https://revpi.dev/api/report-install
 RPI_SHARE_VIEWER_URL=https://revpi.dev/session
+RPI_REGISTRY_URL=https://revpi.dev            # extension registry / download proxy
 # The literal value off disables the endpoint; RPI_OFFLINE disables all of them
+# RC clients derive https://revpi.dev/api/latest-rc-version.json from the version endpoint.
 ```
 
 ## Compatibility notes

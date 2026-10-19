@@ -378,7 +378,8 @@
         <li><span class="l-zh"><strong>单二进制</strong>：静态链接，无运行时依赖，拷贝即可运行。</span><span class="l-en"><strong>Single binary</strong>: statically linked, zero runtime dependencies, copy and run.</span></li>
         <li><span class="l-zh"><strong>完整终端界面</strong>：流式输出、语法高亮、斜杠命令、<code>@</code> 文件引用、会话树。</span><span class="l-en"><strong>Complete terminal UI</strong>: streaming output, syntax highlighting, slash commands, <code>@</code> file references, session tree.</span></li>
         <li><span class="l-zh"><strong>内置工具</strong>：读写文件、编辑代码、执行命令；长对话自动压缩上下文。</span><span class="l-en"><strong>Built-in tools</strong>: read/write files, edit code, run commands; automatic context compaction for long conversations.</span></li>
-        <li><span class="l-zh"><strong>38 家模型服务商</strong>：OpenAI、Anthropic、DeepSeek、Kimi、Google、Bedrock 等开箱即用。</span><span class="l-en"><strong>38 model providers</strong>: OpenAI, Anthropic, DeepSeek, Kimi, Google, Bedrock and more, out of the box.</span></li>
+        <li><span class="l-zh"><strong>内建 agent 能力</strong>：codemode 沙箱、tool_search、MCP 客户端、权限模式与 plan mode。</span><span class="l-en"><strong>Built-in agent surfaces</strong>: codemode sandbox, tool_search, MCP client, permission modes and plan mode.</span></li>
+        <li><span class="l-zh"><strong>42 家模型服务商</strong>：OpenAI、Anthropic、DeepSeek、Kimi、Google、Bedrock 等开箱即用。</span><span class="l-en"><strong>42 model providers</strong>: OpenAI, Anthropic, DeepSeek, Kimi, Google, Bedrock and more, out of the box.</span></li>
         <li><span class="l-zh"><strong>插件系统</strong>：支持 WebAssembly 与原生动态库两种插件，可热重载。</span><span class="l-en"><strong>Plugin system</strong>: WebAssembly and native dynamic-library plugins, with hot reload.</span></li>
         <li><span class="l-zh"><strong>会话分享</strong>：导出 HTML 或生成分享链接。</span><span class="l-en"><strong>Session sharing</strong>: export to HTML or generate a share link.</span></li>
         <li><span class="l-zh"><strong>隐私可控</strong>：网络请求可逐项关闭，配置全部保存在本机 <code>~/.rpi</code>。</span><span class="l-en"><strong>Privacy control</strong>: every network request can be disabled; all configuration stays in <code>~/.rpi</code>.</span></li>
@@ -413,8 +414,8 @@
 <span class="c"># Windows（x86_64，PowerShell）</span>
 <span class="p">PS&gt;</span> irm https://revpi.dev/install.ps1 | iex</code></pre>
       <p>
-        <span class="l-zh">默认安装位置：Linux / macOS 为 <code>~/.local/bin</code>（<code>--prefix</code> 可覆盖，需写入系统目录时脚本会提示用 sudo 重跑）；Windows 为 <code>%LOCALAPPDATA%\Programs\rpi</code>（<code>-Prefix</code> 可覆盖）。安装目录不在 <code>PATH</code> 时，脚本会打印对应的 PATH 配置提示。</span>
-        <span class="l-en">Default locations: <code>~/.local/bin</code> on Linux / macOS (override with <code>--prefix</code>; the script suggests re-running with sudo for system directories) and <code>%LOCALAPPDATA%\Programs\rpi</code> on Windows (<code>-Prefix</code>). When the install directory is not on your <code>PATH</code>, the script prints the exact line to add.</span>
+        <span class="l-zh">默认安装位置：Linux / macOS 为 <code>~/.local/bin</code>（<code>--prefix</code> 可覆盖，需写入系统目录时脚本会提示用 sudo 重跑）；Windows 为 <code>%LOCALAPPDATA%\Programs\rpi</code>（<code>-Prefix</code> 可覆盖）。安装目录尚未成为当前生效的 <code>rpi</code> 时，交互式安装（stdout 是终端、<code>/dev/tty</code> 可用、未设置 <code>CI</code>/<code>RPI_NONINTERACTIVE</code>、<code>TERM</code> 不是 <code>dumb</code>）会询问是否写入检测到的 shell 配置 / 用户 PATH（默认是），并写入带幂等守卫的 <code># rpi</code> 块。设置 <code>CI</code>/<code>RPI_NONINTERACTIVE</code>、stdout 被重定向或没有控制终端时会跳过提示；存在 pty 但无上述标记时，支持 <code>read -t</code> 的 shell 会超时。用 <code>RPI_INSTALL_ADD_PATH=0</code> 保证只打印手动命令，用 <code>--add-path</code> / <code>RPI_INSTALL_ADD_PATH=1</code> 直接写入。不支持的 shell 只打印手动说明；root/系统级安装以及目录不在用户 profile 下时打印准确的手动命令。Windows 会保留 <code>%VAR%</code> 与 registry value kind，并在机器级 PATH 中的 rpi 仍会优先时给出警告。</span>
+        <span class="l-en">Default locations: <code>~/.local/bin</code> on Linux / macOS (override with <code>--prefix</code>; the script suggests re-running with sudo for system directories) and <code>%LOCALAPPDATA%\Programs\rpi</code> on Windows (<code>-Prefix</code>). When the install directory is not already the active <code>rpi</code>, an interactive install (terminal stdout, usable <code>/dev/tty</code>, no <code>CI</code>/<code>RPI_NONINTERACTIVE</code>, <code>TERM</code> not <code>dumb</code>) offers to add it to the detected shell profile / user PATH (default: yes) and writes an idempotent marked block. The prompt is skipped when <code>CI</code>/<code>RPI_NONINTERACTIVE</code> is set, stdout is redirected, or no controlling terminal exists; with a pty and no marker, shells with <code>read -t</code> time out. Set <code>RPI_INSTALL_ADD_PATH=0</code> for guidance, or <code>--add-path</code> / <code>RPI_INSTALL_ADD_PATH=1</code> to write without prompting. Unsupported shells only print manual guidance; root/system-wide installs and prefixes outside the user profile print the exact manual command. Windows preserves <code>%VAR%</code> and the registry value kind, and warns when a machine-level rpi still wins.</span>
       </p>
       <p class="muted">
         <span class="l-zh">手动安装：从 <a href="https://github.com/revpidev/rpi/releases">GitHub Releases</a> 下载对应平台的 <code>rpi-&lt;version&gt;-&lt;target&gt;.tar.gz</code>（Windows 为 <code>.zip</code>）与 <code>.sha256</code> 校验文件，核对校验和后解压到 <code>PATH</code> 中的任意目录。</span>
@@ -444,14 +445,14 @@
       <pre><code><span class="p">$</span> rpi self-uninstall           <span class="c"># 删除二进制与安装清单，保留 ~/.rpi 数据</span>
 <span class="p">$</span> rpi self-uninstall --purge   <span class="c"># 连同 ~/.rpi（会话、认证、设置）一起删除</span></code></pre>
       <p>
-        <span class="l-zh">默认保留 <code>~/.rpi</code> 数据目录（交互式运行会先询问，非交互默认保留），卸载结束会打印遗留物清单。Windows 无法删除运行中的可执行文件，<code>self-uninstall</code> 会跳过并打印需要手动删除的准确路径（<code>rpi.exe</code>、<code>rpi.install.json</code>）。</span>
-        <span class="l-en">The <code>~/.rpi</code> data directory is kept by default (interactive runs ask first; non-interactive runs always keep), and the command prints a leftover list when done. Windows cannot delete a running executable, so <code>self-uninstall</code> skips it and prints the exact paths (<code>rpi.exe</code>, <code>rpi.install.json</code>) to remove by hand.</span>
+        <span class="l-zh">默认保留 <code>~/.rpi</code> 数据目录（交互式运行会先询问，非交互默认保留），卸载结束会打印遗留物清单。Unix 安装器写入的 <code># rpi</code> PATH 块会被自动移除；Windows 无法删除运行中的可执行文件，<code>self-uninstall</code> 会跳过并打印需要手动删除的准确路径（<code>rpi.exe</code>、<code>rpi.install.json</code>），如安装器加入过用户 PATH 也需手动删除该条目。</span>
+        <span class="l-en">The <code>~/.rpi</code> data directory is kept by default (interactive runs ask first; non-interactive runs always keep), and the command prints a leftover list when done. The Unix installer's marked <code># rpi</code> PATH block is removed automatically; Windows cannot delete a running executable, so <code>self-uninstall</code> skips it and prints the exact paths (<code>rpi.exe</code>, <code>rpi.install.json</code>) to remove by hand, and a user PATH entry added by the installer must be removed manually too.</span>
       </p>
 
       <h2><span class="l-zh">4. 配置模型</span><span class="l-en">4. Configure a model</span></h2>
       <p>
-        <span class="l-zh">Rpi 内置了 38 家模型服务商的模型清单。大多数情况下只需要在 <code>~/.rpi/agent/models.json</code> 里写入你的 API Key（以 DeepSeek 为例）：</span>
-        <span class="l-en">Rpi ships model catalogs for 38 providers. In most cases you only need to add your API key in <code>~/.rpi/agent/models.json</code> (DeepSeek example):</span>
+        <span class="l-zh">Rpi 内置了 42 家模型服务商的模型清单。大多数情况下只需要在 <code>~/.rpi/agent/models.json</code> 里写入你的 API Key（以 DeepSeek 为例）：</span>
+        <span class="l-en">Rpi ships model catalogs for 42 providers. In most cases you only need to add your API key in <code>~/.rpi/agent/models.json</code> (DeepSeek example):</span>
       </p>
       <pre><code>{"providers": {"deepseek": {
   "apiKey": "DEEPSEEK_API_KEY",
@@ -461,7 +462,7 @@
         <span class="l-en"><code>apiKey</code> accepts either a literal key or the name of an environment variable to read it from.</span>
       </p>
 
-      <h2><span class="l-zh">5. 三种运行模式</span><span class="l-en">5. Three run modes</span></h2>
+      <h2><span class="l-zh">5. 四种运行模式</span><span class="l-en">5. Four run modes</span></h2>
       <table>
         <thead>
           <tr>
@@ -482,7 +483,12 @@
             <td><span class="l-zh">脚本集成：问一个问题，拿到答案就退出</span><span class="l-en">Scripting: ask one question, print the answer, exit</span></td>
           </tr>
           <tr>
-            <td><code>rpi --rpc</code></td>
+            <td><code>rpi --mode json</code></td>
+            <td>JSON</td>
+            <td><span class="l-zh">事件流：逐行输出 AgentSessionEvent，便于脚本解析</span><span class="l-en">Event stream: newline-delimited AgentSessionEvent for scripts</span></td>
+          </tr>
+          <tr>
+            <td><code>rpi --mode rpc</code></td>
             <td>RPC</td>
             <td><span class="l-zh">给其他程序（编辑器、IDE）调用</span><span class="l-en">Driving Rpi from other programs (editors, IDEs)</span></td>
           </tr>
@@ -949,7 +955,7 @@
             <td><code>packages</code></td>
             <td><span class="l-zh">包源数组</span><span class="l-en">package sources</span></td>
             <td><span class="l-zh">空</span><span class="l-en">empty</span></td>
-            <td><span class="l-zh">每项 <code>{source, autoload, extensions, skills, prompts, themes}</code>;<code>source</code> 支持 npm/git 路径;<code>autoload:false</code> 时仅加载显式列出的资源</span><span class="l-en">Each item is <code>{source, autoload, extensions, skills, prompts, themes}</code>; npm/git paths; <code>autoload:false</code> loads only explicitly listed resources</span></td>
+            <td><span class="l-zh">每项 <code>{source, autoload, extensions, skills, prompts, themes}</code>;<code>source</code> 支持 registry 裸名、github:、npm:、git: 与本地路径;<code>autoload:false</code> 时仅加载显式列出的资源</span><span class="l-en">Each item is <code>{source, autoload, extensions, skills, prompts, themes}</code>; a registry name, github:, npm:, git:, or a local path; <code>autoload:false</code> loads only explicitly listed resources</span></td>
           </tr>
           <tr>
             <td><code>extensionPaths</code></td>
@@ -1034,8 +1040,8 @@
 
       <h2><span class="l-zh">安装与重载</span><span class="l-en">Install &amp; reload</span></h2>
       <p>
-        <span class="l-zh">把插件目录拷贝（或软链）到以下任一位置，Rpi 启动时会自动发现：</span>
-        <span class="l-en">Copy (or symlink) the plugin directory into either location below; Rpi discovers it at startup:</span>
+        <span class="l-zh">安装已收录插件：<code>rpi install &lt;name&gt;</code>（预发布通道加 <code>--rc</code>）。也可以把插件目录拷贝（或软链）到以下任一位置，Rpi 启动时会自动发现：</span>
+        <span class="l-en">Install a listed plugin with <code>rpi install &lt;name&gt;</code> (add <code>--rc</code> for the pre-release channel). You can also copy (or symlink) the plugin directory into either location below; Rpi discovers it at startup:</span>
       </p>
       <ul>
         <li><code>~/.rpi/agent/extensions/&lt;name&gt;/</code> — <span class="l-zh">对所有项目生效</span><span class="l-en">applies to every project</span></li>
