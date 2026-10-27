@@ -9,11 +9,11 @@
       "reasoning": true,
       "thinkingLevelMap": {
         "off": "none",
-        "minimal": "minimal",
+        "minimal": null,
         "low": "low",
-        "medium": "medium",
+        "medium": null,
         "high": "high",
-        "xhigh": "xhigh",
+        "xhigh": null,
         "max": "max"
       },
       "input": [
@@ -41,46 +41,6 @@
       "type": "chat"
     },
     {
-      "id": "deepseek-ai/DeepSeek-V4-Pro",
-      "name": "DeepSeek V4 Pro",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "none",
-        "minimal": "minimal",
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": "xhigh",
-        "max": "max"
-      },
-      "input": [
-        "text"
-      ],
-      "cost": {
-        "input": 1.74,
-        "output": 3.48,
-        "cacheRead": 0.145,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": true,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "openai"
-      },
-      "contextWindow": 1048576,
-      "maxTokens": 262144,
-      "type": "chat"
-    },
-    {
       "id": "deepseek-ai/DeepSeek-V4-Pro-0813",
       "name": "DeepSeek V4 Pro 0813",
       "api": "openai-completions",
@@ -102,7 +62,7 @@
       "cost": {
         "input": 1.32,
         "output": 3.96,
-        "cacheRead": 0,
+        "cacheRead": 0.132,
         "cacheWrite": 0
       },
       "compat": {
@@ -130,7 +90,7 @@
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
-        "low": "low",
+        "low": null,
         "medium": null,
         "high": "high",
         "xhigh": null,
@@ -143,7 +103,7 @@
       "cost": {
         "input": 0.3,
         "output": 1.2,
-        "cacheRead": 0.03,
+        "cacheRead": 0.007,
         "cacheWrite": 0
       },
       "compat": {
@@ -181,8 +141,8 @@
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
-        "low": null,
-        "medium": null,
+        "low": "low",
+        "medium": "medium",
         "high": "high",
         "xhigh": null,
         "max": "max"
@@ -194,7 +154,7 @@
       "cost": {
         "input": 0.3,
         "output": 1.2,
-        "cacheRead": 0,
+        "cacheRead": 0.007,
         "cacheWrite": 0
       },
       "compat": {
@@ -232,8 +192,8 @@
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
-        "low": null,
-        "medium": null,
+        "low": "low",
+        "medium": "medium",
         "high": "high",
         "xhigh": null,
         "max": "max"
@@ -245,7 +205,7 @@
       "cost": {
         "input": 0.6,
         "output": 2.4,
-        "cacheRead": 0,
+        "cacheRead": 0.014,
         "cacheWrite": 0
       },
       "compat": {
@@ -283,7 +243,7 @@
       "thinkingLevelMap": {
         "off": "none",
         "minimal": null,
-        "low": "low",
+        "low": null,
         "medium": null,
         "high": "high",
         "xhigh": null,
@@ -296,7 +256,7 @@
       "cost": {
         "input": 0.6,
         "output": 2.4,
-        "cacheRead": 0,
+        "cacheRead": 0.014,
         "cacheWrite": 0
       },
       "compat": {
@@ -312,174 +272,6 @@
       },
       "contextWindow": 1048576,
       "maxTokens": 32768,
-      "inputLimits": {
-        "images": {
-          "resize": {
-            "maxWidth": 2000,
-            "maxHeight": 2000,
-            "maxBytes": 4718592,
-            "jpegQuality": 80
-          }
-        }
-      },
-      "type": "chat"
-    },
-    {
-      "id": "moonshotai/Kimi-K2.5",
-      "name": "Kimi K2.5",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "off",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": null
-      },
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 0.6,
-        "output": 3,
-        "cacheRead": 0.12,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
-      },
-      "contextWindow": 262000,
-      "maxTokens": 262000,
-      "inputLimits": {
-        "images": {
-          "resize": {
-            "maxWidth": 2000,
-            "maxHeight": 2000,
-            "maxBytes": 4718592,
-            "jpegQuality": 80
-          }
-        }
-      },
-      "type": "chat"
-    },
-    {
-      "id": "moonshotai/Kimi-K2.6",
-      "name": "Kimi K2.6",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "off",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": null
-      },
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 0.95,
-        "output": 4,
-        "cacheRead": 0.16,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
-      },
-      "contextWindow": 262000,
-      "maxTokens": 262000,
-      "inputLimits": {
-        "images": {
-          "resize": {
-            "maxWidth": 2000,
-            "maxHeight": 2000,
-            "maxBytes": 4718592,
-            "jpegQuality": 80
-          }
-        }
-      },
-      "type": "chat"
-    },
-    {
-      "id": "moonshotai/Kimi-K2.7-Code",
-      "name": "Kimi K2.7 Code",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "off",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": null
-      },
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 0.95,
-        "output": 4,
-        "cacheRead": 0.16,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
-      },
-      "contextWindow": 262000,
-      "maxTokens": 262000,
       "inputLimits": {
         "images": {
           "resize": {
@@ -515,7 +307,7 @@
       "cost": {
         "input": 3,
         "output": 15,
-        "cacheRead": 0,
+        "cacheRead": 0.3,
         "cacheWrite": 0
       },
       "compat": {
@@ -544,51 +336,6 @@
       "type": "chat"
     },
     {
-      "id": "nvidia/Nemotron-120B-A12B",
-      "name": "Nemotron Super",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "off",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": null
-      },
-      "input": [
-        "text"
-      ],
-      "cost": {
-        "input": 0.3,
-        "output": 0.75,
-        "cacheRead": 0.06,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
-      },
-      "contextWindow": 202800,
-      "maxTokens": 202800,
-      "type": "chat"
-    },
-    {
       "id": "nvidia/NVIDIA-Nemotron-3-Ultra-550B-A55B",
       "name": "Nemotron Ultra",
       "api": "openai-completions",
@@ -596,7 +343,7 @@
       "baseUrl": "https://inference.baseten.co/v1",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": "off",
+        "off": "none",
         "minimal": null,
         "low": null,
         "medium": null,
@@ -617,17 +364,12 @@
         "supportsStrictMode": true,
         "supportsStore": false,
         "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
+        "supportsReasoningEffort": true,
         "supportsUsageInStreaming": true,
         "maxTokensField": "max_tokens",
         "sendSessionAffinityHeaders": true,
         "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
+        "thinkingFormat": "openai"
       },
       "contextWindow": 202800,
       "maxTokens": 202800,
@@ -655,7 +397,7 @@
       "cost": {
         "input": 0.1,
         "output": 0.5,
-        "cacheRead": 0,
+        "cacheRead": 0.1,
         "cacheWrite": 0
       },
       "compat": {
@@ -671,243 +413,6 @@
       },
       "contextWindow": 128072,
       "maxTokens": 128072,
-      "type": "chat"
-    },
-    {
-      "id": "thinkingmachines/inkling",
-      "name": "Inkling",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "none",
-        "minimal": "minimal",
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": "xhigh",
-        "max": "max"
-      },
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 1,
-        "output": 4.05,
-        "cacheRead": 0,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": true,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "openai"
-      },
-      "contextWindow": 1048576,
-      "maxTokens": 32768,
-      "inputLimits": {
-        "images": {
-          "resize": {
-            "maxWidth": 2000,
-            "maxHeight": 2000,
-            "maxBytes": 4718592,
-            "jpegQuality": 80
-          }
-        }
-      },
-      "type": "chat"
-    },
-    {
-      "id": "thinkingmachines/inkling-small",
-      "name": "Inkling Small",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "none",
-        "minimal": "minimal",
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": "xhigh",
-        "max": "max"
-      },
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 0.5,
-        "output": 1.2,
-        "cacheRead": 0.1,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": true,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "openai"
-      },
-      "contextWindow": 1048576,
-      "maxTokens": 32768,
-      "inputLimits": {
-        "images": {
-          "resize": {
-            "maxWidth": 2000,
-            "maxHeight": 2000,
-            "maxBytes": 4718592,
-            "jpegQuality": 80
-          }
-        }
-      },
-      "type": "chat"
-    },
-    {
-      "id": "zai-org/GLM-4.7",
-      "name": "GLM 4.7",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "off",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": null
-      },
-      "input": [
-        "text"
-      ],
-      "cost": {
-        "input": 0.6,
-        "output": 2.2,
-        "cacheRead": 0.12,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
-      },
-      "contextWindow": 200000,
-      "maxTokens": 200000,
-      "type": "chat"
-    },
-    {
-      "id": "zai-org/GLM-5",
-      "name": "GLM 5",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "off",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": null
-      },
-      "input": [
-        "text"
-      ],
-      "cost": {
-        "input": 0.95,
-        "output": 3.15,
-        "cacheRead": 0.2,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
-      },
-      "contextWindow": 202800,
-      "maxTokens": 202800,
-      "type": "chat"
-    },
-    {
-      "id": "zai-org/GLM-5.1",
-      "name": "GLM 5.1",
-      "api": "openai-completions",
-      "provider": "baseten",
-      "baseUrl": "https://inference.baseten.co/v1",
-      "reasoning": true,
-      "thinkingLevelMap": {
-        "off": "off",
-        "minimal": null,
-        "low": null,
-        "medium": null,
-        "high": "high",
-        "xhigh": null,
-        "max": null
-      },
-      "input": [
-        "text"
-      ],
-      "cost": {
-        "input": 1.3,
-        "output": 4.3,
-        "cacheRead": 0.26,
-        "cacheWrite": 0
-      },
-      "compat": {
-        "supportsStrictMode": true,
-        "supportsStore": false,
-        "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
-        "supportsUsageInStreaming": true,
-        "maxTokensField": "max_tokens",
-        "sendSessionAffinityHeaders": true,
-        "supportsLongCacheRetention": false,
-        "thinkingFormat": "baseten",
-        "chatTemplateArgs": {
-          "enable_thinking": {
-            "$var": "thinking.enabled"
-          }
-        }
-      },
-      "contextWindow": 202800,
-      "maxTokens": 202800,
       "type": "chat"
     },
     {
@@ -932,7 +437,7 @@
       "cost": {
         "input": 1.4,
         "output": 4.4,
-        "cacheRead": 0.3,
+        "cacheRead": 0.14,
         "cacheWrite": 0
       },
       "compat": {
@@ -1059,7 +564,7 @@
       "baseUrl": "https://inference.baseten.co/v1",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": "none",
+        "off": null,
         "minimal": null,
         "low": "low",
         "medium": null,
@@ -1074,7 +579,7 @@
       "cost": {
         "input": 2.1,
         "output": 6.6,
-        "cacheRead": 0,
+        "cacheRead": 0.21,
         "cacheWrite": 0
       },
       "compat": {
@@ -1125,7 +630,7 @@
       "cost": {
         "input": 0.15,
         "output": 0.5,
-        "cacheRead": 0,
+        "cacheRead": 0.03,
         "cacheWrite": 0
       },
       "compat": {

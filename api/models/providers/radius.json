@@ -276,7 +276,6 @@
       "name": "Claude Haiku 5.5",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null,
         "minimal": null,
         "low": "low",
         "medium": "medium",
@@ -429,7 +428,6 @@
       "name": "Claude Opus 5",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null,
         "xhigh": "xhigh",
         "max": "max"
       },
@@ -1427,6 +1425,65 @@
       "type": "chat"
     },
     {
+      "id": "gpt-6.1-sol",
+      "name": "GPT 6.1 Sol",
+      "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "input": [
+        "text",
+        "image"
+      ],
+      "contextWindow": 272000,
+      "maxTokens": 128000,
+      "lab": "OpenAI",
+      "cost": {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": 2.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4,
+            "output": 15,
+            "cacheRead": 0.2,
+            "cacheWrite": 5
+          }
+        ]
+      },
+      "enabled": true,
+      "providers": [
+        {
+          "id": "openai",
+          "name": "OpenAI",
+          "credential": "radius",
+          "source": "radius"
+        }
+      ],
+      "api": "pi-messages",
+      "provider": "radius",
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
       "id": "grok-4.7",
       "name": "Grok 4.7",
       "reasoning": true,
@@ -1554,6 +1611,56 @@
       "type": "chat"
     },
     {
+      "id": "minimax-m3.1-flash",
+      "name": "MiniMax M3.1 Flash",
+      "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "input": [
+        "text",
+        "image"
+      ],
+      "contextWindow": 1000000,
+      "maxTokens": 524288,
+      "lab": "MiniMax",
+      "cost": {
+        "input": 0.15,
+        "output": 0.6,
+        "cacheRead": 0.015,
+        "cacheWrite": 0
+      },
+      "enabled": true,
+      "providers": [
+        {
+          "id": "minimax",
+          "name": "MiniMax",
+          "credential": "radius",
+          "source": "radius"
+        }
+      ],
+      "api": "pi-messages",
+      "provider": "radius",
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
       "id": "precise",
       "name": "Precise",
       "reasoning": true,
@@ -1610,6 +1717,46 @@
           }
         }
       },
+      "type": "chat"
+    },
+    {
+      "id": "recursive/flint",
+      "name": "Flint (free, trains on data)",
+      "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": null,
+        "xhigh": null,
+        "max": null
+      },
+      "input": [
+        "text"
+      ],
+      "contextWindow": 262144,
+      "maxTokens": 65536,
+      "lab": "Recursive",
+      "cost": {
+        "input": 0,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0
+      },
+      "enabled": true,
+      "providers": [
+        {
+          "id": "recursive",
+          "name": "Recursive",
+          "credential": "radius",
+          "source": "radius"
+        }
+      ],
+      "free": true,
+      "api": "pi-messages",
+      "provider": "radius",
+      "baseUrl": "https://radius.pi.dev/v1",
       "type": "chat"
     }
   ]
