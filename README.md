@@ -9,6 +9,7 @@ Since ADR-0009, the default values of rpi's product endpoints point at `revpi.de
 | Endpoint | Implementation | Notes |
 |---|---|---|
 | `GET /api/models/providers/{id}`, `GET /api/models/providers/{id}.json` | `api/models/providers/*.json` (generated) + `functions/api/models/providers/[id].js` (extensionless, the client's request shape) + `functions/api/models/providers/[id].json.js` (documented shape) | Model-catalog overlay, `{"models":[...]}`; static assets carry ETag/Last-Modified automatically, and client `If-None-Match` revalidation in the 4h window returns 304; an unknown provider returns 404 = "overlay unavailable" (proxied by `functions/api/models/providers/[id].js` / `[id].json.js`; the SPA fallback would otherwise serve index.html, so the function distinguishes by content-type) |
+| `GET /schemas/{settings,models,keybindings,theme}.schema.json` | `schemas/*.schema.json` (generated) | Configuration JSON Schemas referenced by `$schema` in settings, models, keybindings and theme files; generated in the rpi repository by `scripts/sync-config-schemas.py`, copied verbatim, served as `application/json` by `_headers`, and pinned by `scripts/test_schemas.py` |
 | `GET /api/latest-version` | `api/latest-version.json` (generated) | Stable version check `{"version","packageName","note"}`; updated on release; the extensionless path is rewritten by `_redirects` |
 | `GET /api/latest-rc-version.json` | `api/latest-rc-version.json` (generated) | RC (pre-release) channel endpoint probed by `rpi update --rc` and by the startup version check on pre-release builds; written only with `generate-site.py --rc-version`, never touched by a stable release |
 | `GET /api/report-install` | `functions/api/report-install.js` | Telemetry sink, 204; binding KV `ANALYTICS` records install statistics |
@@ -70,6 +71,13 @@ python3 scripts/generate-site.py
 
 #    The same run also regenerates api/extensions/*.json from registry/*.json,
 #    so commit registry changes in the same push when entries move.
+
+# Configuration schemas (schemas/*.schema.json) are NOT produced here: they are
+# generated in the rpi repository by scripts/sync-config-schemas.py from the
+# pinned Pi v1.4.0 models and copied into this repository's schemas/ directory.
+# Refresh them from ../rpi, then run the site-side tests and commit:
+python3 ../rpi/scripts/sync-config-schemas.py
+python3 scripts/test_schemas.py
 
 # 2. Commit and push — the Git integration deploys automatically
 cd /home/leven/develop/ai/revpi/rpi-pages

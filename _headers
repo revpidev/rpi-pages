@@ -1,0 +1,9 @@
+# Cloudflare Pages response headers (V18-04 FR-C).
+#
+# Configuration schemas are consumed by editors through `$schema`, so they must
+# always be served as JSON regardless of client Accept headers. The files are
+# regenerated only with rpi releases; a short cache is enough because the URL is
+# stable and the content is versioned by the rpi release that generated it.
+/schemas/*
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=3600

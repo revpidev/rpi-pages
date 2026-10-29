@@ -541,6 +541,18 @@
         <span class="l-en">Run <code>/settings</code> inside a session to edit the common items in the UI; a wrongly-typed value silently falls back to the default. Model and API-key setup lives in <a href="#/quickstart">Quickstart</a>.</span>
       </p>
 
+      <h2><span class="l-zh">配置 schema</span><span class="l-en">Configuration schemas</span></h2>
+      <p>
+        <span class="l-zh">在 <code>settings.json</code>、<code>models.json</code>、键位文件或主题里加上 <code>$schema</code>,编辑器即可补全并校验。四份 schema 与 rpi 加载器使用同一份生成定义,统一发布在 <code>revpi.dev</code>:</span>
+        <span class="l-en">Add <code>$schema</code> to <code>settings.json</code>, <code>models.json</code>, a keybindings file or a theme and your editor completes and validates it. All four schemas come from the same generated definitions the rpi loader uses and are published at <code>revpi.dev</code>:</span>
+      </p>
+      <ul>
+        <li><a href="/schemas/settings.schema.json"><code>https://revpi.dev/schemas/settings.schema.json</code></a></li>
+        <li><a href="/schemas/models.schema.json"><code>https://revpi.dev/schemas/models.schema.json</code></a></li>
+        <li><a href="/schemas/keybindings.schema.json"><code>https://revpi.dev/schemas/keybindings.schema.json</code></a></li>
+        <li><a href="/schemas/theme.schema.json"><code>https://revpi.dev/schemas/theme.schema.json</code></a></li>
+      </ul>
+
       <h2><span class="l-zh">请求超时与重试</span><span class="l-en">Timeouts &amp; retry</span></h2>
       <p>
         <span class="l-zh">最容易踩的一个设置:<code>httpIdleTimeoutMs</code> 名字里带 idle,实际是<strong>整个请求的总超时</strong>——从发起连接到流式响应读完为止,期间一直在正常收数据也会计时。默认 5 分钟;长思考档位(max 等)的深度推理模型单轮输出超过 5 分钟时,请求会在整 300 秒处被切断,表现为 <code>error decoding response body</code>。遇到这种情况把它调大:</span>
