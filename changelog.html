@@ -337,6 +337,22 @@
         <span class="l-en">What changed in each release, mirroring the <code>changes/</code> directory of the source repository. The in-app update notice links here too.</span>
       </p>
 
+      <h2><span class="version-tag">0.1.8 draft</span><span class="l-zh">durable 运行时生命周期与审查加固(未发布)</span><span class="l-en">Durable runtime lifecycle and review hardening (unreleased)</span></h2>
+      <p>
+        <span class="l-zh">本草稿记录 V18-06 及其审查修复;其余 v0.1.8 任务与最终发布审查尚未完成。ToolTask v2 提供 model/nested tagged union、结构化输出与真实 executeTool;deferred provider response 通过同一认证与 identity 路径 fetch/cancel,generation 持久化 handle 和 pollAt,sleeping 不持有 invocation,可跨重开恢复并在 abort 时取消。api.createTask 支持 durable child,非 replay-safe 工具的 task-owned child 默认 abandonOnRestart(可显式覆盖),多级 nested slot 保留完整直接父调用 ID。</span>
+        <span class="l-en">This draft records V18-06 and its review fixes; the remaining v0.1.8 tasks and final release review are still pending. ToolTask v2 provides model/nested tagged unions, structured output and real executeTool calls. Deferred provider responses use the same auth and identity path for fetch/cancel; generation persists the handle and pollAt, holds no invocation while sleeping, resumes after reopen, and cancels on abort. api.createTask creates durable children: task-owned children of a non-replay-safe tool default to abandonOnRestart unless explicitly overridden, and multi-level nested slots retain the complete direct parent call ID.</span>
+      </p>
+      <ul>
+        <li>
+          <span class="l-zh"><b>确定性 replay 与存储失败</b>:并发 codemode 调用按 journal 顺序重放并核对 issued count,新调用等待重放追平,真实副作用首次一次、重放零次;GuardedStorage 在失败后及 underway 结果上拒绝继续使用,close 等待已接纳调用;旧 content 字段明确拒绝而不是静默丢弃;Memory/JSONL/SQLite conformance、schema v2、SIGKILL 恢复和旧 JSONL sleeping 均有回归。</span>
+          <span class="l-en"><b>Deterministic replay and storage failures</b>: concurrent codemode calls replay in journal order with issued-count checks while new calls wait for replay to catch up, so first-run side effects happen once and replay does not repeat them; GuardedStorage rejects post-failure calls and underway results, and close waits for admitted calls; legacy content is rejected explicitly instead of being dropped silently. Memory/JSONL/SQLite conformance, schema v2, SIGKILL recovery and legacy JSONL sleeping all have regression coverage.</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>统一时钟、环境与遥测</b>:generation partial progress 与 retry/backoff、deferred poll、工具进度及 idle eviction 统一使用 Harness clock/timer;active-task 指标增减携带相同 task 属性;listFiles 在逐项扫描时应用 entry/byte 上限、超时、取消和 gitignore,限制候选集合与 pending 并跳过前缀外 metadata;固定字段 telemetry/report 不记录 prompt、token 或凭据。</span>
+          <span class="l-en"><b>Unified clocks, environment and telemetry</b>: generation partial progress uses the same Harness clock/timer as retry/backoff, deferred polling, tool progress and idle eviction; active-task increments and decrements carry the same task attribute; listFiles applies output bounds, timeout, cancellation and gitignore during traversal, bounds pending candidates, and avoids metadata reads outside the candidate prefix; fixed-field telemetry/reports never record prompts, tokens or credentials.</span>
+        </li>
+      </ul>
+
       <h2><span class="version-tag">0.1.7</span><span class="l-zh">上游追平 v1.1.0 + issue #57–#71 + durable 栈 + mcp-adapter 移除 + 安装器加固(2026-10-19)</span><span class="l-en">Upstream parity to v1.1.0 + issues #57&ndash;#71 + durable stack + mcp-adapter removal + installer hardening (2026-10-19)</span></h2>
       <p>
         <span class="l-zh">主线:行为金标准升级至 v1.1.0(abe508e1b,ADR-0036,含 v1.0.1–v1.1.0 增量);issue 线 #57–#71 十五条修复;mcp-adapter 移除(ADR-0037);durable 栈首次落地(rpi-durable:存储/运行时/工具链,experimental,默认 CLI 路径零变化);插件线:subagents v0.76.1 与 ask-user-question/todo rpiv-mono v2.13.8 重定基、usage footer 紧凑化、mcp-adapter 退役;安装器/卸载与模型目录同步加固。正式版经 rc.1…rc.3 三轮预发布验证。安装:老用户 rpi update(或 rpi update --all 同时升级七款锁步插件);新用户运行下方安装脚本。多处 Breaking,见下。</span>
