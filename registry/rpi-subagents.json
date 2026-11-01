@@ -1,10 +1,10 @@
 {
   "name": "rpi-subagents",
   "repository": "revpidev/rpi",
-  "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), model fallback chains.",
+  "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), managed worktree isolation, tool budgets, descendant allowlists and nested coordinators.",
   "author": "revpidev",
   "license": "MIT",
   "official": true,
   "lockstepHost": true,
-  "descriptionZh": "子代理委派:单个 `subagent` 工具派生专注的子 rpi 会话,支持 per-agent 提示词、工具白名单与深度限制;组合 tasks/steps 运行、后台异步运行、模型回退链。"
+  "descriptionZh": "子代理委派:单个 `subagent` 工具派生专注的子 rpi 会话,支持 per-agent 提示词、工具白名单与深度限制;组合 tasks/steps 运行、后台异步运行、托管 worktree 隔离、工具预算、后代白名单与嵌套协调器。"
 }

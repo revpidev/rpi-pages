@@ -49,20 +49,20 @@
     {
       "name": "rpi-statusline",
       "latest": "0.1.7",
-      "description": "Claude Code-compatible script statusline: configure a shell command in settings.json, feed it session JSON (model, context usage, cost, effort) on stdin, render its stdout as the footer.",
+      "description": "Claude Code-compatible statusline: configure a shell command (CC stdin JSON contract) or declarative items (strict 21 fields, /statusline editor), rendered as footer/widget/status with event-driven and live refresh.",
       "kind": "native",
       "capabilities": [
         "ui",
         "session"
       ],
       "downloads": null,
-      "descriptionZh": "Claude Code 兼容的脚本式自定义 statusline:在 settings.json 配一条 shell 命令,把会话数据(模型/上下文占用/费用/思考档位)以 CC 契约 JSON 喂给其 stdin,用其 stdout 渲染 footer。",
+      "descriptionZh": "Claude Code 兼容的自定义 statusline:可配置 shell 命令(CC stdin JSON 契约)或声明式 items(严格 21 字段、/statusline 编辑器),以 footer/widget/status 渲染,支持事件与实时刷新。",
       "official": true
     },
     {
       "name": "rpi-subagents",
       "latest": "0.1.7",
-      "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), model fallback chains.",
+      "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), managed worktree isolation, tool budgets, descendant allowlists and nested coordinators.",
       "kind": "native",
       "capabilities": [
         "tools",
@@ -72,7 +72,7 @@
         "ui"
       ],
       "downloads": null,
-      "descriptionZh": "子代理委派:单个 `subagent` 工具派生专注的子 rpi 会话,支持 per-agent 提示词、工具白名单与深度限制;组合 tasks/steps 运行、后台异步运行、模型回退链。",
+      "descriptionZh": "子代理委派:单个 `subagent` 工具派生专注的子 rpi 会话,支持 per-agent 提示词、工具白名单与深度限制;组合 tasks/steps 运行、后台异步运行、托管 worktree 隔离、工具预算、后代白名单与嵌套协调器。",
       "official": true
     },
     {
@@ -94,7 +94,7 @@
     {
       "name": "rpi-usage",
       "latest": "0.1.7",
-      "description": "Usage lookup: /usage queries the current model provider's balance or plan quota through the host scripted usage-provider framework — built-in DeepSeek, GLM Coding Plan, MiniMax Token Plan and Kimi Code scripts — and keeps a footer status line; custom providers drop in as user scripts.",
+      "description": "Usage lookup: /usage queries the current model provider's typed balance, plan quota or subscription windows through the host scripted usage-provider framework — built-in DeepSeek, GLM Coding Plan, MiniMax Token Plan, Kimi Code, OpenCode Go, Anthropic, OpenAI Codex and xAI scripts — and keeps a typed footer status line; --cached/--json/--provider and /usage list/help are supported, providers without quota show local session tokens only, and custom providers drop in as user scripts.",
       "kind": "native",
       "capabilities": [
         "commands",
@@ -103,7 +103,7 @@
         "events"
       ],
       "downloads": null,
-      "descriptionZh": "用量查询:/usage 经宿主脚本化 usage-provider 框架查询当前接入 provider 的余额/套餐配额(内置 DeepSeek/GLM Coding Plan/MiniMax Token Plan/Kimi Code 四家脚本),footer 自动展示;用户脚本可扩展自定义 provider。",
+      "descriptionZh": "用量查询:/usage 经宿主脚本化 usage-provider 框架查询当前接入 provider 的类型化余额/套餐配额/订阅窗口(内置 DeepSeek/GLM Coding Plan/MiniMax Token Plan/Kimi Code/OpenCode Go/Anthropic/OpenAI Codex/xAI 八家脚本),footer 自动展示类型化状态行;支持 --cached/--json/--provider 与 /usage list/help,无配额 provider 只显示当前会话本地 token,用户脚本可扩展自定义 provider。",
       "official": true
     }
   ]
