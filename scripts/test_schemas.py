@@ -4,7 +4,7 @@
 standard library only; run with `python3 scripts/test_schemas.py`.
 
 The four configuration schemas are generated in the rpi repository by
-`scripts/sync-config-schemas.py` from the pinned Pi v1.4.0 models, branded to
+`scripts/sync-config-schemas.py` from the typed configuration models, branded to
 `https://revpi.dev/schemas/...` and copied verbatim into this site. These
 tests pin the deployed artifact independently of the source checkout:
 
@@ -47,9 +47,9 @@ class PublishedSchemaTests(unittest.TestCase):
                 self.assertEqual(value["$id"], f"https://revpi.dev/schemas/{name}")
                 self.assertEqual(
                     value["$comment"],
-                    "This file is generated from the pinned Pi v1.4.0 TypeScript "
-                    "source (4a080252f) by scripts/sync-config-schemas.py in the rpi "
-                    "repository. Do not edit it manually; run the script to refresh it.",
+                    "Generated from the rpi typed configuration models by "
+                    "scripts/sync-config-schemas.py. Do not edit it manually; run the "
+                    "script to regenerate.",
                 )
                 self.assertIn("revpi.dev", text)
 
