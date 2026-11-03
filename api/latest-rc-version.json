@@ -1,5 +1,5 @@
 {
-  "version": "0.1.7-rc.3",
+  "version": "0.1.8-rc.1",
   "packageName": "rpi",
-  "note": "v0.1.7-rc.3: installer and uninstall PATH hardening - profile-preserving idempotent PATH blocks, automation-safe prompts, explicit shell detection, Windows registry-kind preservation, self-uninstall cleanup"
+  "note": "v0.1.8-rc.1: Pi v1.4.0 parity, issues #72/#73/#76, durable runtime/storage, extension/session/settings, and the TE51-TE53 plugin rebase"
 }

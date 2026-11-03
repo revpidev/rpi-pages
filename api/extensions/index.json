@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T12:17:38Z",
+  "generatedAt": "2026-11-03T10:11:12Z",
   "extensions": [
     {
       "name": "rpi-ask-user-question",
@@ -52,8 +52,10 @@
       "description": "Claude Code-compatible statusline: configure a shell command (CC stdin JSON contract) or declarative items (strict 21 fields, /statusline editor), rendered as footer/widget/status with event-driven and live refresh.",
       "kind": "native",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "downloads": null,
       "descriptionZh": "Claude Code 兼容的自定义 statusline:可配置 shell 命令(CC stdin JSON 契约)或声明式 items(严格 21 字段、/statusline 编辑器),以 footer/widget/status 渲染,支持事件与实时刷新。",

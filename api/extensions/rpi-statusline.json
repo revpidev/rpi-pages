@@ -8,12 +8,52 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.8-rc.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.8-rc.1",
+      "capabilities": [
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-statusline-0.1.8-rc.1-aarch64-apple-darwin.rpix",
+          "sha256": "2ed43537c1f494117cb085cdb7fb94bbd8d919f7434322d0b3f824a20f695a00",
+          "release": "v0.1.8-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.8-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "8acf1fcdd8ec5789390eae9073b89570447a16940b9696e6f490a44f9c045275",
+          "release": "v0.1.8-rc.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-statusline-0.1.8-rc.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "1cade7865cda649719060b972f3fc6cec23544a6893730a46a8e21c445de76f4",
+          "release": "v0.1.8-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.8-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "b7eea1ec7d5b20e74cd80ff9b09985ace27fe5c73178d495902dc11d263c3da4",
+          "release": "v0.1.8-rc.1"
+        }
+      ]
+    },
+    {
       "version": "0.1.7",
       "rpiAbi": 1,
       "minHostVersion": "0.1.7",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -48,8 +88,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.7-rc.3",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -84,8 +126,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.7-rc.2",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -120,8 +164,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.7-rc.1",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -156,8 +202,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.6",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -192,8 +240,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.6-rc.5",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -228,8 +278,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.6-rc.4",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -264,8 +316,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.6-rc.3",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -300,8 +354,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.6-rc.2",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -336,8 +392,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.6-rc.1",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -372,8 +430,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.5",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -408,8 +468,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.6",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -444,8 +506,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.5",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -480,8 +544,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.4",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -516,8 +582,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.3",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -552,8 +620,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.2",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -588,8 +658,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.5-rc.1",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -624,8 +696,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -660,8 +734,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.16",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -696,8 +772,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.15",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -732,8 +810,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.14",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -768,8 +848,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.13",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -804,8 +886,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.12",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -840,8 +924,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.11",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -876,8 +962,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.10",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -912,8 +1000,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.9",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -948,8 +1038,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.8",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -984,8 +1076,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.7",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1020,8 +1114,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.6",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1056,8 +1152,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.5",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1092,8 +1190,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.4",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1128,8 +1228,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.3",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1164,8 +1266,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.2",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1200,8 +1304,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.4-rc.1",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1236,8 +1342,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.3",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
@@ -1272,8 +1380,10 @@
       "rpiAbi": 1,
       "minHostVersion": "0.1.2",
       "capabilities": [
+        "commands",
         "ui",
-        "session"
+        "session",
+        "events"
       ],
       "yanked": false,
       "artifacts": [
