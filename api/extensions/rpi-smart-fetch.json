@@ -8,6 +8,42 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.8-rc.2",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.8-rc.2",
+      "capabilities": [
+        "tools",
+        "session"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-smart-fetch-0.1.8-rc.2-aarch64-apple-darwin.rpix",
+          "sha256": "2766c218d11e93e37af44fd99e57f11e459cc0eeea357808a1ead1f6cfcb06b7",
+          "release": "v0.1.8-rc.2"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.8-rc.2-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "9ad59d9642b1a4ecdab6ad2912565fc97676987ab6215f513259ea9fa65be627",
+          "release": "v0.1.8-rc.2"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-smart-fetch-0.1.8-rc.2-x86_64-pc-windows-msvc.rpix",
+          "sha256": "16e6a5eeab93ff00eeb80d6014bfb6cb85e1d32df8b4d48fcecb1bfd345dee5c",
+          "release": "v0.1.8-rc.2"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.8-rc.2-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "0187d53a30ce9a2d3a98c0a1355c33623b8b235a67008bfaa1129762d402dbce",
+          "release": "v0.1.8-rc.2"
+        }
+      ]
+    },
+    {
       "version": "0.1.8-rc.1",
       "rpiAbi": 1,
       "minHostVersion": "0.1.8-rc.1",

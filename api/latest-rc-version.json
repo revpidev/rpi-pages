@@ -1,5 +1,5 @@
 {
-  "version": "0.1.8-rc.1",
+  "version": "0.1.8-rc.2",
   "packageName": "rpi",
-  "note": "v0.1.8-rc.1: Pi v1.4.0 parity, issues #72/#73/#76, durable runtime/storage, extension/session/settings, and the TE51-TE53 plugin rebase"
+  "note": "v0.1.8-rc.2: streaming-submit rendering, stdout terminal sizing and statusline live-row hold fixes"
 }
