@@ -287,19 +287,42 @@ def semver_key(version: str):
     return (major, minor, patch, 0, parts)
 
 
+# release 枚举按仓库记忆化：注册表里七个插件都指向同一个仓库，逐个插件
+# 重新枚举会把同一次请求重复七遍（并在限流时不必要地重试七遍）。
+_RELEASE_CACHE: dict[str, list[dict] | None] = {}
+
+
 def release_assets(repository: str) -> list[dict] | None:
-    """枚举仓库全部 Release；失败（网络/限流/仓库不存在）返回 None，
-    调用方降级为 versions: [] 并警告，不让整个生成失败。"""
+    """枚举仓库全部 Release（按仓库记忆化）；失败（网络/限流/仓库不存在）
+    返回 None，调用方降级为 versions: [] 并警告，不让整个生成失败。"""
+    if repository in _RELEASE_CACHE:
+        return _RELEASE_CACHE[repository]
     url = f"https://api.github.com/repos/{repository}/releases?per_page=100"
     try:
-        return json.loads(github_api(url))
+        releases = json.loads(github_api(url))
     except (urllib.error.URLError, OSError, json.JSONDecodeError) as exc:
         print(f"warning: cannot enumerate releases for {repository}: {exc}", file=sys.stderr)
+        _RELEASE_CACHE[repository] = None
         return None
+    _RELEASE_CACHE[repository] = releases
+    return releases
 
 
 def artifact_sha256(assets_by_name: dict, file_name: str) -> str | None:
-    """从同 Release 的 <file>.sha256 sidecar 内容解析 sha256。"""
+    """资产摘要：优先用 Release API 直接返回的 `digest`（`sha256:<hex>`，
+    与 sidecar 内容一致），只有没有 digest 的老资产才下载 <file>.sha256。
+
+    历史上这里对每个资产都下载一次 sidecar，于是整站重建的网络成本随
+    版本数 × 平台数线性增长（40 个 release 已是数百次串行请求）。摘要
+    由 API 随 release 枚举一并返回，新版本发布因此变成常数次请求；tag
+    重推后同一次枚举就会带回新摘要，自愈语义不变。"""
+    asset = assets_by_name.get(file_name)
+    if asset:
+        digest = (asset.get("digest") or "").strip().lower()
+        if digest.startswith("sha256:"):
+            value = digest[len("sha256:") :]
+            if re.fullmatch(r"[0-9a-f]{64}", value):
+                return value
     sidecar = assets_by_name.get(f"{file_name}.sha256")
     if not sidecar:
         return None
