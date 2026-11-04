@@ -1,5 +1,5 @@
 {
-  "version": "0.1.8-rc.2",
+  "version": "0.1.8-rc.3",
   "packageName": "rpi",
-  "note": "v0.1.8-rc.2: streaming-submit rendering, stdout terminal sizing and statusline live-row hold fixes"
+  "note": "v0.1.8-rc.3: background-subagent exit-stall fix, statusline final-rate fix and bundled official tokenizers"
 }
