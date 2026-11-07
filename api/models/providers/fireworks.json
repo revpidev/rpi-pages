@@ -792,7 +792,17 @@
         "sendSessionAffinityHeaders": true,
         "supportsEagerToolInputStreaming": false,
         "supportsCacheControlOnTools": false,
-        "supportsLongCacheRetention": false
+        "supportsLongCacheRetention": false,
+        "forceAdaptiveThinking": true
+      },
+      "thinkingLevelMap": {
+        "off": "none",
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": null,
+        "xhigh": "xhigh",
+        "max": null
       },
       "inputLimits": {
         "images": {
