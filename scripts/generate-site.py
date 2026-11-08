@@ -37,6 +37,12 @@ Output (Cloudflare Pages project rooted at this repository):
   `GITHUB_TOKEN` is optional (anonymous requests are rate-limited); if the
   API is unreachable the affected plugin degrades to `versions: []` with a
   warning instead of failing the whole run.
+- api/install-profiles/<version>.json — the install-profile bundle hash
+  index (V18-13; install-packaging.md §3). Only written by the explicit
+  `--publish-profiles <version>` step, which reads the published GitHub
+  Release assets and requires all 12 standard/full archives plus their
+  `.sha256` sidecars; nothing under api/install-profiles/ is read or written
+  by a normal site build. Publish it *before* the version endpoints (§5.3).
 
 Static assets get ETag / Last-Modified from Cloudflare Pages automatically,
 so the client's If-None-Match revalidation (4h window) works as-is.
@@ -509,6 +515,138 @@ def generate_extensions(rpi_repo: Path) -> list[str]:
     return names
 
 
+# ---------------------------------------------------------------------------
+# Install profile index (V18-13; install-packaging.md §3/§5.3)
+#
+# `--publish-profiles <ver>` turns the published Release assets into the flat
+# bundle hash index the installers read from
+# `${RPI_SITE_BASE_URL}/api/install-profiles/<ver>.json`. The index pins every
+# standard/full archive (12 of them: six targets x two profiles) and is the
+# outer integrity anchor for the bundled `.rpix` bytes. mini base archives,
+# the `-static` musl fallback and the `.rpix` plugin assets stay on the
+# Release sidecar model and must never appear in the index.
+#
+# Publish order matters (install-packaging.md §5.3): the index is written
+# first, the version endpoints afterwards (`--version` / `--rc-version`).
+# ---------------------------------------------------------------------------
+
+PROFILE_INDEX_SCHEMA_VERSION = 1
+
+# Release repository the assets are published to (the official allowlist
+# entry used by the extension registry as well).
+RELEASE_REPOSITORY = "revpidev/rpi"
+
+# Six release targets; only the Windows target ships `.zip` archives.
+PROFILE_TARGETS = (
+    "x86_64-pc-windows-msvc",
+    "aarch64-apple-darwin",
+    "x86_64-unknown-linux-gnu",
+    "x86_64-unknown-linux-musl",
+    "aarch64-unknown-linux-musl",
+    "aarch64-unknown-linux-gnu",
+)
+WINDOWS_TARGET = "x86_64-pc-windows-msvc"
+
+# Bundled profiles only: `mini` is the bare archive (no plugin) and the
+# `-static` fallback is musl-only, so neither belongs in the index.
+PROFILE_NAMES = ("standard", "full")
+
+PROFILE_VERSION_PATTERN = re.compile(r"^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$")
+SHA256_HEX = re.compile(r"^[0-9a-f]{64}$")
+
+
+def profile_archive_names(version: str) -> list[str]:
+    """The 12 standard/full archive names of a release, sorted."""
+    names = []
+    for target in PROFILE_TARGETS:
+        extension = "zip" if target == WINDOWS_TARGET else "tar.gz"
+        for profile in PROFILE_NAMES:
+            names.append(f"rpi-{version}-{target}-{profile}.{extension}")
+    return sorted(names)
+
+
+def generate_install_profiles(version: str) -> Path:
+    """Write `api/install-profiles/<version>.json` from the Release assets.
+
+    Every check runs before anything is written: the release tag must be
+    `v<version>`, all 12 archives and all 12 sidecars must be present, and
+    every sidecar hash must be 64 hex digits. A failure exits non-zero and
+    leaves no file behind (a partial index would make standard/full installs
+    fail after the L0 consent gate, so it is never published). The payload is
+    the flat `schemaVersion` / `version` / `assets` shape of
+    install-packaging.md §3: one asset per line, sorted by asset name, with
+    the optional flat `sizes` object when the Release API reports sizes.
+    """
+    if not PROFILE_VERSION_PATTERN.match(version):
+        raise SystemExit(
+            f"invalid version {version!r}: expected <major>.<minor>.<patch>[-<prerelease>]"
+        )
+    releases = release_assets(RELEASE_REPOSITORY)
+    if releases is None:
+        raise SystemExit(
+            f"cannot enumerate releases for {RELEASE_REPOSITORY} (network/rate limit); "
+            f"api/install-profiles/{version}.json not written"
+        )
+    tag = f"v{version}"
+    release = next(
+        (r for r in releases if r.get("tag_name") == tag and not r.get("draft")), None
+    )
+    if release is None:
+        raise SystemExit(
+            f"release {tag} not found in {RELEASE_REPOSITORY}: the profile index is "
+            "generated from published release assets (install-packaging.md §5.3)"
+        )
+    assets_by_name = {asset["name"]: asset for asset in release.get("assets", [])}
+    names = profile_archive_names(version)
+    missing_archives = [name for name in names if name not in assets_by_name]
+    if missing_archives:
+        raise SystemExit(
+            f"release {tag}: missing profile archives: {', '.join(missing_archives)}"
+        )
+    missing_sidecars = [name for name in names if f"{name}.sha256" not in assets_by_name]
+    if missing_sidecars:
+        raise SystemExit(
+            f"release {tag}: missing .sha256 sidecars for: {', '.join(missing_sidecars)}"
+        )
+
+    assets: dict[str, str] = {}
+    sizes: dict[str, int] = {}
+    sizes_complete = True
+    for name in names:
+        sha256 = artifact_sha256(assets_by_name, name)
+        if sha256 is None:
+            raise SystemExit(
+                f"release {tag}: cannot read {name}.sha256 (missing or malformed sidecar)"
+            )
+        if not SHA256_HEX.match(sha256):
+            raise SystemExit(f"release {tag}: invalid sha256 for {name}: {sha256!r}")
+        assets[name] = sha256
+        size = assets_by_name[name].get("size")
+        if isinstance(size, int) and not isinstance(size, bool):
+            sizes[name] = size
+        else:
+            sizes_complete = False
+
+    payload: dict = {
+        "schemaVersion": PROFILE_INDEX_SCHEMA_VERSION,
+        "version": version,
+        "assets": assets,
+    }
+    if sizes_complete:  # optional and flat: asset name -> size in bytes
+        payload["sizes"] = sizes
+
+    out = SITE / "api/install-profiles" / f"{version}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tmp = out.with_name(f".{out.name}.tmp")
+    try:
+        tmp.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        os.replace(tmp, out)
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+    return out
+
+
 def stable_endpoint_action(
     args_version: str | None, rc_version: str | None, version: str
 ) -> str:
@@ -568,7 +706,36 @@ def main() -> int:
         default=None,
         help="optional note carried by the RC endpoint payload",
     )
+    parser.add_argument(
+        "--publish-profiles",
+        default=None,
+        metavar="VERSION",
+        help=(
+            "publish api/install-profiles/<VERSION>.json from the GitHub Release "
+            "assets (12 standard/full archives + sidecars; V18-13). Exclusive: "
+            "only the profile index is written, run --version/--rc-version next"
+        ),
+    )
     args = parser.parse_args()
+
+    # V18-13: the profile index is published before the version endpoints
+    # (install-packaging.md §5.3), so this step is exclusive: it neither
+    # rewrites api/latest-version.json / api/latest-rc-version.json nor
+    # rebuilds the catalogs and extension index.
+    if args.publish_profiles is not None:
+        if args.version is not None or args.rc_version is not None:
+            raise SystemExit(
+                "--publish-profiles is a separate step: it only writes the profile index "
+                "(install-packaging.md §5.3 requires the index before the endpoints); "
+                "run --version/--rc-version in a second invocation"
+            )
+        out = generate_install_profiles(args.publish_profiles)
+        pinned = len(PROFILE_TARGETS) * len(PROFILE_NAMES)
+        print(
+            f"profiles: {out.relative_to(SITE)} -> v{args.publish_profiles} "
+            f"({pinned} archives pinned)"
+        )
+        return 0
 
     rpi_repo = Path(args.rpi_repo).resolve()
     if not (rpi_repo / "Cargo.toml").is_file():

@@ -7,3 +7,12 @@
 /schemas/*
   Content-Type: application/json; charset=utf-8
   Cache-Control: public, max-age=3600
+
+# Install profile bundle hash index (V18-13). The installers read
+# api/install-profiles/<ver>.json once per standard/full install as the outer
+# integrity anchor, so it must be JSON regardless of Accept headers. Keep the
+# edge TTL short with revalidation: a re-pushed tag regenerates the index
+# (install-packaging.md section 5.3) and the stale anchor must expire quickly.
+/api/install-profiles/*
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300, must-revalidate

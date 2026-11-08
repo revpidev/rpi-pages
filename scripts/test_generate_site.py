@@ -8,14 +8,21 @@ stdlib unittest，零第三方依赖；`python3 scripts/test_generate_site.py` �
 - `latest` 字段排除预发布（rc 不顶掉 stable 展示位）；
 - `--rc-version` 写 RC 端点（合法形态校验 + payload schema）；
 - semver 排序键的预发布段（rc.10 > rc.9；rc < stable）；
-- TE47 §8-3：`github_api` 网络抖动重试（URL/OSError）与最终失败降级。
+- TE47 §8-3：`github_api` 网络抖动重试（URL/OSError）与最终失败降级；
+- V18-13 `--publish-profiles`：12 个 standard/full 归档的扁平索引（顺序 /
+  排序 / 排除 mini、static、.rpix）、缺件/坏侧车/版本不符失败且不落盘、
+  无旗标不触碰 `api/install-profiles/`。
 """
 
 from __future__ import annotations
 
+import contextlib
+import hashlib
 import importlib.util
+import io
 import json
 import re
+import sys
 import tempfile
 import unittest
 import urllib.error
@@ -422,6 +429,332 @@ class GithubApiRetryTests(unittest.TestCase):
         ), mock.patch.object(gs.time, "sleep"):
             with self.assertRaises(urllib.error.HTTPError):
                 gs.github_api("https://api.github.com/x")
+
+
+def _asset(name: str, size: int | None = None) -> dict:
+    """GitHub Release asset entry; the sidecar URL is what artifact_sha256
+    fetches when the release carries no `digest`."""
+    asset = {"name": name, "browser_download_url": f"https://x/{name}"}
+    if size is not None:
+        asset["size"] = size
+    return asset
+
+
+def _sha256_of(name: str) -> str:
+    return hashlib.sha256(name.encode("utf-8")).hexdigest()
+
+
+# The index contract (install-packaging.md §3): six targets x two profiles,
+# `.zip` for Windows and `.tar.gz` elsewhere, sorted by asset name.
+EXPECTED_INDEX_NAMES = [
+    "rpi-0.1.8-aarch64-apple-darwin-full.tar.gz",
+    "rpi-0.1.8-aarch64-apple-darwin-standard.tar.gz",
+    "rpi-0.1.8-aarch64-unknown-linux-gnu-full.tar.gz",
+    "rpi-0.1.8-aarch64-unknown-linux-gnu-standard.tar.gz",
+    "rpi-0.1.8-aarch64-unknown-linux-musl-full.tar.gz",
+    "rpi-0.1.8-aarch64-unknown-linux-musl-standard.tar.gz",
+    "rpi-0.1.8-x86_64-pc-windows-msvc-full.zip",
+    "rpi-0.1.8-x86_64-pc-windows-msvc-standard.zip",
+    "rpi-0.1.8-x86_64-unknown-linux-gnu-full.tar.gz",
+    "rpi-0.1.8-x86_64-unknown-linux-gnu-standard.tar.gz",
+    "rpi-0.1.8-x86_64-unknown-linux-musl-full.tar.gz",
+    "rpi-0.1.8-x86_64-unknown-linux-musl-standard.tar.gz",
+]
+
+
+def _profile_index_names(version: str = "0.1.8") -> list[str]:
+    """The 12 standard/full archives the index must pin (fixtures)."""
+    return gs.profile_archive_names(version)
+
+
+def _non_index_names(version: str = "0.1.8") -> list[str]:
+    """Assets that must never reach the index: mini base archives, musl
+    `-static` fallbacks and `.rpix` plugin artifacts (all with sidecars)."""
+    names = []
+    for target in gs.PROFILE_TARGETS:
+        suffix = "zip" if target == gs.WINDOWS_TARGET else "tar.gz"
+        names.append(f"rpi-{version}-{target}.{suffix}")
+        names.append(f"rpi-subagents-{version}-{target}.rpix")
+    for target in ("x86_64-unknown-linux-musl", "aarch64-unknown-linux-musl"):
+        names.append(f"rpi-{version}-{target}-static.tar.gz")
+    return names
+
+
+def _profile_release(version: str = "0.1.8", *, sizes: bool = False) -> dict:
+    """Release entry with the 12 indexable archives plus every sidecar and the
+    assets excluded from the index (fixture is offline; no digest fields).
+    """
+    archives = _profile_index_names(version) + _non_index_names(version)
+    assets = [
+        _asset(name, len(name) * 1024 if sizes else None)
+        for name in archives + [f"{name}.sha256" for name in archives]
+    ]
+    return {"tag_name": f"v{version}", "draft": False, "assets": assets}
+
+
+class InstallProfileIndexTests(unittest.TestCase):
+    """V18-13：`--publish-profiles` 生成扁平 profile 哈希索引。
+
+    fixtures/mock，不联网：`release_assets` 返回构造好的 Release，
+    `github_api` 返回 sidecar 内容（`<64-hex>  <basename>`，coreutils 格式）。
+    """
+
+    def _publish(
+        self,
+        site: Path,
+        version: str = "0.1.8",
+        *,
+        release: dict | None = None,
+        sidecars: dict[str, str] | None = None,
+    ) -> Path:
+        release = release if release is not None else _profile_release(version)
+        contents = {
+            f"{name}.sha256": f"{_sha256_of(name)}  {name}\n"
+            for name in _profile_index_names(version)
+        }
+        contents.update(sidecars or {})
+
+        def fake_github_api(url: str) -> bytes:
+            return contents[url.rsplit("/", 1)[-1]].encode("utf-8")
+
+        with mock.patch.object(gs, "SITE", site), mock.patch.object(
+            gs, "release_assets", return_value=[release]
+        ), mock.patch.object(gs, "github_api", side_effect=fake_github_api):
+            return gs.generate_install_profiles(version)
+
+    def _assert_nothing_written(self, site: Path, version: str = "0.1.8") -> None:
+        index_dir = site / "api" / "install-profiles"
+        self.assertFalse((index_dir / f"{version}.json").exists())
+        self.assertEqual(
+            [p.name for p in index_dir.glob("*")] if index_dir.exists() else [],
+            [],
+            "no partial index and no leftover temp file",
+        )
+
+    def test_publishes_flat_sorted_index_for_twelve_archives(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            out = self._publish(site, release=_profile_release(sizes=True))
+            self.assertEqual(out, site / "api/install-profiles/0.1.8.json")
+            text = out.read_text(encoding="utf-8")
+            payload = json.loads(text)
+
+        names = EXPECTED_INDEX_NAMES
+        self.assertEqual(names, sorted(names))
+        self.assertEqual(len(names), 12)
+        self.assertEqual(gs.profile_archive_names("0.1.8"), names)
+        self.assertEqual(
+            list(payload), ["schemaVersion", "version", "assets", "sizes"]
+        )
+        self.assertEqual(payload["schemaVersion"], 1)
+        self.assertEqual(payload["version"], "0.1.8")
+        # Flat assets map: asset name -> 64-hex sha256, sorted by asset name.
+        self.assertEqual(list(payload["assets"]), names)
+        self.assertEqual(list(payload["sizes"]), names)
+        for name in names:
+            self.assertEqual(payload["assets"][name], _sha256_of(name))
+            self.assertRegex(payload["assets"][name], r"^[0-9a-f]{64}$")
+            self.assertEqual(payload["sizes"][name], len(name) * 1024)
+        # One asset per line, 2-space indent, trailing newline (deterministic).
+        self.assertTrue(text.endswith("\n"))
+        asset_lines = [line for line in text.splitlines() if line.startswith("    \"")]
+        self.assertEqual(
+            [line.strip().split('"')[1] for line in asset_lines], names + names
+        )
+
+    def test_excludes_mini_static_and_rpix_assets(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            out = self._publish(site)
+            payload = json.loads(out.read_text(encoding="utf-8"))
+        indexed = set(payload["assets"])
+        self.assertEqual(len(indexed), 12)
+        for name in _non_index_names():
+            self.assertNotIn(name, indexed)
+        self.assertFalse(any(name.endswith(".rpix") for name in indexed))
+        self.assertFalse(any("-static" in name for name in indexed))
+        self.assertNotIn("sizes", payload, "sizes is optional when the API omits it")
+
+    def test_missing_archive_fails_without_writing(self):
+        release = _profile_release()
+        dropped = "rpi-0.1.8-x86_64-unknown-linux-gnu-full.tar.gz"
+        release["assets"] = [a for a in release["assets"] if a["name"] != dropped]
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            with self.assertRaises(SystemExit) as ctx:
+                self._publish(site, release=release)
+            self.assertIn(dropped, str(ctx.exception))
+            self._assert_nothing_written(site)
+
+    def test_missing_sidecar_fails_without_writing(self):
+        release = _profile_release()
+        dropped = "rpi-0.1.8-aarch64-apple-darwin-standard.tar.gz.sha256"
+        release["assets"] = [a for a in release["assets"] if a["name"] != dropped]
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            with self.assertRaises(SystemExit) as ctx:
+                self._publish(site, release=release)
+            self.assertIn("sha256 sidecars", str(ctx.exception))
+            self._assert_nothing_written(site)
+
+    def test_malformed_sidecar_hash_fails_without_writing(self):
+        bad = "rpi-0.1.8-x86_64-unknown-linux-musl-standard.tar.gz"
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            with self.assertRaises(SystemExit) as ctx:
+                self._publish(
+                    site,
+                    sidecars={f"{bad}.sha256": f"not-a-sha256  {bad}\n"},
+                )
+            self.assertIn(bad, str(ctx.exception))
+            self._assert_nothing_written(site)
+
+    def test_non_hex_anchor_value_is_rejected(self):
+        # The index value is the bundle's outer integrity anchor, so it must be
+        # 64 hex digits whatever the hash source (release digest or sidecar).
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            with mock.patch.object(gs, "SITE", site), mock.patch.object(
+                gs, "release_assets", return_value=[_profile_release()]
+            ), mock.patch.object(gs, "artifact_sha256", return_value="sha256:deadbeef"):
+                with self.assertRaises(SystemExit) as ctx:
+                    gs.generate_install_profiles("0.1.8")
+            self.assertIn("invalid sha256", str(ctx.exception))
+            self._assert_nothing_written(site)
+
+    def test_version_mismatch_fails_without_writing(self):
+        # (a) The requested version has no matching release tag.
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            with self.assertRaises(SystemExit) as ctx:
+                self._publish(site, release=_profile_release("0.1.7"))
+            self.assertIn(
+                "release v0.1.8 not found", str(ctx.exception), "tags must match exactly"
+            )
+            self._assert_nothing_written(site)
+        # (b) The tag matches but the archives carry another version.
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            stale = _profile_release("0.1.7")
+            stale["tag_name"] = "v0.1.8"
+            with self.assertRaises(SystemExit) as ctx:
+                self._publish(site, release=stale)
+            self.assertIn("missing profile archives", str(ctx.exception))
+            self._assert_nothing_written(site)
+
+    def test_invalid_version_rejected(self):
+        for bad in ["0.1", "v0.1.8", "../0.1.8", "0.1.8/", "latest", ""]:
+            with tempfile.TemporaryDirectory() as tmp:
+                site = Path(tmp)
+                with self.assertRaises(SystemExit):
+                    self._publish(site, version=bad)
+                self.assertFalse((site / "api").exists())
+
+    def test_failure_keeps_a_previous_index_untouched(self):
+        release = _profile_release()
+        dropped = "rpi-0.1.8-aarch64-unknown-linux-gnu-full.tar.gz"
+        release["assets"] = [a for a in release["assets"] if a["name"] != dropped]
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            index = site / "api/install-profiles/0.1.8.json"
+            index.parent.mkdir(parents=True)
+            index.write_text("{\n  \"schemaVersion\": 1\n}\n", encoding="utf-8")
+            before = index.read_bytes()
+            with self.assertRaises(SystemExit):
+                self._publish(site, release=release)
+            self.assertEqual(index.read_bytes(), before)
+            self.assertEqual(
+                sorted(p.name for p in index.parent.iterdir()), ["0.1.8.json"]
+            )
+
+    def test_release_repository_is_the_official_one(self):
+        self.assertEqual(gs.RELEASE_REPOSITORY, "revpidev/rpi")
+
+
+class PublishProfilesCliTests(unittest.TestCase):
+    """`--publish-profiles` 的 CLI 行为（独占步骤，先索引后端點）。"""
+
+    def _rpi_repo(self, site: Path) -> Path:
+        rpi_repo = site / "rpi"
+        (rpi_repo / "crates/rpi-ai/src/providers/data").mkdir(parents=True)
+        (rpi_repo / "Cargo.toml").write_text('version = "0.1.8"\n', encoding="utf-8")
+        (rpi_repo / "install.sh").write_text("#!/bin/sh\n", encoding="utf-8")
+        (rpi_repo / "install.ps1").write_text("# ps1\n", encoding="utf-8")
+        return rpi_repo
+
+    def _run_main(self, argv: list[str]) -> None:
+        """Run main(); the generator's summary lines are captured."""
+        with mock.patch.object(sys, "argv", argv), contextlib.redirect_stdout(io.StringIO()):
+            gs.main()
+
+    def test_no_flag_leaves_the_profile_index_untouched(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            rpi_repo = self._rpi_repo(site)
+            with mock.patch.object(gs, "SITE", site), mock.patch.object(
+                gs, "release_assets"
+            ) as releases:
+                self._run_main(
+                    ["generate-site.py", "--rpi-repo", str(rpi_repo), "--version", "0.1.8"]
+                )
+            releases.assert_not_called()
+            self.assertFalse((site / "api/install-profiles").exists())
+            self.assertTrue((site / "api/latest-version.json").is_file())
+
+    def test_flag_publishes_only_the_index(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            release = _profile_release()
+            contents = {
+                f"{name}.sha256": f"{_sha256_of(name)}  {name}\n"
+                for name in _profile_index_names()
+            }
+
+            def fake_github_api(url: str) -> bytes:
+                return contents[url.rsplit("/", 1)[-1]].encode("utf-8")
+
+            with mock.patch.object(gs, "SITE", site), mock.patch.object(
+                gs, "release_assets", return_value=[release]
+            ) as releases, mock.patch.object(gs, "github_api", side_effect=fake_github_api):
+                self._run_main(
+                    [
+                        # --rpi-repo points at a missing tree: the index step
+                        # must not need the rpi source checkout (index first,
+                        # endpoints after).
+                        "generate-site.py",
+                        "--rpi-repo",
+                        str(site / "absent"),
+                        "--publish-profiles",
+                        "0.1.8",
+                    ]
+                )
+            releases.assert_called_once_with(gs.RELEASE_REPOSITORY)
+            payload = json.loads(
+                (site / "api/install-profiles/0.1.8.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(len(payload["assets"]), 12)
+            # The version endpoints and the rest of the site stay untouched.
+            self.assertFalse((site / "api/latest-version.json").exists())
+            self.assertFalse((site / "api/latest-rc-version.json").exists())
+            self.assertFalse((site / "api/extensions").exists())
+            self.assertFalse((site / "install.sh").exists())
+
+    def test_flag_refuses_to_combine_with_endpoint_flags(self):
+        # Index first, endpoints after: a combined invocation would silently
+        # skip one of the two halves of the documented release flow.
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            for extra in (["--version", "0.1.8"], ["--rc-version", "0.1.8-rc.1"]):
+                with mock.patch.object(gs, "SITE", site), mock.patch.object(
+                    gs, "release_assets"
+                ) as releases:
+                    with self.assertRaises(SystemExit) as ctx:
+                        self._run_main(
+                            ["generate-site.py", "--publish-profiles", "0.1.8", *extra]
+                        )
+                self.assertIn("separate step", str(ctx.exception))
+                releases.assert_not_called()
+                self.assertFalse((site / "api/install-profiles").exists())
 
 
 if __name__ == "__main__":
