@@ -337,6 +337,22 @@
         <span class="l-en">What changed in each release, mirroring the <code>changes/</code> directory of the source repository. The in-app update notice links here too.</span>
       </p>
 
+      <h2><span class="version-tag">0.1.8-rc.4</span><span class="l-zh">V18-13 安装 profile 交付修复(2026-11-08,RC 候选)</span><span class="l-en">V18-13 install-profile delivery fixes (2026-11-08, RC candidate)</span></h2>
+      <p>
+        <span class="l-zh">本 RC 与源码仓库 <code>changes/v0.1.8-rc.4.md</code> 同源,收口独立复核发现的安装器与发布链缺陷:PowerShell 完整 semver 校验、双端二进制/manifest 事务替换与回滚、profile 索引强制 sidecar 与 digest 一致、206 缺失/变化验证器必须从头重下、PowerShell 播种失败只告警、连接/Retry-After/jitter/超时环境变量对齐、严格 JSON 索引解析(重复键/类型/扁平结构/按字节限长)、交互提示超时、缓存 7 天 GC,以及 Alpine 3.21 动态 + 七插件运行时门禁。本次仍不更新 stable 端点、registry 或 schema 文件。</span>
+        <span class="l-en">This RC mirrors <code>changes/v0.1.8-rc.4.md</code> in the source repository and closes the installer/release-chain defects found by the independent review: full PowerShell semver validation, transactional binary/manifest replacement with rollback on both installers, profile-index sidecar/digest agreement, a 206 without a matching response validator forcing a clean restart, warning-only PowerShell settings seeding, connect/Retry-After/jitter/timeout env parity, a strict JSON index parser (duplicate keys, types, flat schema, byte bound), prompt timeouts, seven-day cache GC, and an Alpine 3.21 dynamic + seven-plugin runtime gate. This RC still does not move the stable endpoint, registry or schema files.</span>
+      </p>
+      <ul>
+        <li>
+          <span class="l-zh"><b>安装与分发</b>:mini/standard/full 三档均只下载一个固定 bundle;standard/full 必须通过 <code>api/install-profiles/&lt;ver&gt;.json</code> 的外层哈希锚,索引缺失/非法直接失败并提示显式 <code>--profile mini</code>,不再自动降级。V18-13 Release 使用 124 文件清单(20 archives + 20 sidecars + 42 <code>.rpix</code> + 42 sidecars);musl 主产物改为动态链接(需要 <code>libgcc</code>,standard/full 还需 <code>libstdc++</code>),每个 musl target 增加仅含二进制的 <code>-static</code> 回退。</span>
+          <span class="l-en"><b>Install and distribution</b>: mini/standard/full each download one pinned bundle; standard/full require the <code>api/install-profiles/&lt;ver&gt;.json</code> outer hash anchor and fail closed with an explicit <code>--profile mini</code> hint instead of auto-downgrading. The V18-13 Release uses the 124-file manifest (20 archives + 20 sidecars + 42 <code>.rpix</code> + 42 sidecars); musl main artifacts are dynamic (install <code>libgcc</code>, plus <code>libstdc++</code> for standard/full), and each musl target gains a binary-only <code>-static</code> fallback.</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>BREAKING(旧静态 musl 迁移)</b>:旧静态安装执行 <code>rpi update --self</code> 前必须先安装 <code>libgcc libstdc++</code>;旧二进制无法预检新动态运行时。也可通过 <code>install.sh</code>/<code>install.ps1</code> 重装,由安装器检测缺库并在用户明确同意后使用无插件的静态回退;静态回退不能加载 native 插件,已有 native 插件会阻止切换。</span>
+          <span class="l-en"><b>BREAKING (old static musl migration)</b>: install <code>libgcc libstdc++</code> before running <code>rpi update --self</code> from an old static install; the old binary cannot preflight the new dynamic runtime. Reinstalling through <code>install.sh</code>/<code>install.ps1</code> detects the missing libraries and, with explicit consent, offers the plugin-less static fallback; the static fallback cannot load native plugins, and an existing native plugin blocks the switch.</span>
+        </li>
+      </ul>
+
       <h2><span class="version-tag">0.1.8-rc.1</span><span class="l-zh">上游追平 v1.4.0 + issue #72/#73/#76 + durable 运行时 + 插件重定基(2026-11-03,RC 候选)</span><span class="l-en">Upstream parity to v1.4.0 + issues #72/#73/#76 + durable runtime + plugin rebase (2026-11-03, RC candidate)</span></h2>
       <p>
         <span class="l-zh">本 RC 候选与源码仓库 <code>changes/v0.1.8.md</code>、<code>changes/v0.1.8-rc.1.md</code> 同源:行为金标准升级至 Pi v1.4.0(<code>4a080252f</code>,ADR-0038,含 v1.2.0&ndash;v1.4.0 增量);issue 线 #72/#73/#76;durable 运行时/存储增量(experimental);扩展/session/settings 家族;TE51&ndash;TE53 插件重定基。破坏性变更(Kimi <code>/v1</code>、durable schema v2/API、扩展启动与 dialog 语义、subagents 配置/历史)与迁移指引见发布说明;本 RC 不更新 stable 端点、registry 与 schema 文件。</span>

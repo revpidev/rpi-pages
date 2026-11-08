@@ -431,12 +431,15 @@ class GithubApiRetryTests(unittest.TestCase):
                 gs.github_api("https://api.github.com/x")
 
 
-def _asset(name: str, size: int | None = None) -> dict:
+def _asset(name: str, size: int | None = None, digest: str | None = None) -> dict:
     """GitHub Release asset entry; the sidecar URL is what artifact_sha256
-    fetches when the release carries no `digest`."""
+    fetches when the release carries no `digest`, or when a caller requires
+    sidecar verification."""
     asset = {"name": name, "browser_download_url": f"https://x/{name}"}
     if size is not None:
         asset["size"] = size
+    if digest is not None:
+        asset["digest"] = digest
     return asset
 
 
@@ -480,13 +483,24 @@ def _non_index_names(version: str = "0.1.8") -> list[str]:
     return names
 
 
-def _profile_release(version: str = "0.1.8", *, sizes: bool = False) -> dict:
+def _profile_release(
+    version: str = "0.1.8",
+    *,
+    sizes: bool = False,
+    digests: dict[str, str] | None = None,
+) -> dict:
     """Release entry with the 12 indexable archives plus every sidecar and the
-    assets excluded from the index (fixture is offline; no digest fields).
+    assets excluded from the index. `digests` adds API `digest` fields for the
+    named archives (the default fixture stays offline and digest-free).
     """
     archives = _profile_index_names(version) + _non_index_names(version)
+    digests = digests or {}
     assets = [
-        _asset(name, len(name) * 1024 if sizes else None)
+        _asset(
+            name,
+            len(name) * 1024 if sizes else None,
+            digest=digests.get(name),
+        )
         for name in archives + [f"{name}.sha256" for name in archives]
     ]
     return {"tag_name": f"v{version}", "draft": False, "assets": assets}
@@ -608,6 +622,71 @@ class InstallProfileIndexTests(unittest.TestCase):
                 )
             self.assertIn(bad, str(ctx.exception))
             self._assert_nothing_written(site)
+
+    def test_digest_and_sidecar_must_agree(self):
+        bad = "rpi-0.1.8-x86_64-unknown-linux-musl-standard.tar.gz"
+        release = _profile_release(
+            digests={bad: f"sha256:{'b' * 64}"}
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            with self.assertRaises(SystemExit) as ctx:
+                self._publish(site, release=release)
+            self.assertIn("does not match", str(ctx.exception))
+            self._assert_nothing_written(site)
+
+    def test_digest_does_not_hide_an_unreadable_sidecar(self):
+        bad = "rpi-0.1.8-aarch64-unknown-linux-musl-full.tar.gz"
+        release = _profile_release(
+            digests={bad: f"sha256:{_sha256_of(bad)}"}
+        )
+
+        def fake_github_api(url: str) -> bytes:
+            name = url.rsplit("/", 1)[-1]
+            if name == f"{bad}.sha256":
+                raise urllib.error.URLError("sidecar unavailable")
+            base = name[: -len(".sha256")]
+            return f"{_sha256_of(base)}  {base}\n".encode("utf-8")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            with mock.patch.object(gs, "SITE", site), mock.patch.object(
+                gs, "release_assets", return_value=[release]
+            ), mock.patch.object(
+                gs, "github_api", side_effect=fake_github_api
+            ) as api:
+                with self.assertRaises(SystemExit) as ctx:
+                    gs.generate_install_profiles("0.1.8")
+            self.assertIn("cannot read", str(ctx.exception))
+            self.assertTrue(
+                any(f"{bad}.sha256" in str(call) for call in api.call_args_list),
+                "the sidecar must be fetched even when the release has a digest",
+            )
+            self._assert_nothing_written(site)
+
+    def test_digest_and_matching_sidecar_publish_the_index(self):
+        names = _profile_index_names()
+        release = _profile_release(
+            digests={name: f"sha256:{_sha256_of(name)}" for name in names}
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            site = Path(tmp)
+            out = self._publish(site, release=release)
+            payload = json.loads(out.read_text(encoding="utf-8"))
+        self.assertEqual(payload["assets"], {name: _sha256_of(name) for name in names})
+
+    def test_extension_digest_fast_path_does_not_fetch_the_sidecar(self):
+        name = "rpi-todo-0.1.8-x86_64-unknown-linux-gnu.rpix"
+        assets = {
+            name: _asset(name, digest=f"sha256:{'a' * 64}"),
+            f"{name}.sha256": _asset(f"{name}.sha256"),
+        }
+        with mock.patch.object(
+            gs, "github_api", side_effect=AssertionError("must not fetch")
+        ):
+            self.assertEqual(
+                "a" * 64, gs.artifact_sha256(assets, name)
+            )
 
     def test_non_hex_anchor_value_is_rejected(self):
         # The index value is the bundle's outer integrity anchor, so it must be

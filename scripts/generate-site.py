@@ -314,31 +314,47 @@ def release_assets(repository: str) -> list[dict] | None:
     return releases
 
 
-def artifact_sha256(assets_by_name: dict, file_name: str) -> str | None:
-    """资产摘要：优先用 Release API 直接返回的 `digest`（`sha256:<hex>`，
-    与 sidecar 内容一致），只有没有 digest 的老资产才下载 <file>.sha256。
+def artifact_sha256(
+    assets_by_name: dict, file_name: str, *, verify_sidecar: bool = False
+) -> str | None:
+    """资产摘要：优先用 Release API 直接返回的 `digest`（`sha256:<hex>`），
+    没有 digest 时下载 <file>.sha256。
 
-    历史上这里对每个资产都下载一次 sidecar，于是整站重建的网络成本随
-    版本数 × 平台数线性增长（40 个 release 已是数百次串行请求）。摘要
-    由 API 随 release 枚举一并返回，新版本发布因此变成常数次请求；tag
-    重推后同一次枚举就会带回新摘要，自愈语义不变。"""
+    扩展索引沿用 digest 快路径：整站重建的网络成本随版本数 × 平台数线性
+    增长（40 个 release 已是数百次串行请求），摘要随 release 枚举一并返回
+    后变成常数次请求。profile 索引是安装器的外层完整性锚，必须额外设置
+    `verify_sidecar=True`：即使 API 带 digest，也要读取并比对 sidecar。
+    tag 重推后 archive/digest 更新而 sidecar 仍旧时，二者不等即失败，避免
+    发布一个所有 standard/full 安装都会拒绝的索引。"""
+    digest_value = None
     asset = assets_by_name.get(file_name)
     if asset:
         digest = (asset.get("digest") or "").strip().lower()
         if digest.startswith("sha256:"):
             value = digest[len("sha256:") :]
             if re.fullmatch(r"[0-9a-f]{64}", value):
-                return value
+                digest_value = value
+    if digest_value is not None and not verify_sidecar:
+        return digest_value
+
     sidecar = assets_by_name.get(f"{file_name}.sha256")
     if not sidecar:
         return None
     try:
         text = github_api(sidecar["browser_download_url"]).decode("utf-8")
-    except (urllib.error.URLError, OSError) as exc:
+    except (urllib.error.URLError, OSError, UnicodeDecodeError) as exc:
         print(f"warning: cannot fetch {file_name}.sha256: {exc}", file=sys.stderr)
         return None
     match = SHA256_LINE.match(text.strip())
-    return match.group(1).lower() if match else None
+    if match is None:
+        return None
+    sidecar_value = match.group(1).lower()
+    if digest_value is not None and digest_value != sidecar_value:
+        raise ValueError(
+            f"release asset digest {digest_value} does not match "
+            f"{file_name}.sha256 {sidecar_value}"
+        )
+    return sidecar_value
 
 
 def extension_versions(entry: dict) -> list[dict] | None:
@@ -613,7 +629,12 @@ def generate_install_profiles(version: str) -> Path:
     sizes: dict[str, int] = {}
     sizes_complete = True
     for name in names:
-        sha256 = artifact_sha256(assets_by_name, name)
+        try:
+            # The profile index is the installers' outer anchor: never trust
+            # an API digest without reading the sidecar it must agree with.
+            sha256 = artifact_sha256(assets_by_name, name, verify_sidecar=True)
+        except ValueError as exc:
+            raise SystemExit(f"release {tag}: {exc}") from exc
         if sha256 is None:
             raise SystemExit(
                 f"release {tag}: cannot read {name}.sha256 (missing or malformed sidecar)"
