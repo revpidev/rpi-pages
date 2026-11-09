@@ -103,10 +103,18 @@ function headersFor(key, upstream) {
   // a re-push self-heals quickly; the extra origin fetches are negligible.
   // A 206 (or a 416) is a per-request answer keyed by the client's Range and
   // validator, so it must never be stored at the edge.
-  headers.set(
-    "Cache-Control",
-    upstream.status === 200 ? "public, max-age=3600" : "no-store",
-  );
+  //
+  // `CDN-Cache-Control`/`Cloudflare-CDN-Cache-Control` carry the same value on
+  // purpose: the edge ignores/overrides plain `Cache-Control` for the cacheable
+  // `.tar.gz`/`.zip` extensions and falls back to its 4h default, which made a
+  // deployed 206 answer `public, max-age=14400` (observed after the v0.1.8-rc.4
+  // publish, RELEASING.md verification). The CDN-scoped headers take precedence
+  // at the edge and keep a partial body out of the cache.
+  const cacheControl =
+    upstream.status === 200 ? "public, max-age=3600" : "no-store";
+  headers.set("Cache-Control", cacheControl);
+  headers.set("CDN-Cache-Control", cacheControl);
+  headers.set("Cloudflare-CDN-Cache-Control", cacheControl);
   return headers;
 }
 

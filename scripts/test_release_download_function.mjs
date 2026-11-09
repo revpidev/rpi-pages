@@ -254,6 +254,16 @@ test("range and validator headers are forwarded with 200 caching", async (t) => 
     response.headers.get("cache-control"),
     "public, max-age=3600",
   );
+  // The edge overrides plain Cache-Control for cacheable archive extensions and
+  // falls back to its 4h default; the CDN-scoped headers must carry the TTL.
+  assert.equal(
+    response.headers.get("cdn-cache-control"),
+    "public, max-age=3600",
+  );
+  assert.equal(
+    response.headers.get("cloudflare-cdn-cache-control"),
+    "public, max-age=3600",
+  );
   assert.equal(
     response.headers.get("content-type"),
     "application/octet-stream",
@@ -282,6 +292,11 @@ test("206 is not edge-cacheable and keeps the partial-body headers", async (t) =
   });
   assert.equal(response.status, 206);
   assert.equal(response.headers.get("cache-control"), "no-store");
+  // A cached partial keyed by one Range must never answer another Range. The
+  // edge ignores plain Cache-Control here, so both CDN-scoped headers must say
+  // no-store too (a deployed rc.4 partial answered max-age=14400 without this).
+  assert.equal(response.headers.get("cdn-cache-control"), "no-store");
+  assert.equal(response.headers.get("cloudflare-cdn-cache-control"), "no-store");
   assert.equal(response.headers.get("content-range"), "bytes 0-1/1234");
   assert.equal(response.headers.get("accept-ranges"), "bytes");
   assert.equal(response.headers.get("etag"), '"asset-etag"');
