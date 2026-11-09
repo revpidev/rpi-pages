@@ -105,11 +105,15 @@ function headersFor(key, upstream) {
   // validator, so it must never be stored at the edge.
   //
   // `CDN-Cache-Control`/`Cloudflare-CDN-Cache-Control` carry the same value on
-  // purpose: the edge ignores/overrides plain `Cache-Control` for the cacheable
-  // `.tar.gz`/`.zip` extensions and falls back to its 4h default, which made a
-  // deployed 206 answer `public, max-age=14400` (observed after the v0.1.8-rc.4
-  // publish, RELEASING.md verification). The CDN-scoped headers take precedence
-  // at the edge and keep a partial body out of the cache.
+  // purpose: the deployed 206 answered `Cache-Control: public, max-age=14400`
+  // after the v0.1.8-rc.4 publish even though this function sets `no-store`
+  // (RELEASING.md verification item), i.e. the zone layer rewrites the header
+  // for the cacheable `.tar.gz`/`.zip` extensions. The CDN-scoped headers are
+  // the documented way to pin the edge TTL; if production still answers 14400
+  // the remaining cause is a zone Cache Rule (outside this repository) and has
+  // to be fixed there. Byte-level checks through the mirror (full download +
+  // three ranges) were correct while the rewrite was in place, so today the
+  // impact is a 4h self-heal window on a tag re-push, not a corrupted partial.
   const cacheControl =
     upstream.status === 200 ? "public, max-age=3600" : "no-store";
   headers.set("Cache-Control", cacheControl);
