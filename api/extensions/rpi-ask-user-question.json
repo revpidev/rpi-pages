@@ -8,6 +8,56 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.8-rc.5",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.8-rc.5",
+      "capabilities": [
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-ask-user-question-0.1.8-rc.5-aarch64-apple-darwin.rpix",
+          "sha256": "091149e9a4b8de9e843d7ce01aa15bf432cbe9fe902540c7bc4648ddc3e2a22a",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-ask-user-question-0.1.8-rc.5-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "8dc325e1d14416d07a155f323406d522047e4d3b0ddce1bc50abe2a3303fc581",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "aarch64-unknown-linux-musl",
+          "file": "rpi-ask-user-question-0.1.8-rc.5-aarch64-unknown-linux-musl.rpix",
+          "sha256": "687d36602801722c0a17f772234597774f2b7a2056fb1ae096c598d71a8f914c",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-ask-user-question-0.1.8-rc.5-x86_64-pc-windows-msvc.rpix",
+          "sha256": "a4e8c842869f2560d8048e04c5e58c3f6a8cb308e6d7f2b67e336b4f739d5907",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-ask-user-question-0.1.8-rc.5-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "157a222b1656e3e3d4a62878c2b2855e94a6c6f09aea2c3d72f3f2063327d9e3",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-unknown-linux-musl",
+          "file": "rpi-ask-user-question-0.1.8-rc.5-x86_64-unknown-linux-musl.rpix",
+          "sha256": "2c5655563224d4108df86d8eae3ef38c0d90e1c3bf7d9abc5796729b34d80d96",
+          "release": "v0.1.8-rc.5"
+        }
+      ]
+    },
+    {
       "version": "0.1.8-rc.4",
       "rpiAbi": 1,
       "minHostVersion": "0.1.8-rc.4",

@@ -8,6 +8,57 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.8-rc.5",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.8-rc.5",
+      "capabilities": [
+        "commands",
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-plan-mode-0.1.8-rc.5-aarch64-apple-darwin.rpix",
+          "sha256": "8c395272bf600ffa9f2493c4d75b99d2f02cd23a57c2412b1234e5daba54d0b7",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.8-rc.5-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "abd1160ed94988fe99cd95cc66cfdea2429664093f9f73c3f9f4ab32569bbd53",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "aarch64-unknown-linux-musl",
+          "file": "rpi-plan-mode-0.1.8-rc.5-aarch64-unknown-linux-musl.rpix",
+          "sha256": "f25c8c98671b3b3030340e94a60d33555e45e0de0ea183ca68876c741b0e724f",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-plan-mode-0.1.8-rc.5-x86_64-pc-windows-msvc.rpix",
+          "sha256": "d829f96104dd9a021a2fb007c177ed8177b865b5bfa392402aba2592cbccd88a",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.8-rc.5-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "7d551912ce3d51f8ee5b8262a635287fa578940b42d227b5f6feaf9b97cb75c8",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-unknown-linux-musl",
+          "file": "rpi-plan-mode-0.1.8-rc.5-x86_64-unknown-linux-musl.rpix",
+          "sha256": "d282f534567553c16878ca06519ca165dcbf1fa56b89f117882d790deb206301",
+          "release": "v0.1.8-rc.5"
+        }
+      ]
+    },
+    {
       "version": "0.1.8-rc.4",
       "rpiAbi": 1,
       "minHostVersion": "0.1.8-rc.4",

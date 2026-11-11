@@ -8,6 +8,57 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.8-rc.5",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.8-rc.5",
+      "capabilities": [
+        "tools",
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-todo-0.1.8-rc.5-aarch64-apple-darwin.rpix",
+          "sha256": "49701dd8121b260dd92643d68c5ced446295fbc4f774bcb040355a1d4a046f81",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-todo-0.1.8-rc.5-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "ab1459670a09057c85b8b9aeb667e4cc6f53b9291c7b35bd6f9b9737939919d3",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "aarch64-unknown-linux-musl",
+          "file": "rpi-todo-0.1.8-rc.5-aarch64-unknown-linux-musl.rpix",
+          "sha256": "c67279900e32c4c3b384c50c6689e3cf750154eea8587fb8304d2a29d5c0d771",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-todo-0.1.8-rc.5-x86_64-pc-windows-msvc.rpix",
+          "sha256": "c70f53150477a3f0956a0b85c3e9806f9732335afc1c15c9116afb013f97bced",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-todo-0.1.8-rc.5-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "6f5168b1b130f54c27b50e1977eed91888e302830b9b52291ce0d640e45d943e",
+          "release": "v0.1.8-rc.5"
+        },
+        {
+          "target": "x86_64-unknown-linux-musl",
+          "file": "rpi-todo-0.1.8-rc.5-x86_64-unknown-linux-musl.rpix",
+          "sha256": "d3f154f67fb9c56d548b886d2f07aedc208c4b94f1ea687ef60c4860db912ac5",
+          "release": "v0.1.8-rc.5"
+        }
+      ]
+    },
+    {
       "version": "0.1.8-rc.4",
       "rpiAbi": 1,
       "minHostVersion": "0.1.8-rc.4",

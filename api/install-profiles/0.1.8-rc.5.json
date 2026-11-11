@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.8-rc.5",
+  "assets": {
+    "rpi-0.1.8-rc.5-aarch64-apple-darwin-full.tar.gz": "f23e3bf89b0e0fa1f65bcf0c5a46e715bd3fef61b7787e9176db1a0d44362860",
+    "rpi-0.1.8-rc.5-aarch64-apple-darwin-standard.tar.gz": "99fb32d1f76410fdbaadf749ba279060b688eb8593e0eed8c15d1f0455b3ce02",
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-gnu-full.tar.gz": "18522421c248e9771ae57d38136321a78e64b804f42d25aa2f5d2964dfe4c7e8",
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-gnu-standard.tar.gz": "2c7c2a712fa6a50bbf26948db28b54781d62c59e75c703edfa75906e97dd420b",
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-musl-full.tar.gz": "b73d7adf1c4088d3e49de70958897540092fb5b681b8ec79f711ec565ffe081f",
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-musl-standard.tar.gz": "78a6e316b650e300dbd0442c59db11269ac1d0d7cedb004e390a77463ab0dfd9",
+    "rpi-0.1.8-rc.5-x86_64-pc-windows-msvc-full.zip": "054d2366e6606ed0a1c02284d59348b6d6fffc53b77b07d5cd2899876e519c1f",
+    "rpi-0.1.8-rc.5-x86_64-pc-windows-msvc-standard.zip": "061a8cfbac5d80931f4c25178dfb64a80294eb944b6eaf76237f5123b3903805",
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-gnu-full.tar.gz": "9f56e632ac0d88aa2e4fffd499e41e5b0f4f4aebe89fac15e2847540c3cb0e94",
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-gnu-standard.tar.gz": "6d2261f3b4b0c7968e0b3def25f941b62ee989f80259ca957d793cefb0b8453f",
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-musl-full.tar.gz": "b35955b172b21d73a3767cc06444d08c421a68b42402fec1745f1e96e4b1266e",
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-musl-standard.tar.gz": "e99de72bd99b66a3fd8932b361fca40f239c7fe4b2142d99aac215cfd50fa584"
+  },
+  "sizes": {
+    "rpi-0.1.8-rc.5-aarch64-apple-darwin-full.tar.gz": 37974640,
+    "rpi-0.1.8-rc.5-aarch64-apple-darwin-standard.tar.gz": 37443021,
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-gnu-full.tar.gz": 39095142,
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-gnu-standard.tar.gz": 38553051,
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-musl-full.tar.gz": 38173891,
+    "rpi-0.1.8-rc.5-aarch64-unknown-linux-musl-standard.tar.gz": 37768707,
+    "rpi-0.1.8-rc.5-x86_64-pc-windows-msvc-full.zip": 44747423,
+    "rpi-0.1.8-rc.5-x86_64-pc-windows-msvc-standard.zip": 43948686,
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-gnu-full.tar.gz": 46091934,
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-gnu-standard.tar.gz": 44893172,
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-musl-full.tar.gz": 40897552,
+    "rpi-0.1.8-rc.5-x86_64-unknown-linux-musl-standard.tar.gz": 40461338
+  }
+}

@@ -1,5 +1,4 @@
 {
-  "version": "0.1.8-rc.4",
-  "packageName": "rpi",
-  "note": "v0.1.8-rc.4: streaming pipeline fix (rpi#78) and V18-13 installer/profile delivery hardening"
+  "version": "0.1.8-rc.5",
+  "packageName": "rpi"
 }
