@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-11T23:39:09Z",
+  "generatedAt": "2026-11-12T08:26:58Z",
   "extensions": [
     {
       "name": "rpi-ask-user-question",
-      "latest": "0.1.7",
+      "latest": "0.1.8",
       "description": "Structured ask_user_question tool: a questionnaire the model can put to you (1-4 questions, 2-4 described options each, optional markdown preview, multi-select, notes), rendered as an interactive overlay with an RPC dialog fallback.",
       "kind": "native",
       "capabilities": [
@@ -19,7 +19,7 @@
     },
     {
       "name": "rpi-plan-mode",
-      "latest": "0.1.7",
+      "latest": "0.1.8",
       "description": "Plan mode: /plan (or Shift+Tab) switches the session to a read-only research state where write tools are hidden; the model writes a structured plan with write_plan, and a review dialog approves it (returning to default mode to execute), requests revisions, or abandons it.",
       "kind": "native",
       "capabilities": [
@@ -35,7 +35,7 @@
     },
     {
       "name": "rpi-smart-fetch",
-      "latest": "0.1.7",
+      "latest": "0.1.8",
       "description": "Fingerprinted web fetch extension: `web_fetch`/`batch_web_fetch` tools with browser-grade TLS/HTTP2 emulation (wreq), readability extraction (dom_smoothie [VARIANT]) with a 1:1 DOM fallback chain, five output formats, a structured error model, streaming progress (toolUpdate) and ComponentTree renderers.",
       "kind": "native",
       "capabilities": [
@@ -48,8 +48,8 @@
     },
     {
       "name": "rpi-statusline",
-      "latest": "0.1.7",
-      "description": "Claude Code-compatible statusline: configure a shell command (CC stdin JSON contract) or declarative items (strict 21 fields, /statusline editor), rendered as footer/widget/status with event-driven and live refresh.",
+      "latest": "0.1.8",
+      "description": "Claude Code-compatible statusline: configure a shell command (CC stdin JSON contract) or declarative items (strict 30 fields, /statusline editor), rendered as footer/widget/status with event-driven and live refresh.",
       "kind": "native",
       "capabilities": [
         "commands",
@@ -58,12 +58,12 @@
         "events"
       ],
       "downloads": null,
-      "descriptionZh": "Claude Code 兼容的自定义 statusline:可配置 shell 命令(CC stdin JSON 契约)或声明式 items(严格 21 字段、/statusline 编辑器),以 footer/widget/status 渲染,支持事件与实时刷新。",
+      "descriptionZh": "Claude Code 兼容的自定义 statusline:可配置 shell 命令(CC stdin JSON 契约)或声明式 items(严格 30 字段、/statusline 编辑器),以 footer/widget/status 渲染,支持事件与实时刷新。",
       "official": true
     },
     {
       "name": "rpi-subagents",
-      "latest": "0.1.7",
+      "latest": "0.1.8",
       "description": "Delegation extension: single `subagent` tool that spawns focused child rpi sessions with per-agent prompts, tool allowlists and depth limits; composite tasks/steps runs (ADR-0018), background async runs (ADR-0019), managed worktree isolation, tool budgets, descendant allowlists and nested coordinators.",
       "kind": "native",
       "capabilities": [
@@ -79,7 +79,7 @@
     },
     {
       "name": "rpi-todo",
-      "latest": "0.1.7",
+      "latest": "0.1.8",
       "description": "Task-list todo tool: a live overlay panel above the editor the model keeps current with one tool call (six actions, four-state machine, dependency tracking), rebuilt from the session branch so it survives compaction and /reload, plus a /todos command and a collapse shortcut.",
       "kind": "native",
       "capabilities": [
@@ -95,7 +95,7 @@
     },
     {
       "name": "rpi-usage",
-      "latest": "0.1.7",
+      "latest": "0.1.8",
       "description": "Usage lookup: /usage queries the current model provider's typed balance, plan quota or subscription windows through the host scripted usage-provider framework — built-in DeepSeek, GLM Coding Plan, MiniMax Token Plan, Kimi Code, OpenCode Go, Anthropic, OpenAI Codex and xAI scripts — and keeps a typed footer status line; --cached/--json/--provider and /usage list/help are supported, providers without quota show local session tokens only, and custom providers drop in as user scripts.",
       "kind": "native",
       "capabilities": [
