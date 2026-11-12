@@ -414,6 +414,15 @@
 <span class="c"># Windows（x86_64，PowerShell）</span>
 <span class="p">PS&gt;</span> irm https://revpi.dev/install.ps1 | iex</code></pre>
       <p>
+        <span class="l-zh">安装器默认使用 <code>stable</code> 通道；设置 <code>RPI_INSTALL_CHANNEL=rc</code> 可读取 <code>latest-rc-version.json</code>，安装对应 RC 与同版本插件包。取消设置或改为 <code>stable</code> 即恢复正式版。</span>
+        <span class="l-en">Installers default to <code>stable</code>. Set <code>RPI_INSTALL_CHANNEL=rc</code> to resolve <code>latest-rc-version.json</code> and install that RC with its matching plugin bundle; unset it or use <code>stable</code> for stable installs.</span>
+      </p>
+      <pre><code><span class="c"># Unix：安装最新 RC（非交互同意 native 插件）</span>
+<span class="p">$</span> curl -fsSL https://revpi.dev/install.sh | RPI_INSTALL_CHANNEL=rc sh -s -- --yes
+
+<span class="c"># Windows：安装最新 RC</span>
+<span class="p">PS&gt;</span> $env:RPI_INSTALL_CHANNEL = 'rc'; irm https://revpi.dev/install.ps1 | iex</code></pre>
+      <p>
         <span class="l-zh">默认安装位置：Linux / macOS 为 <code>~/.local/bin</code>（<code>--prefix</code> 可覆盖，需写入系统目录时脚本会提示用 sudo 重跑）；Windows 为 <code>%LOCALAPPDATA%\Programs\rpi</code>（<code>-Prefix</code> 可覆盖）。安装目录尚未成为当前生效的 <code>rpi</code> 时，交互式安装（stdout 是终端、<code>/dev/tty</code> 可用、未设置 <code>CI</code>/<code>RPI_NONINTERACTIVE</code>、<code>TERM</code> 不是 <code>dumb</code>）会询问是否写入检测到的 shell 配置 / 用户 PATH（默认是），并写入带幂等守卫的 <code># rpi</code> 块。设置 <code>CI</code>/<code>RPI_NONINTERACTIVE</code>、stdout 被重定向或没有控制终端时会跳过提示；存在 pty 但无上述标记时，支持 <code>read -t</code> 的 shell 会超时。用 <code>RPI_INSTALL_ADD_PATH=0</code> 保证只打印手动命令，用 <code>--add-path</code> / <code>RPI_INSTALL_ADD_PATH=1</code> 直接写入。不支持的 shell 只打印手动说明；root/系统级安装以及目录不在用户 profile 下时打印准确的手动命令。Windows 会保留 <code>%VAR%</code> 与 registry value kind，并在机器级 PATH 中的 rpi 仍会优先时给出警告。</span>
         <span class="l-en">Default locations: <code>~/.local/bin</code> on Linux / macOS (override with <code>--prefix</code>; the script suggests re-running with sudo for system directories) and <code>%LOCALAPPDATA%\Programs\rpi</code> on Windows (<code>-Prefix</code>). When the install directory is not already the active <code>rpi</code>, an interactive install (terminal stdout, usable <code>/dev/tty</code>, no <code>CI</code>/<code>RPI_NONINTERACTIVE</code>, <code>TERM</code> not <code>dumb</code>) offers to add it to the detected shell profile / user PATH (default: yes) and writes an idempotent marked block. The prompt is skipped when <code>CI</code>/<code>RPI_NONINTERACTIVE</code> is set, stdout is redirected, or no controlling terminal exists; with a pty and no marker, shells with <code>read -t</code> time out. Set <code>RPI_INSTALL_ADD_PATH=0</code> for guidance, or <code>--add-path</code> / <code>RPI_INSTALL_ADD_PATH=1</code> to write without prompting. Unsupported shells only print manual guidance; root/system-wide installs and prefixes outside the user profile print the exact manual command. Windows preserves <code>%VAR%</code> and the registry value kind, and warns when a machine-level rpi still wins.</span>
       </p>
