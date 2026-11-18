@@ -49,6 +49,42 @@ def _release(tag: str, assets: dict[str, str] | None = None) -> dict:
     }
 
 
+class CatalogGenerationTests(unittest.TestCase):
+    def test_catalogs_copy_the_source_manifest_and_models(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            rpi_repo = root / "rpi"
+            data_dir = rpi_repo / "crates/rpi-ai/src/providers/data"
+            data_dir.mkdir(parents=True)
+            model = {
+                "id": "model",
+                "name": "Model",
+                "api": "openai-completions",
+                "provider": "demo",
+                "type": "chat",
+            }
+            provider = json.dumps({"openai-completions": {"chat:model": model}}).encode()
+            (data_dir / "demo.json").write_bytes(provider)
+            manifest = json.dumps(
+                {
+                    "schemaVersion": 6,
+                    "generatedAt": "2026-11-17T00:00:00Z",
+                    "structureHash": "structure",
+                    "files": {"demo.json": hashlib.sha256(provider).hexdigest()},
+                }
+            ).encode()
+            (data_dir / ".manifest.json").write_bytes(manifest)
+            site = root / "site"
+            with mock.patch.object(gs, "SITE", site):
+                generated = gs.generate_catalogs(rpi_repo)
+            self.assertEqual(generated, ["demo"])
+            self.assertEqual(
+                (site / "api/models/providers/.manifest.json").read_bytes(), manifest
+            )
+            published = json.loads((site / "api/models/providers/demo.json").read_text())
+            self.assertEqual(published, {"models": [model]})
+
+
 class RcShapeTests(unittest.TestCase):
     """R6.1.1 形态判定：`<stable>-rc.<N>`。"""
 
@@ -755,7 +791,9 @@ class PublishProfilesCliTests(unittest.TestCase):
 
     def _rpi_repo(self, site: Path) -> Path:
         rpi_repo = site / "rpi"
-        (rpi_repo / "crates/rpi-ai/src/providers/data").mkdir(parents=True)
+        data_dir = rpi_repo / "crates/rpi-ai/src/providers/data"
+        data_dir.mkdir(parents=True)
+        (data_dir / ".manifest.json").write_text('{"files":{}}\n', encoding="utf-8")
         (rpi_repo / "Cargo.toml").write_text('version = "0.1.8"\n', encoding="utf-8")
         (rpi_repo / "install.sh").write_text("#!/bin/sh\n", encoding="utf-8")
         (rpi_repo / "install.ps1").write_text("# ps1\n", encoding="utf-8")

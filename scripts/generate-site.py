@@ -90,6 +90,10 @@ def generate_catalogs(rpi_repo: Path) -> list[str]:
             encoding="utf-8",
         )
         generated.append(provider_id)
+    manifest = data_dir / ".manifest.json"
+    if not manifest.is_file():
+        raise FileNotFoundError(f"catalog manifest not found: {manifest}")
+    (out_dir / ".manifest.json").write_bytes(manifest.read_bytes())
     return generated
 
 

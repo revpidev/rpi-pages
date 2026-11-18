@@ -29,6 +29,42 @@
       "contextWindow": 922000
     },
     {
+      "id": "chat-latest",
+      "name": "Chat Latest",
+      "api": "openai-responses",
+      "provider": "openai",
+      "baseUrl": "https://api.openai.com/v1",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 5,
+        "output": 30,
+        "cacheRead": 0.5,
+        "cacheWrite": 0
+      },
+      "contextWindow": 400000,
+      "maxTokens": 128000,
+      "compat": {
+        "supportsStrictMode": true
+      },
+      "inputLimits": {
+        "maxRequestBytes": 536870912,
+        "images": {
+          "maxPerRequest": 1500,
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
       "id": "gpt-4",
       "name": "GPT-4",
       "api": "openai-responses",
@@ -869,8 +905,6 @@
       "compat": {
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
-        "supportsAdditionalTools": true,
-        "supportsToolSearch": true,
         "supportsMidConvoSystemMessages": true
       },
       "inputLimits": {
@@ -918,8 +952,6 @@
       "compat": {
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
-        "supportsAdditionalTools": true,
-        "supportsToolSearch": true,
         "supportsMidConvoSystemMessages": true
       },
       "inputLimits": {
@@ -1022,8 +1054,6 @@
       "compat": {
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
-        "supportsAdditionalTools": true,
-        "supportsToolSearch": true,
         "supportsMidConvoSystemMessages": true
       },
       "inputLimits": {
@@ -1080,8 +1110,6 @@
       "compat": {
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
-        "supportsAdditionalTools": true,
-        "supportsToolSearch": true,
         "supportsMidConvoSystemMessages": true
       },
       "inputLimits": {
@@ -1138,6 +1166,53 @@
       "compat": {
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true
+      },
+      "inputLimits": {
+        "maxRequestBytes": 536870912,
+        "images": {
+          "maxPerRequest": 1500,
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
+      "id": "gpt-5.6-cyber",
+      "name": "GPT-5.6 Cyber",
+      "api": "openai-responses",
+      "provider": "openai",
+      "baseUrl": "https://api.openai.com/v1",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 12.5,
+        "output": 75,
+        "cacheRead": 1.25,
+        "cacheWrite": 15.625
+      },
+      "contextWindow": 400000,
+      "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "compat": {
+        "supportsStrictMode": true,
+        "supportsOpenAIGrammarTools": true,
+        "supportsExplicitPromptCacheMode": true
       },
       "inputLimits": {
         "maxRequestBytes": 536870912,
@@ -1391,6 +1466,53 @@
       "type": "chat"
     },
     {
+      "id": "gpt-6-cyber",
+      "name": "GPT-6 Cyber",
+      "api": "openai-responses",
+      "provider": "openai",
+      "baseUrl": "https://api.openai.com/v1",
+      "reasoning": true,
+      "input": [
+        "text",
+        "image"
+      ],
+      "cost": {
+        "input": 20,
+        "output": 100,
+        "cacheRead": 2,
+        "cacheWrite": 25
+      },
+      "contextWindow": 1050000,
+      "maxTokens": 128000,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "compat": {
+        "supportsStrictMode": true,
+        "supportsOpenAIGrammarTools": true,
+        "supportsExplicitPromptCacheMode": true
+      },
+      "inputLimits": {
+        "maxRequestBytes": 536870912,
+        "images": {
+          "maxPerRequest": 1500,
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      },
+      "type": "chat"
+    },
+    {
       "id": "gpt-6-luna",
       "name": "GPT-6 Luna",
       "api": "openai-responses",
@@ -1596,7 +1718,7 @@
           }
         ]
       },
-      "contextWindow": 1050000,
+      "contextWindow": 272000,
       "maxTokens": 128000,
       "thinkingLevelMap": {
         "off": "none",
@@ -1610,7 +1732,11 @@
       "compat": {
         "supportsStrictMode": true,
         "supportsOpenAIGrammarTools": true,
-        "supportsExplicitPromptCacheMode": true
+        "supportsAdditionalTools": true,
+        "supportsToolSearch": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsExplicitPromptCacheMode": true,
+        "supportsMidConvoEffort": true
       },
       "inputLimits": {
         "maxRequestBytes": 536870912,
@@ -1712,51 +1838,6 @@
       "compat": {
         "supportsStrictMode": true,
         "supportsExplicitPromptCacheMode": true
-      },
-      "inputLimits": {
-        "maxRequestBytes": 536870912,
-        "images": {
-          "maxPerRequest": 1500,
-          "resize": {
-            "maxWidth": 2000,
-            "maxHeight": 2000,
-            "maxBytes": 4718592,
-            "jpegQuality": 80
-          }
-        }
-      },
-      "type": "chat"
-    },
-    {
-      "id": "gpt-realtime-2.1",
-      "name": "GPT-Realtime-2.1",
-      "api": "openai-responses",
-      "provider": "openai",
-      "baseUrl": "https://api.openai.com/v1",
-      "reasoning": true,
-      "input": [
-        "text",
-        "image"
-      ],
-      "cost": {
-        "input": 4,
-        "output": 24,
-        "cacheRead": 0.4,
-        "cacheWrite": 0
-      },
-      "contextWindow": 128000,
-      "maxTokens": 32000,
-      "thinkingLevelMap": {
-        "off": null,
-        "minimal": "minimal",
-        "low": "low",
-        "medium": "medium",
-        "high": "high",
-        "xhigh": "xhigh",
-        "max": null
-      },
-      "compat": {
-        "supportsStrictMode": true
       },
       "inputLimits": {
         "maxRequestBytes": 536870912,

@@ -192,17 +192,29 @@
         "input": 2,
         "output": 10,
         "cacheRead": 0.2,
-        "cacheWrite": 2
+        "cacheWrite": 0
       },
       "contextWindow": 1048576,
       "maxTokens": 1048576,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
+        "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": false,
-        "thinkingFormat": "deepseek"
+        "thinkingFormat": "openai",
+        "requiresReasoningContentOnAssistantMessages": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsMidConvoToolAdditions": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       },
       "inputLimits": {
         "images": {
@@ -231,17 +243,29 @@
         "input": 4,
         "output": 20,
         "cacheRead": 0.2,
-        "cacheWrite": 4
+        "cacheWrite": 0
       },
       "contextWindow": 1048576,
       "maxTokens": 1048576,
       "compat": {
         "supportsStore": false,
         "supportsDeveloperRole": false,
-        "supportsReasoningEffort": false,
+        "supportsReasoningEffort": true,
         "maxTokensField": "max_tokens",
         "supportsStrictMode": false,
-        "thinkingFormat": "deepseek"
+        "thinkingFormat": "openai",
+        "requiresReasoningContentOnAssistantMessages": true,
+        "supportsMidConvoSystemMessages": true,
+        "supportsMidConvoToolAdditions": true
+      },
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": null,
+        "high": "high",
+        "xhigh": null,
+        "max": "max"
       },
       "inputLimits": {
         "images": {
