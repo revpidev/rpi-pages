@@ -337,6 +337,21 @@
         <span class="l-en">What changed in each release, mirroring the <code>changes/</code> directory of the source repository. The in-app update notice links here too.</span>
       </p>
 
+                                    <h2><span class="version-tag">0.1.9-rc.2</span><span class="l-zh">rc.1 + 全屏 transcript driver 重构修复(候选版 2026-11-27)</span><span class="l-en">rc.1 + the fullscreen transcript driver restructure fix (release candidate 2026-11-27)</span></h2>
+      <p>
+        <span class="l-zh">第二个 v0.1.9 候选版(预发布通道),携带 rc.1 首次运行时发现的修复;rc.1 的功能集(上游追平 Pi v1.5.2、流式性能与 Linux 内存专项、statusline estimate 计算模式、插件重定基)不变,完整说明见下方 0.1.9-rc.1 节与源码仓库 <code>changes/v0.1.9-rc.2.md</code>;stable 发布时折叠为 0.1.9。已安装用户运行 <code>rpi update --rc</code>(<code>rpi update --all --rc</code> 同时把七款锁步扩展更新到 <code>0.1.9-rc.2</code>);install.sh 不提供 RC。除本 RC 的 RC 端点与 profile 索引外,不改动 registry、schema、模型目录或 stable 版本端点。</span>
+        <span class="l-en">The second v0.1.9 release candidate (pre-release channel), carrying the fix found on the first runs of rc.1; the rc.1 feature set (upstream parity to Pi v1.5.2, the streaming-performance and Linux-memory main line, the statusline estimate calculation mode, the extension rebase) is unchanged — see the 0.1.9-rc.1 section below and <code>changes/v0.1.9-rc.2.md</code> in the source repository; it folds into 0.1.9 at stable-release time. Existing users run <code>rpi update --rc</code> (or <code>rpi update --all --rc</code> to also move the seven lockstep extensions to <code>0.1.9-rc.2</code>); install.sh does not serve RCs. Beyond this RC's RC endpoint and profile index, no registry, schema, model-catalog or stable version endpoint changes.</span>
+      </p>
+      <ul>
+        <li>
+          <span class="l-zh"><b>修复</b>:全屏模式下,session 线程在一帧高度测量与行读取之间重构 chat(启动 auto-theme 重建、<code>/clear</code>、树导航、compaction 完成)时,<code>rpi-tui</code> driver 线程不再以 <code>index out of bounds</code> panic 退出(此前 TUI 不再渲染);行读取器先重新测量被重构的文档,索引读取器在下一次 sync 前回答"未测量"。</span>
+          <span class="l-en"><b>Fixed</b>: in fullscreen mode the <code>rpi-tui</code> driver thread no longer dies with <code>index out of bounds</code> (which left the TUI without renders) when the session thread restructures the chat between a frame's height measurement and a row read (the startup auto-theme rebuild, <code>/clear</code>, tree navigation, a completed compaction); the row readers re-measure a restructured document first and the index readers answer "unmeasured" until the next sync.</span>
+        </li>
+        <li>
+          <span class="l-zh"><b>验证请求</b>:在有历史消息的 session 上以全屏模式启动,从 <code>/theme</code> 切换主题(以及一次 auto theme 设置)、执行 <code>/clear</code>、用 <code>/tree</code> 导航、让一次自动压缩在渲染期间完成——TUI 必须持续渲染,重建后的首帧显示新内容;rc.1 的验证请求(Windows 锁修复、真实 provider 上的 BREAKING 面、真实硬件上的性能主线、插件线)仍然开放。</span>
+          <span class="l-en"><b>Verification requests</b>: start fullscreen over a session with history, switch themes from <code>/theme</code> (and once with the auto theme setting), run <code>/clear</code>, navigate with <code>/tree</code> and let an auto-compaction finish while frames render — the TUI must keep rendering and the first frames after a rebuild must show the new content; the rc.1 requests (the Windows lock fix, the BREAKING surfaces on real providers, the performance main line on real hardware, the plugin line) remain open.</span>
+        </li>
+      </ul>
                                     <h2><span class="version-tag">0.1.9-rc.1</span><span class="l-zh">上游追平 v1.5.2 + 流式性能与 Linux 内存专项 + statusline estimate 计算模式 + 插件重定基(候选版 2026-11-26)</span><span class="l-en">Upstream parity to Pi v1.5.2 + streaming performance and Linux memory + statusline estimate mode + extension rebase (release candidate 2026-11-26)</span></h2>
       <p>
         <span class="l-zh">本节是 v0.1.9 的候选发布说明(rc.1,预发布通道),与源码仓库 <code>changes/v0.1.9.md</code> 同源;stable 发布时本节折叠为 0.1.9。行为金标准升级到 Pi v1.5.2(<code>b4afdddf</code>,ADR-0048),pi-subagents 升级 v0.88.1、agent-smart-fetch 升级 v0.3.23、rpiv-mono 保持 v2.15.0;收口时上游已发布 Pi v1.6.0/v1.6.1 与 pi-subagents v0.90.0,本版仍按 v1.5.2 / v0.88.1 收口,移动 pin 留给下一版本的独立 ADR。主线是流式性能与 Linux 内存(ADR-0049):长历史 + 长代码回答 + 全屏跟随场景的进程 CPU 为 v0.1.8 的 38.3%,纯计算帧 p95 为 44.1%,输入到可见延迟为 5.5%;Linux GNU 空会话常驻内存下降 60%、虚拟内存下降 82%,长会话常驻内存约减半;statusline 新增 <code>estimate</code> 计算模式。所有 v0.1.9 宿主调用均为 additive,<code>rpiAbi</code> 保持 1。</span>
