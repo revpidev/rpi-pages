@@ -8,6 +8,54 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.9-rc.2",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.9-rc.2",
+      "capabilities": [
+        "tools",
+        "session"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-smart-fetch-0.1.9-rc.2-aarch64-apple-darwin.rpix",
+          "sha256": "05a648d6e3d87bf597cf0c463721eb7c2181bd1ad124e437cd545fc1d41bf2b1",
+          "release": "v0.1.9-rc.2"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.9-rc.2-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "091472a156c29625d3adfceb2a7cb2d4510de09c9c883ee7c769c1840785c9c0",
+          "release": "v0.1.9-rc.2"
+        },
+        {
+          "target": "aarch64-unknown-linux-musl",
+          "file": "rpi-smart-fetch-0.1.9-rc.2-aarch64-unknown-linux-musl.rpix",
+          "sha256": "b9b0a910be463d507cf290b166503ded707d8c9cffac60e02bf0a201e528ce8f",
+          "release": "v0.1.9-rc.2"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-smart-fetch-0.1.9-rc.2-x86_64-pc-windows-msvc.rpix",
+          "sha256": "64264df8b248a7ec898a80777d4af060ebc6358d7622727755a7f69b3b7c38cf",
+          "release": "v0.1.9-rc.2"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-smart-fetch-0.1.9-rc.2-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "e9126fa85744ba158ab18037511c5c4de9804d14d1f95f688e9e279da3800d33",
+          "release": "v0.1.9-rc.2"
+        },
+        {
+          "target": "x86_64-unknown-linux-musl",
+          "file": "rpi-smart-fetch-0.1.9-rc.2-x86_64-unknown-linux-musl.rpix",
+          "sha256": "f7f839e151a6dc8c707c161ab573e9b8dd61bb4c6c3632b228e6ca82eebd5685",
+          "release": "v0.1.9-rc.2"
+        }
+      ]
+    },
+    {
       "version": "0.1.9-rc.1",
       "rpiAbi": 1,
       "minHostVersion": "0.1.9-rc.1",
