@@ -8,6 +8,56 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.9-rc.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.9-rc.1",
+      "capabilities": [
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-statusline-0.1.9-rc.1-aarch64-apple-darwin.rpix",
+          "sha256": "786e31605222ed3d130d6f48e89d727562db60b8a0fc678a6cc111aeb6e77d36",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.9-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "c9fff65ae999163bb56a0dc608a4e2e03d94cc6275302d33ee8a11a95870ee78",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-musl",
+          "file": "rpi-statusline-0.1.9-rc.1-aarch64-unknown-linux-musl.rpix",
+          "sha256": "5eb7660b2174bcf5fdab8fe71436dfaa7b158ce6246b0a3b5ffabd07510329c6",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-statusline-0.1.9-rc.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "3bf0ccf19a430ded7a3fc01c083101442f84b461167d0d7fd04e28a0ab604fad",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.9-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "e1465c5a5484ea7fe70e0d239401c94a288b6585fe706517ce776994afb31b4a",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-musl",
+          "file": "rpi-statusline-0.1.9-rc.1-x86_64-unknown-linux-musl.rpix",
+          "sha256": "e1a1d710dd4ba8bb8ab15ebd5704b97b74cf4c8cf943f6c58ef6796bfdbe4d10",
+          "release": "v0.1.9-rc.1"
+        }
+      ]
+    },
+    {
       "version": "0.1.8",
       "rpiAbi": 1,
       "minHostVersion": "0.1.8",

@@ -8,6 +8,57 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.9-rc.1",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.9-rc.1",
+      "capabilities": [
+        "commands",
+        "tools",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-plan-mode-0.1.9-rc.1-aarch64-apple-darwin.rpix",
+          "sha256": "e195990282602105dbc8d669f2a18c97abdaf38b2187846302d1eee5bebecd90",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.9-rc.1-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "9854714d9a12e1e194343e2359865463eafe0f2b202c00ca576f9e41241258e8",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "aarch64-unknown-linux-musl",
+          "file": "rpi-plan-mode-0.1.9-rc.1-aarch64-unknown-linux-musl.rpix",
+          "sha256": "c311f3013137fd33fec0220d40db784e9cefd804dfd8ddc486cfcb8b9a9892b2",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-plan-mode-0.1.9-rc.1-x86_64-pc-windows-msvc.rpix",
+          "sha256": "37de351db07b43a8f9f6debf1b05b68fc4bd6235eb9277bfdd470d75ff194037",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-plan-mode-0.1.9-rc.1-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "5c3fe59646112c1b5eb8a7b96bf2db3e28a58f0ba9540451cbfa7ba4c5478dc6",
+          "release": "v0.1.9-rc.1"
+        },
+        {
+          "target": "x86_64-unknown-linux-musl",
+          "file": "rpi-plan-mode-0.1.9-rc.1-x86_64-unknown-linux-musl.rpix",
+          "sha256": "4611fd60d076f902f7b47357ebb75b46ff66dd6587401153ce13cdac5c370fd3",
+          "release": "v0.1.9-rc.1"
+        }
+      ]
+    },
+    {
       "version": "0.1.8",
       "rpiAbi": 1,
       "minHostVersion": "0.1.8",
