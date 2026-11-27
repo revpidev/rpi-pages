@@ -8,6 +8,56 @@
   "official": true,
   "versions": [
     {
+      "version": "0.1.9-rc.3",
+      "rpiAbi": 1,
+      "minHostVersion": "0.1.9-rc.3",
+      "capabilities": [
+        "commands",
+        "ui",
+        "session",
+        "events"
+      ],
+      "yanked": false,
+      "artifacts": [
+        {
+          "target": "aarch64-apple-darwin",
+          "file": "rpi-statusline-0.1.9-rc.3-aarch64-apple-darwin.rpix",
+          "sha256": "fd43d9a93584b43cbd8692584b4e51ffc9ce2c0d981f2db24314c44961078947",
+          "release": "v0.1.9-rc.3"
+        },
+        {
+          "target": "aarch64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.9-rc.3-aarch64-unknown-linux-gnu.rpix",
+          "sha256": "0518f69ddee264c25850179fd3a3e3977e17808aed4ade135f034700d92d4307",
+          "release": "v0.1.9-rc.3"
+        },
+        {
+          "target": "aarch64-unknown-linux-musl",
+          "file": "rpi-statusline-0.1.9-rc.3-aarch64-unknown-linux-musl.rpix",
+          "sha256": "e20fe2829a23bab6f6135eb578def351f9281a572c673e3a57084731d8263373",
+          "release": "v0.1.9-rc.3"
+        },
+        {
+          "target": "x86_64-pc-windows-msvc",
+          "file": "rpi-statusline-0.1.9-rc.3-x86_64-pc-windows-msvc.rpix",
+          "sha256": "5372999c620315fede5f0c60c2260fb216e668bb7bc121bc5c8bf45345f4e12d",
+          "release": "v0.1.9-rc.3"
+        },
+        {
+          "target": "x86_64-unknown-linux-gnu",
+          "file": "rpi-statusline-0.1.9-rc.3-x86_64-unknown-linux-gnu.rpix",
+          "sha256": "07b8d993d15b743f5f39eada285d1b9b85006c253c99b28a69156e804d7cd55c",
+          "release": "v0.1.9-rc.3"
+        },
+        {
+          "target": "x86_64-unknown-linux-musl",
+          "file": "rpi-statusline-0.1.9-rc.3-x86_64-unknown-linux-musl.rpix",
+          "sha256": "b166c7303d1db8bac77b0add2d9179317cf1a4827514f9017190fbc7414b8e43",
+          "release": "v0.1.9-rc.3"
+        }
+      ]
+    },
+    {
       "version": "0.1.9-rc.2",
       "rpiAbi": 1,
       "minHostVersion": "0.1.9-rc.2",
