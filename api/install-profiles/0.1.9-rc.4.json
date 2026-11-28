@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.9-rc.4",
+  "assets": {
+    "rpi-0.1.9-rc.4-aarch64-apple-darwin-full.tar.gz": "3aaef72cbe4747c88f34b0ebea2c0f1b5a5148edac2c48793c3c089b44447563",
+    "rpi-0.1.9-rc.4-aarch64-apple-darwin-standard.tar.gz": "d3ff2a07544ae233fb0a4d35aa2fa66e1074e08d8149c4a9d7b554844c44b68d",
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-gnu-full.tar.gz": "3e64c884d8ffb47248ebedc725722207c2e44a3e2907b656b020121c0ec547b8",
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-gnu-standard.tar.gz": "b4c307b21b701104dabc07974079d89532a48bc1094e139c47c11c9fa11e1186",
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-musl-full.tar.gz": "707a1a2eed7506e154941c8e86c8d34e036d8262f957a53a7f77cbc68a1eb0a8",
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-musl-standard.tar.gz": "776af2a9537b7fda6ea26ea50a94bf6f0190722365af64a63ad065d8dea69457",
+    "rpi-0.1.9-rc.4-x86_64-pc-windows-msvc-full.zip": "901ac3688782e6c357b2c741b07c673ce05a2fb138d5a9d9143c1b242e29ec90",
+    "rpi-0.1.9-rc.4-x86_64-pc-windows-msvc-standard.zip": "2864b7cfc26afd8dcce8119533f18602fe178dd6b4bc66f5ea2b89c6e0f112f2",
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-gnu-full.tar.gz": "ed49f121b2f1bff7551987f411c50902ee48d82386b5d62ae3f0cff4dd152772",
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-gnu-standard.tar.gz": "457dd70ed683529c00a3dd4ec0cc6fdd804f2281f57eb1874937d6490c508cbd",
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-musl-full.tar.gz": "942a461ae8fb19ddadbcb64c1087e4c89d6369bad14bb0065ffc248649f65b49",
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-musl-standard.tar.gz": "dfa1c121d58d722d1c9e6ad5642ff6596a701b166dd7cc1442b88e7f98ed2ab2"
+  },
+  "sizes": {
+    "rpi-0.1.9-rc.4-aarch64-apple-darwin-full.tar.gz": 44335846,
+    "rpi-0.1.9-rc.4-aarch64-apple-darwin-standard.tar.gz": 43782731,
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-gnu-full.tar.gz": 45777021,
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-gnu-standard.tar.gz": 45211666,
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-musl-full.tar.gz": 44838061,
+    "rpi-0.1.9-rc.4-aarch64-unknown-linux-musl-standard.tar.gz": 44411432,
+    "rpi-0.1.9-rc.4-x86_64-pc-windows-msvc-full.zip": 52284505,
+    "rpi-0.1.9-rc.4-x86_64-pc-windows-msvc-standard.zip": 51458434,
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-gnu-full.tar.gz": 54441124,
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-gnu-standard.tar.gz": 53038286,
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-musl-full.tar.gz": 48145054,
+    "rpi-0.1.9-rc.4-x86_64-unknown-linux-musl-standard.tar.gz": 47682650
+  }
+}
