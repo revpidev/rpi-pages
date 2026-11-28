@@ -1,5 +1,4 @@
 {
-  "version": "0.1.8",
-  "packageName": "rpi",
-  "note": "v0.1.8: upstream parity to Pi v1.4.0, install profiles, durable runtime/storage increments, and five RC rounds"
+  "version": "0.1.9",
+  "packageName": "rpi"
 }

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.9",
+  "assets": {
+    "rpi-0.1.9-aarch64-apple-darwin-full.tar.gz": "3791c7dfee827d602248d901afe8109876964c6b5c8b60292a03ed0e99c8e463",
+    "rpi-0.1.9-aarch64-apple-darwin-standard.tar.gz": "4fb127937333873c8bbe502cb0d8c32d0adfd560150138b9c5dd6a47eb8a407c",
+    "rpi-0.1.9-aarch64-unknown-linux-gnu-full.tar.gz": "c963a9d6d6a82759de2040093970b5e07c9c8b6a81a9d20fcfc6c58bea9e879e",
+    "rpi-0.1.9-aarch64-unknown-linux-gnu-standard.tar.gz": "dd440e1788f9a4f34e960a0000e44664f7f905b225ada4f2a2e872499f3cc451",
+    "rpi-0.1.9-aarch64-unknown-linux-musl-full.tar.gz": "bd9ad0b86ea7f9e6620d4ebc6a1785862e166e62dd1040ab25b0612980024881",
+    "rpi-0.1.9-aarch64-unknown-linux-musl-standard.tar.gz": "a33d3badb4519ee2beda8c88a8501485f91f1f8df6bdc63fe4f5eb96b2bdc24e",
+    "rpi-0.1.9-x86_64-pc-windows-msvc-full.zip": "59f405a92ea4bc542c61d8a4f3cf4c5f70c02be3491da4d080d19bd6394fbfb2",
+    "rpi-0.1.9-x86_64-pc-windows-msvc-standard.zip": "87475370e478f7a116e78e7c52cde2ec9789c2c0147719ebfb6092c4e92290ea",
+    "rpi-0.1.9-x86_64-unknown-linux-gnu-full.tar.gz": "d5c5cfea71a81cc03622ae5b20b6b425b38c57951fba15393d9503c8f0b1eb94",
+    "rpi-0.1.9-x86_64-unknown-linux-gnu-standard.tar.gz": "162166f2c4e8504d4626c37c0fb61b84b9a254ebfab19bb763738cc11eb499b7",
+    "rpi-0.1.9-x86_64-unknown-linux-musl-full.tar.gz": "62e2d4cac86712c4a2097ecebbef3a7fb4622ff33b3416a0d3e18ad3d1d1a5ea",
+    "rpi-0.1.9-x86_64-unknown-linux-musl-standard.tar.gz": "e8e44e73cb94b9a7230250b04dcc312f6b151c17548868875a02ef612cb30959"
+  },
+  "sizes": {
+    "rpi-0.1.9-aarch64-apple-darwin-full.tar.gz": 44333050,
+    "rpi-0.1.9-aarch64-apple-darwin-standard.tar.gz": 43779986,
+    "rpi-0.1.9-aarch64-unknown-linux-gnu-full.tar.gz": 45794399,
+    "rpi-0.1.9-aarch64-unknown-linux-gnu-standard.tar.gz": 45229087,
+    "rpi-0.1.9-aarch64-unknown-linux-musl-full.tar.gz": 44852967,
+    "rpi-0.1.9-aarch64-unknown-linux-musl-standard.tar.gz": 44426390,
+    "rpi-0.1.9-x86_64-pc-windows-msvc-full.zip": 52276446,
+    "rpi-0.1.9-x86_64-pc-windows-msvc-standard.zip": 51450386,
+    "rpi-0.1.9-x86_64-unknown-linux-gnu-full.tar.gz": 54445377,
+    "rpi-0.1.9-x86_64-unknown-linux-gnu-standard.tar.gz": 53042751,
+    "rpi-0.1.9-x86_64-unknown-linux-musl-full.tar.gz": 48149300,
+    "rpi-0.1.9-x86_64-unknown-linux-musl-standard.tar.gz": 47686979
+  }
+}
