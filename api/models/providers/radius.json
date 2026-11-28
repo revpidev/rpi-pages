@@ -8,22 +8,23 @@
         "off": null,
         "minimal": null,
         "low": "low",
-        "medium": null,
+        "medium": "medium",
         "high": "high",
-        "xhigh": null,
-        "max": "max"
+        "xhigh": "xhigh",
+        "max": null
       },
       "input": [
         "text",
         "image"
       ],
       "contextWindow": 1048576,
-      "maxTokens": 262144,
-      "lab": "Moonshot AI",
+      "maxTokens": 65536,
+      "type": "chat",
+      "lab": "Google",
       "cost": {
         "input": 3,
         "output": 15,
-        "cacheRead": 0.3,
+        "cacheRead": 0.15,
         "cacheWrite": 0
       },
       "enabled": true,
@@ -47,8 +48,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "cheap",
@@ -69,6 +69,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 131072,
+      "type": "chat",
       "lab": "DeepSeek",
       "cost": {
         "input": 0.3,
@@ -97,17 +98,16 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-fable-5",
       "name": "Claude Fable 5",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null,
         "xhigh": "xhigh",
-        "max": "max"
+        "max": "max",
+        "off": null
       },
       "input": [
         "text",
@@ -115,6 +115,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 10,
@@ -125,8 +126,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -147,17 +148,16 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-fable-5-1",
       "name": "Claude Fable 5.1",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null,
         "xhigh": "xhigh",
-        "max": "max"
+        "max": "max",
+        "off": null
       },
       "input": [
         "text",
@@ -165,6 +165,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 10,
@@ -175,8 +176,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -197,17 +198,16 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-fable-5-2",
       "name": "Claude Fable 5.2",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null,
         "xhigh": "xhigh",
-        "max": "max"
+        "max": "max",
+        "off": null
       },
       "input": [
         "text",
@@ -215,6 +215,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 8,
@@ -225,8 +226,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -247,8 +248,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-haiku-4-5",
@@ -260,6 +260,7 @@
       ],
       "contextWindow": 200000,
       "maxTokens": 64000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 1,
@@ -270,8 +271,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -288,8 +289,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-haiku-5-5",
@@ -309,6 +309,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 0.1,
@@ -328,8 +329,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -350,8 +351,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-opus-4-5",
@@ -363,6 +363,7 @@
       ],
       "contextWindow": 200000,
       "maxTokens": 64000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 5,
@@ -373,8 +374,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -391,8 +392,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-opus-4-8",
@@ -408,6 +408,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 5,
@@ -418,8 +419,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -440,8 +441,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-opus-5",
@@ -457,6 +457,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 5,
@@ -467,8 +468,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -489,21 +490,20 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-opus-5-5",
       "name": "Claude Opus 5.5",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null,
         "minimal": null,
         "low": "low",
         "medium": "medium",
         "high": "high",
         "xhigh": "xhigh",
-        "max": "max"
+        "max": "max",
+        "off": null
       },
       "input": [
         "text",
@@ -511,6 +511,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 4,
@@ -521,8 +522,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -543,8 +544,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-sonnet-4-5",
@@ -556,6 +556,7 @@
       ],
       "contextWindow": 200000,
       "maxTokens": 64000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 3,
@@ -566,8 +567,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -584,8 +585,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-sonnet-5",
@@ -601,6 +601,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 2,
@@ -611,8 +612,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -633,21 +634,20 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "claude-sonnet-5-5",
       "name": "Claude Sonnet 5.5",
       "reasoning": true,
       "thinkingLevelMap": {
-        "off": null,
         "minimal": null,
         "low": "low",
         "medium": "medium",
         "high": "high",
         "xhigh": "xhigh",
-        "max": "max"
+        "max": "max",
+        "off": null
       },
       "input": [
         "text",
@@ -655,6 +655,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Anthropic",
       "cost": {
         "input": 2,
@@ -665,8 +666,8 @@
       "enabled": true,
       "providers": [
         {
-          "id": "anthropic",
-          "name": "Anthropic",
+          "id": "vercel-ai-gateway",
+          "name": "Vercel AI Gateway",
           "credential": "radius",
           "source": "radius"
         }
@@ -687,8 +688,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "deepseek-v4.1-flash",
@@ -709,6 +709,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 131072,
+      "type": "chat",
       "lab": "DeepSeek",
       "cost": {
         "input": 0.3,
@@ -737,8 +738,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gemini-3.8-flash",
@@ -759,6 +759,7 @@
       ],
       "contextWindow": 1048576,
       "maxTokens": 65536,
+      "type": "chat",
       "lab": "Google",
       "cost": {
         "input": 0.75,
@@ -787,8 +788,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gemini-4-argon",
@@ -809,6 +809,7 @@
       ],
       "contextWindow": 1048576,
       "maxTokens": 32768,
+      "type": "chat",
       "lab": "Google",
       "cost": {
         "input": 2,
@@ -837,8 +838,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gemini-4-hydrogen",
@@ -859,6 +859,7 @@
       ],
       "contextWindow": 1048576,
       "maxTokens": 65536,
+      "type": "chat",
       "lab": "Google",
       "cost": {
         "input": 1.5,
@@ -887,8 +888,57 @@
             "jpegQuality": 80
           }
         }
+      }
+    },
+    {
+      "id": "gemini-4-neon",
+      "name": "Gemini 4 Neon",
+      "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": null
       },
-      "type": "chat"
+      "input": [
+        "text",
+        "image"
+      ],
+      "contextWindow": 1048576,
+      "maxTokens": 65536,
+      "type": "chat",
+      "lab": "Google",
+      "cost": {
+        "input": 3,
+        "output": 15,
+        "cacheRead": 0.15,
+        "cacheWrite": 0
+      },
+      "enabled": true,
+      "providers": [
+        {
+          "id": "openrouter",
+          "name": "OpenRouter",
+          "credential": "radius",
+          "source": "radius"
+        }
+      ],
+      "api": "pi-messages",
+      "provider": "radius",
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      }
     },
     {
       "id": "glm-5.3",
@@ -908,6 +958,7 @@
       ],
       "contextWindow": 1048576,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "Z.ai",
       "cost": {
         "input": 1.4,
@@ -926,8 +977,7 @@
       ],
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1",
-      "type": "chat"
+      "baseUrl": "https://radius.pi.dev/v1"
     },
     {
       "id": "glm-5.3-flash",
@@ -948,6 +998,7 @@
       ],
       "contextWindow": 1048575,
       "maxTokens": 131072,
+      "type": "chat",
       "lab": "Z.ai",
       "cost": {
         "input": 0.15,
@@ -976,8 +1027,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-5.6-luna",
@@ -998,6 +1048,7 @@
       ],
       "contextWindow": 272000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 0.2,
@@ -1035,8 +1086,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-5.6-sol",
@@ -1057,6 +1107,7 @@
       ],
       "contextWindow": 272000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 4,
@@ -1094,8 +1145,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-5.6-terra",
@@ -1116,6 +1166,7 @@
       ],
       "contextWindow": 272000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 2,
@@ -1153,8 +1204,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-6-astra",
@@ -1175,6 +1225,7 @@
       ],
       "contextWindow": 272000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 10,
@@ -1212,8 +1263,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-6-luna",
@@ -1234,6 +1284,7 @@
       ],
       "contextWindow": 1050000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 0.1,
@@ -1271,8 +1322,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-6-sol",
@@ -1293,6 +1343,7 @@
       ],
       "contextWindow": 1050000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 2,
@@ -1330,8 +1381,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-6.1-sol",
@@ -1352,6 +1402,7 @@
       ],
       "contextWindow": 272000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 2,
@@ -1389,8 +1440,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "gpt-6.1-terra",
@@ -1411,6 +1461,7 @@
       ],
       "contextWindow": 272000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 1,
@@ -1448,8 +1499,125 @@
             "jpegQuality": 80
           }
         }
+      }
+    },
+    {
+      "id": "gpt-6.2-astra",
+      "name": "GPT 6.2 Astra",
+      "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
       },
-      "type": "chat"
+      "input": [
+        "text",
+        "image"
+      ],
+      "contextWindow": 272000,
+      "maxTokens": 128000,
+      "type": "chat",
+      "lab": "OpenAI",
+      "cost": {
+        "input": 8,
+        "output": 40,
+        "cacheRead": 0.4,
+        "cacheWrite": 10,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 16,
+            "output": 60,
+            "cacheRead": 0.8,
+            "cacheWrite": 20
+          }
+        ]
+      },
+      "enabled": true,
+      "providers": [
+        {
+          "id": "openrouter",
+          "name": "OpenRouter",
+          "credential": "radius",
+          "source": "radius"
+        }
+      ],
+      "api": "pi-messages",
+      "provider": "radius",
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      }
+    },
+    {
+      "id": "gpt-6.2-sol",
+      "name": "GPT 6.2 Sol",
+      "reasoning": true,
+      "thinkingLevelMap": {
+        "off": null,
+        "minimal": null,
+        "low": "low",
+        "medium": "medium",
+        "high": "high",
+        "xhigh": "xhigh",
+        "max": "max"
+      },
+      "input": [
+        "text",
+        "image"
+      ],
+      "contextWindow": 272000,
+      "maxTokens": 128000,
+      "type": "chat",
+      "lab": "OpenAI",
+      "cost": {
+        "input": 2,
+        "output": 10,
+        "cacheRead": 0.1,
+        "cacheWrite": 2.5,
+        "tiers": [
+          {
+            "inputTokensAbove": 272000,
+            "input": 4,
+            "output": 15,
+            "cacheRead": 0.2,
+            "cacheWrite": 5
+          }
+        ]
+      },
+      "enabled": true,
+      "providers": [
+        {
+          "id": "openrouter",
+          "name": "OpenRouter",
+          "credential": "radius",
+          "source": "radius"
+        }
+      ],
+      "api": "pi-messages",
+      "provider": "radius",
+      "baseUrl": "https://radius.pi.dev/v1",
+      "inputLimits": {
+        "images": {
+          "resize": {
+            "maxWidth": 2000,
+            "maxHeight": 2000,
+            "maxBytes": 4718592,
+            "jpegQuality": 80
+          }
+        }
+      }
     },
     {
       "id": "grok-4.7",
@@ -1470,6 +1638,7 @@
       ],
       "contextWindow": 500000,
       "maxTokens": 450000,
+      "type": "chat",
       "lab": "xAI",
       "cost": {
         "input": 2,
@@ -1507,8 +1676,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "kimi-k3",
@@ -1529,6 +1697,7 @@
       ],
       "contextWindow": 1048576,
       "maxTokens": 262144,
+      "type": "chat",
       "lab": "Moonshot AI",
       "cost": {
         "input": 3,
@@ -1557,8 +1726,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "kimi-k3.1-pro",
@@ -1579,6 +1747,7 @@
       ],
       "contextWindow": 1048576,
       "maxTokens": 131072,
+      "type": "chat",
       "lab": "Moonshot AI",
       "cost": {
         "input": 2,
@@ -1607,8 +1776,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "minimax-m3",
@@ -1620,6 +1788,7 @@
       ],
       "contextWindow": 524288,
       "maxTokens": 131072,
+      "type": "chat",
       "lab": "MiniMax",
       "cost": {
         "input": 0.3,
@@ -1648,8 +1817,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "minimax-m3.1-flash",
@@ -1670,6 +1838,7 @@
       ],
       "contextWindow": 1000000,
       "maxTokens": 524288,
+      "type": "chat",
       "lab": "MiniMax",
       "cost": {
         "input": 0.15,
@@ -1698,8 +1867,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "mistral-large-4",
@@ -1720,6 +1888,7 @@
       ],
       "contextWindow": 1048576,
       "maxTokens": 262144,
+      "type": "chat",
       "lab": "Mistral AI",
       "cost": {
         "input": 0.7,
@@ -1748,8 +1917,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "precise",
@@ -1770,6 +1938,7 @@
       ],
       "contextWindow": 272000,
       "maxTokens": 128000,
+      "type": "chat",
       "lab": "OpenAI",
       "cost": {
         "input": 4,
@@ -1807,8 +1976,7 @@
             "jpegQuality": 80
           }
         }
-      },
-      "type": "chat"
+      }
     },
     {
       "id": "recursive/flint",
@@ -1828,6 +1996,7 @@
       ],
       "contextWindow": 262144,
       "maxTokens": 65536,
+      "type": "chat",
       "lab": "Recursive",
       "cost": {
         "input": 0,
@@ -1847,8 +2016,7 @@
       "free": true,
       "api": "pi-messages",
       "provider": "radius",
-      "baseUrl": "https://radius.pi.dev/v1",
-      "type": "chat"
+      "baseUrl": "https://radius.pi.dev/v1"
     }
   ]
 }
